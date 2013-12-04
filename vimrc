@@ -2,7 +2,33 @@
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+set nocompatible              " be iMproved
+filetype off                  " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+"let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+"
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-surround'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'scrooloose/nerdtree'
+Bundle 'godlygeek/tabular'
+Bundle 'vim-scripts/tComment'
+"Bundle 'garbas/vim-snipmate'
+
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
