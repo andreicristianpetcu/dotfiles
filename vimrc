@@ -25,6 +25,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
+Bundle 'myusuf3/numbers.vim'
 
 " vim-scripts repos
 Bundle 'L9'
