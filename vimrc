@@ -18,14 +18,16 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-rails.git'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
+Bundle 'flazz/vim-colorschemes'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -192,7 +194,9 @@ if executable("ack")
 endif
 
 " Color scheme
+" colorscheme baycomb
 " colorscheme vividchalk
+colorscheme desert 
 " highlight NonText guibg=#060606
 " highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -216,19 +220,4 @@ set smartcase
 " Tags
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
-
-let g:fuf_splitPathMatching=1
-
-" Open URL
-command -bar -nargs=1 OpenURL :!open <args>
-function! OpenURL()
-  let s:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
-  echo s:uri
-  if s:uri != ""
-	  exec "!open \"" . s:uri . "\""
-  else
-	  echo "No URI found in line."
-  endif
-endfunction
-map <Leader>w :call OpenURL()<CR>
 
