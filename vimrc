@@ -31,7 +31,7 @@ Bundle 'flazz/vim-colorschemes'
 
 " vim-scripts repos
 Bundle 'L9'
-Bundle 'FuzzyFinder'
+Bundle 'kien/ctrlp.vim'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
