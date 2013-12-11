@@ -29,7 +29,9 @@ Bundle 'vim-scripts/tComment'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-scripts/vim-auto-save'
-Bundle 'vim-scripts/taglist'
+" vim-misk is needed by vim-easytags
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
 
 " vim-scripts repos
 Bundle 'L9'
