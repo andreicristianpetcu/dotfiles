@@ -21,7 +21,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-rails.git'
 Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
@@ -29,6 +28,8 @@ Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'flazz/vim-colorschemes'
+" Bundle 'vim-scripts/vim-auto-save'
+" Bundle 'szw/vim-ctrlspace'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -38,6 +39,7 @@ Bundle 'kien/ctrlp.vim'
 set backspace=indent,eol,start
 
 set nobackup
+set noswapfile
 set nowritebackup
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
@@ -222,3 +224,5 @@ set smartcase
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
+" enable AutoSave on Vim startup
+"let g:auto_save = 1  " enable AutoSave on Vim startup
