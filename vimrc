@@ -32,6 +32,7 @@ Bundle 'vim-scripts/vim-auto-save'
 " vim-misk is needed by vim-easytags
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
+Bundle 'taglist.vim'
 
 " vim-scripts repos
 Bundle 'L9'
