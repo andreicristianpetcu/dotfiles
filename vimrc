@@ -28,8 +28,8 @@ Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'flazz/vim-colorschemes'
-" Bundle 'vim-scripts/vim-auto-save'
-" Bundle 'szw/vim-ctrlspace'
+Bundle 'vim-scripts/vim-auto-save'
+Bundle 'vim-scripts/taglist'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -225,4 +225,7 @@ let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
 " enable AutoSave on Vim startup
-"let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
+" set max buffer size
+let g:ctrlp_max_height=56
