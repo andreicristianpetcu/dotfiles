@@ -35,6 +35,8 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'FuzzyFinder'
+Bundle 'Valloric/YouCompleteMe'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -135,7 +137,8 @@ map <Leader>m :Rmodel
 map <Leader>c :Rcontroller 
 map <Leader>v :Rview 
 map <Leader>u :Runittest 
-map <Leader>f :Rfunctionaltest 
+" map <Leader>f :Rfunctionaltest 
+map <Leader>f :FufFile<CR>
 map <Leader>tm :RTmodel 
 map <Leader>tc :RTcontroller 
 map <Leader>tv :RTview 
