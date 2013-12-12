@@ -20,6 +20,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-rails.git'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
@@ -33,6 +34,7 @@ Bundle 'vim-scripts/vim-auto-save'
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle 'taglist.vim'
+Bundle 'majutsushi/tagbar'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -232,3 +234,24 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 
 " set max buffer size
 let g:ctrlp_max_height=56
+
+" Minimize and maximize
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
