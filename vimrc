@@ -28,7 +28,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
-Bundle 'flazz/vim-colorschemes'
+Bundle 'sickill/vim-monokai'
 Bundle 'vim-scripts/vim-auto-save'
 " vim-misk is needed by vim-easytags
 Bundle 'xolox/vim-misc'
@@ -205,11 +205,7 @@ if executable("ack")
 endif
 
 " Color scheme
-" colorscheme baycomb
-" colorscheme vividchalk
-colorscheme desert 
-" highlight NonText guibg=#060606
-" highlight Folded  guibg=#0A0A0A guifg=#9090D0
+colorscheme monokai
 
 " Numbers
 set number
