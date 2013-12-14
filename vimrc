@@ -37,6 +37,7 @@ Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'FuzzyFinder'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/EasyGrep'
 
 " vim-scripts repos
 Bundle 'L9'

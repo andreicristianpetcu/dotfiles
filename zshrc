@@ -3,7 +3,7 @@ ZSH_THEME="robbyrussell"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="true"
 
-plugins=(git gem rbates rails3 ruby archlinux)
+plugins=(git gem rbates rails3 ruby archlinux common-aliases )
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='mate -w'
