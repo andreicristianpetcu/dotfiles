@@ -68,6 +68,18 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
 endif
 
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
+if $COLORTERM == 'drop-down-terminal'
+  " set t_Co=256
+  colorscheme desert 
+else
+  " Color scheme
+  colorscheme monokai
+endif
+
 " Switch wrap off for everything
 set nowrap
 
@@ -205,8 +217,6 @@ if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
 endif
 
-" Color scheme
-colorscheme monokai
 
 " Numbers
 set number
