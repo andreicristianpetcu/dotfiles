@@ -29,7 +29,6 @@ Bundle 'vim-scripts/tComment'
 "Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'sickill/vim-monokai'
-Bundle 'vim-scripts/vim-auto-save'
 " vim-misk is needed by vim-easytags
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
@@ -38,6 +37,8 @@ Bundle 'majutsushi/tagbar'
 Bundle 'FuzzyFinder'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/EasyGrep'
+Bundle 'jaredly/vim-debug'
+Bundle 'rking/ag.vim'
 
 " vim-scripts repos
 Bundle 'L9'
@@ -240,9 +241,6 @@ set smartcase
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
-" enable AutoSave on Vim startup
-let g:auto_save = 1  " enable AutoSave on Vim startup
-
 " set max buffer size
 let g:ctrlp_max_height=56
 
@@ -266,3 +264,9 @@ function! MaximizeToggle()
     only
   endif
 endfunction
+
+" silver searcher
+let g:agprg="ag --column"
+
+"set the system cliboard as the default yank source
+set clipboard=unnamedplus
