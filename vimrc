@@ -70,7 +70,7 @@ if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   set hlsearch
 endif
 
-if $COLORTERM == 'gnome-terminal'
+if $COLORTERM == 'gnome-terminal' || $TERM == 'xterm' || $TERM == 'screen'
   set t_Co=256
 endif
 
