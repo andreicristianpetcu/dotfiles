@@ -45,6 +45,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/EasyGrep'
 Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 
 " vim-scripts repos
 Bundle 'L9'
