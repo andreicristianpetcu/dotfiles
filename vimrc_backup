@@ -26,15 +26,9 @@ Bundle 'mattn/emmet-vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'godlygeek/tabular'
 Bundle 'vim-scripts/tComment'
+"Bundle 'garbas/vim-snipmate'
 Bundle 'myusuf3/numbers.vim'
 Bundle 'sickill/vim-monokai'
-" snip mate and it's dependencyes
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-" Optional:
-Bundle "honza/vim-snippets"
-
 " vim-misk is needed by vim-easytags
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
@@ -204,7 +198,7 @@ nmap <F1> <Esc>
 imap <C-F> <C-R>=expand("%")<CR>
 
 " Maps autocomplete to tab
-" imap <Tab> <C-N>
+imap <Tab> <C-N>
 
 imap <C-L> <Space>=><Space>
 
@@ -276,12 +270,3 @@ let g:agprg="ag --column"
 
 "set the system cliboard as the default yank source
 set clipboard=unnamedplus
-
-" You complete me disabled for tab, only for control space
-" let g:ycm_auto_trigger = 0
-let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
-let g:ycm_key_list_previous_completion = ['<C-k']
-
-" Remap tab to snip mate
-imap <Tab> <Plug>snipMateNextOrTrigger
-smap <Tab> <Plug>snipMateNextOrTrigger
