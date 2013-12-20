@@ -286,3 +286,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 " Remap tab to snip mate
 imap <Tab> <Plug>snipMateNextOrTrigger
 smap <Tab> <Plug>snipMateNextOrTrigger
+
+" numbers do not show for Control+C, they show only for Esc
+map <C-C> <ESC>
