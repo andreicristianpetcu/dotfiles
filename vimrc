@@ -57,7 +57,7 @@ set backspace=indent,eol,start
 set nobackup
 set noswapfile
 set nowritebackup
-set history=50		" keep 50 lines of command line history
+set history=1000		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -152,25 +152,25 @@ set laststatus=2
 let mapleader = ","
 
 " Edit the README_FOR_APP (makes :R commands work)
-map <Leader>R :e doc/README_FOR_APP<CR>
+" map <Leader>R :e doc/README_FOR_APP<CR>
 
 " Leader shortcuts for Rails commands
-map <Leader>m :Rmodel 
-map <Leader>c :Rcontroller 
-map <Leader>v :Rview 
-map <Leader>u :Runittest 
+" map <Leader>m :Rmodel 
+" map <Leader>c :Rcontroller 
+" map <Leader>v :Rview 
+" map <Leader>u :Runittest 
 " map <Leader>f :Rfunctionaltest 
-map <Leader>f :FufFile<CR>
-map <Leader>tm :RTmodel 
-map <Leader>tc :RTcontroller 
-map <Leader>tv :RTview 
-map <Leader>tu :RTunittest 
-map <Leader>tf :RTfunctionaltest 
-map <Leader>sm :RSmodel 
-map <Leader>sc :RScontroller 
-map <Leader>sv :RSview 
-map <Leader>su :RSunittest 
-map <Leader>sf :RSfunctionaltest 
+" map <Leader>f :FufFile<CR>
+" map <Leader>tm :RTmodel 
+" map <Leader>tc :RTcontroller 
+" map <Leader>tv :RTview 
+" map <Leader>tu :RTunittest 
+" map <Leader>tf :RTfunctionaltest 
+" map <Leader>sm :RSmodel 
+" map <Leader>sc :RScontroller 
+" map <Leader>sv :RSview 
+" map <Leader>su :RSunittest 
+" map <Leader>sf :RSfunctionaltest 
 
 " Hide search highlighting
 map <Leader>h :set invhls <CR>
@@ -276,7 +276,8 @@ endfunction
 let g:agprg="ag --column"
 
 "set the system cliboard as the default yank source
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
+map <Leader>= :let @+=@"<CR>
 
 " You complete me disabled for tab, only for control space
 " let g:ycm_auto_trigger = 0
@@ -289,3 +290,7 @@ smap <Tab> <Plug>snipMateNextOrTrigger
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> <ESC>
+
+" put in register s word under currsor
+map <Leader>a :Ag <cword><CR>
+
