@@ -275,8 +275,7 @@ endfunction
 " silver searcher
 let g:agprg="ag --column"
 
-"set the system cliboard as the default yank source
-" set clipboard=unnamedplus
+" copy the default clipboard into the system clipboard
 map <Leader>= :let @+=@"<CR>
 
 " You complete me disabled for tab, only for control space
@@ -290,7 +289,7 @@ smap <Tab> <Plug>snipMateNextOrTrigger
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> <ESC>
-
+" search with ag for the content of register s
+map <Leader>a :Ag <C-R>s<CR>
 " put in register s word under currsor
-map <Leader>a :Ag <cword><CR>
-
+map <Leader>s "syiw
