@@ -49,6 +49,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
 Bundle 'Shougo/unite-outline'
+Bundle 'scrooloose/nerdtree'
 " Bundle 'Shougo/vimproc.vim'
 
 
@@ -319,3 +320,6 @@ nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader><leader>r :%S/<C-R>s/<C-R>s/gc
 nnoremap <C-W>x :only<CR>
+
+" NERD Tree specific stuff
+nnoremap <Leader><Leader>P :NERDTreeToggle<CR>
