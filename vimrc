@@ -20,6 +20,7 @@ Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-rails.git'
+Bundle 'tpope/vim-repeat'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/emmet-vim'
@@ -46,6 +47,8 @@ Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Shougo/unite.vim'
+Bundle 'thinca/vim-unite-history'
+Bundle 'tsukkee/unite-tag'
 " Bundle 'Shougo/vimproc.vim'
 
 
@@ -174,7 +177,7 @@ let mapleader = ","
 " map <Leader>sf :RSfunctionaltest 
 
 " Hide search highlighting
-map <Leader>h :set invhls <CR>
+map <Leader>H :set invhls <CR>
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
@@ -296,6 +299,8 @@ map <Leader>a :Ag <C-R>s
 map <Leader>s "syiw
 
 " Unite.vim
-nnoremap <leader>p :Unite -start-insert buffer file_rec file_mru -auto-preview -no-split<CR>
-nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical -no-split<CR>
-nnoremap <Leader>m :Unite -start-insert mapping -auto-preview -no-split<CR>
+nnoremap <leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
+nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
+nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
+nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
+nnoremap <Leader>q :Unite q:all<CR>
