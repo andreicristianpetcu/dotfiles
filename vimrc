@@ -50,6 +50,7 @@ Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
 Bundle 'tsukkee/unite-tag'
+Bundle 'Shougo/unite-outline'
 " Bundle 'Shougo/vimproc.vim'
 
 
@@ -321,4 +322,5 @@ nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
 nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
+nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>q :Unite q:all<CR>
