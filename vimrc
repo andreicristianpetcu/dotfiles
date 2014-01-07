@@ -256,6 +256,9 @@ set tags=./tags;
 " Write file
 nnoremap ZW :w<CR>
 
+" set the system cliboard as the default yank source                                                                                                                                                                                      
+set clipboard=unnamedplus 
+
 " Minimize and maximize
 nnoremap <C-W>O :call MaximizeToggle()<CR>
 nnoremap <C-W>o :call MaximizeToggle()<CR>
