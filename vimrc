@@ -40,16 +40,17 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'FuzzyFinder'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/EasyGrep'
 Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Shougo/unite.vim'
+" Bundle 'Shougo/vimproc.vim'
+
 
 " vim-scripts repos
 Bundle 'L9'
-Bundle 'kien/ctrlp.vim'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -248,13 +249,13 @@ set smartcase
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
-" set max buffer size
-let g:ctrlp_max_height=56
-
 " Minimize and maximize
 nnoremap <C-W>O :call MaximizeToggle()<CR>
-nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W>o :calyyl MaximizeToggle()<CR>
 nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
+
+" Write file
+nnoremap ZW :w<CR>
 
 function! MaximizeToggle()
   if exists("s:maximize_session")
@@ -290,6 +291,11 @@ smap <Tab> <Plug>snipMateNextOrTrigger
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> <ESC>
 " search with ag for the content of register s
-map <Leader>a :Ag <C-R>s<CR>
+map <Leader>a :Ag <C-R>s
 " put in register s word under currsor
 map <Leader>s "syiw
+
+" Unite.vim
+nnoremap <leader>p :Unite -start-insert buffer file_rec file_mru -auto-preview -no-split<CR>
+nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical -no-split<CR>
+nnoremap <Leader>m :Unite -start-insert mapping -auto-preview -no-split<CR>
