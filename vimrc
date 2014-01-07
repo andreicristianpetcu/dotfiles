@@ -278,8 +278,8 @@ endfunction
 
 " Ag.vim script for easy search
 function! SilverSearch(word)
-  let @s = shellescape(expand(a:word))
-  let l:ag_cmd = "Ag " . @s . " ."
+  let @s = expand(a:word)
+  let l:ag_cmd = "Ag " . shellescape(@s) . " ."
   call histadd("cmd", l:ag_cmd)
   set hidden
   execute l:ag_cmd
@@ -314,5 +314,6 @@ nnoremap <Leader><leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader><leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
 nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
 nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
-nnoremap <Leader><leader>q :Unite q:all<CR>
+nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
+nnoremap <Leader><leader>r :%S/<C-R>s/<C-R>s/gc
 nnoremap <C-W>x :only<CR>
