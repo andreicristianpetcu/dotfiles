@@ -47,6 +47,7 @@ Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Shougo/unite.vim'
+Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
 Bundle 'tsukkee/unite-tag'
 " Bundle 'Shougo/vimproc.vim'
@@ -252,15 +253,31 @@ set smartcase
 let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 set tags=./tags;
 
-" Minimize and maximize
-nnoremap <C-W>O :call MaximizeToggle()<CR>
-nnoremap <C-W>o :calyyl MaximizeToggle()<CR>
-nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
-
 " Write file
 nnoremap ZW :w<CR>
 
+" Minimize and maximize
+nnoremap <C-W>O :call MaximizeToggle()<CR>
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+nnoremap <C-W><C-O> :call MaximizeToggle()<CR>
 function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
+
+" Ag.vim script for easy search
+function! MaximizeToggle2()
   if exists("s:maximize_session")
     exec "source " . s:maximize_session
     call delete(s:maximize_session)
@@ -303,4 +320,5 @@ nnoremap <leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
 nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
+nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
 nnoremap <Leader>q :Unite q:all<CR>
