@@ -49,7 +49,6 @@ Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
-Bundle 'tsukkee/unite-tag'
 Bundle 'Shougo/unite-outline'
 " Bundle 'Shougo/vimproc.vim'
 
