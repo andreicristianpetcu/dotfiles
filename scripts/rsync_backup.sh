@@ -1,10 +1,9 @@
 #!/bin/sh
 
-mkdir /rsync_clone
-mount /dev/sda3 /rsync_clone
+mount /dev/sda3 /mnt/rsync_clone
 START=$(date +%s)
 
-rsync -aAXv /* /rsync_clone --exclude=rsync_clone \
+rsync -aAXv /* /mnt/rsync_clone --exclude=mnt/rsync_clone \
     --exclude=hdd500 \
     --exclude=var/lib/pacman/sync/* \
     --exclude=var/log/journal/* \
@@ -22,10 +21,10 @@ rsync -aAXv /* /rsync_clone --exclude=rsync_clone \
     --exclude=media/* \
     --exclude=lost+found
 
-# rsync -aAXv /* /rsync_clone --exclude-from='/tmp/rsynch_ignore.txt'
+# rsync -aAXv /* /mnt/rsync_clone --exclude-from='/tmp/rsynch_ignore.txt'
 FINISH=$(date +%s)
 rm -rf /tmp/rsynch_ignore.tx
 echo "total time: $(( ($FINISH-$START) / 60 )) minutes, $(( ($FINISH-$START) % 60 )) seconds" | tee $1/"Backup from $(date '+%A, %d %B %Y, %T')"
 
-cp /rsync_clone/etc/fstab.chrooted /rsync_clone/etc/fstab
+cp /mnt/rsync_clone/etc/fstab.chrooted /mnt/rsync_clone/etc/fstab
 
