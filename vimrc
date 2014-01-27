@@ -40,7 +40,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
 Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'Shougo/neocomplete.vim'
 Bundle 'vim-scripts/EasyGrep'
 Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
@@ -50,6 +50,7 @@ Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
 Bundle 'Shougo/unite-outline'
 Bundle 'scrooloose/nerdtree'
+Bundle 'rodjek/vim-puppet'
 " Bundle 'Shougo/vimproc.vim'
 
 
@@ -154,7 +155,7 @@ set expandtab
 set laststatus=2
 
 " \ is the leader character
-let mapleader = ","
+" let mapleader = ","
 
 " Edit the README_FOR_APP (makes :R commands work)
 " map <Leader>R :e doc/README_FOR_APP<CR>
