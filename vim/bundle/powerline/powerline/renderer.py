@@ -4,12 +4,15 @@ from powerline.theme import Theme
 from unicodedata import east_asian_width, combining
 import os
 
-
 try:
 	NBSP = unicode(' ', 'utf-8')
 except NameError:
 	NBSP = ' '
 
+try:
+	from __builtin__ import unichr as chr
+except ImportError:
+	pass
 
 def construct_returned_value(rendered_highlighted, segments, output_raw):
 	if output_raw:
@@ -63,6 +66,22 @@ class Renderer(object):
 	``home``
 		String containing path to home directory. Should be ``unicode`` or (in 
 		python-2) regular string or ``None``.
+	'''
+
+	character_translations = {ord(' '): NBSP}
+	'''Character translations for use in escape() function.
+	
+	See documentation of ``unicode.translate`` for details.
+	'''
+
+	np_character_translations = dict(((i, '^' + chr(i + 0x40)) for i in range(0x20)))
+	'''Non-printable character translations
+
+	These are used to transform characters in range 0x00—0x1F into ``^@``, 
+	``^A`` and so on. Unilke with ``.escape()`` method (and 
+	``character_translations``) result is passed to ``.strwidth()`` method.
+
+	Note: transforms tab into ``^I``.
 	'''
 
 	def __init__(self,
@@ -131,7 +150,7 @@ class Renderer(object):
 			segment['divider_highlight'] = None
 		return segment
 
-	def get_segment_info(self, segment_info):
+	def get_segment_info(self, segment_info, mode):
 		'''Get segment information.
 		
 		Must return a dictionary containing at least ``home``, ``environ`` and 
@@ -148,6 +167,7 @@ class Renderer(object):
 		:return: dict with segment information.
 		'''
 		r = self.segment_info.copy()
+		r['mode'] = mode
 		if segment_info:
 			r.update(segment_info)
 		if 'PWD' in r['environ']:
@@ -182,7 +202,7 @@ class Renderer(object):
 			Matcher information. Is processed in ``.get_theme()`` method.
 		'''
 		theme = self.get_theme(matcher_info)
-		segments = theme.get_segments(side, self.get_segment_info(segment_info))
+		segments = theme.get_segments(side, self.get_segment_info(segment_info, mode))
 
 		# Handle excluded/included segments for the current mode
 		segments = [self._get_highlighting(segment, mode) for segment in segments
@@ -262,8 +282,8 @@ class Renderer(object):
 					contents_raw = (segment['_space_left'] * ' ') + contents_raw + (segment['_space_right'] * ' ') + outer_padding
 
 			# Replace spaces with no-break spaces
-			contents_raw = contents_raw.replace(' ', NBSP)
 			divider_raw = divider_raw.replace(' ', NBSP)
+			contents_raw = contents_raw.translate(self.np_character_translations)
 
 			# Apply highlighting to padded dividers and contents
 			if render_highlighted:
@@ -295,11 +315,11 @@ class Renderer(object):
 			segment['_len'] = self.strwidth(segment['_rendered_raw'])
 			yield segment
 
-	@staticmethod
-	def escape(string):
+	@classmethod
+	def escape(cls, string):
 		'''Method that escapes segment contents.
 		'''
-		return string
+		return string.translate(cls.character_translations)
 
 	def hlstyle(fg=None, bg=None, attr=None):
 		'''Output highlight style string.

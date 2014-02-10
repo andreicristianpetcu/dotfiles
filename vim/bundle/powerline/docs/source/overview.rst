@@ -82,6 +82,10 @@ Other applications
 Installation
 ============
 
+.. note:: This project is currently unavailable from PyPI due to a naming conflict 
+   with an unrelated project. Please read the detailed instructions for your platform
+   below.
+
 * :ref:`installation-linux`
 * :ref:`installation-osx`
 
@@ -146,8 +150,16 @@ absolute path to your Powerline installation directory:
 
    . {repository_root}/powerline/bindings/zsh/powerline.zsh
 
-If you are not satisfied with powerline speed in this case, compile zpython 
-branch from https://bitbucket.org/ZyX_I/zsh.
+Fish prompt
+^^^^^^^^^^^
+
+Add the following line to your :file:`config.fish`, where ``{repository_root}`` 
+is the absolute path to your Powerline installation directory:
+
+.. code-block:: bash
+
+   set fish_function_path $fish_function_path "{repository_root}/powerline/bindings/fish"
+   powerline-setup
 
 Tmux statusline
 ---------------

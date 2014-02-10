@@ -17,6 +17,10 @@
 	"segments": {
 		"left": [
 			{
+				"module": "powerline.segments.shell",
+				"name": "mode"
+			},
+			{
 				"name": "hostname"
 			},
 			{
@@ -30,6 +34,10 @@
 				"args": {
 					"dir_limit_depth": 3
 				}
+			},
+			{
+				"module": "powerline.segments.shell",
+				"name": "jobnum"
 			}
 		],
 		"right": [

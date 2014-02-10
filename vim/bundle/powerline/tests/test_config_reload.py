@@ -97,9 +97,9 @@ def sleep(interval):
 
 
 def add_watcher_events(p, *args, **kwargs):
-	p.config_loader.watcher._reset(args)
+	p._watcher._reset(args)
 	while not p._will_create_renderer():
-		sleep(kwargs.get('interval', 0.000001))
+		sleep(kwargs.get('interval', 0.1))
 		if not kwargs.get('wait', True):
 			return
 
@@ -141,7 +141,7 @@ class TestConfigReload(TestCase):
 				self.assertEqual(p.render(), '<1 2 1> s <2 4 False>>><3 4 4>g <4 False False>>><None None None>')
 				self.assertAccessEvents('config', 'themes/test/nonexistent')
 				# It should normally handle file missing error
-				self.assertEqual(p.logger._pop_msgs(), ['exception:test:Failed to create renderer: themes/test/nonexistent'])
+				self.assertEqual(p.logger._pop_msgs(), ['exception:test:powerline:Failed to create renderer: themes/test/nonexistent'])
 
 				config['config']['ext']['test']['theme'] = 'default'
 				add_watcher_events(p, 'config')
@@ -154,7 +154,7 @@ class TestConfigReload(TestCase):
 				self.assertEqual(p.render(), '<1 2 1> s <2 4 False>>><3 4 4>g <4 False False>>><None None None>')
 				self.assertAccessEvents('config', 'colorschemes/test/nonexistent')
 				# It should normally handle file missing error
-				self.assertEqual(p.logger._pop_msgs(), ['exception:test:Failed to create renderer: colorschemes/test/nonexistent'])
+				self.assertEqual(p.logger._pop_msgs(), ['exception:test:powerline:Failed to create renderer: colorschemes/test/nonexistent'])
 
 				config['config']['ext']['test']['colorscheme'] = '2'
 				add_watcher_events(p, 'config')
@@ -185,9 +185,16 @@ class TestConfigReload(TestCase):
 
 				config['config']['ext']['test']['colorscheme'] = 'nonexistentraise'
 				add_watcher_events(p, 'config')
+				# It may appear that p.logger._pop_msgs() is called after given 
+				# exception is added to the mesagges, but before config_loader 
+				# exception was added (this one: 
+				# “exception:test:config_loader:Error while running condition 
+				# function for key colorschemes/test/nonexistentraise: 
+				# fcf:colorschemes/test/nonexistentraise”).
+				# sleep(0.1)
 				self.assertEqual(p.render(), '<1 2 1> s<2 4 False>>><3 4 4>g<4 False False>>><None None None>')
 				self.assertAccessEvents('config')
-				self.assertIn('exception:test:Failed to create renderer: fcf:colorschemes/test/nonexistentraise', p.logger._pop_msgs())
+				self.assertIn('exception:test:powerline:Failed to create renderer: fcf:colorschemes/test/nonexistentraise', p.logger._pop_msgs())
 
 				config['colorschemes/test/nonexistentraise'] = {
 					'groups': {
@@ -253,6 +260,22 @@ class TestConfigReload(TestCase):
 				self.assertEqual(p.render(), '<1 2 1> col3<2 4 False>>><3 4 4>g<4 False False>>><None None None>')
 				self.assertAccessEvents('themes/test/default')
 				self.assertEqual(p.logger._pop_msgs(), [])
+				self.assertTrue(p._watcher._calls)
+		pop_events()
+
+	def test_run_once_no_theme_reload(self):
+		with replace_item(globals(), 'config', deepcopy(config)):
+			config['config']['common']['interval'] = None
+			with get_powerline(run_once=True) as p:
+				self.assertEqual(p.render(), '<1 2 1> s<2 4 False>>><3 4 4>g<4 False False>>><None None None>')
+				self.assertAccessEvents('config', 'colors', 'colorschemes/test/default', 'themes/test/default')
+
+				config['themes/test/default']['segments']['left'][0]['contents'] = 'col3'
+				add_watcher_events(p, 'themes/test/default', wait=False)
+				self.assertEqual(p.render(), '<1 2 1> s<2 4 False>>><3 4 4>g<4 False False>>><None None None>')
+				self.assertAccessEvents()
+				self.assertEqual(p.logger._pop_msgs(), [])
+				self.assertEqual(p._watcher._calls, [])
 		pop_events()
 
 

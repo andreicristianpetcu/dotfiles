@@ -60,7 +60,7 @@ class _Buffers(object):
 
 	@_vim
 	def __nonzero__(self):
-		return not not self.d
+		return bool(self.d)
 
 	@_vim
 	def keys(self):
@@ -171,9 +171,13 @@ def eval(expr):
 		return options[expr[1:]]
 	elif expr.startswith('PowerlineRegisterCachePurgerEvent'):
 		_buf_purge_events.add(expr[expr.find('"') + 1:expr.rfind('"') - 1])
-		return "0"
+		return '0'
 	elif expr.startswith('exists('):
 		return '0'
+	elif expr == 'getbufvar("%", "NERDTreeRoot").path.str()':
+		import os
+		assert os.path.basename(buffers[_buffer()].name).startswith('NERD_tree_')
+		return '/usr/include'
 	raise NotImplementedError
 
 
@@ -205,6 +209,7 @@ def _emul_mode(*args):
 @_vim
 @_str_func
 def _emul_getbufvar(bufnr, varname):
+	import re
 	if varname[0] == '&':
 		if bufnr == '%':
 			bufnr = buffers[_buffer()].number
@@ -217,6 +222,12 @@ def _emul_getbufvar(bufnr, varname):
 				return options[varname[1:]]
 			except KeyError:
 				return ''
+	elif re.match('^[a-zA-Z_]+$', varname):
+		if bufnr == '%':
+			bufnr = buffers[_buffer()].number
+		if bufnr not in buffers:
+			return ''
+		return buffers[bufnr].vars[varname]
 	raise NotImplementedError
 
 
@@ -250,8 +261,8 @@ def _emul_getpos(expr):
 def _emul_fnamemodify(path, modstring):
 	import os
 	_modifiers = {
-		'~': lambda path: path.replace(os.environ['HOME'], '~') if path.startswith(os.environ['HOME']) else path,
-		'.': lambda path: (lambda tpath: path if tpath[:3] == '..' + os.sep else tpath)(os.path.relpath(path)),
+		'~': lambda path: path.replace(os.environ['HOME'].encode('utf-8'), b'~') if path.startswith(os.environ['HOME'].encode('utf-8')) else path,
+		'.': lambda path: (lambda tpath: path if tpath[:3] == b'..' + os.sep.encode() else tpath)(os.path.relpath(path)),
 		't': lambda path: os.path.basename(path),
 		'h': lambda path: os.path.dirname(path),
 	}
@@ -291,6 +302,33 @@ def _emul_line2byte(line):
 	raise NotImplementedError
 
 
+@_vim
+def _emul_line(expr):
+	cursorline = windows[_window - 1].cursor[0] + 1
+	numlines = len(_buf_lines[_buffer()])
+	if expr == 'w0':
+		return max(cursorline-5, 1)
+	if expr == 'w$':
+		return min(cursorline+5, numlines)
+	raise NotImplementedError
+
+
+@_vim
+@_str_func
+def _emul_strtrans(s):
+	# FIXME Do more replaces
+	return s.replace(b'\xFF', b'<ff>')
+
+
+@_vim
+@_str_func
+def _emul_bufname(bufnr):
+	try:
+		return buffers[bufnr]._name or b''
+	except KeyError:
+		return b''
+
+
 _window_ids = [None]
 _window_id = 0
 
@@ -326,11 +364,11 @@ _undo_written = {}
 class _Buffer(object):
 	def __init__(self, name=None):
 		global _last_bufnr
-		import os
 		_last_bufnr += 1
 		bufnr = _last_bufnr
 		self.number = bufnr
-		self.name = os.path.abspath(name) if name else None
+		# FIXME Use unicode() for python-3
+		self.name = name
 		self.vars = {}
 		self.options = {
 			'modified': 0,
@@ -346,6 +384,25 @@ class _Buffer(object):
 		_undostate[bufnr] = [copy(_buf_lines[bufnr])]
 		_undo_written[bufnr] = len(_undostate[bufnr])
 		buffers[bufnr] = self
+
+	@property
+	def name(self):
+		import sys
+		if sys.version_info < (3,):
+			return self._name
+		else:
+			return str(self._name, 'utf-8') if self._name else None
+
+	@name.setter
+	def name(self, name):
+		if name is None:
+			self._name = None
+		else:
+			import os
+			if type(name) is not bytes:
+				name = name.encode('utf-8')
+			import sys
+			self._name = os.path.abspath(name)
 
 	def __getitem__(self, line):
 		return _buf_lines[self.number][line]
@@ -625,10 +682,14 @@ class _WithBufName(object):
 		self.new = new
 
 	def __enter__(self):
+		import os
 		buffer = buffers[_buffer()]
 		self.buffer = buffer
 		self.old = buffer.name
 		buffer.name = self.new
+		if buffer.name and os.path.basename(buffer.name) == 'ControlP':
+			buffer.vars['powerline_ctrlp_type'] = 'main'
+			buffer.vars['powerline_ctrlp_args'] = ['focus', 'byfname', '0', 'prev', 'item', 'next', 'marked']
 
 	def __exit__(self, *args):
 		self.buffer.name = self.old
@@ -650,3 +711,7 @@ def _with(key, *args, **kwargs):
 		return _WithDict(vars, **kwargs)
 	elif key == 'split':
 		return _WithSplit()
+
+
+class error(Exception):
+	pass

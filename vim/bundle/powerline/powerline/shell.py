@@ -50,6 +50,7 @@ def get_argparser(parser=None, *args, **kwargs):
 	p.add_argument('-w', '--width', type=int)
 	p.add_argument('--last_exit_code', metavar='INT', type=int)
 	p.add_argument('--last_pipe_status', metavar='LIST', default='', type=lambda s: [int(status) for status in s.split()])
+	p.add_argument('--jobnum', metavar='INT', type=int)
 	p.add_argument('-c', '--config', metavar='KEY.KEY=VALUE', action='append')
 	p.add_argument('-t', '--theme_option', metavar='THEME.KEY.KEY=VALUE', action='append')
 	p.add_argument('-p', '--config_path', metavar='PATH')
@@ -61,6 +62,6 @@ def finish_args(args):
 	if args.config:
 		args.config = mergeargs((parsedotval(v) for v in args.config))
 	if args.theme_option:
-		args.theme_option = mergeargs((parsedotval(v) for v in args.config))
+		args.theme_option = mergeargs((parsedotval(v) for v in args.theme_option))
 	else:
 		args.theme_option = {}

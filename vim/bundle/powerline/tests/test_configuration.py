@@ -23,11 +23,15 @@ class TestConfig(TestCase):
 			(('bufoptions',), {'buftype': 'help'}),
 			(('bufname', '[Command Line]'), {}),
 			(('bufoptions',), {'buftype': 'quickfix'}),
+			(('bufname', 'NERD_tree_1'), {}),
+			(('bufname', '__Gundo__'), {}),
+			(('bufname', '__Gundo_Preview__'), {}),
+			(('bufname', 'ControlP'), {}),
 		)
 		with open(os.path.join(cfg_path, 'config.json'), 'r') as f:
 			local_themes_raw = json.load(f)['ext']['vim']['local_themes']
 			# Don't run tests on external/plugin segments
-			local_themes = dict((k, v) for (k, v) in local_themes_raw.items() if not '.' in k)
+			local_themes = dict((k, v) for (k, v) in local_themes_raw.items())
 			self.assertEqual(len(buffers), len(local_themes))
 		outputs = {}
 		i = 0
@@ -58,6 +62,10 @@ class TestConfig(TestCase):
 									i += 1
 									if mode in exclude:
 										continue
+									if mode == 'nc' and args == ('bufname', 'ControlP'):
+										# ControlP window is not supposed to not 
+										# be in the focus
+										continue
 									with vim_module._with(*args, **kwargs):
 										check_output(mode, args, kwargs)
 						finally:
@@ -76,7 +84,7 @@ class TestConfig(TestCase):
 
 	def test_zsh(self):
 		from powerline.shell import ShellPowerline
-		args = Args(last_pipe_status=[1, 0], ext=['shell'], renderer_module='zsh_prompt')
+		args = Args(last_pipe_status=[1, 0], jobnum=0, ext=['shell'], renderer_module='zsh_prompt')
 		with ShellPowerline(args, run_once=False) as powerline:
 			powerline.render(segment_info={'args': args})
 		with ShellPowerline(args, run_once=False) as powerline:
@@ -84,7 +92,7 @@ class TestConfig(TestCase):
 
 	def test_bash(self):
 		from powerline.shell import ShellPowerline
-		args = Args(last_exit_code=1, ext=['shell'], renderer_module='bash_prompt', config={'ext': {'shell': {'theme': 'default_leftonly'}}})
+		args = Args(last_exit_code=1, jobnum=0, ext=['shell'], renderer_module='bash_prompt', config={'ext': {'shell': {'theme': 'default_leftonly'}}})
 		with ShellPowerline(args, run_once=False) as powerline:
 			powerline.render(segment_info={'args': args})
 		with ShellPowerline(args, run_once=False) as powerline:

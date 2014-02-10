@@ -20,11 +20,22 @@ def load_json_config(config_file_path, load=json.load, open_file=open_file):
 		return load(config_file_fp)
 
 
+class DummyWatcher(object):
+	def __call__(self, *args, **kwargs):
+		return False
+
+	def watch(self, *args, **kwargs):
+		pass
+
+
 class ConfigLoader(MultiRunnedThread):
-	def __init__(self, shutdown_event=None, watcher=None, load=load_json_config):
+	def __init__(self, shutdown_event=None, watcher=None, load=load_json_config, run_once=False):
 		super(ConfigLoader, self).__init__()
 		self.shutdown_event = shutdown_event or Event()
-		self.watcher = watcher or create_file_watcher()
+		if run_once:
+			self.watcher = DummyWatcher()
+		else:
+			self.watcher = watcher or create_file_watcher()
 		self._load = load
 
 		self.pl = None
@@ -144,6 +155,10 @@ class ConfigLoader(MultiRunnedThread):
 			try:
 				self.loaded[path] = deepcopy(self._load(path))
 			except Exception as e:
+				try:
+					self.loaded.pop(path)
+				except KeyError:
+					pass
 				self.exception('Error while loading {0}: {1}', path, str(e))
 
 	def run(self):

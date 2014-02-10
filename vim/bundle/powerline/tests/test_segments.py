@@ -1,5 +1,7 @@
 # vim:fileencoding=utf-8:noet
 
+from __future__ import unicode_literals
+
 from powerline.segments import shell, common
 import tests.vim as vim_module
 import sys
@@ -35,6 +37,17 @@ class TestShell(TestCase):
 			{'contents': '0', 'highlight_group': 'exit_success', 'draw_inner_divider': True}
 		])
 
+	def test_jobnum(self):
+		pl = Pl()
+		segment_info = {'args': Args(jobnum=0)}
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info), None)
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info, show_zero=False), None)
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info, show_zero=True), '0')
+		segment_info = {'args': Args(jobnum=1)}
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info), '1')
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info, show_zero=False), '1')
+		self.assertEqual(shell.jobnum(pl=pl, segment_info=segment_info, show_zero=True), '1')
+
 
 class TestCommon(TestCase):
 	def test_hostname(self):
@@ -62,12 +75,17 @@ class TestCommon(TestCase):
 		new_psutil = new_module('psutil', Process=lambda pid: Args(username='def'))
 		pl = Pl()
 		with replace_env('USER', 'def') as segment_info:
+			common.username = False
 			with replace_attr(common, 'os', new_os):
 				with replace_attr(common, 'psutil', new_psutil):
 					with replace_attr(common, '_geteuid', lambda: 5):
 						self.assertEqual(common.user(pl=pl, segment_info=segment_info), [
 							{'contents': 'def', 'highlight_group': 'user'}
 						])
+						self.assertEqual(common.user(pl=pl, segment_info=segment_info, hide_user='abc'), [
+							{'contents': 'def', 'highlight_group': 'user'}
+						])
+						self.assertEqual(common.user(pl=pl, segment_info=segment_info, hide_user='def'), None)
 					with replace_attr(common, '_geteuid', lambda: 0):
 						self.assertEqual(common.user(pl=pl, segment_info=segment_info), [
 							{'contents': 'def', 'highlight_group': ['superuser', 'user']}
@@ -144,6 +162,22 @@ class TestCommon(TestCase):
 				{'contents': '~/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False},
 				{'contents': 'fo/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False},
 				{'contents': 'bar', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False, 'highlight_group': ['cwd:current_folder', 'cwd']}
+			])
+			cwd[0] = '/etc'
+			self.assertEqual(common.cwd(pl=pl, segment_info=segment_info, use_path_separator=False), [
+				{'contents': '/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': True},
+				{'contents': 'etc', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': True, 'highlight_group': ['cwd:current_folder', 'cwd']},
+			])
+			self.assertEqual(common.cwd(pl=pl, segment_info=segment_info, use_path_separator=True), [
+				{'contents': '/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False},
+				{'contents': 'etc', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False, 'highlight_group': ['cwd:current_folder', 'cwd']},
+			])
+			cwd[0] = '/'
+			self.assertEqual(common.cwd(pl=pl, segment_info=segment_info, use_path_separator=False), [
+				{'contents': '/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': True, 'highlight_group': ['cwd:current_folder', 'cwd']},
+			])
+			self.assertEqual(common.cwd(pl=pl, segment_info=segment_info, use_path_separator=True), [
+				{'contents': '/', 'divider_highlight_group': 'cwd:divider', 'draw_inner_divider': False, 'highlight_group': ['cwd:current_folder', 'cwd']},
 			])
 			ose = OSError()
 			ose.errno = 2
@@ -435,6 +469,10 @@ class TestVim(TestCase):
 		segment_info = vim_module._get_segment_info()
 		self.assertEqual(vim.file_directory(pl=pl, segment_info=segment_info), None)
 		with replace_env('HOME', '/home/foo', os.environ):
+			with vim_module._with('buffer', '/tmp/’’/abc') as segment_info:
+				self.assertEqual(vim.file_directory(pl=pl, segment_info=segment_info), '/tmp/’’/')
+			with vim_module._with('buffer', b'/tmp/\xFF\xFF/abc') as segment_info:
+				self.assertEqual(vim.file_directory(pl=pl, segment_info=segment_info), '/tmp/<ff><ff>/')
 			with vim_module._with('buffer', '/tmp/abc') as segment_info:
 				self.assertEqual(vim.file_directory(pl=pl, segment_info=segment_info), '/tmp/')
 				os.environ['HOME'] = '/tmp'
@@ -452,6 +490,8 @@ class TestVim(TestCase):
 			self.assertEqual(vim.file_name(pl=pl, segment_info=segment_info), 'abc')
 		with vim_module._with('buffer', '/tmp/’’') as segment_info:
 			self.assertEqual(vim.file_name(pl=pl, segment_info=segment_info), '’’')
+		with vim_module._with('buffer', b'/tmp/\xFF\xFF') as segment_info:
+			self.assertEqual(vim.file_name(pl=pl, segment_info=segment_info), '<ff><ff>')
 
 	def test_file_size(self):
 		pl = Pl()
@@ -482,6 +522,27 @@ class TestVim(TestCase):
 			self.assertEqual(vim.line_percent(pl=pl, segment_info=segment_info), '50')
 			self.assertEqual(vim.line_percent(pl=pl, segment_info=segment_info, gradient=True),
 					[{'contents': '50', 'highlight_group': ['line_percent_gradient', 'line_percent'], 'gradient_level': 50 * 100.0 / 101}])
+		finally:
+			vim_module._bw(segment_info['bufnr'])
+
+	def test_position(self):
+		pl = Pl()
+		segment_info = vim_module._get_segment_info()
+		try:
+			segment_info['buffer'][0:-1] = [str(i) for i in range(99)]
+			vim_module._set_cursor(49, 0)
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info), '50%')
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info, gradient=True),
+					[{'contents': '50%', 'highlight_group': ['position_gradient', 'position'], 'gradient_level': 50.0}])
+			vim_module._set_cursor(0, 0)
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info), 'Top')
+			vim_module._set_cursor(97, 0)
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info, position_strings={'top':'Comienzo', 'bottom':'Final', 'all':'Todo'}), 'Final')
+			segment_info['buffer'][0:-1] = [str(i) for i in range(2)]
+			vim_module._set_cursor(0, 0)
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info, position_strings={'top':'Comienzo', 'bottom':'Final', 'all':'Todo'}), 'Todo')
+			self.assertEqual(vim.position(pl=pl, segment_info=segment_info, gradient=True),
+					[{'contents': 'All', 'highlight_group': ['position_gradient', 'position'], 'gradient_level': 0.0}])
 		finally:
 			vim_module._bw(segment_info['bufnr'])
 

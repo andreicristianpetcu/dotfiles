@@ -1,6 +1,6 @@
 # vim:fileencoding=utf-8:noet
 
-from __future__ import absolute_import
+from __future__ import unicode_literals, absolute_import
 
 import os
 import sys
@@ -10,6 +10,7 @@ import socket
 from multiprocessing import cpu_count as _cpu_count
 
 from powerline.lib import add_divider_highlight_group
+from powerline.lib.shell import asrun, run_cmd
 from powerline.lib.url import urllib_read, urllib_urlencode
 from powerline.lib.vcs import guess, tree_status
 from powerline.lib.threaded import ThreadedSegment, KwThreadedSegment, with_docstring
@@ -125,6 +126,8 @@ def cwd(pl, segment_info, dir_shorten_len=None, dir_limit_depth=None, use_path_s
 	ret[-1]['highlight_group'] = ['cwd:current_folder', 'cwd']
 	if use_path_separator:
 		ret[-1]['contents'] = ret[-1]['contents'][:-1]
+		if len(ret) > 1 and ret[0]['contents'][0] == os.sep:
+			ret[0]['contents'] = ret[0]['contents'][1:]
 	return ret
 
 
@@ -335,10 +338,10 @@ class WeatherSegment(ThreadedSegment):
 			# Do not lock attribute assignments in this branch: they are used 
 			# only in .update()
 			if not self.location:
-				location_data = json.loads(urllib_read('http://freegeoip.net/json/' + _external_ip()))
+				location_data = json.loads(urllib_read('http://freegeoip.net/json/'))
 				self.location = ','.join([location_data['city'],
-											location_data['region_name'],
-											location_data['country_name']])
+											location_data['region_code'],
+											location_data['country_code']])
 			query_data = {
 				'q':
 				'use "http://github.com/yql/yql-tables/raw/master/weather/weather.bylocation.xml" as we;'
@@ -591,8 +594,11 @@ username = False
 _geteuid = getattr(os, 'geteuid', lambda: 1)
 
 
-def user(pl, segment_info=None):
+def user(pl, segment_info=None, hide_user=None):
 	'''Return the current user.
+
+	:param str hide_user:
+		Omit showing segment for users with names equal to this string.
 
 	Highlights the user with the ``superuser`` if the effective user ID is 0.
 
@@ -603,6 +609,8 @@ def user(pl, segment_info=None):
 		username = _get_user(segment_info)
 	if username is None:
 		pl.warn('Failed to get username')
+		return None
+	if username == hide_user:
 		return None
 	euid = _geteuid()
 	return [{
@@ -700,13 +708,13 @@ class NetworkLoadSegment(KwThreadedSegment):
 						total = activity
 						interface = name
 
-		if interface in self.interfaces:
+		try:
 			idata = self.interfaces[interface]
 			try:
 				idata['prev'] = idata['last']
 			except KeyError:
 				pass
-		else:
+		except KeyError:
 			idata = {}
 			if self.run_once:
 				idata['prev'] = (monotonic(), _get_bytes(interface))
@@ -882,17 +890,6 @@ class NowPlayingSegment(object):
 		return format.format(**stats)
 
 	@staticmethod
-	def _run_cmd(cmd):
-		from subprocess import Popen, PIPE
-		try:
-			p = Popen(cmd, stdout=PIPE)
-			stdout, err = p.communicate()
-		except OSError as e:
-			sys.stderr.write('Could not execute command ({0}): {1}\n'.format(e, cmd))
-			return None
-		return stdout.strip()
-
-	@staticmethod
 	def _convert_state(state):
 		state = state.lower()
 		if 'play' in state:
@@ -926,7 +923,7 @@ class NowPlayingSegment(object):
 		method takes anything in ignore_levels and brings the key inside that
 		to the first level of the dictionary.
 		'''
-		now_playing_str = self._run_cmd(['cmus-remote', '-Q'])
+		now_playing_str = run_cmd(pl, ['cmus-remote', '-Q'])
 		if not now_playing_str:
 			return
 		ignore_levels = ('tag', 'set',)
@@ -965,7 +962,7 @@ class NowPlayingSegment(object):
 				'total': self._convert_seconds(now_playing.get('time', 0)),
 			}
 		except ImportError:
-			now_playing = self._run_cmd(['mpc', 'current', '-f', '%album%\n%artist%\n%title%\n%time%', '-h', str(host), '-p', str(port)])
+			now_playing = run_cmd(pl, ['mpc', 'current', '-f', '%album%\n%artist%\n%title%\n%time%', '-h', str(host), '-p', str(port)])
 			if not now_playing:
 				return
 			now_playing = now_playing.split('\n')
@@ -976,11 +973,11 @@ class NowPlayingSegment(object):
 				'total': now_playing[3],
 			}
 
-	def player_spotify(self, pl):
+	def player_spotify_dbus(self, pl, dbus=None):
 		try:
 			import dbus
 		except ImportError:
-			sys.stderr.write('Could not add Spotify segment: Requires python-dbus.\n')
+			pl.exception('Could not add Spotify segment: requires python-dbus.')
 			return
 		bus = dbus.SessionBus()
 		DBUS_IFACE_PROPERTIES = 'org.freedesktop.DBus.Properties'
@@ -1004,8 +1001,65 @@ class NowPlayingSegment(object):
 			'total': self._convert_seconds(info.get('mpris:length') / 1e6),
 		}
 
+	def player_spotify_apple_script(self, pl):
+		ascript = '''
+		tell application "System Events"
+			set process_list to (name of every process)
+		end tell
+
+		if process_list contains "Spotify" then
+			tell application "Spotify"
+				if player state is playing or player state is paused then
+					set track_name to name of current track
+					set artist_name to artist of current track
+					set album_name to album of current track
+					set track_length to duration of current track
+					set trim_length to 40
+					set now_playing to player state & album_name & artist_name & track_name & track_length
+					if length of now_playing is less than trim_length then
+						set now_playing_trim to now_playing
+					else
+						set now_playing_trim to characters 1 thru trim_length of now_playing as string
+					end if
+				else
+					return player state
+				end if
+
+			end tell
+		else
+			return "stopped"
+		end if
+		'''
+
+		spotify = asrun(pl, ascript)
+		if not asrun:
+			return None
+
+		spotify_status = spotify.split(", ")
+		state = self._convert_state(spotify_status[0])
+		if state == 'stop':
+			return None
+		return {
+			'state': state,
+			'state_symbol': self.STATE_SYMBOLS.get(state),
+			'album': spotify_status[1],
+			'artist': spotify_status[2],
+			'title': spotify_status[3],
+			'total': self._convert_seconds(int(spotify_status[4]))
+		}
+
+	try:
+		__import__('dbus')  # NOQA
+	except ImportError:
+		if sys.platform.startswith('darwin'):
+			player_spotify = player_spotify_apple_script
+		else:
+			player_spotify = player_spotify_dbus  # NOQA
+	else:
+		player_spotify = player_spotify_dbus  # NOQA
+
 	def player_rhythmbox(self, pl):
-		now_playing = self._run_cmd(['rhythmbox-client', '--no-start', '--no-present', '--print-playing-format', '%at\n%aa\n%tt\n%te\n%td'])
+		now_playing = run_cmd(pl, ['rhythmbox-client', '--no-start', '--no-present', '--print-playing-format', '%at\n%aa\n%tt\n%te\n%td'])
 		if not now_playing:
 			return
 		now_playing = now_playing.split('\n')
