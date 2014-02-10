@@ -1,0 +1,3 @@
+# vim python debugger
+sudo pip2 install dbgp vim-debug
+python2 install-vim-debug.py
