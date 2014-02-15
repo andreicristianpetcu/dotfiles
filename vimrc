@@ -44,7 +44,7 @@ Bundle 'Shougo/neocomplete.vim'
 Bundle 'vim-scripts/EasyGrep'
 Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'bling/vim-airline'
 Bundle 'Shougo/unite.vim'
 Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
@@ -154,8 +154,9 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-" \ is the leader character
-" let mapleader = ","
+let g:airline_theme=solarized
+let g:airline#extensions#tabline#enabled = 1
+
 
 " Edit the README_FOR_APP (makes :R commands work)
 " map <Leader>R :e doc/README_FOR_APP<CR>
@@ -312,7 +313,7 @@ map <Leader><leader>a :call SilverSearch("<cword>")<CR>
 map <Leader><leader>A :call SilverSearch("<cWORD>")<CR>
 
 " Unite.vim
-nnoremap <leader><leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
+nnoremap <leader><leader>p :Unite -start-insert buffer file_mru file_rec -no-split<CR>
 nnoremap <Leader><leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader><leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader><leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>

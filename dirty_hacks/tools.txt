@@ -1,0 +1,4 @@
+#Destkop
+guake gvim synapse clipit
+#VirtualMachine
+vim ag ack nmap emacs ctags git tig mc zsh wget curl tmux rsync htop iotop lsof llvm make nmon python ruby
