@@ -154,9 +154,9 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-let g:airline_theme=solarized
-let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+" let g:airline#extensions#tabline#enabled = 1
 
 " Edit the README_FOR_APP (makes :R commands work)
 " map <Leader>R :e doc/README_FOR_APP<CR>
