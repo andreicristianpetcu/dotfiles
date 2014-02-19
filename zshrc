@@ -1,14 +1,23 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
+# DISABLE_LS_COLORS="true"
+DEFAULT_USER="andrei"
 
-plugins=(git gem rbates rails3 ruby archlinux common-aliases )
+plugins=(git gem rails3 ruby archlinux common-aliases )
 
 export PATH="/usr/local/bin:$PATH"
-export EDITOR='mate -w'
+export EDITOR='vim'
+
+export TERM='xterm-256color'
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/my-aliases.sh
 
 # for Homebrew installed rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# add this to ~/.zshenv ??
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
