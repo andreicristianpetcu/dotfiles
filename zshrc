@@ -9,7 +9,7 @@ DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 DEFAULT_USER="andrei"
 
-plugins=(git gem rails3 ruby archlinux common-aliases )
+plugins=(git svn gem rails3 ruby archlinux common-aliases )
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
