@@ -290,6 +290,12 @@ function! SilverSearch(word)
   execute l:ag_cmd
 endfunction
 
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-p> unite#do_action('split')
+endfunction
 
 " silver searcher
 let g:agprg="ag --column"
