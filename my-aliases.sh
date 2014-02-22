@@ -3,19 +3,9 @@ alias sshalaveteli="ssh alaveteli"
 
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
-alias pacmans='sudo pacman S'           # Install specific package(s) from the repositories
-alias pacmanu='sudo pacman U'          # Install specific package not from the repositories but from a file 
-alias pacmanr='sudo pacman -R'           # Remove the specified package(s), retaining its configuration(s) and required dependencies
-alias pacmanrns='sudo pacman -Rns'        # Remove the specified package(s), its configuration(s) and unneeded dependencies
-alias pacmansi='pacman -Si'              # Display information about a given package in the repositories
-alias pacmanss='pacman -Ss'             # Search for package(s) in the repositories
-alias pacmanqi='pacman -Qi'              # Display information about a given package in the local database
-alias pacmanqs='pacman -Qs'             # Search for package(s) in the local database
-alias pacmansyy='sudo pacman -Syy'                # Force refresh of all package lists after updating /etc/pacman.d/mirrorlist
 
 # git
 alias gitadd='git add . --all'
-alias gitaddallgitcommit='git add . --all && git commit'
 alias gitpushoriginmaster='git push origin master'
 
 # vagrant
@@ -25,3 +15,33 @@ alias vagrantresume='vagrant resume'
 alias vagrantup='vagrant up'
 alias vagrantssh='vagrant ssh'
 alias vagrantreloadprovision='vagrant reload --provision'
+
+# rails
+alias railsc='rails c'
+alias railsdb='rails db'
+alias railss='rails s'
+
+# rake
+alias rakedbmigrate='rake db:migrate'
+rails rakedbreset='rake db:reset'
+
+# bundle
+alias bundleexecrakedbschemaload='bundle exec rake db:schema:load'
+alias bundleinstall='bundle install'
+alias bundleinstallnodeployment='bundle install --no-deployment'
+alias bundleinstallpathvendorbundle='bundle install --path vendor/bundle'
+
+# rvm
+alias rvmlist='rvm list'
+alias rvmlistknown='rvm list known'
+alias rvminstall='curl -L get.rvm.io | bash -s stable'
+
+# vim
+alias vimvimrc='vim ~/.vimrc'
+alias vimirbrc='vim ~/.irbrc'
+alias vimbashrc='vim ~/.bashrc'
+alias vimbashprofile='vim ~/.bash_profile'
+alias vimzshrc='vim ~/.zshrc'
+alias vimtmuxconf='vim ~/.tmux.conf'
+alias vimgemrc='vim ~/.gemrc'
+alias vimmyaliasessh='vim ~/.my-aliases.sh'
