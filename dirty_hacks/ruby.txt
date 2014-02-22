@@ -1,0 +1,17 @@
+# standalone ruby db
+gem install standalone_migrations
+gem install activerecord-mysql-adapter
+
+echo "require 'standalone_migrations'
+StandaloneMigrations::Tasks.load_tasks" | tee Rakefile
+
+echo "development:
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  database: odd_achizitii
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock" | tee db/config.yml
+

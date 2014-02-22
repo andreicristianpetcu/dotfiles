@@ -327,7 +327,17 @@ nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
 nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader><leader>r :%S/<C-R>s/<C-R>s/gc
+nnoremap <Leader>g :Gstatus<CR>
 nnoremap <C-W>x :only<CR>
 
 " NERD Tree specific stuff
 nnoremap <Leader><Leader>P :NERDTreeToggle<CR>
+
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a^ :Tabularize /^\zs<CR>
+  vmap <Leader>a^ :Tabularize /^\zs<CR>
+endif
