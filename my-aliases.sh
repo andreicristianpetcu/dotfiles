@@ -1,4 +1,4 @@
-# ssh
+
 alias sshalaveteli="ssh alaveteli"
 
 # pacman
@@ -23,7 +23,7 @@ alias railss='rails s'
 
 # rake
 alias rakedbmigrate='rake db:migrate'
-rails rakedbreset='rake db:reset'
+alias rakedbreset='rake db:reset'
 
 # bundle
 alias bundleexecrakedbschemaload='bundle exec rake db:schema:load'
