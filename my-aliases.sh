@@ -7,6 +7,7 @@ alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and th
 # git
 alias gitadd='git add . --all'
 alias gitpushoriginmaster='git push origin master'
+alias gitpush2='git push gitorious master && git push github master'
 
 # vagrant
 alias vagrantboxlist='vagrant box list'
