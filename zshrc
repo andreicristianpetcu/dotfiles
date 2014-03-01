@@ -1,13 +1,7 @@
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="nebirhos"
-ZSH_THEME="agnoster"
-ZSH_THEME="sorin"
-ZSH_THEME="zhann"
-ZSH_THEME="sporty_256"
-ZSH_THEME="awesomepanda"
+DEFAULT_USER="andrei"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
-DEFAULT_USER="andrei"
 
 plugins=(git svn gem rails3 ruby archlinux common-aliases )
 
@@ -28,3 +22,5 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 
 setopt bash_autolist
+
+. /usr/share/zsh/site-contrib/powerline.zsh
