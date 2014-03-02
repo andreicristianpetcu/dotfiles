@@ -21,6 +21,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-endwise'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/emmet-vim'
@@ -46,11 +47,13 @@ Bundle 'jaredly/vim-debug'
 Bundle 'rking/ag.vim'
 Bundle 'bling/vim-airline'
 Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neomru.vim'
 Bundle 'tsukkee/unite-help'
 Bundle 'thinca/vim-unite-history'
 Bundle 'Shougo/unite-outline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'rodjek/vim-puppet'
+Bundle 'ecomba/vim-ruby-refactoring'
 " Bundle 'Shougo/vimproc.vim'
 
 
@@ -341,3 +344,4 @@ if exists(":Tabularize")
   nmap <Leader>a^ :Tabularize /^\zs<CR>
   vmap <Leader>a^ :Tabularize /^\zs<CR>
 endif
+
