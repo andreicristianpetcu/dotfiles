@@ -54,7 +54,13 @@ Bundle 'Shougo/unite-outline'
 Bundle 'scrooloose/nerdtree'
 Bundle 'rodjek/vim-puppet'
 Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'scrooloose/syntastic'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'kana/vim-textobj-user'
 " Bundle 'Shougo/vimproc.vim'
+
+" required by vim-text-object
+runtime macros/matchit.vim
 
 
 " vim-scripts repos
