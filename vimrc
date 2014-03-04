@@ -57,6 +57,7 @@ Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'scrooloose/syntastic'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'kana/vim-textobj-user'
+Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Shougo/vimproc.vim'
 
 " required by vim-text-object
@@ -351,3 +352,6 @@ if exists(":Tabularize")
   vmap <Leader>a^ :Tabularize /^\zs<CR>
 endif
 
+" terryma/vim-multiple-cursors
+" multi cursor map exit to ctrl+c
+let g:multi_cursor_quit_key='<C-C>'
