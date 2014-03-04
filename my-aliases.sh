@@ -35,6 +35,8 @@ alias bundleexecrakedbschemaload='bundle exec rake db:schema:load'
 alias bundleinstall='bundle install'
 alias bundleinstallnodeployment='bundle install --no-deployment'
 alias bundleinstallpathvendorbundle='bundle install --path vendor/bundle'
+alias bundlelistpaths='bundle list --paths'
+alias ctagsrbundlelistpaths='ctags -R . $(bundle list --paths)'
 
 # rvm
 alias rvmlist='rvm list'
