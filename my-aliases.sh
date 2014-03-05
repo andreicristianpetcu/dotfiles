@@ -1,8 +1,10 @@
 # ssh
 alias sshalaveteli='ssh alaveteli'
 
-# ping
+# common
 alias ping8888='ping 8.8.8.8'
+alias emacsnw='emacs -nw'
+
 
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
