@@ -23,4 +23,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 setopt bash_autolist
 
-. /usr/share/zsh/site-contrib/powerline.zsh
+if [ -f /usr/share/zsh/site-contrib/powerline.zsh ]
+then
+  . /usr/share/zsh/site-contrib/powerline.zsh
+fi
