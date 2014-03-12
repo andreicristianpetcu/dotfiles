@@ -5,6 +5,13 @@ alias sshalaveteli='ssh alaveteli'
 alias ping8888='ping 8.8.8.8'
 alias emacsnw='emacs -nw'
 alias lsla='ls -la'
+axgrep() {
+  ps -ax|grep $1
+}
+historygrep() {
+  history|grep $1
+}
+
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
 
@@ -14,6 +21,11 @@ alias gitpushoriginmaster='git push origin master'
 alias gitpush2='git push gitorious master && git push github master'
 alias gitstatus='git status'
 alias gitpulloriginmaster='git pull origin master'
+alias gitresethard='git reset --hard'
+alias gitlogprettyformathsgraph='git log --pretty=format:"%h %s" --graph'
+gitcommitm() {
+    git commit -m "$1"
+}
 
 # vagrant
 alias vagrantboxlist='vagrant box list'
