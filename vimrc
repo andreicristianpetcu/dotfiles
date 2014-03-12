@@ -329,7 +329,9 @@ map <Leader><leader>a :call SilverSearch("<cword>")<CR>
 map <Leader><leader>A :call SilverSearch("<cWORD>")<CR>
 
 " Unite.vim
-nnoremap <leader><leader>p :Unite -start-insert buffer file_mru file_rec -no-split<CR>
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+noremap <leader><leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
 nnoremap <Leader><leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader><leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader><leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>

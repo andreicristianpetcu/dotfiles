@@ -3,6 +3,8 @@ DEFAULT_USER="andrei"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
 
+ZSH_THEME="awesomepanda"
+
 plugins=(git svn gem rails3 ruby archlinux common-aliases )
 
 export PATH="/usr/local/bin:$PATH"
