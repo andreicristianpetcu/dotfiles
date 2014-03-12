@@ -13,6 +13,7 @@ alias gitadd='git add . --all'
 alias gitpushoriginmaster='git push origin master'
 alias gitpush2='git push gitorious master && git push github master'
 alias gitstatus='git status'
+alias gitpulloriginmaster='git pull origin master'
 
 # vagrant
 alias vagrantboxlist='vagrant box list'
