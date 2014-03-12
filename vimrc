@@ -59,6 +59,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'kana/vim-textobj-user'
 Bundle 'terryma/vim-multiple-cursors'
 " Bundle 'Shougo/vimproc.vim'
+Bundle 'airblade/vim-gitgutter'
 
 " required by vim-text-object
 runtime macros/matchit.vim
@@ -357,3 +358,10 @@ endif
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
 let g:multi_cursor_quit_key='<C-C>'
+
+" GitGutter, easy diff
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterRevertHunk
+nmap <Leader>hh :GitGutterToggle<CR>
