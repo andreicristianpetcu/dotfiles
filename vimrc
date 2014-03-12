@@ -22,6 +22,8 @@ Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-rails.git'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-endwise'
+" depends on tpope/vim-fugitive
+Bundle 'gitv'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/emmet-vim'
