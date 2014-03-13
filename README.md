@@ -9,9 +9,11 @@ I am running on Arch Linux, but it will likely work on other GNU/Linux distros a
 Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/andreicristianpetcu/dotfiles/blob/custom-bash-zsh/Rakefile) to see exactly what it does.
 
 ```terminal
+install git ruby vim zsh exuberant-ctags lua50
 git clone git://github.com/andreicristianpetcu/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 rake install
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
 
 After installing, open a new terminal window to see the effects.
