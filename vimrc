@@ -41,7 +41,6 @@ Bundle "honza/vim-snippets"
 " vim-misk is needed by vim-easytags
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
-Bundle 'taglist.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'Shougo/neocomplete.vim'
 Bundle 'vim-scripts/EasyGrep'
