@@ -14,7 +14,12 @@ historygrep() {
 
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
-
+pacmans() {
+    sudo pacman -S "$1"
+}
+pacmanrs() {
+    sudo pacman -Rs "$1"
+}
 # git
 alias gitadd='git add . --all'
 alias gitpushoriginmaster='git push origin master'
@@ -34,6 +39,12 @@ alias vagrantresume='vagrant resume'
 alias vagrantup='vagrant up'
 alias vagrantssh='vagrant ssh'
 alias vagrantreloadprovision='vagrant reload --provision'
+vagrantboxadd(){
+    vagrant box add $1 $2
+}
+vagrantinit(){
+    vagrant init $1
+}
 
 # rails
 alias railsc='rails c'
