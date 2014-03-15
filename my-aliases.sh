@@ -32,7 +32,6 @@ alias gitpush2='git push gitorious master && git push github master'
 alias gitstatus='git status'
 alias gitpulloriginmaster='git pull origin master'
 alias gitresethard='git reset --hard'
-alias gitlogprettyformathsgraph='git log --pretty=format:"%h %s" --graph'
 alias gitremotev='git remote -v'
 alias gitlogallgraphpretty='git log --all --graph --pretty'
 gitcommitm() {
@@ -67,6 +66,7 @@ alias railss='rails s'
 # rake
 alias rakedbmigrate='rake db:migrate'
 alias rakedbreset='rake db:reset'
+alias rakedbfixturesload='rake db:fixtures:load'
 
 # bundle
 alias bundleexecrakedbschemaload='bundle exec rake db:schema:load'
