@@ -91,7 +91,7 @@ alias vimtmuxconf='vim ~/.tmux.conf'
 alias vimgemrc='vim ~/.gemrc'
 alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimgitconfig='vim ~/.gitconfig'
-
+alias vimsshconfig='vim ~/.ssh/config'
 # functions
 psax() {
   ps -ax|grep $1
