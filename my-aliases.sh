@@ -5,11 +5,16 @@ alias sshalaveteli='ssh alaveteli'
 alias ping8888='ping 8.8.8.8'
 alias emacsnw='emacs -nw'
 alias lsla='ls -la'
+alias tigall='tig --all'
 axgrep() {
   ps -ax|grep $1
 }
 historygrep() {
   history|grep $1
+}
+mkdircd() {
+  mkdir $1
+  cd $1
 }
 
 # pacman
@@ -28,8 +33,16 @@ alias gitstatus='git status'
 alias gitpulloriginmaster='git pull origin master'
 alias gitresethard='git reset --hard'
 alias gitlogprettyformathsgraph='git log --pretty=format:"%h %s" --graph'
+alias gitremotev='git remote -v'
+alias gitlogallgraphpretty='git log --all --graph --pretty'
 gitcommitm() {
     git commit -m "$1"
+}
+gitremoterm(){
+  git remote rm $1
+}
+gitremoteadd(){
+  git remote add $1 $2
 }
 
 # vagrant
@@ -83,3 +96,6 @@ alias vimgitconfig='vim ~/.gitconfig'
 psax() {
   ps -ax|grep $1
 }
+
+# Vagrant urls
+export centos6url="https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
