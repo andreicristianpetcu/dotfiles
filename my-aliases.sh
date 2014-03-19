@@ -93,7 +93,7 @@ alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
 # functions
-psax() {
+psaxgrep() {
   ps -ax|grep $1
 }
 
