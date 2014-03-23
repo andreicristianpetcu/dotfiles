@@ -70,6 +70,18 @@ NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'airblade/vim-gitgutter'
+"copy paths in a easy way
+NeoBundle 'vim-scripts/copypath.vim'
+let g:copypath_copy_to_unnamed_register = 1
+
+" nice nodejs plugin
+NeoBundle 'moll/vim-node'
+
+"css colors
+NeoBundle 'ap/vim-css-color'
+
+"closes quotes and other stuff
+NeoBundle 'Raimondi/delimitMate'
 
 " required by vim-text-object
 runtime macros/matchit.vim
