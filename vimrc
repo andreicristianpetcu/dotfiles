@@ -345,7 +345,7 @@ noremap <leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
 nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
-nnoremap <Leader>h :Unite -start-insert -no-split help<CR>
+nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
 nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
