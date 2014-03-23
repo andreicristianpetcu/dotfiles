@@ -1,0 +1,22 @@
+# ssh to remote host
+useradd -m new_user
+adduser new_user sudo
+adduser new_user www-data
+passwd new_user
+su new_user
+sudo su
+exit
+exit
+
+# from current host
+ssh -p 22 root@ip-193-187-64-30.e24cloud.com 'mkdir /home/new_user/.ssh'
+cat ~/.ssh/id_rsa.pub | ssh -p 22 root@new_host 'cat >> /home/new_user/.ssh/authorized_keys'
+
+#ssh to server again
+
+cp /etc/ssh/sshd_config /etc/ssh/sshd_config.old
+sed -i "s/Port.*$/Port 3022/g" /etc/ssh/sshd_config
+sed -i "s/PermitRootLogin.*$/PermitRootLogin no/g" /etc/ssh/sshd_config
+sed -i "s/#PasswordAuthentication.*$/PasswordAuthentication no/g" /etc/ssh/sshd_config
+service ssh restart
+
