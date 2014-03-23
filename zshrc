@@ -5,7 +5,7 @@ DISABLE_AUTO_UPDATE="true"
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git svn gem rails ruby archlinux common-aliases gradle)
+plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux)
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
@@ -28,4 +28,10 @@ setopt bash_autolist
 if [ -f /usr/share/zsh/site-contrib/powerline.zsh ]
 then
   . /usr/share/zsh/site-contrib/powerline.zsh
+fi
+export ZSH_TMUX_AUTOSTART='true'
+export ZSH_TMUX_AUTOCONNECT='true'
+if [ "$TMUX" = "" ]; then 
+  tmux attach || tmux new
+  # tmux -2; 
 fi
