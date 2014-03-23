@@ -1,6 +1,8 @@
 EasyGrep
 L9
 ag.vim
+copypath.vim
+delimitMate
 emmet-vim
 gem-browse
 gem-ctags
@@ -25,6 +27,7 @@ vim-abolish
 vim-addon-mw-utils
 vim-airline
 vim-bundler
+vim-css-color
 vim-debug
 vim-easymotion
 vim-easytags
@@ -34,6 +37,7 @@ vim-gitgutter
 vim-misc
 vim-monokai
 vim-multiple-cursors
+vim-node
 vim-puppet
 vim-rails
 vim-rake
