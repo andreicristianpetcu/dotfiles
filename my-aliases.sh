@@ -6,6 +6,7 @@ alias ping8888='ping 8.8.8.8'
 alias emacsnw='emacs -nw'
 alias lsla='ls -la'
 alias tigall='tig --all'
+alias tmux2='tmux -2'
 axgrep() {
   ps -ax|grep $1
 }
