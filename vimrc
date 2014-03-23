@@ -174,6 +174,9 @@ let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
 " let g:airline#extensions#tabline#enabled = 1
 
+" yeah.... use space as the leader
+let mapleader = "\<Space>"
+
 " Edit the README_FOR_APP (makes :R commands work)
 " map <Leader>R :e doc/README_FOR_APP<CR>
 
@@ -331,25 +334,25 @@ smap <Tab> <Plug>snipMateNextOrTrigger
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> <ESC>
 " search with ag for the content of register s
-map <Leader><leader>a :call SilverSearch("<cword>")<CR>
-map <Leader><leader>A :call SilverSearch("<cWORD>")<CR>
+map <Leader>a :call SilverSearch("<cword>")<CR>
+map <Leader>A :call SilverSearch("<cWORD>")<CR>
 
 " Unite.vim
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-noremap <leader><leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
-nnoremap <Leader><leader>l :Unite -start-insert line -auto-preview -vertical<CR>
-nnoremap <Leader><leader>m :Unite -start-insert mapping -no-split<CR>
-nnoremap <Leader><leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
-nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
-nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
-nnoremap <Leader><Leader>o :Unite -start-insert -no-split outline<CR>
-nnoremap <Leader><leader>r :%S/<C-R>s/<C-R>s/gc
+noremap <leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
+nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
+nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
+nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
+nnoremap <Leader>h :Unite -start-insert -no-split help<CR>
+nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
+nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
+nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
 nnoremap <Leader>g :Gstatus<CR>
 nnoremap <C-W>x :only<CR>
 
 " NERD Tree specific stuff
-nnoremap <Leader><Leader>P :NERDTreeToggle<CR>
+nnoremap <Leader>P :NERDTreeToggle<CR>
 
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
