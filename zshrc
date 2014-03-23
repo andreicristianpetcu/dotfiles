@@ -5,7 +5,7 @@ DISABLE_AUTO_UPDATE="true"
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git svn gem rails3 ruby archlinux common-aliases gradle)
+plugins=(git svn gem rails ruby archlinux common-aliases gradle)
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
