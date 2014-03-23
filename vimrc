@@ -349,8 +349,11 @@ nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
 nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
-nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
-nnoremap <Leader>o :Unite -start-insert -no-split outline<CR>
+
+" tagbar settings 
+let g:tagbar_autoclose='1'
+nnoremap <Leader><Leader>o :TagbarToggle<CR>
+nnoremap <Leader><Leader>O :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
 nnoremap <Leader>g :Gstatus<CR>
 nnoremap <C-W>x :only<CR>
