@@ -13,7 +13,8 @@ install git ruby vim zsh exuberant-ctags lua50
 git clone git://github.com/andreicristianpetcu/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 rake install
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+mkdir -p ~/.vim/bundle
+git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
 
 After installing, open a new terminal window to see the effects.
