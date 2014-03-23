@@ -1,77 +1,78 @@
 " based on http://github.com/jferris/config_files/blob/master/vimrc
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible              " be iMproved
-filetype off                  " required!
+if has('vim_starting')
+  set nocompatible               " Be iMproved
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-"let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
+" Required:
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My bundles here:
 "
 " original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/gem-ctags'
-Bundle 'tpope/gem-browse'
-Bundle 'tpope/vim-rails.git'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-rake'
+NeoBundle 'tpope/gem-ctags'
+NeoBundle 'tpope/gem-browse'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-endwise'
 " depends on tpope/vim-fugitive
-Bundle 'gitv'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mattn/emmet-vim'
-Bundle 'godlygeek/tabular'
-Bundle 'vim-scripts/tComment'
-Bundle 'myusuf3/numbers.vim'
-Bundle 'sickill/vim-monokai'
+NeoBundle 'gitv'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'vim-scripts/tComment'
+NeoBundle 'myusuf3/numbers.vim'
+NeoBundle 'sickill/vim-monokai'
 " snip mate and it's dependencyes
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
+NeoBundle "MarcWeber/vim-addon-mw-utils"
+NeoBundle "tomtom/tlib_vim"
+NeoBundle "garbas/vim-snipmate"
 " Optional:
-Bundle "honza/vim-snippets"
+NeoBundle "honza/vim-snippets"
 
 " vim-misk is needed by vim-easytags
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-easytags'
-Bundle 'majutsushi/tagbar'
-Bundle 'Shougo/neocomplete.vim'
-Bundle 'vim-scripts/EasyGrep'
-Bundle 'jaredly/vim-debug'
-Bundle 'rking/ag.vim'
-Bundle 'bling/vim-airline'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neomru.vim'
-Bundle 'tsukkee/unite-help'
-Bundle 'thinca/vim-unite-history'
-Bundle 'Shougo/unite-outline'
-Bundle 'scrooloose/nerdtree'
-Bundle 'rodjek/vim-puppet'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'scrooloose/syntastic'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'kana/vim-textobj-user'
-Bundle 'terryma/vim-multiple-cursors'
-" Bundle 'Shougo/vimproc.vim'
-Bundle 'airblade/vim-gitgutter'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-easytags'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'vim-scripts/EasyGrep'
+NeoBundle 'jaredly/vim-debug'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'tsukkee/unite-help'
+NeoBundle 'thinca/vim-unite-history'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'ecomba/vim-ruby-refactoring'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'airblade/vim-gitgutter'
 
 " required by vim-text-object
 runtime macros/matchit.vim
 
-
 " vim-scripts repos
-Bundle 'L9'
+NeoBundle 'L9'
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -373,3 +374,10 @@ nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hh :GitGutterToggle<CR>
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
