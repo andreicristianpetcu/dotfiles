@@ -48,16 +48,20 @@ NeoBundle "honza/vim-snippets"
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-easytags'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/javacomplete'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'thinca/vim-unite-history'
-NeoBundle 'Shougo/unite-outline'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'ecomba/vim-ruby-refactoring'
@@ -65,7 +69,6 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'airblade/vim-gitgutter'
 
 " required by vim-text-object
@@ -374,6 +377,9 @@ nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
 nmap <Leader>hu <Plug>GitGutterRevertHunk
 nmap <Leader>hh :GitGutterToggle<CR>
+
+" enable neocomplete
+let g:neocomplete#enable_at_startup = 1
 
 " Required:
 filetype plugin indent on

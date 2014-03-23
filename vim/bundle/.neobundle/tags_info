@@ -5,9 +5,12 @@ emmet-vim
 gem-browse
 gem-ctags
 gitv
+javacomplete
 neobundle.vim
-neocomplete.vim
+neocomplete
 neomru.vim
+neosnippet
+neosnippet-snippets
 nerdtree
 numbers.vim
 syntastic
