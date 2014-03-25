@@ -402,3 +402,6 @@ filetype plugin indent on
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
+
+" Map F2 to toggle paste
+nnoremap <F2> :set invpaste paste?<CR>
