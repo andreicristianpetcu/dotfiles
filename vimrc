@@ -405,3 +405,5 @@ NeoBundleCheck
 
 " Map F2 to toggle paste
 nnoremap <F2> :set invpaste paste?<CR>
+" Map command W to write with sudo
+command! W  write !sudo tee %
