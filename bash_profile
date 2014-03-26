@@ -4,7 +4,7 @@
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Add rvm gems and nginx to the path
-export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin
+export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin:~/.local/bin
 
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
@@ -40,6 +40,10 @@ export TODO="t"
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
 # Load Bash It
-source $BASH_IT/bash_it.sh
+
+if [ -f $BASH_IT/bash_it.sh ]
+then
+	source $BASH_IT/bash_it.sh
+fi
 
 source ~/.profile

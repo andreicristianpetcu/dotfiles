@@ -11,8 +11,11 @@ PS1='[\u@\h \W]\$ '
 export EDITOR="vim" 
 eval "$(rbenv init -)"
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper.sh
+if [ -f /usr/bin/virtualenvwrapper.sh ]
+then
+	export WORKON_HOME=~/.virtualenvs
+	source /usr/bin/virtualenvwrapper.sh
+fi
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"

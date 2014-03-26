@@ -1,0 +1,5 @@
+color = true
+prefix = ~/.local
+root = ~/.local/lib/node_modules
+binroot = ~/.local/bin
+manroot = ~/.local/share/man
