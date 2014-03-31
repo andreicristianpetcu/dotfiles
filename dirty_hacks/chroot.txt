@@ -1,0 +1,13 @@
+# /mnt/lastboot is my chroot dir
+cd /mnt/lastboot
+sudo mkdir proc
+sudo mkdir sys
+sudo mkdir dev
+
+sudo mount -t proc proc proc/
+sudo mount --rbind /sys sys/
+sudo mount --rbind /dev dev/
+
+cp /etc/resolv.conf etc/resolv.conf
+
+chroot /mnt/lastboot /bin/bash
