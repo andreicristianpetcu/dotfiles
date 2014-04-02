@@ -7,6 +7,9 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+" yeah.... use space as the leader
+let mapleader = "\<Space>"
+
 " Required:
 call neobundle#rc(expand('~/.vim/bundle/'))
 
@@ -27,7 +30,13 @@ NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/gem-ctags'
 NeoBundle 'tpope/gem-browse'
+
+" Rails plugin
 NeoBundle 'tpope/vim-rails.git'
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! Rschema :e db/schema.rb
+
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
@@ -57,7 +66,13 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
 NeoBundle 'rking/ag.vim'
+
+" Airline, pretty ui plugin
 NeoBundle 'bling/vim-airline'
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+" let g:airline#extensions#tabline#enabled = 1
+
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neosnippet'
