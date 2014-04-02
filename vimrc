@@ -16,8 +16,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My bundles here:
 "
-" original repos on GitHub
+" Fugitive - Git wrapper
 NeoBundle 'tpope/vim-fugitive'
+" nnoremap <Leader>g :Gstatus<CR>
+"
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
@@ -28,8 +30,12 @@ NeoBundle 'tpope/gem-browse'
 NeoBundle 'tpope/vim-rails.git'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
+
+" Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
 NeoBundle 'gitv'
+" nnoremap <Leader>gv :Gitv<CR>
+
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mattn/emmet-vim'
@@ -69,7 +75,15 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
+
+" GitGutter, easy diff
 NeoBundle 'airblade/vim-gitgutter'
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+nmap <Leader>ha <Plug>GitGutterStageHunk
+nmap <Leader>hu <Plug>GitGutterRevertHunk
+nmap <Leader>hh :GitGutterToggle<CR>
+
 "copy paths in a easy way
 NeoBundle 'vim-scripts/copypath.vim'
 let g:copypath_copy_to_unnamed_register = 1
@@ -165,18 +179,8 @@ if has("autocmd")
   augroup END
 
 else
-
   set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
-
-" if has("folding")
-  " set foldenable
-  " set foldmethod=syntax
-  " set foldlevel=1
-  " set foldnestmax=2
-  " set foldtext=strpart(getline(v:foldstart),0,50).'\ ...\ '.substitute(getline(v:foldend),'^[\ #]*','','g').'\ '
-" endif
+endif
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -367,7 +371,8 @@ let g:tagbar_autoclose='1'
 nnoremap <Leader><Leader>o :TagbarToggle<CR>
 nnoremap <Leader><Leader>O :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
-nnoremap <Leader>g :Gstatus<CR>
+nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>gv :Gitv<CR>
 nnoremap <C-W>x :only<CR>
 
 " NERD Tree specific stuff
@@ -385,13 +390,6 @@ endif
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
 let g:multi_cursor_quit_key='<C-C>'
-
-" GitGutter, easy diff
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
-nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterRevertHunk
-nmap <Leader>hh :GitGutterToggle<CR>
 
 " enable neocomplete
 let g:neocomplete#enable_at_startup = 1
