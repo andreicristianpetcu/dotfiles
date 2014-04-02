@@ -197,27 +197,6 @@ let g:airline_powerline_fonts=1
 " yeah.... use space as the leader
 let mapleader = "\<Space>"
 
-" Edit the README_FOR_APP (makes :R commands work)
-" map <Leader>R :e doc/README_FOR_APP<CR>
-
-" Leader shortcuts for Rails commands
-" map <Leader>m :Rmodel 
-" map <Leader>c :Rcontroller 
-" map <Leader>v :Rview 
-" map <Leader>u :Runittest 
-" map <Leader>f :Rfunctionaltest 
-" map <Leader>f :FufFile<CR>
-" map <Leader>tm :RTmodel 
-" map <Leader>tc :RTcontroller 
-" map <Leader>tv :RTview 
-" map <Leader>tu :RTunittest 
-" map <Leader>tf :RTfunctionaltest 
-" map <Leader>sm :RSmodel 
-" map <Leader>sc :RScontroller 
-" map <Leader>sv :RSview 
-" map <Leader>su :RSunittest 
-" map <Leader>sf :RSfunctionaltest 
-
 " Hide search highlighting
 map <Leader>H :set invhls <CR>
 
@@ -372,6 +351,8 @@ nnoremap <Leader><Leader>o :TagbarToggle<CR>
 nnoremap <Leader><Leader>O :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
 nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>G :Gstatus<CR>
+
 nnoremap <Leader>gv :Gitv<CR>
 nnoremap <C-W>x :only<CR>
 
