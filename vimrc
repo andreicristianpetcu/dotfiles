@@ -21,9 +21,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "
 " Fugitive - Git wrapper
 NeoBundle 'tpope/vim-fugitive'
-" nnoremap <Leader>g :Gstatus<CR>
-"
+nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>G :Gstatus<CR>
+
+" Fast buffer, change, search navigation
 NeoBundle 'tpope/vim-unimpaired'
+nnoremap ]d do]c:wall<CR>
+nnoremap [d do[c:wall<CR>
+
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-bundler'
@@ -43,12 +48,28 @@ NeoBundle 'tpope/vim-endwise'
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
 NeoBundle 'gitv'
-" nnoremap <Leader>gv :Gitv<CR>
+nnoremap <Leader>gv :Gitv<CR>
 
 NeoBundle 'vim-ruby/vim-ruby'
+
+" Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+let g:EasyMotion_grouping=1
+
 NeoBundle 'mattn/emmet-vim'
+
+" Working with tabular data
 NeoBundle 'godlygeek/tabular'
+if exists(":Tabularize")
+  nmap <Leader>a= :Tabularize /=<CR>
+  vmap <Leader>a= :Tabularize /=<CR>
+  nmap <Leader>a: :Tabularize /:\zs<CR>
+  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <Leader>a^ :Tabularize /^\zs<CR>
+  vmap <Leader>a^ :Tabularize /^\zs<CR>
+endif
+
 NeoBundle 'vim-scripts/tComment'
 NeoBundle 'myusuf3/numbers.vim'
 NeoBundle 'sickill/vim-monokai'
@@ -74,7 +95,12 @@ let g:airline_powerline_fonts=1
 " let g:airline#extensions#tabline#enabled = 1
 
 NeoBundle 'Shougo/unite.vim'
+
+" Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
+" enable neocomplete
+let g:neocomplete#enable_at_startup = 1
+
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
@@ -205,13 +231,6 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts=1
-" let g:airline#extensions#tabline#enabled = 1
-
-" yeah.... use space as the leader
-let mapleader = "\<Space>"
-
 " Hide search highlighting
 map <Leader>H :set invhls <CR>
 
@@ -252,10 +271,6 @@ imap <C-L> <Space>=><Space>
 " Display extra whitespace
 " set list listchars=tab:»·,trail:·
 
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
-
 " Local config
 if filereadable(".vimrc.local")
   source .vimrc.local
@@ -290,6 +305,7 @@ set tags=./tags;
 
 " Write file
 nnoremap ZW :w<CR>
+nnoremap ZA :wall<CR>
 
 " set the system cliboard as the default yank source                                                                                                                                                                                      
 set clipboard=unnamedplus 
@@ -365,30 +381,15 @@ let g:tagbar_autoclose='1'
 nnoremap <Leader><Leader>o :TagbarToggle<CR>
 nnoremap <Leader><Leader>O :Unite -start-insert -no-split outline<CR>
 nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
-nnoremap <Leader>gg :Gstatus<CR>
-nnoremap <Leader>G :Gstatus<CR>
 
-nnoremap <Leader>gv :Gitv<CR>
 nnoremap <C-W>x :only<CR>
 
 " NERD Tree specific stuff
 nnoremap <Leader>P :NERDTreeToggle<CR>
 
-if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
-  nmap <Leader>a^ :Tabularize /^\zs<CR>
-  vmap <Leader>a^ :Tabularize /^\zs<CR>
-endif
-
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
 let g:multi_cursor_quit_key='<C-C>'
-
-" enable neocomplete
-let g:neocomplete#enable_at_startup = 1
 
 " Required:
 filetype plugin indent on
