@@ -11,6 +11,12 @@ alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone htt
 axgrep() {
   ps -ax|grep $1
 }
+kill9() {
+  kill -9 $1
+}
+kill15() {
+  kill -15 $1
+}
 historygrep() {
   history|grep $1
 }
