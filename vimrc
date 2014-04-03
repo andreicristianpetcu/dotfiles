@@ -268,14 +268,6 @@ imap <C-F> <C-R>=expand("%")<CR>
 
 imap <C-L> <Space>=><Space>
 
-" Display extra whitespace
-" set list listchars=tab:»·,trail:·
-
-" Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
-endif
-
 " Use Ack instead of Grep when available
 if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
