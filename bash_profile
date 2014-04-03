@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-# Load RVM, if you are using it
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 # Add rvm gems and nginx to the path
-export PATH=$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin:~/.local/bin
+export PATH=/usr/bin/:$PATH:~/.gem/ruby/1.8/bin:/opt/nginx/sbin:~/.local/bin
 
 # Path to the bash it configuration
 export BASH_IT=$HOME/.bash_it
@@ -13,9 +10,6 @@ export BASH_IT=$HOME/.bash_it
 # location /.bash_it/themes/
 export BASH_IT_THEME='bobby'
 
-# Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='git@git.domain.com'
-
 # Set my editor and git editor
 export EDITOR="vim"
 export GIT_EDITOR='vim'
@@ -23,25 +17,18 @@ export GIT_EDITOR='vim'
 # Set the path nginx
 export NGINX_PATH='/opt/nginx'
 
-# Don't check mail when opening terminal.
-unset MAILCHECK
-
-
-# Change this to your console based IRC client of choice.
-
-export IRC_CLIENT='irssi'
-
-# Set this to the command you use for todo.txt-cli
-
-export TODO="t"
-
-# Set vcprompt executable path for scm advance info in prompt (demula theme)
-# https://github.com/xvzf/vcprompt
-#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
-
 # Load Bash It
+if [ -f $BASH_IT/bash_it.sh ]; then source $BASH_IT/bash_it.sh fi
 
-if [ -f $BASH_IT/bash_it.sh ]
-then
-	source $BASH_IT/bash_it.sh
-fi
+# lazy add local bin
+if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
+
+# lazy add chromium
+if [ -f /usr/bin/chromium ]; then export CHROME_BIN='/usr/bin/chromium' ;fi
+
+# lazy add JAVA_HOME
+if [ -d /usr/lib/jvm/java-7-openjdk ]; then export JAVA_HOME='/usr/lib/jvm/java-7-openjdk' ;fi
+
+# lazy add JAVA_HOME
+if [ -d /opt/maven ]; then export M2_HOME='/opt/maven' ;fi
+

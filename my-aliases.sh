@@ -7,6 +7,7 @@ alias emacsnw='emacs -nw'
 alias lsla='ls -la'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
+alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
 axgrep() {
   ps -ax|grep $1
 }
@@ -35,8 +36,10 @@ alias gitpulloriginmaster='git pull origin master'
 alias gitresethard='git reset --hard'
 alias gitremotev='git remote -v'
 alias gitlogallgraphpretty='git log --all --graph --pretty'
-gitcommitm() {
-    git commit -m "$1"
+alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --decorate --source'
+alias gitresethard='git reset --hard'
+gitcommitam() {
+    git commit -a -m "$1"
 }
 gitremoterm(){
   git remote rm $1
@@ -93,6 +96,7 @@ alias vimgemrc='vim ~/.gemrc'
 alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
+alias vimetchosts='vim /etc/hosts'
 # functions
 psaxgrep() {
   ps -ax|grep $1

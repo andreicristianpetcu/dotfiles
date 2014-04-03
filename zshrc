@@ -5,11 +5,20 @@ DISABLE_AUTO_UPDATE="true"
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux)
+plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku)
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
+# lazy add local bin
 if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
+# lazy add chromium
+if [ -f /usr/bin/chromium ]; then export CHROME_BIN='/usr/bin/chromium' ;fi
+
+# lazy add JAVA_HOME
+if [ -d /usr/lib/jvm/java-7-openjdk ]; then export JAVA_HOME='/usr/lib/jvm/java-7-openjdk' ;fi
+
+# lazy add JAVA_HOME
+if [ -d /opt/maven ]; then export M2_HOME='/opt/maven' ;fi
 
 export TERM='xterm-256color'
 
