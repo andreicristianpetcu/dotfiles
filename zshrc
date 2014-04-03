@@ -9,6 +9,7 @@ plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
+if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
 
 export TERM='xterm-256color'
 
@@ -17,11 +18,6 @@ source $HOME/.my-aliases.sh
 
 # for Homebrew installed rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# add this to ~/.zshenv ??
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
 
 setopt bash_autolist
 

@@ -17,5 +17,4 @@ then
 	source /usr/bin/virtualenvwrapper.sh
 fi
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
