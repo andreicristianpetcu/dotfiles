@@ -83,7 +83,13 @@ NeoBundle "honza/vim-snippets"
 " vim-misk is needed by vim-easytags
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-easytags'
+
+" tagbar, cool outline viewer
 NeoBundle 'majutsushi/tagbar'
+let g:tagbar_autoclose='1'
+nnoremap <Leader>o :TagbarToggle<CR>
+nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
+
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
 NeoBundle 'rking/ag.vim'
@@ -93,8 +99,30 @@ NeoBundle 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
 
-
+" Unite - for searching stuff
 NeoBundle 'Shougo/unite.vim'
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  " Overwrite settings.
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-h> unite#do_action('split')
+endfunction
+noremap <leader>p :Unite -start-insert buffer file_rec -no-split<CR>
+noremap <leader>um :Unite -start-insert buffer file_mru -no-split<CR>
+nnoremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
+nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
+nnoremap <Leader>uh :Unite -start-insert -no-split help<CR>
+
+" Unite for help
+NeoBundle 'tsukkee/unite-help'
+
+" Unite for outline
+NeoBundle 'Shougo/unite-outline'
+nnoremap <Leader>uo :Unite -start-insert -no-split outline<CR>
+
+" Unite for command history
+NeoBundle 'thinca/vim-unite-history'
+nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
 
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
@@ -104,11 +132,8 @@ let g:neocomplete#enable_at_startup = 1
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/javacomplete'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'thinca/vim-unite-history'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'ecomba/vim-ruby-refactoring'
@@ -331,13 +356,6 @@ function! SilverSearch(word)
   execute l:ag_cmd
 endfunction
 
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " Overwrite settings.
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-p> unite#do_action('split')
-endfunction
-
 " silver searcher
 let g:agprg="ag --column"
 
@@ -358,21 +376,6 @@ map <C-C> <ESC>
 " search with ag for the content of register s
 map <Leader>a :call SilverSearch("<cword>")<CR>
 map <Leader>A :call SilverSearch("<cWORD>")<CR>
-
-" Unite.vim
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-noremap <leader>p :Unite -start-insert buffer file_rec file_mru -no-split<CR>
-nnoremap <Leader>l :Unite -start-insert line -auto-preview -vertical<CR>
-nnoremap <Leader>m :Unite -start-insert mapping -no-split<CR>
-nnoremap <Leader>c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
-nnoremap <Leader><Leader>h :Unite -start-insert -no-split help<CR>
-
-" tagbar settings 
-let g:tagbar_autoclose='1'
-nnoremap <Leader><Leader>o :TagbarToggle<CR>
-nnoremap <Leader><Leader>O :Unite -start-insert -no-split outline<CR>
-nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
 
 nnoremap <C-W>x :only<CR>
 
