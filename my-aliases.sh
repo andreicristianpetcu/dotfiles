@@ -41,7 +41,6 @@ alias gitstatus='git status'
 alias gitpulloriginmaster='git pull origin master'
 alias gitresethard='git reset --hard'
 alias gitremotev='git remote -v'
-alias gitlogallgraphpretty='git log --all --graph --pretty'
 alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --decorate --source'
 alias gitresethard='git reset --hard'
 gitcommitam() {
