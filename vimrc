@@ -115,6 +115,10 @@ nnoremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>uh :Unite -start-insert -no-split help<CR>
 
+" most recent files
+NeoBundle 'Shougo/neomru.vim'
+nnoremap <Leader>ur :Unite -start-insert file_mru -no-split<CR>
+
 " Unite for help
 NeoBundle 'tsukkee/unite-help'
 
