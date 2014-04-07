@@ -26,8 +26,10 @@ nnoremap <Leader>G :Gstatus<CR>
 
 " Fast buffer, change, search navigation
 NeoBundle 'tpope/vim-unimpaired'
-nnoremap ]d do]c:wall<CR>
-nnoremap [d do[c:wall<CR>
+nnoremap ]g do]c:wall<CR>
+nnoremap [g do[c:wall<CR>
+nnoremap ]p dp]c:wall<CR>
+nnoremap [p dp[c:wall<CR>
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
