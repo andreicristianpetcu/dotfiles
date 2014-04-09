@@ -130,6 +130,17 @@ nnoremap <Leader>uo :Unite -start-insert -no-split outline<CR>
 NeoBundle 'thinca/vim-unite-history'
 nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
 
+" Unite for ctags
+NeoBundle 'tsukkee/unite-tag'
+nnoremap <Leader>ut :Unite tag -start-insert -no-split<CR>
+autocmd BufEnter *
+\   if empty(&buftype)
+\| nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\| endif
+
+
+
+
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
 " enable neocomplete
