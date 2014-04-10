@@ -118,7 +118,7 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
 endfunction
-noremap <leader>p :Unite -start-insert buffer file_rec -no-split<CR>
+noremap <leader>up :Unite -start-insert buffer file_rec -no-split<CR>
 noremap <leader>um :Unite -start-insert buffer file_mru -no-split<CR>
 nnoremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
@@ -163,7 +163,12 @@ NeoBundle 'Shougo/javacomplete'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'ecomba/vim-ruby-refactoring'
+
+" Syntastic - simple error checking
 NeoBundle 'scrooloose/syntastic'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_check_on_open = 1
+
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
@@ -188,6 +193,11 @@ NeoBundle 'ap/vim-css-color'
 
 "closes quotes and other stuff
 NeoBundle 'Raimondi/delimitMate'
+
+" Fuzzy finder - fast file navigation
+NeoBundle 'vim-scripts/FuzzyFinder'
+nmap <Leader>f :FufCoverageFile<CR>
+
 
 " required by vim-text-object
 runtime macros/matchit.vim
