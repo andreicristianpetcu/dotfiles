@@ -99,7 +99,16 @@ NeoBundle 'rking/ag.vim'
 " Airline, pretty ui plugin
 NeoBundle 'bling/vim-airline'
 let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts=1
+let conn=$CONN
+if conn != 'sshd'
+  let g:airline_powerline_fonts = 1
+endif
+" fugitive integration
+let g:airline#extensions#branch#enabled = 1
+" disable syntastic integration
+let g:airline#extensions#syntastic#enabled = 1
+" enable  tagbar integration
+let g:airline#extensions#tagbar#enabled = 1
 
 " Unite - for searching stuff
 NeoBundle 'Shougo/unite.vim'
