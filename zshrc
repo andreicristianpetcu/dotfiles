@@ -9,6 +9,10 @@ plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
+
+# ssh connection check
+export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
+
 # lazy add local bin
 if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
 # lazy add chromium
@@ -39,7 +43,7 @@ then
 fi
 export ZSH_TMUX_AUTOSTART='true'
 export ZSH_TMUX_AUTOCONNECT='true'
-if [ "$TMUX" = "" ]; then 
+if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
   tmux attach || tmux new
   # tmux -2; 
 fi

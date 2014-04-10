@@ -14,6 +14,9 @@ export BASH_IT_THEME='bobby'
 export EDITOR="vim"
 export GIT_EDITOR='vim'
 
+# ssh connection check
+export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
+
 # Set the path nginx
 export NGINX_PATH='/opt/nginx'
 
