@@ -421,7 +421,7 @@ map <Leader>A :call SilverSearch("<cWORD>")<CR>
 nnoremap <C-W>x :only<CR>
 
 " NERD Tree specific stuff
-nnoremap <Leader>P :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
