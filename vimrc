@@ -196,7 +196,12 @@ NeoBundle 'Raimondi/delimitMate'
 
 " Fuzzy finder - fast file navigation
 NeoBundle 'vim-scripts/FuzzyFinder'
-nmap <Leader>f :FufCoverageFile<CR>
+noremap <Leader>fp :FufCoverageFile<CR>
+nnoremap <Leader>fl :FufLine<CR>
+nnoremap <Leader>fr :FufMruFile<CR>
+nnoremap <Leader>fh :FufHelp<CR>
+nnoremap <Leader>fc :FufMruCmd<CR>
+let g:fuf_modesDisable = []
 
 
 " required by vim-text-object
