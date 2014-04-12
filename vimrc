@@ -22,6 +22,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Fugitive - Git wrapper
 NeoBundle 'tpope/vim-fugitive'
 nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>gp :Git push<CR>
+nnoremap <Leader>gu :Git pull<CR>
+nnoremap <Leader>gf :Git fetch<CR>
 
 " Fast buffer, change, search navigation
 NeoBundle 'tpope/vim-unimpaired'
