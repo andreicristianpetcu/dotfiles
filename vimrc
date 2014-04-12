@@ -22,7 +22,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Fugitive - Git wrapper
 NeoBundle 'tpope/vim-fugitive'
 nnoremap <Leader>gg :Gstatus<CR>
-nnoremap <Leader>G :Gstatus<CR>
 
 " Fast buffer, change, search navigation
 NeoBundle 'tpope/vim-unimpaired'
@@ -33,6 +32,8 @@ nnoremap [p dp[c:wall<CR>
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'
+nnoremap <Leader>s :%S/<C-R>s/<C-R>s/gc
+
 NeoBundle 'tpope/vim-bundler'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/gem-ctags'
@@ -90,7 +91,6 @@ NeoBundle 'xolox/vim-easytags'
 NeoBundle 'majutsushi/tagbar'
 let g:tagbar_autoclose='1'
 nnoremap <Leader>o :TagbarToggle<CR>
-nnoremap <Leader>r :%S/<C-R>s/<C-R>s/gc
 
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
@@ -119,10 +119,8 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
 endfunction
 noremap <leader>up :Unite -start-insert buffer file_rec -no-split<CR>
-noremap <leader>um :Unite -start-insert buffer file_mru -no-split<CR>
-nnoremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
+noremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
-nnoremap <Leader>uh :Unite -start-insert -no-split help<CR>
 
 " most recent files
 NeoBundle 'Shougo/neomru.vim'
@@ -130,6 +128,7 @@ nnoremap <Leader>ur :Unite -start-insert file_mru -no-split<CR>
 
 " Unite for help
 NeoBundle 'tsukkee/unite-help'
+nnoremap <Leader>uh :Unite -start-insert -no-split help<CR>
 
 " Unite for outline
 NeoBundle 'Shougo/unite-outline'
@@ -147,9 +146,6 @@ autocmd BufEnter *
 \| nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
 \| endif
 
-
-
-
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
 " enable neocomplete
@@ -157,10 +153,14 @@ let g:neocomplete#enable_at_startup = 1
 
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/javacomplete'
+
+" nerdtree - file manager
 NeoBundle 'scrooloose/nerdtree'
+" NERD Tree specific stuff
+nnoremap <Leader>n :NERDTreeToggle<CR>
+
 NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'ecomba/vim-ruby-refactoring'
 
@@ -178,7 +178,7 @@ NeoBundle 'airblade/vim-gitgutter'
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
-nmap <Leader>hu <Plug>GitGutterRevertHunk
+nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hh :GitGutterToggle<CR>
 
 "copy paths in a easy way
@@ -221,13 +221,6 @@ set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
 set cursorline cursorcolumn
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" This is an alternative that also works in block mode, but the deleted
-" text is lost and it only works for putting the current register.
-"vnoremap p "_dp
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -419,9 +412,6 @@ map <Leader>a :call SilverSearch("<cword>")<CR>
 map <Leader>A :call SilverSearch("<cWORD>")<CR>
 
 nnoremap <C-W>x :only<CR>
-
-" NERD Tree specific stuff
-nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
