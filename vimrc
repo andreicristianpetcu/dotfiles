@@ -25,6 +25,20 @@ nnoremap <Leader>gg :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gf :Git fetch<CR>
+nnoremap <Leader>ga :Git add . --all<CR>
+nnoremap <Leader>grh :Git git reset --hard<CR>
+nnoremap <Leader>gbl :Git branch --list<CR>
+nnoremap <Leader>gba :Git branch -a<CR>
+nnoremap <Leader>gco :Git checkout
+nnoremap <Leader>gcb :Git checkout -b 
+nnoremap <Leader>gss :Git stash<CR>
+nnoremap <Leader>gsl :Git stash list<CR>
+nnoremap <Leader>gsp :Git stash pop<CR>
+
+" Gitv - a git log vizualizer
+" depends on tpope/vim-fugitive
+NeoBundle 'gitv'
+nnoremap <Leader>gv :Gitv<CR>
 
 " Fast buffer, change, search navigation
 NeoBundle 'tpope/vim-unimpaired'
@@ -50,11 +64,6 @@ command! Rschema :e db/schema.rb
 
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
-
-" Gitv - a git log vizualizer
-" depends on tpope/vim-fugitive
-NeoBundle 'gitv'
-nnoremap <Leader>gv :Gitv<CR>
 
 NeoBundle 'vim-ruby/vim-ruby'
 
