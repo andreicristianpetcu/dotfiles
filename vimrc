@@ -21,21 +21,23 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 "
 " Fugitive - Git wrapper
 NeoBundle 'tpope/vim-fugitive'
+nnoremap <Leader>ga :Git add . --all<CR>
+nnoremap <Leader>gbl :Gblame<CR>
+nnoremap <Leader>gbra :Git! branch -a<CR>
+nnoremap <Leader>gbrl :Git! branch --list<CR>
+nnoremap <Leader>gcb :Git checkout -b 
+nnoremap <Leader>gco :Git checkout
+nnoremap <Leader>gcm :Gcommit
+nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
+nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gg :Gstatus<CR>
 nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>gu :Git pull<CR>
-nnoremap <Leader>gf :Git fetch<CR>
-nnoremap <Leader>ga :Git add . --all<CR>
 nnoremap <Leader>grh :Git git reset --hard<CR>
-nnoremap <Leader>gbrl :Git! branch --list<CR>
-nnoremap <Leader>gbra :Git! branch -a<CR>
-nnoremap <Leader>gbl :Gblame<CR>
-nnoremap <Leader>gco :Git checkout
-nnoremap <Leader>gcb :Git checkout -b 
-nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
-" blame, git searches, git commit
+nnoremap <Leader>gss :Git stash<CR>
+nnoremap <Leader>gu :Git pull<CR>
+" git searches
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
