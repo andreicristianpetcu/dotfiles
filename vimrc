@@ -27,13 +27,14 @@ nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ga :Git add . --all<CR>
 nnoremap <Leader>grh :Git git reset --hard<CR>
-nnoremap <Leader>gbl :Git branch --list<CR>
-nnoremap <Leader>gba :Git branch -a<CR>
+nnoremap <Leader>gbl :Git! branch --list<CR>
+nnoremap <Leader>gba :Git! branch -a<CR>
 nnoremap <Leader>gco :Git checkout
 nnoremap <Leader>gcb :Git checkout -b 
 nnoremap <Leader>gss :Git stash<CR>
-nnoremap <Leader>gsl :Git stash list<CR>
+nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
+" blame
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
