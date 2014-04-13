@@ -27,7 +27,7 @@ nnoremap <Leader>gbra :Git! branch -a<CR>
 nnoremap <Leader>gbrl :Git! branch --list<CR>
 nnoremap <Leader>gcb :Git checkout -b 
 nnoremap <Leader>gco :Git checkout
-nnoremap <Leader>gcm :Gcommit
+nnoremap <Leader>gcm :Git commit -m ""
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gg :Gstatus<CR>
