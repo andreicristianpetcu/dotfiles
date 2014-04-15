@@ -32,8 +32,7 @@ export TERM='xterm-256color'
 source $ZSH/oh-my-zsh.sh
 source $HOME/.my-aliases.sh
 
-# for Homebrew installed rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+# Autocomplete with double tab like bash
 
 setopt bash_autolist
 
