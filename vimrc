@@ -31,8 +31,9 @@ nnoremap <Leader>gcm :Git commit -m ""
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gg :Gstatus<CR>
-nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>grh :Git git reset --hard<CR>
+nnoremap <Leader>gpp :Git push<CR>
+nnoremap <Leader>gpf :Git push --force<CR>
+nnoremap <Leader>grh :Git reset --hard<CR>
 nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
