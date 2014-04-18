@@ -10,8 +10,8 @@ Run the following commands in your terminal. It will prompt you before it does a
 
 ```terminal
 install git ruby vim zsh exuberant-ctags lua50
-git clone git://github.com/andreicristianpetcu/dotfiles ~/.dotfiles
-cd ~/.dotfiles
+git clone git://github.com/andreicristianpetcu/dotfiles ~/dotfiles
+cd ~/dotfiles
 rake install
 mkdir -p ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
