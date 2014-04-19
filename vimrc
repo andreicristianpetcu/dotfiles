@@ -227,6 +227,9 @@ runtime macros/matchit.vim
 " vim-scripts repos
 NeoBundle 'L9'
 
+" open man pages in vim
+runtime ftplugin/man.vim
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
