@@ -220,6 +220,9 @@ nnoremap <Leader>fh :FufHelp<CR>
 nnoremap <Leader>fc :FufMruCmd<CR>
 let g:fuf_modesDisable = []
 
+" Vim screen - GNU Screen/Tmux integration
+NeoBundle 'ervandew/screen'
+" noremap <Leader>SS V:'<,'>ScreenSend<CR>
 
 " required by vim-text-object
 runtime macros/matchit.vim
