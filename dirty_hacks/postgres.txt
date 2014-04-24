@@ -1,0 +1,10 @@
+sudo apt-get install postgresql-client postgresql
+sudo -u postgres createuser -s $USER
+sudo -u postgres createdatabase -s $USER
+sudo -u postgres createdb $USER
+
+sudo -u postgres psql
+CREATE DATABASE opencourts_development;
+
+CREATE USER opencourts WITH PASSWORD 'opencourts';
+GRANT ALL PRIVILEGES ON DATABASE "opencourts_development" to opencourts;
