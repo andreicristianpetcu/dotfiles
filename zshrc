@@ -14,7 +14,7 @@ export EDITOR='vim'
 export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
 
 # lazy add local bin
-if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
+if [ -d ~/.local/bin ]; then PATH=$PATH:~/.local/bin ;fi
 # lazy add chromium
 if [ -f /usr/bin/chromium ]; then export CHROME_BIN='/usr/bin/chromium' ;fi
 if [ -f /usr/bin/chromium-browser ]; then export CHROME_BIN='/usr/bin/chromium-browser' ;fi
