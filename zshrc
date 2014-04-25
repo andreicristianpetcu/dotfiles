@@ -42,7 +42,10 @@ then
 fi
 export ZSH_TMUX_AUTOSTART='true'
 export ZSH_TMUX_AUTOCONNECT='true'
-if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
+if [ "$TMUX" = "" ] && [ [ $CONN = "guake" ] || [ $CONN = "gnome-terminal-" ] ]; then 
   tmux attach || tmux new
-  # tmux -2; 
+fi
+
+if [ $CONN = "sshd" ]; then 
+  screen
 fi
