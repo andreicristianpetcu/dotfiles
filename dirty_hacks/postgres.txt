@@ -6,5 +6,7 @@ sudo -u postgres createdb $USER
 sudo -u postgres psql
 CREATE DATABASE opencourts_development;
 
+sudo -u postgres psql -c "CREATE USER opencourts WITH PASSWORD 'opencourts' SUPERUSER CREATEDB CREATEROLE;"
+
 CREATE USER opencourts WITH PASSWORD 'opencourts';
 GRANT ALL PRIVILEGES ON DATABASE "opencourts_development" to opencourts;
