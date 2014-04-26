@@ -2,6 +2,8 @@ ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER="andrei"
 DISABLE_AUTO_UPDATE="true"
 # DISABLE_LS_COLORS="true"
+HISTSIZE=5000 # session history size
+SAVEHIST=1000 # saved history
 
 ZSH_THEME="awesomepanda"
 
