@@ -18,3 +18,8 @@ if [ -d "${RBENV_ROOT}" ]; then
   export PATH="${RBENV_ROOT}/bin:${PATH}"
   eval "$(rbenv init -)"
 fi
+
+# ndenv variable
+export NDENV_HOME = "$HOME/.ndenv/bin"
+export PATH="$NDENV_HOME:$PATH"
+eval "$(ndenv init -)"
