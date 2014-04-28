@@ -12,3 +12,9 @@ if [ -d /usr/lib/jvm/java-7-oracle/jre ]; then export JAVA_HOME='/usr/lib/jvm/ja
 # lazy add M2_HOME
 if [ -d /opt/maven ]; then export M2_HOME='/opt/maven' ;fi
 if [ -d /usr/share/maven ]; then export M2_HOME='/usr/share/maven' ;fi
+
+export RBENV_ROOT="${HOME}/.rbenv"                                                                                                                                                                                                      
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
