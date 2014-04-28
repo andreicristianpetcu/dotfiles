@@ -111,7 +111,22 @@ nnoremap <Leader>o :TagbarToggle<CR>
 
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
+
+" crazy fast searching
 NeoBundle 'rking/ag.vim'
+" Ag.vim script for easy search
+function! SilverSearch(word)
+  let @s = expand(a:word)
+  let l:ag_cmd = "Ag " . shellescape(@s) . " ."
+  call histadd("cmd", l:ag_cmd)
+  set hidden
+  execute l:ag_cmd
+endfunction
+" silver searcher
+let g:agprg="ag --column"
+" Search with ag for the content of register s
+map <Leader>sw :call SilverSearch("<cword>")<CR>
+map <Leader>sW :call SilverSearch("<cWORD>")<CR>
 
 " Airline, pretty ui plugin
 NeoBundle 'bling/vim-airline'
@@ -410,18 +425,6 @@ function! MaximizeToggle()
     only
   endif
 endfunction
-
-" Ag.vim script for easy search
-function! SilverSearch(word)
-  let @s = expand(a:word)
-  let l:ag_cmd = "Ag " . shellescape(@s) . " ."
-  call histadd("cmd", l:ag_cmd)
-  set hidden
-  execute l:ag_cmd
-endfunction
-
-" silver searcher
-let g:agprg="ag --column"
 
 " copy the default clipboard into the system clipboard
 map <Leader>= :let @+=@"<CR>
