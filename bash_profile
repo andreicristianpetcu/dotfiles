@@ -24,3 +24,5 @@ export NGINX_PATH='/opt/nginx'
 if [ -f $BASH_IT/bash_it.sh ]; then source $BASH_IT/bash_it.sh fi
 
 source ~/.common_shell.sh
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"
