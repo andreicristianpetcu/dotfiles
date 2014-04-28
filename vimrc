@@ -228,6 +228,9 @@ NeoBundle 'ervandew/screen'
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
 
+" vim expand region
+NeoBundle 'terryma/vim-expand-region'
+
 " required by vim-text-object
 runtime macros/matchit.vim
 
