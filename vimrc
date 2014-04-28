@@ -224,6 +224,10 @@ let g:fuf_modesDisable = []
 NeoBundle 'ervandew/screen'
 " noremap <Leader>SS V:'<,'>ScreenSend<CR>
 
+" easy marks
+NeoBundle 'kshenoy/vim-signature'
+noremap <Leader>m :SignatureToggle<CR>
+
 " required by vim-text-object
 runtime macros/matchit.vim
 
