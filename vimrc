@@ -127,7 +127,6 @@ let g:agprg="ag --column"
 " Search with ag for the content of register s
 map <Leader>sw :call SilverSearch("<cword>")<CR>
 map <Leader>sW :call SilverSearch("<cWORD>")<CR>
-noremap <Leader>SV y:Ag <C-R>0<CR>
 
 " Airline, pretty ui plugin
 NeoBundle 'bling/vim-airline'
