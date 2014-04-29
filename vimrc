@@ -201,8 +201,6 @@ NeoBundle 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " GitGutter, easy diff
@@ -243,11 +241,24 @@ NeoBundle 'ervandew/screen'
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
 
-" vim expand region
-NeoBundle 'terryma/vim-expand-region'
-
 " required by vim-text-object
 runtime macros/matchit.vim
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-indent'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'kana/vim-textobj-entire'
+
+" vim expand region
+NeoBundle 'terryma/vim-expand-region'
+" Extend the global default (NOTE: Remove comments in dictionary before sourcing)
+call expand_region#custom_text_objects({
+      \ 'a]'  :1,
+      \ 'ab'  :1,
+      \ 'aB'  :1,
+      \ 'ii'  :0,
+      \ 'ai'  :0,
+      \ })
 
 " vim-scripts repos
 NeoBundle 'L9'
