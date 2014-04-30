@@ -8,6 +8,7 @@ alias lsla='ls -la'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
+alias execshelll='exec $SHELL -l'
 axgrep() {
   ps -ax|grep $1
 }
@@ -23,6 +24,13 @@ historygrep() {
 mkdircd() {
   mkdir $1
   cd $1
+}
+rmrf() {
+  rm -rf $1
+}
+
+lsla() {
+  ls -la
 }
 
 # pacman
@@ -102,6 +110,7 @@ alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
 alias vimetchosts='vim /etc/hosts'
+alias vimetcfstab='vim /etc/fstab'
 # functions
 psaxgrep() {
   ps -ax|grep $1
