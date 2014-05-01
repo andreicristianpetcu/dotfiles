@@ -49,8 +49,8 @@ nnoremap <Leader>gv :Gitv<CR>
 NeoBundle 'tpope/vim-unimpaired'
 nnoremap ]g do]c:wall<CR>
 nnoremap [g do[c:wall<CR>
-nnoremap ]p dp]c:wall<CR>
-nnoremap [p dp[c:wall<CR>
+nnoremap ]r dp]c:wall<CR>
+nnoremap [r dp[c:wall<CR>
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-abolish'

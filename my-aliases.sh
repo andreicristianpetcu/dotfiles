@@ -118,3 +118,13 @@ psaxgrep() {
 
 # Vagrant urls
 export centos6url="https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
+
+installjenv(){
+  rm -rf "$HOME/.jenv"
+  mkdir -p $HOME/.jenv/candidates/java
+  curl -L -s get.jenv.io | bash
+  source /home/andrei/.jenv/bin/jenv-init.sh
+  if [ -d /usr/lib/jvm/java-7-openjdk ]; then ln -s /usr/lib/jvm/java-7-openjdk $HOME/.jenv/candidates/java/java-7-openjdk ;fi
+  if [ -d /usr/lib/jvm/java-7-oracle/jre ]; then ln -s /usr/lib/jvm/java-7-oracle/jre $HOME/.jenv/candidates/java/java-7-oracle-jre ;fi
+  if [ -d /usr/lib/jvm/java-8-oracle/jre ]; then ln -s /usr/lib/jvm/java-8-oracle/jre $HOME/.jenv/candidates/java/java-8-oracle-jre ;fi
+}
