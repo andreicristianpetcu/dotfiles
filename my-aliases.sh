@@ -8,22 +8,29 @@ alias tigall='tig --all'
 alias tmux2='tmux -2'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
 alias execshelll='exec $SHELL -l'
+alias yankpwd='echo `pwd` | xclip -sel clip'
+
 axgrep() {
   ps -ax|grep $1
 }
+
 kill9() {
   kill -9 $1
 }
+
 kill15() {
   kill -15 $1
 }
+
 historygrep() {
   history|grep $1
 }
+
 mkdircd() {
   mkdir $1
   cd $1
 }
+
 rmrf() {
   rm -rf $1
 }
