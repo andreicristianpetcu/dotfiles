@@ -40,7 +40,7 @@ nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
 " git searches
 nnoremap <Leader>gri :Git --cached 
-nnoremap <Leader>grd :Glog -S'input()' --
+nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
