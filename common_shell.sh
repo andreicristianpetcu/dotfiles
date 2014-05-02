@@ -11,6 +11,7 @@ if [ -d $LOCAL_BIN ]; then export PATH="$PATH:$LOCAL_BIN" ;fi
 
 # lazy add chromium
 if [ -f /usr/bin/chromium ]; then export CHROME_BIN='/usr/bin/chromium' ;fi
+if [ -f /usr/bin/google-chrome ]; then export CHROME_BIN='/usr/bin/google-chrome' ;fi
 if [ -f /usr/bin/chromium-browser ]; then export CHROME_BIN='/usr/bin/chromium-browser' ;fi
 
 # lazy add JAVA_HOME

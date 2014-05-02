@@ -4,7 +4,6 @@ alias sshalaveteli='ssh alaveteli'
 # common
 alias ping8888='ping 8.8.8.8'
 alias emacsnw='emacs -nw'
-alias lsla='ls -la'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
@@ -27,10 +26,6 @@ mkdircd() {
 }
 rmrf() {
   rm -rf $1
-}
-
-lsla() {
-  ls -la
 }
 
 # pacman
