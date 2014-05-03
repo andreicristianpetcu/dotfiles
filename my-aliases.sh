@@ -9,6 +9,7 @@ alias tmux2='tmux -2'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
 alias execshelll='exec $SHELL -l'
 alias yankpwd='echo `pwd` | xclip -sel clip'
+alias mvncleaninstall='mvn clean install'
 
 axgrep() {
   ps -ax|grep $1
