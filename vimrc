@@ -237,7 +237,8 @@ let g:fuf_modesDisable = []
 
 " Vim screen - GNU Screen/Tmux integration
 NeoBundle 'ervandew/screen'
-" noremap <Leader>SS V:'<,'>ScreenSend<CR>
+noremap <Leader>SS V:ScreenSend<CR>
+let g:ScreenImpl = 'Tmux'
 
 " easy marks
 NeoBundle 'kshenoy/vim-signature'
