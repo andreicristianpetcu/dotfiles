@@ -38,6 +38,7 @@ nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
+au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
 nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
@@ -129,6 +130,13 @@ let g:agprg="ag --column"
 " Search with ag for the content of register s
 map <Leader>sw :call SilverSearch("<cword>")<CR>
 map <Leader>sW :call SilverSearch("<cWORD>")<CR>
+
+" greplace
+NeoBundle 'skwp/greplace.vim'
+" set grepprg=ag
+" let g:grep_cmd_opts = '--line-numbers --noheading'
+set grepprg=ack
+let g:grep_cmd_opts = '--noheading'
 
 " Airline, pretty ui plugin
 NeoBundle 'bling/vim-airline'
