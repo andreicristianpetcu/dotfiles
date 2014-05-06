@@ -8,7 +8,7 @@ I am running on Arch Linux, but it will likely work on other GNU/Linux distros a
 
 Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/andreicristianpetcu/dotfiles/blob/custom-bash-zsh/Rakefile) to see exactly what it does.
 
-```terminal
+```sh
 install git ruby rake vim zsh exuberant-ctags lua50 tmux
 git clone git://github.com/andreicristianpetcu/dotfiles ~/dotfiles
 cd ~/dotfiles
@@ -28,19 +28,19 @@ Many of the following features are added through the "rbates" Oh My ZSH plugin.
 
 I normally place all of my coding projects in ~/code, so this directory can easily be accessed (and tab completed) with the "c" command.
 
-```terminal
+```sh
 c railsca<tab>
 ```
 
 There is also an "h" command which behaves similar, but acts on the home path.
 
-```terminal
+```sh
 h doc<tab>
 ```
 
 Tab completion is also added to rake and cap commands:
 
-```
+```sh
 rake db:mi<tab>
 cap de<tab>
 ```
@@ -56,7 +56,7 @@ There are several features enabled in Ruby's irb including history and completio
 
 To remove the dotfile configs, run the following commands. Be certain to double check the contents of the files before removing so you don't lose custom settings.
 
-```
+```sh
 unlink ~/.bin
 unlink ~/.gitignore
 unlink ~/.gemrc
