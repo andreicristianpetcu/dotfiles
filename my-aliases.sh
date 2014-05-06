@@ -54,6 +54,8 @@ alias gitresethard='git reset --hard'
 alias gitremotev='git remote -v'
 alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --decorate --source'
 alias gitresethard='git reset --hard'
+alias gitinit='git init'
+alias gitcheckoutmaster='git checkout master'
 gitcommitam() {
     git commit -a -m "$1"
 }
