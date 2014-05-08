@@ -196,7 +196,11 @@ let g:neocomplete#enable_at_startup = 1
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/vimproc.vim'
+"DELETEME?
 NeoBundle 'Shougo/javacomplete'
+
+" code-analysis engine for JavaScript
+NeoBundle 'marijnh/tern_for_vim'
 
 " nerdtree - file manager
 NeoBundle 'scrooloose/nerdtree'
@@ -261,7 +265,7 @@ NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-entire'
 
 " Qdo and Qargs commands
-NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'MarioRicalde/vim-qargs'
 
 " vim expand region
 NeoBundle 'terryma/vim-expand-region'
