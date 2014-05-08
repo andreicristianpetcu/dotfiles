@@ -1,0 +1,4 @@
+{
+  "predef": ["angular", "console"]
+}
+

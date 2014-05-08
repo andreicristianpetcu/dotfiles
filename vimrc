@@ -214,6 +214,7 @@ NeoBundle 'ecomba/vim-ruby-refactoring'
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_javascript_jshint_conf="~/.jshintrc.js"
 
 NeoBundle 'terryma/vim-multiple-cursors'
 
