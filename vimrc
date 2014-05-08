@@ -260,6 +260,9 @@ NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-entire'
 
+" Qdo and Qargs commands
+NeoBundle 'terryma/vim-expand-region'
+
 " vim expand region
 NeoBundle 'terryma/vim-expand-region'
 " Extend the global default (NOTE: Remove comments in dictionary before sourcing)
