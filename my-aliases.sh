@@ -112,6 +112,7 @@ alias vimzshrc='vim ~/.zshrc'
 alias vimtmuxconf='vim ~/.tmux.conf'
 alias vimgemrc='vim ~/.gemrc'
 alias vimmyaliasessh='vim ~/.my-aliases.sh'
+alias vimcommonshellsh='vim ~/.common_shell.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
 alias vimetchosts='vim /etc/hosts'
@@ -132,4 +133,10 @@ installjenv(){
   if [ -d /usr/lib/jvm/java-7-openjdk ]; then ln -s /usr/lib/jvm/java-7-openjdk $HOME/.jenv/candidates/java/java-7-openjdk ;fi
   if [ -d /usr/lib/jvm/java-7-oracle/jre ]; then ln -s /usr/lib/jvm/java-7-oracle/jre $HOME/.jenv/candidates/java/java-7-oracle-jre ;fi
   if [ -d /usr/lib/jvm/java-8-oracle/jre ]; then ln -s /usr/lib/jvm/java-8-oracle/jre $HOME/.jenv/candidates/java/java-8-oracle-jre ;fi
+}
+
+installtern(){
+  cd ~/.vim/bundle/tern_for_vim
+  npm install tern -g
+  npm install
 }
