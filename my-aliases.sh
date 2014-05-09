@@ -115,6 +115,7 @@ alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimcommonshellsh='vim ~/.common_shell.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
+alias vimjshintrcjs='vim ~/.jshintrc.js'
 alias vimetchosts='vim /etc/hosts'
 alias vimetcfstab='vim /etc/fstab'
 # functions

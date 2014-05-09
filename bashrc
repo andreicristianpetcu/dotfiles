@@ -18,3 +18,4 @@ then
 fi
 
 if [ -d ~/.local/bin/ ]; then PATH=$PATH:~/.local/bin/ ;fi
+if [ -f /etc/profile.d/autojump.bash ]; then source /etc/profile.d/autojump.bash ;fi
