@@ -197,6 +197,8 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" NeoBundle 'msanders/snipmate.vim'
+" NeoBundle 'matthewsimo/angular-vim-snippets'
 NeoBundle 'Shougo/neosnippet'
 " NeoBundle 'Shougo/neosnippet-snippets'
 " Plugin key-mappings.
@@ -216,6 +218,7 @@ if has('conceal')
 endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+let g:neosnippet#enable_snipmate_compatibilit = 1
 
 NeoBundle 'Shougo/vimproc.vim'
 "DELETEME?
