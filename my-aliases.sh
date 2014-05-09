@@ -56,6 +56,7 @@ alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --deco
 alias gitresethard='git reset --hard'
 alias gitinit='git init'
 alias gitcheckoutmaster='git checkout master'
+alias gitpush='git push'
 gitcommitam() {
     git commit -a -m "$1"
 }
