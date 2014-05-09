@@ -99,9 +99,8 @@ NeoBundle 'sickill/vim-monokai'
 " snip mate and it's dependencyes
 NeoBundle "MarcWeber/vim-addon-mw-utils"
 NeoBundle "tomtom/tlib_vim"
-NeoBundle "garbas/vim-snipmate"
-" Optional:
-NeoBundle "honza/vim-snippets"
+" Optional
+NeoBundle 'honza/vim-snippets'
 
 " vim-misk is needed by vim-easytags
 NeoBundle 'xolox/vim-misc'
@@ -192,9 +191,32 @@ autocmd BufEnter *
 NeoBundle 'Shougo/neocomplete'
 " enable neocomplete
 let g:neocomplete#enable_at_startup = 1
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
 NeoBundle 'Shougo/vimproc.vim'
 "DELETEME?
 NeoBundle 'Shougo/javacomplete'
@@ -412,9 +434,6 @@ endif
 set number
 set numberwidth=5
 
-" Snippets are activated by Shift+Tab
-let g:snippetsEmu_key = "<S-Tab>"
-
 " Tab completion options
 " (only complete to the longest unambiguous match, and show a menu)
 set completeopt=longest,menu
@@ -463,10 +482,6 @@ map <Leader>= :let @+=@"<CR>
 " let g:ycm_auto_trigger = 0
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
-
-" Remap tab to snip mate
-imap <Tab> <Plug>snipMateNextOrTrigger
-smap <Tab> <Plug>snipMateNextOrTrigger
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> <ESC>
