@@ -14,6 +14,8 @@ if [ -f /usr/bin/chromium ]; then export CHROME_BIN='/usr/bin/chromium' ;fi
 if [ -f /usr/bin/google-chrome ]; then export CHROME_BIN='/usr/bin/google-chrome' ;fi
 if [ -f /usr/bin/chromium-browser ]; then export CHROME_BIN='/usr/bin/chromium-browser' ;fi
 
+if [ -f /usr/bin/firefox ]; then export FIREFOX_BIN='/usr/bin/firefox' ;fi
+
 # lazy add JAVA_HOME
 if [ -d /usr/lib/jvm/java-7-openjdk ]; then export JAVA_HOME='/usr/lib/jvm/java-7-openjdk' ;fi
 if [ -d /usr/lib/jvm/java-7-oracle/jre ]; then export JAVA_HOME='/usr/lib/jvm/java-7-oracle/jre' ;fi
