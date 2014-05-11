@@ -110,6 +110,9 @@ NeoBundle 'xolox/vim-easytags'
 NeoBundle 'majutsushi/tagbar'
 let g:tagbar_autoclose='1'
 nnoremap <Leader>o :TagbarToggle<CR>
+let g:tagbar_type_javascript = {
+    \ 'ctagsbin' : '~/.local/bin/jsctags'
+\ }
 
 NeoBundle 'vim-scripts/EasyGrep'
 NeoBundle 'jaredly/vim-debug'
@@ -233,7 +236,18 @@ NeoBundle 'scrooloose/nerdtree'
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 NeoBundle 'rodjek/vim-puppet'
+
+" ruby refactoring
 NeoBundle 'ecomba/vim-ruby-refactoring'
+nnoremap <leader>Rap  :RAddParameter<cr>
+nnoremap <leader>Rcpc :RConvertPostConditional<cr>
+nnoremap <leader>Rel  :RExtractLet<cr>
+vnoremap <leader>Rec  :RExtractConstant<cr>
+vnoremap <leader>Relv :RExtractLocalVariable<cr>
+nnoremap <leader>Rit  :RInlineTemp<cr>
+vnoremap <leader>Rrlv :RRenameLocalVariable<cr>
+vnoremap <leader>Rriv :RRenameInstanceVariable<cr>
+vnoremap <leader>Rem  :RExtractMethod<cr>
 
 " Syntastic - simple error checking
 NeoBundle 'scrooloose/syntastic'
@@ -303,6 +317,9 @@ call expand_region#custom_text_objects({
       \ 'ii'  :0,
       \ 'ai'  :0,
       \ })
+
+" generate docs for javascript
+NeoBundle 'heavenshell/vim-jsdoc'
 
 " vim-scripts repos
 NeoBundle 'L9'
