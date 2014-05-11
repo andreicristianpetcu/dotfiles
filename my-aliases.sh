@@ -142,3 +142,7 @@ installtern(){
   npm install tern -g
   npm install
 }
+installjsstuff(){
+  npm install taginator -g
+  npm install -g git://github.com/ramitos/jsctags.git
+}

@@ -6,7 +6,7 @@ export GIT_EDITOR='vim'
 export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
 
 # lazy add local bin
-LOCAL_BIN="$HOME/.local/bin/"
+LOCAL_BIN="$HOME/.local/bin"
 if [ -d $LOCAL_BIN ]; then export PATH="$PATH:$LOCAL_BIN" ;fi
 
 # lazy add chromium
