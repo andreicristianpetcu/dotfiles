@@ -321,6 +321,11 @@ call expand_region#custom_text_objects({
 " generate docs for javascript
 NeoBundle 'heavenshell/vim-jsdoc'
 
+" toggle lists
+NeoBundle 'milkypostman/vim-togglelist'
+nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
+
 " vim-scripts repos
 NeoBundle 'L9'
 
@@ -416,7 +421,7 @@ map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Opens a tab edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>t
-map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map <Leader>Te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
