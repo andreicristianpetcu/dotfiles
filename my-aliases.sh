@@ -10,6 +10,7 @@ alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone htt
 alias execshelll='exec $SHELL -l'
 alias yankpwd='echo `pwd` | xclip -sel clip'
 alias mvncleaninstall='mvn clean install'
+alias dirspv='dirs -pv'
 
 axgrep() {
   ps -ax|grep $1
@@ -46,10 +47,8 @@ pacmanrs() {
 }
 # git
 alias gitadd='git add . --all'
-alias gitpushoriginmaster='git push origin master'
-alias gitpush2='git push gitorious master && git push github master'
+alias gitpush='git push'
 alias gitstatus='git status'
-alias gitpulloriginmaster='git pull origin master'
 alias gitresethard='git reset --hard'
 alias gitremotev='git remote -v'
 alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --decorate --source'
@@ -57,6 +56,10 @@ alias gitresethard='git reset --hard'
 alias gitinit='git init'
 alias gitcheckoutmaster='git checkout master'
 alias gitpush='git push'
+alias gitpullall='git pull --all'
+alias gitbranch='git branch'
+alias gitbrancha='git branch -a'
+alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
 gitcommitam() {
     git commit -a -m "$1"
 }
