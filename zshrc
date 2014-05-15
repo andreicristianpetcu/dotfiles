@@ -12,11 +12,8 @@ plugins=(git git-extras svn gem rails ruby archlinux gradle bower debian docker 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
 
-# ssh connection check
-export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
-
-if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
 source ~/.common_shell.sh
+if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
 
 export TERM='xterm-256color'
 
