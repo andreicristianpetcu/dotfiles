@@ -33,7 +33,6 @@ then
 fi
 export ZSH_TMUX_AUTOSTART='true'
 export ZSH_TMUX_AUTOCONNECT='true'
-if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
 if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
   tmux attach || tmux new
 fi
