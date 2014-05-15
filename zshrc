@@ -15,6 +15,7 @@ export EDITOR='vim'
 # ssh connection check
 export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
 
+if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
 source ~/.common_shell.sh
 
 export TERM='xterm-256color'
