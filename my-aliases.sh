@@ -91,6 +91,7 @@ alias railsdb='rails db'
 alias railss='rails s'
 
 # rake
+alias rakeinstall='rake install'
 alias rakedbmigrate='rake db:migrate'
 alias rakedbreset='rake db:reset'
 alias rakedbfixturesload='rake db:fixtures:load'
