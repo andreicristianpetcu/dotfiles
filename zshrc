@@ -7,7 +7,7 @@ SAVEHIST=1000 # saved history
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git git-extras svn gem rails ruby archlinux common-aliases gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku)
+plugins=(git git-extras svn gem rails ruby archlinux gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku)
 
 export PATH="/usr/local/bin:$PATH"
 export EDITOR='vim'
