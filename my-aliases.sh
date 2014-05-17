@@ -124,6 +124,13 @@ alias vimsshconfig='vim ~/.ssh/config'
 alias vimjshintrcjs='vim ~/.jshintrc.js'
 alias vimetchosts='vim /etc/hosts'
 alias vimetcfstab='vim /etc/fstab'
+alias vimrubysnippets='vim ~/.vim/bundle/vim-snippets/snippets/ruby.snippets'
+alias vimerubysnippets='vim ~/.vim/bundle/vim-snippets/snippets/eruby.snippets'
+alias vimcsssnippets='vim ~/.vim/bundle/vim-snippets/snippets/css.snippets'
+alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/javascript.snippets'
+alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/javascript-jquery.snippets'
+alias vimhtmlsnippets='vim ~/.vim/bundle/vim-snippets/snippets/html.snippets'
+alias vimhtmlsminimalnippets='vim ~/.vim/bundle/vim-snippets/snippets/html_minimal.snippets'
 # functions
 psaxgrep() {
   ps -ax|grep $1
