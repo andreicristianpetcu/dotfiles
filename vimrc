@@ -300,6 +300,23 @@ noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
 " easy marks
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
+let g:SignatureMap = {
+  \ 'Leader' : "m",
+  \ 'PlaceNextMark' : ",",
+  \ 'ToggleMarkAtLine' : ".",
+  \ 'PurgeMarksAtLine' : "-",
+  \ 'PurgeMarks' : "<Space>",
+  \ 'PurgeMarkers' : "<BS>",
+  \ 'GotoNextLineByPos' : "]'",
+  \ 'GotoPrevLineByPos' : "['",
+  \ 'GotoNextSpotByPos' : "]`",
+  \ 'GotoPrevSpotByPos' : "[`",
+  \ 'GotoNextMarker' : "]-",
+  \ 'GotoPrevMarker' : "[-",
+  \ 'GotoNextMarkerAny' : "]=",
+  \ 'GotoPrevMarkerAny' : "[=",
+  \ 'ListLocalMarks' : "'?",
+  \ }
 
 " required by vim-text-object
 runtime macros/matchit.vim
