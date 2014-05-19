@@ -292,6 +292,11 @@ NeoBundle 'ervandew/screen'
 noremap <Leader>SS V:ScreenSend<CR>
 let g:ScreenImpl = 'Tmux'
 
+" making friends with tmux
+NeoBundle 'benmills/vimux'
+noremap <Leader>xx :call VimuxRunCommand(getline('.'))<CR>j
+noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
+
 " easy marks
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
