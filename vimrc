@@ -27,7 +27,7 @@ nnoremap <Leader>gbra :Git! branch -a<CR>
 nnoremap <Leader>gbrl :Git! branch --list<CR>
 nnoremap <Leader>gcb :Git checkout -b 
 nnoremap <Leader>gco :Git checkout
-nnoremap <Leader>gcm :Git commit -m ""
+nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>gg :Gstatus<CR>
@@ -301,22 +301,26 @@ noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
 let g:SignatureMap = {
-  \ 'Leader' : "m",
-  \ 'PlaceNextMark' : ",",
-  \ 'ToggleMarkAtLine' : ".",
-  \ 'PurgeMarksAtLine' : "-",
-  \ 'PurgeMarks' : "<Space>",
-  \ 'PurgeMarkers' : "<BS>",
-  \ 'GotoNextLineByPos' : "]'",
-  \ 'GotoPrevLineByPos' : "['",
-  \ 'GotoNextSpotByPos' : "]`",
-  \ 'GotoPrevSpotByPos' : "[`",
-  \ 'GotoNextMarker' : "]-",
-  \ 'GotoPrevMarker' : "[-",
-  \ 'GotoNextMarkerAny' : "]=",
-  \ 'GotoPrevMarkerAny' : "[=",
-  \ 'ListLocalMarks' : "'?",
-  \ }
+      \ 'Leader' : "m",
+      \ 'PlaceNextMark' : ",",
+      \ 'ToggleMarkAtLine' : ".",
+      \ 'PurgeMarksAtLine' : "-",
+      \ 'PurgeMarks' : "<Space>",
+      \ 'PurgeMarkers' : "<BS>",
+      \ 'GotoNextLineAlpha' : "",
+      \ 'GotoPrevLineAlpha' : "",
+      \ 'GotoNextSpotAlpha' : "",
+      \ 'GotoPrevSpotAlpha' : "",
+      \ 'GotoNextLineByPos' : "]'",
+      \ 'GotoPrevLineByPos' : "['",
+      \ 'GotoNextSpotByPos' : "]`",
+      \ 'GotoPrevSpotByPos' : "[`",
+      \ 'GotoNextMarker' : "]-",
+      \ 'GotoPrevMarker' : "[-",
+      \ 'GotoNextMarkerAny' : "]=",
+      \ 'GotoPrevMarkerAny' : "[=",
+      \ 'ListLocalMarks' : "'?",
+      \ }"']]`"}
 
 " required by vim-text-object
 runtime macros/matchit.vim
