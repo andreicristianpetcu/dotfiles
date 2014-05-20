@@ -132,6 +132,7 @@ let g:agprg="ag --column"
 " Search with ag for the content of register s
 map <Leader>sw :call SilverSearch("<cword>")<CR>
 map <Leader>sW :call SilverSearch("<cWORD>")<CR>
+map <Leader>sp :call SilverSearch(expand(@0))<CR>
 
 " greplace
 NeoBundle 'skwp/greplace.vim'
@@ -320,7 +321,7 @@ let g:SignatureMap = {
       \ 'GotoNextMarkerAny' : "]=",
       \ 'GotoPrevMarkerAny' : "[=",
       \ 'ListLocalMarks' : "'?",
-      \ }"']]`"}
+      \ }
 
 " required by vim-text-object
 runtime macros/matchit.vim
@@ -557,3 +558,6 @@ NeoBundleCheck
 nnoremap <F2> :set invpaste paste?<CR>
 " Map command W to write with sudo
 command! W  write !sudo tee %
+
+" map find replace
+nnoremap <Leader>rp :%s/<C-R>0//gc<left><left><left>
