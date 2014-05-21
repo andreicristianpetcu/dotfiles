@@ -12,7 +12,7 @@ alias execshelll='exec $SHELL -l'
 alias yankpwd='echo `pwd` | xclip -sel clip'
 alias mvncleaninstall='mvn clean install'
 alias dirspv='dirs -pv'
-
+alias shaclip='xclip -o -selection | read line; echo -n $line | openssl sha1 | awk '"'"'{print $2}'"'"' | xclip -sel clip'
 axgrep() {
   ps -ax|grep $1
 }
@@ -38,6 +38,11 @@ rmrf() {
   rm -rf $1
 }
 
+substringclip(){
+  string=`xclip -o -selection`
+  echo ${string:0:$1} | xclip -sel clip
+}
+
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
 pacmans() {
@@ -46,6 +51,7 @@ pacmans() {
 pacmanrs() {
     sudo pacman -Rs "$1"
 }
+
 # git
 alias gitadd='git add . --all'
 alias gitpush='git push'
