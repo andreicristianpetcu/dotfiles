@@ -353,6 +353,9 @@ NeoBundle 'milkypostman/vim-togglelist'
 nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
 
+" docker file syntax
+NeoBundle 'honza/dockerfile.vim'
+
 " vim-scripts repos
 NeoBundle 'L9'
 
