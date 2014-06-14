@@ -83,6 +83,7 @@ alias vagrantsuspend='vagrant suspend'
 alias vagrantresume='vagrant resume'
 alias vagrantup='vagrant up'
 alias vagrantssh='vagrant ssh'
+alias vagrantdestroyf='vagrant destroy -f'
 alias vagrantreloadprovision='vagrant reload --provision'
 vagrantboxadd(){
     vagrant box add $1 $2
@@ -163,4 +164,15 @@ installtern(){
 installjsstuff(){
   npm install taginator -g
   npm install -g git://github.com/ramitos/jsctags.git
+}
+installzshmarks(){
+  cd ~/.oh-my-zsh/custom/plugins
+  git clone git://github.com/jocelynmallon/zshmarks.git
+}
+# Docker
+alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
+alias systemctlstartdocker='sudo systemctl start docker'
+alias dockerimages='docker images'
+sshiinsecure_keyroot(){
+  ssh -i ~/.insecure_key root@$1
 }
