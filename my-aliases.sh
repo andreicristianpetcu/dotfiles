@@ -16,6 +16,12 @@ alias yankpwd='echo `pwd` | xclip -sel clip'
 alias mvncleaninstall='mvn clean install'
 alias dirspv='dirs -pv'
 alias shaclip='xclip -o -selection | read line; echo -n $line | openssl sha1 | awk '"'"'{print $2}'"'"' | xclip -sel clip'
+alias sudo!!='sudo !!'
+alias sudopoweroff='sudo poweroff'
+alias sudosu='sudo su'
+alias sudosupostgres='sudo su postgres'
+alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
+
 axgrep() {
   ps -ax|grep $1
 }
@@ -45,6 +51,12 @@ substringclip(){
   string=`xclip -o -selection`
   echo ${string:0:$1} | xclip -sel clip
 }
+
+kill9lsofit(){
+  sudo lsof -i:$1
+  sudo kill -9 `sudo lsof -i:$1 -t`
+}
+
 
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
@@ -176,6 +188,18 @@ installzshmarks(){
 alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
+alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
+alias dockerstopdockerpsaq='docker stop $(docker ps -a -q)'
+alias dockerpsa='docker ps -a'
+alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
+
 sshiinsecure_keyroot(){
   ssh -i ~/.insecure_key root@$1
 }
+dockerrunyourimagesbinmyinitenableinsecurekey(){
+  docker run $1 /sbin/my_init --enable-insecure-key
+}
+dockerinspectidgrepipaddress(){
+  docker inspect $1 | grep IPAddress
+}
+alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
