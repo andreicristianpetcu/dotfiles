@@ -1,5 +1,8 @@
 # ssh
 alias sshalaveteli='ssh alaveteli'
+sshcopyidisshidrsapubuserserver(){
+  ssh-copy-id -i ~/.ssh/id_rsa_andrei.pub $1
+}
 
 # common
 alias ping8888='ping 8.8.8.8'
