@@ -49,3 +49,6 @@ fi
 # add aliases to both shells
 # source $HOME/.my-aliases.sh
 
+if [ -f $HOME/.common_shell.local.sh ]; then
+  source $HOME/.common_shell.local.sh
+fi

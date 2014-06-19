@@ -191,13 +191,14 @@ alias dockerimages='docker images'
 alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
 alias dockerstopdockerpsaq='docker stop $(docker ps -a -q)'
 alias dockerpsa='docker ps -a'
+alias dockerps='docker ps'
 alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
 
 sshiinsecure_keyroot(){
   ssh -i ~/.insecure_key root@$1
 }
-dockerrunyourimagesbinmyinitenableinsecurekey(){
-  docker run $1 /sbin/my_init --enable-insecure-key
+dockerrundyourimagesbinmyinitenableinsecurekey(){
+  docker run -d $1 /sbin/my_init --enable-insecure-key
 }
 dockerinspectidgrepipaddress(){
   docker inspect $1 | grep IPAddress

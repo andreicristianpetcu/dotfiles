@@ -574,3 +574,7 @@ command! W  write !sudo tee %
 
 " map find replace
 nnoremap <Leader>rp :%s/<C-R>0//gc<left><left><left>
+
+" added easy jump to next and previous paragraps
+noremap <Leader>} }}(
+noremap <Leader>{ {{)
