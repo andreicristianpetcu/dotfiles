@@ -250,6 +250,6 @@ dockersshlast(){
 dockerlist(){
   for cont in $(dockerps -q);
   do 
-    echo "`dockerinspectname $cont`     `dockerinspectimage $cont`    $cont     `dockerinspectipaddress $cont`"
+    echo "`dockerinspectipaddress $cont`     `dockerinspectimage $cont`    $cont     `dockerinspectname $cont`"
   done
 }
