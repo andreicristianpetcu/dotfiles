@@ -224,7 +224,6 @@ endif
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibilit = 1
 
-" NeoBundle 'Shougo/vimproc.vim'
 let vimproc_updcmd = has('win64') ?
       \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
 execute "NeoBundle 'Shougo/vimproc.vim'," . string({
@@ -235,6 +234,7 @@ execute "NeoBundle 'Shougo/vimproc.vim'," . string({
       \     'unix' : 'make -f make_unix.mak',
       \    },
       \ })
+
 "DELETEME?
 NeoBundle 'Shougo/javacomplete'
 
