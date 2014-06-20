@@ -253,4 +253,5 @@ dockerlist(){
   do 
     echo "`dockerinspectipaddress $cont`     `dockerinspectimage $cont`    $cont     `dockerinspectname $cont`"|grep `dockerinspectipaddress $cont`
   done
+  echo "Total containers `dockerps -q| wc -l`"
 }
