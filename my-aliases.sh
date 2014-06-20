@@ -57,12 +57,25 @@ kill9lsofit(){
   sudo kill -9 `sudo lsof -i:$1 -t`
 }
 
+findname(){
+  find . -name $1
+}
+
+aliasgrep(){
+  alias | grep $1
+}
+
+whencef(){
+  whence -f $1
+}
 
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
+
 pacmans() {
     sudo pacman -S "$1"
 }
+
 pacmanrs() {
     sudo pacman -Rs "$1"
 }
@@ -81,13 +94,16 @@ alias gitpullall='git pull --all'
 alias gitbranch='git branch'
 alias gitbrancha='git branch -a'
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
+
 gitcommitam() {
     git add . --all
     git commit -a -m "$1"
 }
+
 gitremoterm(){
   git remote rm $1
 }
+
 gitremoteadd(){
   git remote add $1 $2
 }
@@ -153,6 +169,7 @@ alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/
 alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/javascript-jquery.snippets'
 alias vimhtmlsnippets='vim ~/.vim/bundle/vim-snippets/snippets/html.snippets'
 alias vimhtmlsminimalnippets='vim ~/.vim/bundle/vim-snippets/snippets/html_minimal.snippets'
+
 # functions
 psaxgrep() {
   ps -ax|grep $1
@@ -176,14 +193,17 @@ installtern(){
   npm install tern -g
   npm install
 }
+
 installjsstuff(){
   npm install taginator -g
   npm install -g git://github.com/ramitos/jsctags.git
 }
+
 installzshmarks(){
   cd ~/.oh-my-zsh/custom/plugins
   git clone git://github.com/jocelynmallon/zshmarks.git
 }
+
 # Docker
 alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
@@ -193,14 +213,26 @@ alias dockerstopdockerpsaq='docker stop $(docker ps -a -q)'
 alias dockerpsa='docker ps -a'
 alias dockerps='docker ps'
 alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
+alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 
-sshiinsecure_keyroot(){
+sshiinsecurekeyroot(){
   ssh -i ~/.insecure_key root@$1
 }
+
 dockerrundyourimagesbinmyinitenableinsecurekey(){
   docker run -d $1 /sbin/my_init --enable-insecure-key
 }
+
 dockerinspectidgrepipaddress(){
   docker inspect $1 | grep IPAddress
 }
-alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
+
+dockersshlast(){
+  docker ps -l
+  LAST_CONTAINER="`docker ps -lq`"
+  CONTAINER_IP=$(docker inspect $LAST_CONTAINER | grep IPAddress| awk '{print $2}'| awk -F\" '{print $2}')
+  docker inspect $LAST_CONTAINER | grep Name| tr -d ' '|grep Name
+  docker inspect $LAST_CONTAINER | grep Image| head -1| tr -d ' '|grep Image
+  docker inspect $LAST_CONTAINER | grep IPAddress| tr -d ' '|grep IPAddress
+  ssh -i ~/.insecure_key root@$CONTAINER_IP
+}
