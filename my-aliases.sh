@@ -227,6 +227,17 @@ dockerinspectidgrepipaddress(){
   docker inspect $1 | grep IPAddress
 }
 
+dockerinspectname(){
+  docker inspect $1|grep Name| tr -d ' '| awk -F\" '{print $4}'
+}
+dockerinspectimage(){
+  docker inspect $1|grep Image| head  -1 | tr -d ' '| awk -F\" '{print $4}'
+}
+
+dockerinspectipaddress(){
+  docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
+}
+
 dockersshlast(){
   docker ps -l
   LAST_CONTAINER="`docker ps -lq`"
@@ -235,4 +246,10 @@ dockersshlast(){
   docker inspect $LAST_CONTAINER | grep Image| head -1| tr -d ' '|grep Image
   docker inspect $LAST_CONTAINER | grep IPAddress| tr -d ' '|grep IPAddress
   ssh -i ~/.insecure_key root@$CONTAINER_IP
+}
+dockerlist(){
+  for cont in $(dockerps -q);
+  do 
+    echo "`dockerinspectname $cont`     `dockerinspectimage $cont`    $cont     `dockerinspectipaddress $cont`"
+  done
 }
