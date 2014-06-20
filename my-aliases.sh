@@ -206,6 +206,7 @@ installzshmarks(){
 
 # Docker
 alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
+alias dockerrunitdlasttag='docker run -i -t -d lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
 alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
