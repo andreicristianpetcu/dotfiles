@@ -211,7 +211,7 @@ alias dockerrunitdlasttag='docker run -i -t -d lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
 alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
-alias dockerstopdockerpsaq='docker stop $(docker ps -a -q)'
+alias dockerstopdockerpsq='docker stop $(docker ps -q)'
 alias dockerpsa='docker ps -a'
 alias dockerps='docker ps'
 alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
@@ -250,9 +250,10 @@ dockersshlast(){
   ssh -i ~/.insecure_key root@$CONTAINER_IP
 }
 dockerlist(){
+  echo "IP Address      Container ID    Image ID         Name"
   for cont in $(dockerps -q);
   do 
-    echo "`dockerinspectipaddress $cont`     `dockerinspectimage $cont`    $cont     `dockerinspectname $cont`"|grep `dockerinspectipaddress $cont`
+    echo "`dockerinspectipaddress $cont`     $cont    `dockerinspectimage $cont`     `dockerinspectname $cont`"|grep `dockerinspectipaddress $cont`
   done
   echo "Total containers `dockerps -q| wc -l`"
 }
