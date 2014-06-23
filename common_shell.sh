@@ -53,3 +53,9 @@ fi
 if [ -f $HOME/.common_shell.local.sh ]; then
   source $HOME/.common_shell.local.sh
 fi
+
+if [ -d $HOME/.pyenv/bin ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi 

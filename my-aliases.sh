@@ -114,11 +114,14 @@ alias vagrantsuspend='vagrant suspend'
 alias vagrantresume='vagrant resume'
 alias vagrantup='vagrant up'
 alias vagrantssh='vagrant ssh'
+alias vagranthalt='vagrant halt'
 alias vagrantdestroyf='vagrant destroy -f'
 alias vagrantreloadprovision='vagrant reload --provision'
+
 vagrantboxadd(){
     vagrant box add $1 $2
 }
+
 vagrantinit(){
     vagrant init $1
 }
@@ -177,6 +180,9 @@ psaxgrep() {
 
 # Vagrant urls
 export centos6url="https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
+
+# install various stuff
+alias installpyenv='curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash'
 
 installjenv(){
   rm -rf "$HOME/.jenv"
