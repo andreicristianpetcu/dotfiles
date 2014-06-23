@@ -224,7 +224,7 @@ alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
 alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 
 sshiinsecurekeyroot(){
-  ssh-keygen -f "~/.ssh/known_hosts" -R $1
+  ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
 }
 
@@ -254,7 +254,7 @@ dockersshlast(){
   docker inspect $LAST_CONTAINER | grep Name| tr -d ' '|grep Name
   docker inspect $LAST_CONTAINER | grep Image| head -1| tr -d ' '|grep Image
   docker inspect $LAST_CONTAINER | grep IPAddress| tr -d ' '|grep IPAddress
-  ssh-keygen -f "~/.ssh/known_hosts" -R $CONTAINER_IP
+  ssh-keygen -f "$HOME/.ssh/known_hosts" -R $CONTAINER_IP
   ssh -i ~/.insecure_key root@$CONTAINER_IP
 }
 dockerlist(){
