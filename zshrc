@@ -7,10 +7,7 @@ SAVEHIST=1000 # saved history
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git git-extras svn gem rails ruby archlinux gradle bower debian docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku)
-
-export PATH="/usr/local/bin:$PATH"
-export EDITOR='vim'
+plugins=(git git-extras svn gem rails ruby archlinux gradle bower docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku zshmarks command-not-found cp git-extras gitignore history-substring-search jsontools pyenv rbenv rsync zsh_reload web-search systemadmin sudo)
 
 source ~/.common_shell.sh
 if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
