@@ -222,10 +222,16 @@ alias dockerpsa='docker ps -a'
 alias dockerps='docker ps'
 alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
 alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
+alias dockerimagesqhead1='docker images -q|head -1'
 
 sshiinsecurekeyroot(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
+}
+
+dockerrundockerimagesqhead1(){
+  echo "Running `dockerimagesqhead1`"
+  docker run -d `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dockerrundyourimagesbinmyinitenableinsecurekey(){
