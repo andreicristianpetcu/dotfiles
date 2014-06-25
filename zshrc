@@ -7,7 +7,10 @@ SAVEHIST=1000 # saved history
 
 ZSH_THEME="awesomepanda"
 
-plugins=(git git-extras svn gem rails ruby archlinux gradle bower docker mvn node npm pip pyenv python systemd vagrant web-search tmux heroku zshmarks command-not-found cp git-extras gitignore history-substring-search jsontools pyenv rbenv rsync zsh_reload web-search systemadmin sudo)
+plugins=(archlinux bower command-not-found cp docker gem git git-extras
+      \ gitignore gradle heroku history-substring-search jsontools mvn node
+      \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin
+      \ systemd tmux vagrant web-search zsh_reload zshmarks)
 
 source ~/.common_shell.sh
 if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
