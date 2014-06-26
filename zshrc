@@ -30,7 +30,7 @@ then
 fi
 export ZSH_TMUX_AUTOSTART='true'
 export ZSH_TMUX_AUTOCONNECT='true'
-if [ "$TMUX" = "" ]; then 
+if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
   tmux attach || tmux new
 fi
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
