@@ -13,6 +13,7 @@ install git ruby rake vim zsh exuberant-ctags lua50 tmux
 cd ~
 git clone https://github.com/andreicristianpetcu/dotfiles.git
 cd ~/dotfiles
+wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 rake install
 mkdir -p ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
