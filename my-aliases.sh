@@ -183,6 +183,7 @@ export centos6url="https://github.com/2creatives/vagrant-centos/releases/downloa
 
 # install various stuff
 alias installpyenv='curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash'
+alias installohmyzsh="rm -rf $HOME/.oh-my-zsh && wget --no-check-certificate http://install.ohmyz.sh -O - | sh"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
