@@ -10,7 +10,8 @@ Run the following commands in your terminal. It will prompt you before it does a
 
 ```sh
 install git ruby rake vim zsh exuberant-ctags lua50 tmux
-git clone git://github.com/andreicristianpetcu/dotfiles ~/dotfiles
+cd ~
+git clone https://github.com/andreicristianpetcu/dotfiles.git
 cd ~/dotfiles
 rake install
 mkdir -p ~/.vim/bundle

@@ -1,3 +1,6 @@
 # vim python debugger
 sudo pip2 install dbgp vim-debug
 python2 install-vim-debug.py
+
+#when you get a strange git error
+git config --global push.default matching
