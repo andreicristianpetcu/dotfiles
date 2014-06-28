@@ -576,6 +576,11 @@ command! W  write !sudo tee %
 
 " map find replace
 nnoremap <Leader>rp :%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rP :%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rwp yiw:%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rwP yiw:%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rWp yiW:%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rWP yiW:%S/<C-R>0//gc<left><left><left>
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
