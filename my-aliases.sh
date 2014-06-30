@@ -275,3 +275,7 @@ dockerlist(){
   done
   echo "Total containers `dockerps -q| wc -l`"
 }
+
+# Licenses
+alias licensegpl="wget https://gitlab.com/andreicristianpetcu/dotfiles/raw/master/LICENSE.txt"
+alias licenseagpl="wget https://gitlab.com/andreicristianpetcu/alaveteli/raw/master/LICENSE.txt"
