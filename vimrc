@@ -130,9 +130,10 @@ endfunction
 " silver searcher
 let g:agprg="ag --column"
 " Search with ag for the content of register s
-map <Leader>sw :call SilverSearch("<cword>")<CR>
-map <Leader>sW :call SilverSearch("<cWORD>")<CR>
-map <Leader>sp :call SilverSearch(expand(@0))<CR>
+noremap <Leader>sw :call SilverSearch("<cword>")<CR>
+noremap <Leader>sW :call SilverSearch("<cWORD>")<CR>
+noremap <Leader>ss :call SilverSearch(expand(@0))<CR>
+noremap <Leader>sa :Ag 
 
 " greplace
 NeoBundle 'skwp/greplace.vim'
@@ -575,12 +576,14 @@ nnoremap <F7> :set invpaste paste?<CR>
 command! W  write !sudo tee %
 
 " map find replace
-nnoremap <Leader>rp :%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rP :%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rwp yiw:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rwP yiw:%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWp yiW:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWP yiW:%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rr :%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rR :%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rww yiw:%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rwW yiw:%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rWw yiW:%s/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rWW yiW:%S/<C-R>0//gc<left><left><left>
+nnoremap <Leader>rs :%s///gc<left><left><left><left>
+nnoremap <Leader>rS :%S///gc<left><left><left><left>
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
