@@ -223,6 +223,7 @@ alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker
 alias dockerrunitdlasttag='docker run -i -t -d lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
+#delete all stopped containers
 alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
 alias dockerstopdockerpsq='docker stop $(docker ps -q)'
 alias dockerpsa='docker ps -a'
@@ -231,12 +232,10 @@ alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
 alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 alias dockerimagesqhead1='docker images -q|head -1'
 alias dockerretrylast="dockerstoplast && dockerrunlastimage && sleep 1s && dockersshlast"
-#delete all stopped containers
-alias dockerrmdockerpsaq="docker rm $(docker ps -a -q)"
 #delete all untagged images
-alias dockerrmidockerimagesgrepnoneawkprint3="docker rmi $(docker images | grep \"^<none>\" | awk \"{print $3}\")"
+alias dockerrmidockerimagesgrepnoneawkprint3="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias dockercleanup="dockerrmdockerpsaqi && dockerrmidockerimagesgrepnoneawkprint3"
+alias dockercleanup="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
 
 sshiinsecurekeyroot(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
