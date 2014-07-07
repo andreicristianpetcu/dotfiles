@@ -257,6 +257,12 @@ dockerinspectipaddress(){
   docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
 }
 
+dockerstoplast(){
+  docker ps -l
+  LAST_CONTAINER="`docker ps -lq`"
+  docker stop $LAST_CONTAINER
+}
+
 dockersshlast(){
   docker ps -l
   LAST_CONTAINER="`docker ps -lq`"
@@ -267,6 +273,7 @@ dockersshlast(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $CONTAINER_IP
   ssh -i ~/.insecure_key root@$CONTAINER_IP
 }
+
 dockerlist(){
   echo "IP Address      Container ID    Image ID         Name"
   for cont in $(dockerps -q);
