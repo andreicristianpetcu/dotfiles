@@ -367,6 +367,9 @@ nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
 " docker file syntax
 NeoBundle 'honza/dockerfile.vim'
 
+" sneak
+NeoBundle 'justinmk/vim-sneak'
+
 " vim-scripts repos
 NeoBundle 'L9'
 

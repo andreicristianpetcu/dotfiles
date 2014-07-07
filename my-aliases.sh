@@ -215,8 +215,11 @@ installzshmarks(){
 }
 
 # Docker
+# create one "lasttag" container. Do I need it?
 alias dockerbuildtlasttag='docker build -t lasttag .'
+# create one lastag contrainer and runs it. do I need it?
 alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
+# run last tag. do i need it?
 alias dockerrunitdlasttag='docker run -i -t -d lasttag'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
@@ -227,15 +230,17 @@ alias dockerps='docker ps'
 alias dockerrmidockerimagesq='docker rmi $(docker images -q)'
 alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 alias dockerimagesqhead1='docker images -q|head -1'
+alias dockerretrylast="dockerstoplast && dockerrunlastimage && sleep 1s && dockersshlast"
+#delete all stopped containers
+alias dockerrmdockerpsaq="docker rm $(docker ps -a -q)"
+#delete all untagged images
+alias dockerrmidockerimagesgrepnoneawkprint3="docker rmi $(docker images | grep \"^<none>\" | awk \"{print $3}\")"
+#cleanpup. delete all stopped containers and remove untagged images
+alias dockercleanup="dockerrmdockerpsaqi && dockerrmidockerimagesgrepnoneawkprint3"
 
 sshiinsecurekeyroot(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
-}
-
-dockerrundockerimagesqhead1(){
-  echo "Running `dockerimagesqhead1`"
-  docker run -d `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dockerrundyourimagesbinmyinitenableinsecurekey(){
@@ -255,6 +260,11 @@ dockerinspectimage(){
 
 dockerinspectipaddress(){
   docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
+}
+
+dockerrunlastimage(){
+  echo "Running `dockerimagesqhead1`"
+  docker run -d `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dockerstoplast(){
