@@ -187,6 +187,7 @@ alias installohmyzsh="rm -rf $HOME/.oh-my-zsh && wget --no-check-certificate htt
 alias installrbenv='git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
+alias installfzf='git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
 
 installjenv(){
   rm -rf "$HOME/.jenv"
