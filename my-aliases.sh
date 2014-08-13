@@ -97,7 +97,7 @@ alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
 
 gitcommitam() {
     git add . --all
-    git commit -a -m "$1"
+    git commit -a -m "$*"
 }
 
 gitremoterm(){
