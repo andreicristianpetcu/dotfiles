@@ -172,6 +172,7 @@ alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/
 alias vimjavascriptsnippets='vim ~/.vim/bundle/vim-snippets/snippets/javascript/javascript-jquery.snippets'
 alias vimhtmlsnippets='vim ~/.vim/bundle/vim-snippets/snippets/html.snippets'
 alias vimhtmlsminimalnippets='vim ~/.vim/bundle/vim-snippets/snippets/html_minimal.snippets'
+alias vimshellvariablessh='vim ~/.shell_variables.sh'
 
 # functions
 psaxgrep() {

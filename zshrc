@@ -1,3 +1,5 @@
+if [ -f $HOME/.shell_variables.sh ]; then source $HOME/.shell_variables.sh ;fi
+
 ZSH=$HOME/.oh-my-zsh
 DEFAULT_USER="andrei"
 DISABLE_AUTO_UPDATE="true"
@@ -31,11 +33,15 @@ if [ -f /usr/share/zsh/site-contrib/powerline.zsh ]
 then
   . /usr/share/zsh/site-contrib/powerline.zsh
 fi
-export ZSH_TMUX_AUTOSTART='true'
-export ZSH_TMUX_AUTOCONNECT='true'
-if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
-  tmux attach || tmux new
+
+if [ "$ATTACH_TMUX" = "true" ]; then
+  export ZSH_TMUX_AUTOSTART='true'
+  export ZSH_TMUX_AUTOCONNECT='true'
+  if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
+    tmux attach || tmux new
+  fi
 fi
+
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
 if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/autojump.zsh ;fi
 if [ -f /usr/share/zsh/site-contrib/powerline.zsh ]; then source /usr/share/zsh/site-contrib/powerline.zsh ;fi
