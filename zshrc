@@ -7,6 +7,9 @@ SAVEHIST=1000 # saved history
 
 ZSH_THEME="awesomepanda"
 
+# ignore duplicates in history
+setopt HIST_IGNORE_DUPS
+
 plugins=(archlinux bower command-not-found cp docker gem git git-extras
       \ gitignore gradle heroku history-substring-search jsontools mvn node
       \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin

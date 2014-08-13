@@ -11,6 +11,13 @@ PS1='[\u@\h \W]\$ '
 export EDITOR="vim" 
 eval "$(rbenv init -)"
 
+# no duplicate entries
+export HISTCONTROL=ignoreboth:erasedups
+# append history file
+shopt -s histappend
+# update histfile after every command
+export PROMPT_COMMAND="history -a"
+
 if [ -f /usr/bin/virtualenvwrapper.sh ]
 then
 	export WORKON_HOME=~/.virtualenvs
