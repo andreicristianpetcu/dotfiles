@@ -11,6 +11,11 @@ ZSH_THEME="awesomepanda"
 
 # ignore duplicates in history
 setopt HIST_IGNORE_DUPS
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 plugins=(archlinux bower command-not-found cp docker gem git git-extras
       \ gitignore gradle heroku history-substring-search jsontools mvn node
