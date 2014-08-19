@@ -591,3 +591,6 @@ nnoremap <Leader>rS :%S///gc<left><left><left><left>
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
 noremap <Leader>{ {{)
+
+" Enable mouse use in all modes
+set mouse=a
