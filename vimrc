@@ -102,9 +102,8 @@ NeoBundle "tomtom/tlib_vim"
 " Optional
 NeoBundle 'honza/vim-snippets'
 
-" vim-misk is needed by vim-easytags
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-easytags'
+" added ctags support that works
+NeoBundle 'szw/vim-tags'
 
 " tagbar, cool outline viewer
 NeoBundle 'majutsushi/tagbar'
@@ -517,9 +516,6 @@ set complete=.,t
 set ignorecase
 set smartcase
 
-" Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-set tags=./tags;
 
 " Write file
 nnoremap ZW :w<CR>

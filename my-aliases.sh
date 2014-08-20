@@ -94,6 +94,8 @@ alias gitpullall='git pull --all'
 alias gitbranch='git branch'
 alias gitbrancha='git branch -a'
 alias gitdiffcachedpatch='git diff --cached > ~/patch.txt'
+#get git root directory
+alias gitpwd='git rev-parse --show-toplevel'
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
 
 gitcommitam() {
