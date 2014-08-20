@@ -298,6 +298,10 @@ nnoremap <Leader>fr :FufMruFile<CR>
 nnoremap <Leader>fh :FufHelp<CR>
 nnoremap <Leader>fc :FufMruCmd<CR>
 let g:fuf_modesDisable = []
+let g:fuf_keyOpenSplit = '<C-s>'
+let g:fuf_keyOpenVsplit = '<C-v>'
+let g:fuf_keyPrevPattern = '<C-h>'
+let g:fuf_keyNextPattern = '<C-l>'
 
 " Vim screen - GNU Screen/Tmux integration
 NeoBundle 'ervandew/screen'
