@@ -50,3 +50,6 @@ end
 def paste
   `pbpaste`
 end
+
+require "awesome_print"
+AwesomePrint.irb!
