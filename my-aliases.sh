@@ -220,7 +220,6 @@ installzshmarks(){
 }
 
 # Docker
-# create one "lasttag" container. Do I need it?
 alias dockerbuild='docker build .'
 alias dockerbuilddockerrunlastimage='docker build . && dockerrunlastimage'
 alias systemctlstartdocker='sudo systemctl start docker'

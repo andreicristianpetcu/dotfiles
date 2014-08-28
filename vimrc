@@ -572,8 +572,8 @@ filetype plugin indent on
 NeoBundleCheck
 
 " Map F2 to toggle paste
-inoremap <F7> <Esc>:set invpaste paste?<CR>i
-nnoremap <F7> :set invpaste paste?<CR>
+inoremap <F8> <Esc>:set nopaste<CR>
+nnoremap <F7> <C-c>:set paste<CR>i
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
