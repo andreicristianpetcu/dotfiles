@@ -221,11 +221,8 @@ installzshmarks(){
 
 # Docker
 # create one "lasttag" container. Do I need it?
-alias dockerbuildtlasttag='docker build -t lasttag .'
-# create one lastag contrainer and runs it. do I need it?
-alias dockerbuildtlasttagdockerrunitlasttag='docker build -t lasttag . && docker run -i -t lasttag'
-# run last tag. do i need it?
-alias dockerrunitdlasttag='docker run -i -t -d lasttag'
+alias dockerbuild='docker build .'
+alias dockerbuilddockerrunlastimage='docker build . && dockerrunlastimage'
 alias systemctlstartdocker='sudo systemctl start docker'
 alias dockerimages='docker images'
 #delete all stopped containers
@@ -309,6 +306,16 @@ fe() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
+}
+
+# fzf magic
+# fe [FUZZY PATTERN] - Delete selected file or directory
+#   - Bypass fuzzy finder if there's only one match (--select-1)
+#   - Exit if there's no match (--exit-0)
+frmf() {
+  local file
+  file=$(fzf --query="$1" --select-1 --exit-0)
+  [ -n "$file" ] && rm -rf "$file"
 }
 
 # Equivalent to above, but opens it with `open` command
