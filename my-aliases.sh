@@ -163,6 +163,7 @@ alias vimtmuxconf='vim ~/.tmux.conf'
 alias vimgemrc='vim ~/.gemrc'
 alias vimmyaliasessh='vim ~/.my-aliases.sh'
 alias vimcommonshellsh='vim ~/.common_shell.sh'
+alias vimcommonshelllocalsh='vim ~/.common_shell.local.sh'
 alias vimgitconfig='vim ~/.gitconfig'
 alias vimsshconfig='vim ~/.ssh/config'
 alias vimjshintrcjs='vim ~/.jshintrc.js'
@@ -264,7 +265,7 @@ dockerinspectipaddress(){
 
 dockerrunlastimage(){
   echo "Running `dockerimagesqhead1`"
-  docker run -d `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
+  docker run -d -v /mnt/docker_volume:/mnt/parent_directory `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dockerstoplast(){
