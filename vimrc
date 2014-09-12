@@ -167,6 +167,8 @@ endfunction
 noremap <leader>up :Unite -start-insert buffer file_rec -no-split<CR>
 noremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
 nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
+nnoremap <Leader>uj :Unite -start-insert jump -no-split<CR>
+nnoremap <Leader>ue :Unite -start-insert change -no-split<CR>
 
 " most recent files
 NeoBundle 'Shougo/neomru.vim'
