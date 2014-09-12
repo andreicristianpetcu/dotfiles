@@ -618,3 +618,6 @@ noremap <Leader>{ {{)
 
 " Enable mouse use in all modes
 set mouse=a
+
+" reload .vimrc
+command! Reloadvimrc :so $MYVIMRC
