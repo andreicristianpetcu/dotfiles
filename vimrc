@@ -192,8 +192,8 @@ autocmd BufEnter *
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
 \| endif
 
-let g:unite_source_tag_max_name_length=60
-let g:unite_source_tag_max_fname_length=60
+let g:unite_source_tag_max_name_length=30
+let g:unite_source_tag_max_fname_length=140
 
 " unite rails
 NeoBundle 'basyura/unite-rails'
