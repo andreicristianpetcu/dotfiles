@@ -169,7 +169,7 @@ nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
 
 " most recent files
 NeoBundle 'Shougo/neomru.vim'
-nnoremap <Leader>ur :Unite -start-insert file_mru -no-split<CR>
+nnoremap <Leader>uR :Unite -start-insert file_mru -no-split<CR>
 
 " Unite for help
 NeoBundle 'tsukkee/unite-help'
@@ -190,6 +190,23 @@ autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
 \| endif
+
+" unite rails
+NeoBundle 'basyura/unite-rails'
+nnoremap <Leader>urm :Unite rails/model -start-insert -no-split<CR>
+nnoremap <Leader>urc :Unite rails/controller -start-insert -no-split<CR>
+nnoremap <Leader>urv :Unite rails/view -start-insert -no-split<CR>
+nnoremap <Leader>urh :Unite rails/helper -start-insert -no-split<CR>
+nnoremap <Leader>urM :Unite rails/mailer -start-insert -no-split<CR>
+nnoremap <Leader>url :Unite rails/lib -start-insert -no-split<CR>
+nnoremap <Leader>urd :Unite rails/db -start-insert -no-split<CR>
+nnoremap <Leader>urC :Unite rails/config -start-insert -no-split<CR>
+nnoremap <Leader>urL :Unite rails/log -start-insert -no-split<CR>
+nnoremap <Leader>urj :Unite rails/javascript -start-insert -no-split<CR>
+nnoremap <Leader>urs :Unite rails/stylesheet -start-insert -no-split<CR>
+nnoremap <Leader>urb :Unite rails/bundle -start-insert -no-split<CR>
+nnoremap <Leader>urg :Unite rails/bundled_gem -start-insert -no-split<CR>
+nnoremap <Leader>urr :Unite rails/route -start-insert -no-split<CR>
 
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
@@ -235,8 +252,7 @@ execute "NeoBundle 'Shougo/vimproc.vim'," . string({
       \    },
       \ })
 
-"DELETEME?
-NeoBundle 'Shougo/javacomplete'
+NeoBundle 'Shougo/vimshell.vim'
 
 " code-analysis engine for JavaScript
 NeoBundle 'marijnh/tern_for_vim'
