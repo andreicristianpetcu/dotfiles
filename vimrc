@@ -393,6 +393,8 @@ NeoBundle 'honza/dockerfile.vim'
 " sneak
 NeoBundle 'justinmk/vim-sneak'
 
+NeoBundle 'glts/vim-textobj-comment'
+
 " vim-scripts repos
 NeoBundle 'L9'
 
