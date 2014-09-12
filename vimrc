@@ -74,6 +74,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-endwise'
 
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-rbenv'
 
 " Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
