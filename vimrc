@@ -188,7 +188,7 @@ NeoBundle 'tsukkee/unite-tag'
 nnoremap <Leader>ut :Unite tag -start-insert -no-split<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
-\| nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
 \| endif
 
 " unite rails
