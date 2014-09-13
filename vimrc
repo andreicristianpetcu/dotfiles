@@ -397,6 +397,9 @@ NeoBundle 'justinmk/vim-sneak'
 
 NeoBundle 'glts/vim-textobj-comment'
 
+" support for coffeescript
+NeoBundle 'kchmck/vim-coffee-script'
+
 " vim-scripts repos
 NeoBundle 'L9'
 
