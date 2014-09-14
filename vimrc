@@ -199,20 +199,20 @@ let g:unite_source_tag_max_fname_length=140
 
 " unite rails
 NeoBundle 'basyura/unite-rails'
-nnoremap <Leader>urm :Unite rails/model -start-insert -no-split<CR>
-nnoremap <Leader>urc :Unite rails/controller -start-insert -no-split<CR>
-nnoremap <Leader>urv :Unite rails/view -start-insert -no-split<CR>
-nnoremap <Leader>urh :Unite rails/helper -start-insert -no-split<CR>
-nnoremap <Leader>urM :Unite rails/mailer -start-insert -no-split<CR>
-nnoremap <Leader>url :Unite rails/lib -start-insert -no-split<CR>
-nnoremap <Leader>urd :Unite rails/db -start-insert -no-split<CR>
-nnoremap <Leader>urC :Unite rails/config -start-insert -no-split<CR>
-nnoremap <Leader>urL :Unite rails/log -start-insert -no-split<CR>
-nnoremap <Leader>urj :Unite rails/javascript -start-insert -no-split<CR>
-nnoremap <Leader>urs :Unite rails/stylesheet -start-insert -no-split<CR>
-nnoremap <Leader>urb :Unite rails/bundle -start-insert -no-split<CR>
-nnoremap <Leader>urg :Unite rails/bundled_gem -start-insert -no-split<CR>
-nnoremap <Leader>urr :Unite rails/route -start-insert -no-split<CR>
+nnoremap <Leader>ym :Unite rails/model -start-insert -no-split<CR>
+nnoremap <Leader>yc :Unite rails/controller -start-insert -no-split<CR>
+nnoremap <Leader>yv :Unite rails/view -start-insert -no-split<CR>
+nnoremap <Leader>yh :Unite rails/helper -start-insert -no-split<CR>
+nnoremap <Leader>yM :Unite rails/mailer -start-insert -no-split<CR>
+nnoremap <Leader>yl :Unite rails/lib -start-insert -no-split<CR>
+nnoremap <Leader>yd :Unite rails/db -start-insert -no-split<CR>
+nnoremap <Leader>yC :Unite rails/config -start-insert -no-split<CR>
+nnoremap <Leader>yL :Unite rails/log -start-insert -no-split<CR>
+nnoremap <Leader>yj :Unite rails/javascript -start-insert -no-split<CR>
+nnoremap <Leader>ys :Unite rails/stylesheet -start-insert -no-split<CR>
+nnoremap <Leader>yb :Unite rails/bundle -start-insert -no-split<CR>
+nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert -no-split<CR>
+nnoremap <Leader>yr :Unite rails/route -start-insert -no-split<CR>
 
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
