@@ -266,7 +266,7 @@ NeoBundle 'marijnh/tern_for_vim'
 " nerdtree - file manager
 NeoBundle 'scrooloose/nerdtree'
 " NERD Tree specific stuff
-nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeFind<CR>
 
 NeoBundle 'rodjek/vim-puppet'
 
