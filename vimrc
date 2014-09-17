@@ -486,9 +486,6 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
-  " Automatically load .vimrc source when saved
-  autocmd BufWritePost .vimrc source $MYVIMRC
-
   augroup END
 
 else
