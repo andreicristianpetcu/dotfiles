@@ -258,8 +258,6 @@ execute "NeoBundle 'Shougo/vimproc.vim'," . string({
       \    },
       \ })
 
-NeoBundle 'Shougo/vimshell.vim'
-
 " code-analysis engine for JavaScript
 NeoBundle 'marijnh/tern_for_vim'
 
@@ -276,6 +274,12 @@ nnoremap <Leader>n :VimFilerExplorer -find<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '*'
+
 
 NeoBundle 'rodjek/vim-puppet'
 
