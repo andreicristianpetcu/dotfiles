@@ -409,6 +409,10 @@ NeoBundle 'glts/vim-textobj-comment'
 " support for coffeescript
 NeoBundle 'kchmck/vim-coffee-script'
 
+" Vim auto save
+NeoBundle '907th/vim-auto-save'
+let g:auto_save = 1
+
 " vim-scripts repos
 NeoBundle 'L9'
 
