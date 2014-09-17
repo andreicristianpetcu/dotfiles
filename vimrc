@@ -101,7 +101,7 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle "MarcWeber/vim-addon-mw-utils"
 NeoBundle "tomtom/tlib_vim"
 " Optional
-NeoBundle 'honza/vim-snippets'
+NeoBundle 'andreicristianpetcu/vim-snippets'
 
 " added ctags support that works
 NeoBundle 'szw/vim-tags'
@@ -266,7 +266,16 @@ NeoBundle 'marijnh/tern_for_vim'
 " nerdtree - file manager
 NeoBundle 'scrooloose/nerdtree'
 " NERD Tree specific stuff
-nnoremap <Leader>n :NERDTreeFind<CR>
+" nnoremap <Leader>n :NERDTreeFind<CR>
+
+NeoBundle 'Shougo/vimfiler.vim'
+let g:vimfiler_as_default_explorer = 1
+" Disable netrw.vim
+let g:loaded_netrwPlugin = 1
+nnoremap <Leader>n :VimFilerExplorer -find<CR>
+" edit files with double ckick
+autocmd FileType vimfiler
+      \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
 
 NeoBundle 'rodjek/vim-puppet'
 
@@ -624,3 +633,4 @@ set mouse=a
 
 " reload .vimrc
 command! Reloadvimrc :so $MYVIMRC
+command! Editvimrc :e $MYVIMRC
