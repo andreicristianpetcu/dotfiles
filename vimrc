@@ -212,10 +212,13 @@ nnoremap <Leader>yj :Unite rails/javascript -start-insert -no-split<CR>
 nnoremap <Leader>ys :Unite rails/stylesheet -start-insert -no-split<CR>
 nnoremap <Leader>yb :Unite rails/bundle -start-insert -no-split<CR>
 nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert -no-split<CR>
-nnoremap <Leader>yR :Unite rails/route -start-insert -no-split<CR>
+nnoremap <Leader>yro :Unite rails/route -start-insert -no-split<CR>
 
 NeoBundle 'rhysd/unite-ruby-require.vim'
-nnoremap <Leader>yr :Unite ruby/require -start-insert<CR>
+nnoremap <Leader>yre :Unite ruby/require -start-insert<CR>
+
+NeoBundle 'ujihisa/unite-rake'
+nnoremap <Leader>yra :Unite rake -start-insert<CR>
 
 " Autocomplete plugin
 NeoBundle 'Shougo/neocomplete'
