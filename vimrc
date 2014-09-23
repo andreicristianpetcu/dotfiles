@@ -215,7 +215,7 @@ nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert -no-split<CR>
 nnoremap <Leader>yro :Unite rails/route -start-insert -no-split<CR>
 
 NeoBundle 'rhysd/unite-ruby-require.vim'
-nnoremap <Leader>yre :Unite ruby/require -start-insert<CR>
+nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 NeoBundle 'ujihisa/unite-rake'
 nnoremap <Leader>yra :Unite rake -start-insert<CR>
