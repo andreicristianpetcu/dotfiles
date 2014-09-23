@@ -165,7 +165,7 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
 endfunction
 noremap <leader>up :Unite -start-insert buffer file_rec -no-split<CR>
-noremap <Leader>ul :Unite -start-insert line -auto-preview -vertical<CR>
+noremap <Leader>ul :Unite -start-insert line -auto-preview -no-split -winheight=40<CR>
 nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
 nnoremap <Leader>uj :Unite -start-insert jump -no-split<CR>
 nnoremap <Leader>ue :Unite -start-insert change -no-split<CR>
