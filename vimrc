@@ -423,6 +423,8 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle '907th/vim-auto-save'
 let g:auto_save = 1
 
+NeoBundle 'kana/vim-textobj-indent'
+
 " vim-scripts repos
 NeoBundle 'L9'
 
