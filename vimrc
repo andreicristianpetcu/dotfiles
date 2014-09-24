@@ -425,6 +425,13 @@ let g:auto_save = 1
 
 NeoBundle 'kana/vim-textobj-indent'
 
+NeoBundle 'junkblocker/patchreview-vim'
+
+NeoBundle 'codegram/vim-codereview'
+
+NeoBundle 'int3/vim-extradite'
+nnoremap <Leader>ge :Extradite<CR>
+
 " vim-scripts repos
 NeoBundle 'L9'
 
@@ -640,6 +647,9 @@ nnoremap <Leader>rS :%S///gc<left><left><left><left>
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
 noremap <Leader>{ {{)
+
+nnoremap <Leader>TN :tabnew<CR>
+nnoremap <Leader>TC :tabclose<CR>
 
 " Enable mouse use in all modes
 set mouse=a
