@@ -78,12 +78,14 @@ NeoBundle 'tpope/vim-rbenv'
 
 " Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
+let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'
 let g:EasyMotion_grouping=1
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>W <Plug>(easymotion-W)
 map <Leader>b <Plug>(easymotion-b)
 map <Leader>B <Plug>(easymotion-B)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 NeoBundle 'mattn/emmet-vim'
 
