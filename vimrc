@@ -290,7 +290,7 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
-let g:vi mfiler_marked_file_icon = '*'
+let g:vimfiler_marked_file_icon = '*'
 
 if &diff
     " diff mode
@@ -368,29 +368,25 @@ noremap <Leader>xx :call VimuxRunCommand(getline('.'))<CR>j
 noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
 
 " easy marks
-" NeoBundle 'kshenoy/vim-signature'
-" noremap <Leader>m :SignatureToggle<CR>
-" let g:SignatureMap = {
-"       \ 'Leader' : "m",
-"       \ 'PlaceNextMark' : ",",
-"       \ 'ToggleMarkAtLine' : ".",
-"       \ 'PurgeMarksAtLine' : "-",
-"       \ 'PurgeMarks' : "<Space>",
-"       \ 'PurgeMarkers' : "<BS>",
-"       \ 'GotoNextLineAlpha' : "",
-"       \ 'GotoPrevLineAlpha' : "",
-"       \ 'GotoNextSpotAlpha' : "",
-"       \ 'GotoPrevSpotAlpha' : "",
-"       \ 'GotoNextLineByPos' : "]'",
-"       \ 'GotoPrevLineByPos' : "['",
-"       \ 'GotoNextSpotByPos' : "]`",
-"       \ 'GotoPrevSpotByPos' : "[`",
-"       \ 'GotoNextMarker' : "]-",
-"       \ 'GotoPrevMarker' : "[-",
-"       \ 'GotoNextMarkerAny' : "]=",
-"       \ 'GotoPrevMarkerAny' : "[=",
-"       \ 'ListLocalMarks' : "'?",
-"       \ }
+NeoBundle 'kshenoy/vim-signature'
+noremap <Leader>m :SignatureToggle<CR>
+let g:SignatureMap = {
+      \ 'Leader' : "m",
+      \ 'PlaceNextMark' : ",",
+      \ 'ToggleMarkAtLine' : ".",
+      \ 'PurgeMarksAtLine' : "-",
+      \ 'PurgeMarks' : "<Space>",
+      \ 'PurgeMarkers' : "<BS>",
+      \ 'GotoNextLineByPos' : "]'",
+      \ 'GotoPrevLineByPos' : "['",
+      \ 'GotoNextSpotByPos' : "]`",
+      \ 'GotoPrevSpotByPos' : "[`",
+      \ 'GotoNextMarker' : "]-",
+      \ 'GotoPrevMarker' : "[-",
+      \ 'GotoNextMarkerAny' : "]=",
+      \ 'GotoPrevMarkerAny' : "[=",
+      \ 'ListLocalMarks' : "'?",
+      \ }
 
 " required by vim-text-object
 runtime macros/matchit.vim
