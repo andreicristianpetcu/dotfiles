@@ -282,7 +282,8 @@ NeoBundle 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>n :VimFilerExplorer -find<CR>
+nnoremap <Leader>nn :VimFilerExplorer -find<CR>
+nnoremap <Leader>nd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
@@ -371,20 +372,12 @@ noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
 NeoBundle 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
 let g:SignatureMap = {
-      \ 'Leader' : "m",
-      \ 'PlaceNextMark' : ",",
-      \ 'ToggleMarkAtLine' : ".",
-      \ 'PurgeMarksAtLine' : "-",
       \ 'PurgeMarks' : "<Space>",
       \ 'PurgeMarkers' : "<BS>",
       \ 'GotoNextLineByPos' : "]'",
       \ 'GotoPrevLineByPos' : "['",
       \ 'GotoNextSpotByPos' : "]`",
       \ 'GotoPrevSpotByPos' : "[`",
-      \ 'GotoNextMarker' : "]-",
-      \ 'GotoPrevMarker' : "[-",
-      \ 'GotoNextMarkerAny' : "]=",
-      \ 'GotoPrevMarkerAny' : "[=",
       \ 'ListLocalMarks' : "'?",
       \ }
 
