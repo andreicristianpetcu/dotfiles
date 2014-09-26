@@ -80,6 +80,10 @@ NeoBundle 'tpope/vim-rbenv'
 NeoBundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_grouping=1
+map <Leader>w <Plug>(easymotion-w)
+map <Leader>W <Plug>(easymotion-W)
+map <Leader>b <Plug>(easymotion-b)
+map <Leader>B <Plug>(easymotion-B)
 
 NeoBundle 'mattn/emmet-vim'
 
@@ -284,8 +288,16 @@ let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
+let g:vi mfiler_marked_file_icon = '*'
 
+if &diff
+    " diff mode
+    set diffopt+=iwhite
+endif
+
+NeoBundle 'Shougo/neossh.vim'
+
+NeoBundle 'Shougo/vimshell.vim'
 
 NeoBundle 'rodjek/vim-puppet'
 
