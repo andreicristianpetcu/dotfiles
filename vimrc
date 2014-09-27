@@ -283,7 +283,7 @@ NeoBundle 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>nn :VimFilerExplorer -find<CR>
+nnoremap <Leader>nn :VimFilerExplorer -find -safe<CR>
 nnoremap <Leader>nd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
