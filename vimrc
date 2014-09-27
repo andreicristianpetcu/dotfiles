@@ -435,6 +435,8 @@ NeoBundle 'codegram/vim-codereview'
 NeoBundle 'int3/vim-extradite'
 nnoremap <Leader>ge :Extradite<CR>
 
+NeoBundle 'bronson/vim-trailing-whitespace'
+
 " vim-scripts repos
 NeoBundle 'L9'
 
