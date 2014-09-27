@@ -77,6 +77,8 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rbenv'
 
+NeoBundle 'tpope/vim-haml'
+
 " Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'
