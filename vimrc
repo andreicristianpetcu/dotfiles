@@ -30,6 +30,7 @@ nnoremap <Leader>gco :Git checkout
 nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
+nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gg :Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
@@ -433,7 +434,7 @@ NeoBundle 'junkblocker/patchreview-vim'
 NeoBundle 'codegram/vim-codereview'
 
 NeoBundle 'int3/vim-extradite'
-nnoremap <Leader>ge :Extradite<CR>
+nnoremap <Leader>gE :Extradite<CR>
 
 " vim-scripts repos
 NeoBundle 'L9'
