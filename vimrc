@@ -389,6 +389,7 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-entire'
+nmap <Leader>ll mavae='a
 
 " Qdo and Qargs commands
 NeoBundle 'MarioRicalde/vim-qargs'
