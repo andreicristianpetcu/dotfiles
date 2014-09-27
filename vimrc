@@ -661,6 +661,9 @@ nnoremap <Leader>TC :tabclose<CR>
 " Enable mouse use in all modes
 set mouse=a
 
+"be lazy
+set lazyredraw
+
 " reload .vimrc
 command! Reloadvimrc :so $MYVIMRC
 command! Editvimrc :e $MYVIMRC
