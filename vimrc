@@ -77,7 +77,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rbenv'
 
-NeoBundle 'tpope/vim-haml'
+" NeoBundle 'tpope/vim-haml'
 
 " Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -323,7 +323,7 @@ vnoremap <leader>Rem  :RExtractMethod<cr>
 NeoBundle 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_javascript_jshint_conf="~/.jshintrc.js"
+let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc.js'
 
 NeoBundle 'kristijanhusak/vim-multiple-cursors'
 
@@ -640,6 +640,7 @@ nnoremap <F7> <C-c>:set paste<CR>i
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
+command! Q  quitall
 
 " map find replace
 nnoremap <Leader>rr :%s/<C-R>0//gc<left><left><left>
@@ -662,7 +663,7 @@ nnoremap <Leader>TC :tabclose<CR>
 set mouse=a
 
 "be lazy
-set lazyredraw
+" set lazyredraw
 
 " reload .vimrc
 command! Reloadvimrc :so $MYVIMRC
