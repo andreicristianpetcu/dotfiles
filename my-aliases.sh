@@ -297,7 +297,7 @@ dockerlist(){
 
 # Licenses
 alias licensegpl="wget https://gitlab.com/andreicristianpetcu/dotfiles/raw/master/LICENSE.txt"
-alias licenseagpl="wget https://gitlab.com/andreicristianpetcu/alaveteli/raw/master/LICENSE.txt"
+alias licenseagpl="wget https://gitorious.org/tribunal/tribunal/raw/LICENSE.txt"
 
 # fzf magic
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
