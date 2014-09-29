@@ -77,7 +77,7 @@ NeoBundle 'tpope/vim-endwise'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-rbenv'
 
-" NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-haml'
 
 " Fast navigation
 NeoBundle 'Lokaltog/vim-easymotion'
@@ -663,7 +663,7 @@ nnoremap <Leader>TC :tabclose<CR>
 set mouse=a
 
 "be lazy
-" set lazyredraw
+set lazyredraw
 
 " reload .vimrc
 command! Reloadvimrc :so $MYVIMRC
