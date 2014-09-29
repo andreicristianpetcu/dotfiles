@@ -172,32 +172,33 @@ function! s:unite_my_settings()
   " Overwrite settings.
   imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
+  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
-noremap <leader>up :Unite -start-insert buffer file_rec -no-split<CR>
-noremap <Leader>ul :Unite -start-insert line -auto-preview -no-split -winheight=40<CR>
-nnoremap <Leader>um :Unite -start-insert mapping -no-split<CR>
-nnoremap <Leader>uj :Unite -start-insert jump -no-split<CR>
-nnoremap <Leader>ue :Unite -start-insert change -no-split<CR>
+noremap <leader>up :Unite -start-insert buffer file_rec<CR>
+noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40<CR>
+nnoremap <Leader>um :Unite -start-insert mapping<CR>
+nnoremap <Leader>uj :Unite -start-insert jump<CR>
+nnoremap <Leader>ue :Unite -start-insert change<CR>
 
 " most recent files
 NeoBundle 'Shougo/neomru.vim'
-nnoremap <Leader>uR :Unite -start-insert file_mru -no-split<CR>
+nnoremap <Leader>uR :Unite -start-insert file_mru<CR>
 
 " Unite for help
 NeoBundle 'tsukkee/unite-help'
-nnoremap <Leader>uh :Unite -start-insert -no-split help<CR>
+nnoremap <Leader>uh :Unite -start-insert help<CR>
 
 " Unite for outline
 NeoBundle 'Shougo/unite-outline'
-nnoremap <Leader>uo :Unite -start-insert -no-split outline<CR>
+nnoremap <Leader>uo :Unite -start-insert outline<CR>
 
 " Unite for command history
 NeoBundle 'thinca/vim-unite-history'
-nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert -no-split<CR>
+nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
 " Unite for ctags
 NeoBundle 'tsukkee/unite-tag'
-nnoremap <Leader>ut :Unite tag -start-insert -no-split<CR>
+nnoremap <Leader>ut :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
@@ -208,20 +209,20 @@ let g:unite_source_tag_max_fname_length=140
 
 " unite rails
 NeoBundle 'basyura/unite-rails'
-nnoremap <Leader>ym :Unite rails/model -start-insert -no-split<CR>
-nnoremap <Leader>yc :Unite rails/controller -start-insert -no-split<CR>
-nnoremap <Leader>yv :Unite rails/view -start-insert -no-split<CR>
-nnoremap <Leader>yh :Unite rails/helper -start-insert -no-split<CR>
-nnoremap <Leader>yM :Unite rails/mailer -start-insert -no-split<CR>
-nnoremap <Leader>yl :Unite rails/lib -start-insert -no-split<CR>
-nnoremap <Leader>yd :Unite rails/db -start-insert -no-split<CR>
-nnoremap <Leader>yC :Unite rails/config -start-insert -no-split<CR>
-nnoremap <Leader>yL :Unite rails/log -start-insert -no-split<CR>
-nnoremap <Leader>yj :Unite rails/javascript -start-insert -no-split<CR>
-nnoremap <Leader>ys :Unite rails/stylesheet -start-insert -no-split<CR>
-nnoremap <Leader>yb :Unite rails/bundle -start-insert -no-split<CR>
-nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert -no-split<CR>
-nnoremap <Leader>yro :Unite rails/route -start-insert -no-split<CR>
+nnoremap <Leader>ym :Unite rails/model -start-insert<CR>
+nnoremap <Leader>yc :Unite rails/controller -start-insert<CR>
+nnoremap <Leader>yv :Unite rails/view -start-insert<CR>
+nnoremap <Leader>yh :Unite rails/helper -start-insert<CR>
+nnoremap <Leader>yM :Unite rails/mailer -start-insert<CR>
+nnoremap <Leader>yl :Unite rails/lib -start-insert<CR>
+nnoremap <Leader>yd :Unite rails/db -start-insert<CR>
+nnoremap <Leader>yC :Unite rails/config -start-insert<CR>
+nnoremap <Leader>yL :Unite rails/log -start-insert<CR>
+nnoremap <Leader>yj :Unite rails/javascript -start-insert<CR>
+nnoremap <Leader>ys :Unite rails/stylesheet -start-insert<CR>
+nnoremap <Leader>yb :Unite rails/bundle -start-insert<CR>
+nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert<CR>
+nnoremap <Leader>yro :Unite rails/route -start-insert<CR>
 
 NeoBundle 'rhysd/unite-ruby-require.vim'
 nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
