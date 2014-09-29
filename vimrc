@@ -11,16 +11,17 @@ endif
 let mapleader = "\<Space>"
 
 " Required:
-call neobundle#rc(expand('~/.vim/bundle/'))
+" call neobundle#rc(expand('~/.vim/bundle/'))
+call plug#begin('~/.vim/plugged')
 
 " Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+" NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My bundles here:
 "
 " Fugitive - Git wrapper
-NeoBundle 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 nnoremap <Leader>ga :Git add . --all<CR>
 nnoremap <Leader>gbl :Gblame<CR>
 nnoremap <Leader>gbra :Git! branch -a<CR>
@@ -54,41 +55,43 @@ nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
-NeoBundle 'gitv'
+Plug 'gitv'
 nnoremap <Leader>gv :Gitv<CR>
 
 " Fast buffer, change, search navigation
-NeoBundle 'tpope/vim-unimpaired'
+Plug 'tpope/vim-unimpaired'
 nnoremap ]g do]c:wall<CR>
 nnoremap [g do[c:wall<CR>
 nnoremap ]r dp]c:wall<CR>
 nnoremap [r dp[c:wall<CR>
 
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-abolish'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
 nnoremap <Leader>s :%S/<C-R>s/<C-R>s/gc
 
-NeoBundle 'tpope/vim-bundler'
-NeoBundle 'tpope/vim-rake'
-NeoBundle 'tpope/gem-ctags'
-NeoBundle 'tpope/gem-browse'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-rake'
+Plug 'tpope/gem-ctags'
+Plug 'tpope/gem-browse'
 
 " Rails plugin
-NeoBundle 'tpope/vim-rails.git'
+Plug 'tpope/vim-rails'
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
 
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-endwise'
+command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
 
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-rbenv'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
 
-NeoBundle 'tpope/vim-haml'
+Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rbenv'
+
+Plug 'tpope/vim-haml'
 
 " Fast navigation
-NeoBundle 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'
 let g:EasyMotion_grouping=1
 map <Leader>w <Plug>(easymotion-w)
@@ -98,10 +101,10 @@ map <Leader>B <Plug>(easymotion-B)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
-NeoBundle 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 
 " Working with tabular data
-NeoBundle 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 if exists(":Tabularize")
   nmap <Leader>a= :Tabularize /=<CR>
   vmap <Leader>a= :Tabularize /=<CR>
@@ -111,31 +114,34 @@ if exists(":Tabularize")
   vmap <Leader>a^ :Tabularize /^\zs<CR>
 endif
 
-NeoBundle 'vim-scripts/tComment'
-NeoBundle 'myusuf3/numbers.vim'
-NeoBundle 'sickill/vim-monokai'
+Plug 'vim-scripts/tComment'
+Plug 'myusuf3/numbers.vim'
+
+Plug 'sickill/vim-monokai'
+" ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+
 " snip mate and it's dependencyes
-NeoBundle "MarcWeber/vim-addon-mw-utils"
-NeoBundle "tomtom/tlib_vim"
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
 " Optional
-NeoBundle 'andreicristianpetcu/vim-snippets'
+Plug 'andreicristianpetcu/vim-snippets'
 
 " added ctags support that works
-NeoBundle 'szw/vim-tags'
+Plug 'szw/vim-tags'
 
 " tagbar, cool outline viewer
-NeoBundle 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose='1'
 nnoremap <Leader>o :TagbarToggle<CR>
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.local/bin/jsctags'
 \ }
 
-NeoBundle 'vim-scripts/EasyGrep'
-NeoBundle 'jaredly/vim-debug'
+Plug 'vim-scripts/EasyGrep'
+Plug 'jaredly/vim-debug'
 
 " crazy fast searching
-NeoBundle 'rking/ag.vim'
+Plug 'rking/ag.vim'
 " Ag.vim script for easy search
 function! SilverSearch(word)
   let @s = expand(a:word)
@@ -153,14 +159,14 @@ noremap <Leader>ss :call SilverSearch(expand(@0))<CR>
 noremap <Leader>sa :Ag 
 
 " greplace
-NeoBundle 'skwp/greplace.vim'
+Plug 'skwp/greplace.vim'
 " set grepprg=ag
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
 
 " Airline, pretty ui plugin
-NeoBundle 'bling/vim-airline'
+Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let conn=$CONN
 if conn != 'sshd'
@@ -174,7 +180,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
 " Unite - for searching stuff
-NeoBundle 'Shougo/unite.vim'
+Plug 'Shougo/unite.vim'
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   " Overwrite settings.
@@ -189,23 +195,23 @@ nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
 
 " most recent files
-NeoBundle 'Shougo/neomru.vim'
+Plug 'Shougo/neomru.vim'
 nnoremap <Leader>uR :Unite -start-insert file_mru<CR>
 
 " Unite for help
-NeoBundle 'tsukkee/unite-help'
+Plug 'tsukkee/unite-help'
 nnoremap <Leader>uh :Unite -start-insert help<CR>
 
 " Unite for outline
-NeoBundle 'Shougo/unite-outline'
+Plug 'Shougo/unite-outline'
 nnoremap <Leader>uo :Unite -start-insert outline<CR>
 
 " Unite for command history
-NeoBundle 'thinca/vim-unite-history'
+Plug 'thinca/vim-unite-history'
 nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
 " Unite for ctags
-NeoBundle 'tsukkee/unite-tag'
+Plug 'tsukkee/unite-tag'
 nnoremap <Leader>ut :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
@@ -216,7 +222,7 @@ let g:unite_source_tag_max_name_length=30
 let g:unite_source_tag_max_fname_length=140
 
 " unite rails
-NeoBundle 'basyura/unite-rails'
+Plug 'basyura/unite-rails'
 nnoremap <Leader>ym :Unite rails/model -start-insert<CR>
 nnoremap <Leader>yc :Unite rails/controller -start-insert<CR>
 nnoremap <Leader>yv :Unite rails/view -start-insert<CR>
@@ -232,14 +238,14 @@ nnoremap <Leader>yb :Unite rails/bundle -start-insert<CR>
 nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert<CR>
 nnoremap <Leader>yro :Unite rails/route -start-insert<CR>
 
-NeoBundle 'rhysd/unite-ruby-require.vim'
+Plug 'rhysd/unite-ruby-require.vim'
 nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
 
-NeoBundle 'ujihisa/unite-rake'
+Plug 'ujihisa/unite-rake'
 nnoremap <Leader>yra :Unite rake -start-insert<CR>
 
 " Autocomplete plugin
-NeoBundle 'Shougo/neocomplete'
+Plug 'Shougo/neocomplete'
 " enable neocomplete
 let g:neocomplete#enable_at_startup = 1
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -248,10 +254,10 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" NeoBundle 'msanders/snipmate.vim'
-" NeoBundle 'matthewsimo/angular-vim-snippets'
-NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'Shougo/neosnippet-snippets'
+" Plug 'msanders/snipmate.vim'
+" Plug 'matthewsimo/angular-vim-snippets'
+Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -271,26 +277,27 @@ endif
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibilit = 1
 
-let vimproc_updcmd = has('win64') ?
-      \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-execute "NeoBundle 'Shougo/vimproc.vim'," . string({
-      \ 'build' : {
-      \     'windows' : vimproc_updcmd,
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ })
+" let vimproc_updcmd = has('win64') ?
+"       \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
+" execute "Plug 'Shougo/vimproc.vim'," . string({
+"       \ 'build' : {
+"       \     'windows' : vimproc_updcmd,
+"       \     'cygwin' : 'make -f make_cygwin.mak',
+"       \     'mac' : 'make -f make_mac.mak',
+"       \     'unix' : 'make -f make_unix.mak',
+"       \    },
+"       \ })
+
 
 " code-analysis engine for JavaScript
-NeoBundle 'marijnh/tern_for_vim'
+Plug 'marijnh/tern_for_vim'
 
 " nerdtree - file manager
-NeoBundle 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " NERD Tree specific stuff
 " nnoremap <Leader>n :NERDTreeFind<CR>
 
-NeoBundle 'Shougo/vimfiler.vim'
+Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
@@ -310,14 +317,14 @@ if &diff
     set diffopt+=iwhite
 endif
 
-NeoBundle 'Shougo/neossh.vim'
+Plug 'Shougo/neossh.vim'
 
-NeoBundle 'Shougo/vimshell.vim'
+Plug 'Shougo/vimshell.vim'
 
-NeoBundle 'rodjek/vim-puppet'
+Plug 'rodjek/vim-puppet'
 
 " ruby refactoring
-NeoBundle 'ecomba/vim-ruby-refactoring'
+Plug 'ecomba/vim-ruby-refactoring'
 nnoremap <leader>Rap  :RAddParameter<cr>
 nnoremap <leader>Rcpc :RConvertPostConditional<cr>
 nnoremap <leader>Rel  :RExtractLet<cr>
@@ -329,15 +336,15 @@ vnoremap <leader>Rriv :RRenameInstanceVariable<cr>
 vnoremap <leader>Rem  :RExtractMethod<cr>
 
 " Syntastic - simple error checking
-NeoBundle 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc.js'
 
-NeoBundle 'kristijanhusak/vim-multiple-cursors'
+Plug 'kristijanhusak/vim-multiple-cursors'
 
 " GitGutter, easy diff
-NeoBundle 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 nmap <Leader>ha <Plug>GitGutterStageHunk
@@ -345,20 +352,20 @@ nmap <Leader>hr <Plug>GitGutterRevertHunk
 nmap <Leader>hh :GitGutterToggle<CR>
 
 "copy paths in a easy way
-NeoBundle 'vim-scripts/copypath.vim'
+Plug 'vim-scripts/copypath.vim'
 let g:copypath_copy_to_unnamed_register = 1
 
 " nice nodejs plugin
-NeoBundle 'moll/vim-node'
+Plug 'moll/vim-node'
 
 "css colors
-NeoBundle 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 "closes quotes and other stuff
-NeoBundle 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Fuzzy finder - fast file navigation
-NeoBundle 'vim-scripts/FuzzyFinder'
+Plug 'vim-scripts/FuzzyFinder'
 noremap <Leader>fp :FufCoverageFile<CR>
 nnoremap <Leader>fl :FufLine<CR>
 nnoremap <Leader>fr :FufMruFile<CR>
@@ -371,17 +378,17 @@ let g:fuf_keyPrevPattern = '<C-h>'
 let g:fuf_keyNextPattern = '<C-l>'
 
 " Vim screen - GNU Screen/Tmux integration
-NeoBundle 'ervandew/screen'
+Plug 'ervandew/screen'
 noremap <Leader>SS V:ScreenSend<CR>
 let g:ScreenImpl = 'Tmux'
 
 " making friends with tmux
-NeoBundle 'benmills/vimux'
+Plug 'benmills/vimux'
 noremap <Leader>xx :call VimuxRunCommand(getline('.'))<CR>j
 noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j
 
 " easy marks
-NeoBundle 'kshenoy/vim-signature'
+Plug 'kshenoy/vim-signature'
 noremap <Leader>m :SignatureToggle<CR>
 let g:SignatureMap = {
       \ 'PurgeMarks' : "<Space>",
@@ -395,61 +402,62 @@ let g:SignatureMap = {
 
 " required by vim-text-object
 runtime macros/matchit.vim
-NeoBundle 'nelstrom/vim-textobj-rubyblock'
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-indent'
-NeoBundle 'kana/vim-textobj-line'
-NeoBundle 'kana/vim-textobj-entire'
+Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-line'
+Plug 'kana/vim-textobj-entire'
 nmap <Leader>ll mavae='a
 
 " Qdo and Qargs commands
-NeoBundle 'MarioRicalde/vim-qargs'
+Plug 'MarioRicalde/vim-qargs'
 
 " vim expand region
-NeoBundle 'terryma/vim-expand-region'
+Plug 'terryma/vim-expand-region'
 " Extend the global default (NOTE: Remove comments in dictionary before sourcing)
-call expand_region#custom_text_objects({
-      \ 'a]'  :1,
-      \ 'ab'  :1,
-      \ 'aB'  :1,
-      \ 'ii'  :0,
-      \ 'ai'  :0,
-      \ })
+"//todo//andrei//bring it back
+"  call expand_region#custom_text_objects({
+"        \ 'a]'  :1,
+"        \ 'ab'  :1,
+"        \ 'aB'  :1,
+"        \ 'ii'  :0,
+"        \ 'ai'  :0,
+"        \ })
 
 " generate docs for javascript
-NeoBundle 'heavenshell/vim-jsdoc'
+Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
-NeoBundle 'milkypostman/vim-togglelist'
+Plug 'milkypostman/vim-togglelist'
 nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
 nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
 
 " docker file syntax
-NeoBundle 'honza/dockerfile.vim'
+Plug 'honza/dockerfile.vim'
 
 " sneak
-NeoBundle 'justinmk/vim-sneak'
+Plug 'justinmk/vim-sneak'
 
-NeoBundle 'glts/vim-textobj-comment'
+Plug 'glts/vim-textobj-comment'
 
 " support for coffeescript
-NeoBundle 'kchmck/vim-coffee-script'
+Plug 'kchmck/vim-coffee-script'
 
 " Vim auto save
-NeoBundle '907th/vim-auto-save'
+Plug '907th/vim-auto-save'
 let g:auto_save = 1
 
-NeoBundle 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-indent'
 
-NeoBundle 'junkblocker/patchreview-vim'
+Plug 'junkblocker/patchreview-vim'
 
-NeoBundle 'codegram/vim-codereview'
+Plug 'codegram/vim-codereview'
 
-NeoBundle 'int3/vim-extradite'
+Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 " vim-scripts repos
-NeoBundle 'L9'
+Plug 'L9'
 
 " open man pages in vim
 runtime ftplugin/man.vim
@@ -641,7 +649,7 @@ filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
-NeoBundleCheck
+" NeoBundleCheck
 
 " Map F2 to toggle paste
 inoremap <F8> <Esc>:set nopaste<CR>
@@ -677,3 +685,5 @@ set lazyredraw
 " reload .vimrc
 command! Reloadvimrc :so $MYVIMRC
 command! Editvimrc :e $MYVIMRC
+
+call plug#end()
