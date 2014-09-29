@@ -32,6 +32,14 @@ nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gg :Gstatus<CR>
+
+function! GitStatusTab()
+  tabnew
+  execute 'Gstatus'
+endfunction
+
+nnoremap <Leader>gts :call GitStatusTab()<CR>
+
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
 nnoremap <Leader>grh :Git reset --hard<CR>
@@ -175,7 +183,7 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
 noremap <leader>up :Unite -start-insert buffer file_rec<CR>
-noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40<CR>
+noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
 nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
