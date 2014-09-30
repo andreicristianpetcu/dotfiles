@@ -421,8 +421,8 @@ Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
 Plug 'milkypostman/vim-togglelist'
-nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>TL :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
@@ -531,16 +531,9 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
-" Hide search highlighting
-map <Leader>H :set invhls <CR>
-
-" Opens an edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>e
-map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the currently edited file filled in
-" Normal mode: <Leader>t
-map <Leader>Te :tabe <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <Leader>tn :tabnew<CR>
+nnoremap <Leader>tc :tabclose<CR>
+nnoremap <Leader>to :tabonly<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -664,9 +657,6 @@ nnoremap <Leader>rS :%S///gc<left><left><left><left>
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
 noremap <Leader>{ {{)
-
-nnoremap <Leader>TN :tabnew<CR>
-nnoremap <Leader>TC :tabclose<CR>
 
 " Enable mouse use in all modes
 set mouse=a
