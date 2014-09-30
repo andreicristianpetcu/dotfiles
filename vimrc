@@ -32,15 +32,7 @@ nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gg :Gstatus<CR>
-
-function! GitStatusTab()
-  tabnew
-  execute 'Gstatus'
-endfunction
-
-nnoremap <Leader>gts :call GitStatusTab()<CR>
-
+nnoremap <Leader>gg :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
 nnoremap <Leader>grh :Git reset --hard<CR>
