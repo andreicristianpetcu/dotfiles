@@ -33,7 +33,7 @@ cd /home/andrei/.vim/plugged/vim-debug/              && git reset --hard 1b0358a
 cd /home/andrei/.vim/plugged/ag.vim/                 && git reset --hard d3a00f8
 cd /home/andrei/.vim/plugged/greplace.vim/           && git reset --hard 475d567
 cd /home/andrei/.vim/plugged/vim-airline/            && git reset --hard 825a048
-cd /home/andrei/.vim/plugged/unite.vim/              && git reset --hard 91296fb
+cd /home/andrei/.vim/plugged/unite.vim/              && git reset --hard b54f168
 cd /home/andrei/.vim/plugged/neomru.vim/             && git reset --hard f70be81
 cd /home/andrei/.vim/plugged/unite-help/             && git reset --hard 5a8dc6c
 cd /home/andrei/.vim/plugged/unite-outline/          && git reset --hard 20c30e2
@@ -46,12 +46,12 @@ cd /home/andrei/.vim/plugged/neocomplete/            && git reset --hard bdf5c4e
 cd /home/andrei/.vim/plugged/neosnippet/             && git reset --hard ee1246a
 cd /home/andrei/.vim/plugged/tern_for_vim/           && git reset --hard e27180e
 cd /home/andrei/.vim/plugged/nerdtree/               && git reset --hard 4f1e6ec
-cd /home/andrei/.vim/plugged/vimfiler.vim/           && git reset --hard 8bc0307
+cd /home/andrei/.vim/plugged/vimfiler.vim/           && git reset --hard 0986007
 cd /home/andrei/.vim/plugged/neossh.vim/             && git reset --hard fdb2498
-cd /home/andrei/.vim/plugged/vimshell.vim/           && git reset --hard 88643ed
+cd /home/andrei/.vim/plugged/vimshell.vim/           && git reset --hard 2c319d3
 cd /home/andrei/.vim/plugged/vim-puppet/             && git reset --hard d881b93
 cd /home/andrei/.vim/plugged/vim-ruby-refactoring/   && git reset --hard 6447a4d
-cd /home/andrei/.vim/plugged/syntastic/              && git reset --hard aa3db45
+cd /home/andrei/.vim/plugged/syntastic/              && git reset --hard 1e1c708
 cd /home/andrei/.vim/plugged/vim-multiple-cursors/   && git reset --hard f948606
 cd /home/andrei/.vim/plugged/vim-gitgutter/          && git reset --hard 1e82019
 cd /home/andrei/.vim/plugged/copypath.vim/           && git reset --hard b7c5e7f

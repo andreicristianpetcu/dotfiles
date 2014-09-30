@@ -13,6 +13,7 @@ let mapleader = "\<Space>"
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
 call plug#begin('~/.vim/plugged')
+command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -32,7 +33,8 @@ nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gg :tab split +Gstatus<CR>
+nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>gt :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
 nnoremap <Leader>grh :Git reset --hard<CR>
@@ -71,8 +73,6 @@ Plug 'tpope/vim-rails'
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
-
-command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -142,6 +142,7 @@ function! SilverSearch(word)
   set hidden
   execute l:ag_cmd
 endfunction
+
 " silver searcher
 let g:agprg="ag --column"
 " Search with ag for the content of register s
