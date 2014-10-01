@@ -12,7 +12,7 @@ let mapleader = "\<Space>"
 
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
 command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
 " Let NeoBundle manage NeoBundle
 " Required:
