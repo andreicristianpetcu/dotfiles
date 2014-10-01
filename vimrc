@@ -189,6 +189,8 @@ noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40 -no-spl
 nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
+noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
 " most recent files
 Plug 'Shougo/neomru.vim'
