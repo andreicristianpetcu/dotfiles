@@ -162,7 +162,7 @@ Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_min_count = 2 
+let g:airline#extensions#tabline#buffer_min_count = 2
 let conn=$CONN
 if conn != 'sshd'
   let g:airline_powerline_fonts = 1
