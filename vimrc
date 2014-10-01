@@ -14,7 +14,6 @@ let mapleader = "\<Space>"
 " call neobundle#rc(expand('~/.vim/bundle/'))
 call plug#begin('~/.vim/plugged')
 command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
-let g:plug_home = '$HOME/.vim/plugged'
 " Let NeoBundle manage NeoBundle
 " Required:
 " NeoBundleFetch 'Shougo/neobundle.vim'
