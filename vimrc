@@ -465,6 +465,8 @@ Plug 'codegram/vim-codereview'
 Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
+Plug 'Valloric/MatchTagAlways'
+
 " vim-scripts repos
 Plug 'L9'
 
