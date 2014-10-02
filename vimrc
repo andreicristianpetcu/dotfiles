@@ -416,7 +416,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
-nmap <Leader>ll mavae='a
+nmap <Leader>= mavae='a
 
 " Qdo and Qargs commands
 Plug 'MarioRicalde/vim-qargs'
@@ -627,9 +627,6 @@ function! MaximizeToggle()
     only
   endif
 endfunction
-
-" copy the default clipboard into the system clipboard
-map <Leader>= :let @+=@"<CR>
 
 " You complete me disabled for tab, only for control space
 " let g:ycm_auto_trigger = 0
