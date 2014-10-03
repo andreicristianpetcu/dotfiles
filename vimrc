@@ -311,11 +311,13 @@ Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>nn :VimFilerExplorer -find -safe -winwidth=80<CR>
+nnoremap <Leader>nn :VimFilerExplorer -find -winwidth=80<CR>
 nnoremap <Leader>nd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+autocmd FileType vimfiler
+      \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
