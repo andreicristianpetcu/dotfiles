@@ -156,6 +156,7 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
+nnoremap <Leader>/r :Gqfopen<CR<CR>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
