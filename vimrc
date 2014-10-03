@@ -35,6 +35,7 @@ nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gg :Gstatus<CR>
 nnoremap <Leader>gt :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
+nnoremap <Leader>gpa :Git push --all<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
 nnoremap <Leader>grh :Git reset --hard<CR>
 nnoremap <Leader>gsl :Git! stash list<CR>
@@ -156,7 +157,7 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
-nnoremap <Leader>/r :Gqfopen<CR<CR>
+nnoremap <Leader>/r :Gqfopen<CR>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
@@ -556,8 +557,8 @@ set laststatus=2
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
-
 nnoremap <Leader>te :tabedit %<CR>
+
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -579,16 +580,12 @@ nmap <F1> <Esc>
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
 
-" Maps autocomplete to tab
-" imap <Tab> <C-N>
-
 imap <C-L> <Space>=><Space>
 
 " Use Ack instead of Grep when available
 if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
 endif
-
 
 " Numbers
 set number
