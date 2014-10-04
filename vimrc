@@ -13,7 +13,7 @@ let mapleader = "\<Space>"
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
 call plug#begin('~/.vim/bundle')
-command! VimPlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
+command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
 " Let NeoBundle manage NeoBundle
 " Required:
 " NeoBundleFetch 'Shougo/neobundle.vim'
@@ -73,6 +73,11 @@ Plug 'tpope/vim-rails'
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
+
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch'
+Plug 'asux/vim-capybara'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
