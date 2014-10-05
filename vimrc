@@ -124,6 +124,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'andreicristianpetcu/vim-snippets'
 
 Plug 'andreicristianpetcu/argarg.vim'
+autocmd VimEnter * ArgArgLoadGitArgs
 
 " added ctags support that works
 Plug 'szw/vim-tags'
