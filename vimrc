@@ -123,6 +123,8 @@ Plug 'tomtom/tlib_vim'
 " Optional
 Plug 'andreicristianpetcu/vim-snippets'
 
+Plug 'andreicristianpetcu/argarg.vim'
+
 " added ctags support that works
 Plug 'szw/vim-tags'
 
@@ -169,7 +171,7 @@ Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_min_count = 2
+let g:airline#extensions#tabline#show_buffers = 0
 let conn=$CONN
 if conn != 'sshd'
   let g:airline_powerline_fonts = 1
@@ -642,7 +644,7 @@ let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
-map <C-C> <ESC>
+map <C-C> w<ESC>
 " search with ag for the content of register s
 map <Leader>a :call SilverSearch("<cword>")<CR>
 map <Leader>A :call SilverSearch("<cWORD>")<CR>
