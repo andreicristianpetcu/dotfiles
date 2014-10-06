@@ -303,7 +303,7 @@ alias licenseagpl="wget https://gitorious.org/tribunal/tribunal/raw/LICENSE.txt"
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-fe() {
+fzed() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
@@ -313,57 +313,71 @@ fe() {
 # fe [FUZZY PATTERN] - Delete selected file or directory
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-frmf() {
+fzrmf() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && rm -rf "$file"
 }
 
 # Equivalent to above, but opens it with `open` command
-fo() {
+fzo() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && open "$file"
 }
 
 # fd - cd to selected directory
-fd() {
+fzcd() {
   local dir
   dir=$(find ${1:-*} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
+
 # fda - including hidden directories
 fda() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
+
 # cdf - cd into the directory of the selected file
-cdf() {
+fzcdf() {
    local file
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
+
 # fkill - kill process
-fkill() {
+fzkill() {
   ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
+
 # fbr - checkout git branch
-fbr() {
+fzgcob() {
   local branches branch
   branches=$(git branch) &&
   branch=$(echo "$branches" | fzf +s +m) &&
   git checkout $(echo "$branch" | sed "s/.* //")
 }
+
 # fco - checkout git commit
-fco() {
+fzgcoc() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf +s +m -e) &&
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
+
+# fzgt - checkout git tags
+fzgcot() {
+  local tags tag
+  tags=$(git tag) &&
+  tag=$(echo "$tags" | fzf +s +m) &&
+  git checkout tags/$(echo "$tag" | sed "s/.* //")
+}
+
 # ftags - search ctags
-ftags() {
+fztags() {
   local line
   [ -e tags ] &&
   line=$(
