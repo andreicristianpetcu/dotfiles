@@ -61,7 +61,14 @@ nnoremap [r dp[c:wall<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-nnoremap <Leader>s :%S/<C-R>s/<C-R>s/gc
+nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\ :%S///gc<left><left><left><left>
+nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
 
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
@@ -145,19 +152,19 @@ Plug 'rking/ag.vim'
 " Ag.vim script for easy search
 function! SilverSearch(word)
   let @s = expand(a:word)
-  let l:ag_cmd = "Ag " . shellescape(@s) . " ."
+  let l:ag_cmd = "Ag -Q " . shellescape(@s) . " ."
   call histadd("cmd", l:ag_cmd)
   set hidden
   execute l:ag_cmd
 endfunction
 
 " silver searcher
-let g:agprg="ag --column"
+let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
-noremap <Leader>sw :call SilverSearch("<cword>")<CR>
-noremap <Leader>sW :call SilverSearch("<cWORD>")<CR>
-noremap <Leader>ss :call SilverSearch(expand(@0))<CR>
-noremap <Leader>sa :Ag 
+noremap <Leader>/w :call SilverSearch("<cword>")<CR>
+noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
+noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
+noremap <Leader>/a :Ag -Q 
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -165,7 +172,7 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
-nnoremap <Leader>/r :Gqfopen<CR>
+nnoremap <Leader>\r :Gqfopen<CR>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
@@ -207,11 +214,11 @@ if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore ' .
+  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
   \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
   let g:unite_source_grep_recursive_opt = ''
 endif
-nnoremap <space>/ :Unite grep:. -start-insert<cr>
+nnoremap <space>/2 :Unite grep:. -start-insert<cr>
 
 " most recent files
 Plug 'Shougo/neomru.vim'
