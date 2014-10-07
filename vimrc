@@ -12,9 +12,8 @@ let mapleader = "\<Space>"
 
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
-call plug#begin('~/.vim/plugged')
-command! VimPlugTakeSnapshot PlugSnapshot /home/andrei/.vim_plug_snapshot.sh
-
+call plug#begin('~/.vim/bundle')
+command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
 " Let NeoBundle manage NeoBundle
 " Required:
 " NeoBundleFetch 'Shougo/neobundle.vim'
@@ -36,6 +35,7 @@ nnoremap <Leader>ge :Gedit<CR>
 nnoremap <Leader>gg :Gstatus<CR>
 nnoremap <Leader>gt :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
+nnoremap <Leader>gpa :Git push --all<CR>
 nnoremap <Leader>gpf :Git push --force<CR>
 nnoremap <Leader>grh :Git reset --hard<CR>
 nnoremap <Leader>gsl :Git! stash list<CR>
@@ -61,8 +61,16 @@ nnoremap [r dp[c:wall<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-nnoremap <Leader>s :%S/<C-R>s/<C-R>s/gc
-
+nnoremap <Leader>/f :%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\ :%S///gc<left><left><left><left>
+" nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
+"
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/gem-ctags'
@@ -73,6 +81,11 @@ Plug 'tpope/vim-rails'
 " Edit routes
 command! Rroutes :e config/routes.rb
 command! Rschema :e db/schema.rb
+
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch'
+Plug 'asux/vim-capybara'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -118,6 +131,9 @@ Plug 'tomtom/tlib_vim'
 " Optional
 Plug 'andreicristianpetcu/vim-snippets'
 
+Plug 'andreicristianpetcu/argarg.vim'
+autocmd VimEnter * ArgArgLoadGitArgs
+
 " added ctags support that works
 Plug 'szw/vim-tags'
 
@@ -137,19 +153,19 @@ Plug 'rking/ag.vim'
 " Ag.vim script for easy search
 function! SilverSearch(word)
   let @s = expand(a:word)
-  let l:ag_cmd = "Ag " . shellescape(@s) . " ."
+  let l:ag_cmd = "Ag -Q " . shellescape(@s) . " ."
   call histadd("cmd", l:ag_cmd)
   set hidden
   execute l:ag_cmd
 endfunction
 
 " silver searcher
-let g:agprg="ag --column"
+let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
-noremap <Leader>sw :call SilverSearch("<cword>")<CR>
-noremap <Leader>sW :call SilverSearch("<cWORD>")<CR>
-noremap <Leader>ss :call SilverSearch(expand(@0))<CR>
-noremap <Leader>sa :Ag 
+noremap <Leader>/w :call SilverSearch("<cword>")<CR>
+noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
+noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
+noremap <Leader>// :Ag -Q 
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -157,10 +173,14 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
+nnoremap <Leader>\r :Gqfopen<CR>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let conn=$CONN
 if conn != 'sshd'
   let g:airline_powerline_fonts = 1
@@ -186,6 +206,20 @@ noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40 -no-spl
 nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
+noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+noremap <Leader>/L yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+nnoremap <Leader>/l :UniteResume -start-insert<CR>
+
+let g:unite_source_grep_max_candidates = 200
+if executable('ag')
+  " Use ag in unite grep source.
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
+  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
+nnoremap <space>/2 :Unite grep:. -start-insert<cr>
 
 " most recent files
 Plug 'Shougo/neomru.vim'
@@ -294,11 +328,13 @@ Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>nn :VimFilerExplorer -find -safe<CR>
+nnoremap <Leader>nn :VimFilerExplorer -find -winwidth=80<CR>
 nnoremap <Leader>nd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+autocmd FileType vimfiler
+      \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
@@ -400,7 +436,7 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
 Plug 'kana/vim-textobj-line'
 Plug 'kana/vim-textobj-entire'
-nmap <Leader>ll mavae='a
+nmap <Leader>= mavae='a
 
 " Qdo and Qargs commands
 Plug 'MarioRicalde/vim-qargs'
@@ -427,6 +463,7 @@ nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
+Plug 'szw/vim-ctrlspace'
 
 " sneak
 Plug 'justinmk/vim-sneak'
@@ -448,6 +485,8 @@ Plug 'codegram/vim-codereview'
 
 Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
+
+Plug 'Valloric/MatchTagAlways'
 
 " vim-scripts repos
 Plug 'L9'
@@ -535,6 +574,9 @@ set laststatus=2
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
+nnoremap <Leader>te :tabedit %<CR>
+nnoremap ]t :tabNext<CR>
+nnoremap [t :tabp<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -557,16 +599,12 @@ nmap <F1> <Esc>
 " Press ^F from insert mode to insert the current file name
 imap <C-F> <C-R>=expand("%")<CR>
 
-" Maps autocomplete to tab
-" imap <Tab> <C-N>
-
 imap <C-L> <Space>=><Space>
 
 " Use Ack instead of Grep when available
 if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
 endif
-
 
 " Numbers
 set number
@@ -610,16 +648,13 @@ function! MaximizeToggle()
   endif
 endfunction
 
-" copy the default clipboard into the system clipboard
-map <Leader>= :let @+=@"<CR>
-
 " You complete me disabled for tab, only for control space
 " let g:ycm_auto_trigger = 0
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
-map <C-C> <ESC>
+map <C-C> w<ESC>
 " search with ag for the content of register s
 map <Leader>a :call SilverSearch("<cword>")<CR>
 map <Leader>A :call SilverSearch("<cWORD>")<CR>
