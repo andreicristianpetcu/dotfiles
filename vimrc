@@ -61,15 +61,16 @@ nnoremap [r dp[c:wall<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\ :%S///gc<left><left><left><left>
-nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
-
+nnoremap <Leader>/f :%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
+" nnoremap <Leader>\ :%S///gc<left><left><left><left>
+" nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
+"
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/gem-ctags'
@@ -164,7 +165,7 @@ let g:agprg="ag -Q --column"
 noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
-noremap <Leader>/a :Ag -Q 
+noremap <Leader>// :Ag -Q 
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -206,8 +207,8 @@ nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
 noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
-nnoremap <Leader>ur :UniteResume -start-insert<CR>
+noremap <Leader>/L yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+nnoremap <Leader>/l :UniteResume -start-insert<CR>
 
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
@@ -462,6 +463,7 @@ nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
+Plug 'szw/vim-ctrlspace'
 
 " sneak
 Plug 'justinmk/vim-sneak'
