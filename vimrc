@@ -128,7 +128,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'andreicristianpetcu/vim-snippets'
 
 Plug 'andreicristianpetcu/argarg.vim'
-autocmd VimEnter * ArgArgLoadGitArgs
+" autocmd VimEnter * ArgArgLoadGitArgs
 
 " added ctags support that works
 Plug 'szw/vim-tags'
@@ -227,11 +227,11 @@ endif
 nnoremap <space>/2 :Unite grep:. -start-insert<cr>
 
 " Angular.js stuff
-noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app controller  .js<left><left><left><left>
-noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app service  .js<left><left><left><left>
-noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app directive  .js<left><left><left><left>
+noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
+noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
+noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
 noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
-noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app  .html<left><left><left><left><left><left>
+noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
 noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
 noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
 noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
