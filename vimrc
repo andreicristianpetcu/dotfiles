@@ -119,7 +119,7 @@ Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
 Plug 'sickill/vim-monokai'
-" ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+"mkdir -p ~/.vim/colors/ && ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -659,10 +659,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-" search with ag for the content of register s
-map <Leader>a :call SilverSearch("<cword>")<CR>
-map <Leader>A :call SilverSearch("<cWORD>")<CR>
-
 nnoremap <C-W>x :only<CR>
 
 " terryma/vim-multiple-cursors
