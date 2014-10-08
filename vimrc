@@ -61,16 +61,12 @@ nnoremap [r dp[c:wall<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-nnoremap <Leader>/f :%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\ :%S///gc<left><left><left><left>
-" nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
-"
+nnoremap <Leader>\ff yiw:%S/<C-R>0/<C-R>0/gc<left><left><left><left>
+nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
+nnoremap <Leader>\fs :%S///gc<left><left><left><left>
+
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/gem-ctags'
@@ -162,10 +158,11 @@ endfunction
 " silver searcher
 let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
+noremap <Leader>// :call SilverSearch("<cword>")<CR>
 noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
-noremap <Leader>// :Ag -Q 
+noremap <Leader>/s :Ag 
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -173,7 +170,15 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
-nnoremap <Leader>\r :Gqfopen<CR>
+nnoremap <Leader>\rq :Gqfopen<CR>
+nnoremap <Leader>\rg :Greplace<CR>
+
+" map find replace
+nnoremap <Leader>\\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\w yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
@@ -250,20 +255,20 @@ let g:unite_source_tag_max_fname_length=140
 
 " unite rails
 Plug 'basyura/unite-rails'
-nnoremap <Leader>ym :Unite rails/model -start-insert<CR>
-nnoremap <Leader>yc :Unite rails/controller -start-insert<CR>
-nnoremap <Leader>yv :Unite rails/view -start-insert<CR>
-nnoremap <Leader>yh :Unite rails/helper -start-insert<CR>
-nnoremap <Leader>yM :Unite rails/mailer -start-insert<CR>
-nnoremap <Leader>yl :Unite rails/lib -start-insert<CR>
-nnoremap <Leader>yd :Unite rails/db -start-insert<CR>
-nnoremap <Leader>yC :Unite rails/config -start-insert<CR>
-nnoremap <Leader>yL :Unite rails/log -start-insert<CR>
-nnoremap <Leader>yj :Unite rails/javascript -start-insert<CR>
-nnoremap <Leader>ys :Unite rails/stylesheet -start-insert<CR>
-nnoremap <Leader>yb :Unite rails/bundle -start-insert<CR>
-nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert<CR>
-nnoremap <Leader>yro :Unite rails/route -start-insert<CR>
+nnoremap <Leader>rm :Unite rails/model -start-insert<CR>
+nnoremap <Leader>rc :Unite rails/controller -start-insert<CR>
+nnoremap <Leader>rv :Unite rails/view -start-insert<CR>
+nnoremap <Leader>rh :Unite rails/helper -start-insert<CR>
+nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
+nnoremap <Leader>rl :Unite rails/lib -start-insert<CR>
+nnoremap <Leader>rd :Unite rails/db -start-insert<CR>
+nnoremap <Leader>rC :Unite rails/config -start-insert<CR>
+nnoremap <Leader>rL :Unite rails/log -start-insert<CR>
+nnoremap <Leader>rj :Unite rails/javascript -start-insert<CR>
+nnoremap <Leader>rs :Unite rails/stylesheet -start-insert<CR>
+nnoremap <Leader>rb :Unite rails/bundle -start-insert<CR>
+nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
+nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
 nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
@@ -354,15 +359,15 @@ Plug 'rodjek/vim-puppet'
 
 " ruby refactoring
 Plug 'ecomba/vim-ruby-refactoring'
-nnoremap <leader>Rap  :RAddParameter<cr>
-nnoremap <leader>Rcpc :RConvertPostConditional<cr>
-nnoremap <leader>Rel  :RExtractLet<cr>
-vnoremap <leader>Rec  :RExtractConstant<cr>
-vnoremap <leader>Relv :RExtractLocalVariable<cr>
-nnoremap <leader>Rit  :RInlineTemp<cr>
-vnoremap <leader>Rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>Rriv :RRenameInstanceVariable<cr>
-vnoremap <leader>Rem  :RExtractMethod<cr>
+nnoremap <leader>rfap  :RAddParameter<cr>
+nnoremap <leader>rfcpc :RConvertPostConditional<cr>
+nnoremap <leader>rfel  :RExtractLet<cr>
+vnoremap <leader>rfec  :RExtractConstant<cr>
+vnoremap <leader>rfelv :RExtractLocalVariable<cr>
+nnoremap <leader>rfit  :RInlineTemp<cr>
+vnoremap <leader>rfrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rfriv :RRenameInstanceVariable<cr>
+vnoremap <leader>rfem  :RExtractMethod<cr>
 
 " Syntastic - simple error checking
 Plug 'scrooloose/syntastic'
@@ -463,7 +468,6 @@ nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
-Plug 'szw/vim-ctrlspace'
 
 " sneak
 Plug 'justinmk/vim-sneak'
@@ -679,16 +683,6 @@ nnoremap <F7> <C-c>:set paste<CR>i
 " Map command W to write with sudo
 command! W  write !sudo tee %
 command! Q  quitall
-
-" map find replace
-nnoremap <Leader>rr :%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rR :%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rww yiw:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rwW yiw:%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWw yiW:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWW yiW:%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rs :%s///gc<left><left><left><left>
-nnoremap <Leader>rS :%S///gc<left><left><left><left>
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
