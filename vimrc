@@ -226,6 +226,9 @@ if executable('ag')
 endif
 nnoremap <space>/2 :Unite grep:. -start-insert<cr>
 
+" Angular.js stuff
+noremap <leader>ac :Unite -start-insert file_rec<CR>app controller  .js<left><left><left><left>
+
 " most recent files
 Plug 'Shougo/neomru.vim'
 nnoremap <Leader>uR :Unite -start-insert file_mru<CR>
