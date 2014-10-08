@@ -250,20 +250,20 @@ let g:unite_source_tag_max_fname_length=140
 
 " unite rails
 Plug 'basyura/unite-rails'
-nnoremap <Leader>ym :Unite rails/model -start-insert<CR>
-nnoremap <Leader>yc :Unite rails/controller -start-insert<CR>
-nnoremap <Leader>yv :Unite rails/view -start-insert<CR>
-nnoremap <Leader>yh :Unite rails/helper -start-insert<CR>
-nnoremap <Leader>yM :Unite rails/mailer -start-insert<CR>
-nnoremap <Leader>yl :Unite rails/lib -start-insert<CR>
-nnoremap <Leader>yd :Unite rails/db -start-insert<CR>
-nnoremap <Leader>yC :Unite rails/config -start-insert<CR>
-nnoremap <Leader>yL :Unite rails/log -start-insert<CR>
-nnoremap <Leader>yj :Unite rails/javascript -start-insert<CR>
-nnoremap <Leader>ys :Unite rails/stylesheet -start-insert<CR>
-nnoremap <Leader>yb :Unite rails/bundle -start-insert<CR>
-nnoremap <Leader>yg :Unite rails/bundled_gem -start-insert<CR>
-nnoremap <Leader>yro :Unite rails/route -start-insert<CR>
+nnoremap <Leader>rm :Unite rails/model -start-insert<CR>
+nnoremap <Leader>rc :Unite rails/controller -start-insert<CR>
+nnoremap <Leader>rv :Unite rails/view -start-insert<CR>
+nnoremap <Leader>rh :Unite rails/helper -start-insert<CR>
+nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
+nnoremap <Leader>rl :Unite rails/lib -start-insert<CR>
+nnoremap <Leader>rd :Unite rails/db -start-insert<CR>
+nnoremap <Leader>rC :Unite rails/config -start-insert<CR>
+nnoremap <Leader>rL :Unite rails/log -start-insert<CR>
+nnoremap <Leader>rj :Unite rails/javascript -start-insert<CR>
+nnoremap <Leader>rs :Unite rails/stylesheet -start-insert<CR>
+nnoremap <Leader>rb :Unite rails/bundle -start-insert<CR>
+nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
+nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
 nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
