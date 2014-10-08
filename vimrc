@@ -289,7 +289,11 @@ nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>yra :Unite rake -start-insert<CR>
 
-" Autocomplete plugin
+Plug 'burnettk/vim-angular'
+let g:angular_source_directory = 'uwezo-presentation/yo/app'
+let g:angular_test_directory = 'uwezo-presentation/yo/app/test/spec'
+
+"Autocomplete plugin
 Plug 'Shougo/neocomplete'
 " enable neocomplete
 let g:neocomplete#enable_at_startup = 1
