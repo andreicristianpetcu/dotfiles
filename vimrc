@@ -227,7 +227,12 @@ endif
 nnoremap <space>/2 :Unite grep:. -start-insert<cr>
 
 " Angular.js stuff
-noremap <leader>ac :Unite -start-insert file_rec<CR>app controller  .js<left><left><left><left>
+noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app controller  .js<left><left><left><left>
+noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app service  .js<left><left><left><left>
+noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app directive  .js<left><left><left><left>
+noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
+noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
+noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
 
 " most recent files
 Plug 'Shougo/neomru.vim'
