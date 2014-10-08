@@ -231,9 +231,13 @@ noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modu
 noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app service  .js<left><left><left><left>
 noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app directive  .js<left><left><left><left>
 noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
+noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app  .html<left><left><left><left><left><left>
+noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
 noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
 noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
 noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
+noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
+noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
 
 " most recent files
 Plug 'Shougo/neomru.vim'
