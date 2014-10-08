@@ -354,15 +354,15 @@ Plug 'rodjek/vim-puppet'
 
 " ruby refactoring
 Plug 'ecomba/vim-ruby-refactoring'
-nnoremap <leader>Rap  :RAddParameter<cr>
-nnoremap <leader>Rcpc :RConvertPostConditional<cr>
-nnoremap <leader>Rel  :RExtractLet<cr>
-vnoremap <leader>Rec  :RExtractConstant<cr>
-vnoremap <leader>Relv :RExtractLocalVariable<cr>
-nnoremap <leader>Rit  :RInlineTemp<cr>
-vnoremap <leader>Rrlv :RRenameLocalVariable<cr>
-vnoremap <leader>Rriv :RRenameInstanceVariable<cr>
-vnoremap <leader>Rem  :RExtractMethod<cr>
+nnoremap <leader>rfap  :RAddParameter<cr>
+nnoremap <leader>rfcpc :RConvertPostConditional<cr>
+nnoremap <leader>rfel  :RExtractLet<cr>
+vnoremap <leader>rfec  :RExtractConstant<cr>
+vnoremap <leader>rfelv :RExtractLocalVariable<cr>
+nnoremap <leader>rfit  :RInlineTemp<cr>
+vnoremap <leader>rfrlv :RRenameLocalVariable<cr>
+vnoremap <leader>rfriv :RRenameInstanceVariable<cr>
+vnoremap <leader>rfem  :RExtractMethod<cr>
 
 " Syntastic - simple error checking
 Plug 'scrooloose/syntastic'
