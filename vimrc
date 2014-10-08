@@ -212,8 +212,8 @@ nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
 noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>/L yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
-nnoremap <Leader>/l :UniteResume -start-insert<CR>
+noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+nnoremap <Leader>ur :UniteResume -start-insert<CR>
 
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
