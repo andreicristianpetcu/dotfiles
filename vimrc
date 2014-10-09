@@ -163,6 +163,8 @@ noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
 noremap <Leader>// :Ag -Q 
+noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
 noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
 noremap <Leader>/i" yi":call SilverSearch(expand(@0))<CR>
 
