@@ -166,6 +166,8 @@ noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
 noremap <Leader>// :Ag -Q 
+noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/i" yi":call SilverSearch(expand(@0))<CR>
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -655,9 +657,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-" search with ag for the content of register s
-map <Leader>a :call SilverSearch("<cword>")<CR>
-map <Leader>A :call SilverSearch("<cWORD>")<CR>
 
 nnoremap <C-W>x :only<CR>
 
