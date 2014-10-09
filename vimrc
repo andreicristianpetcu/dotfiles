@@ -61,16 +61,12 @@ nnoremap [r dp[c:wall<CR>
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-abolish'
-nnoremap <Leader>/f :%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\0 :%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\0 :argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\w yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\w yiw:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\W yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\\W yiW:argdo %S/<C-R>0/<C-R>0/gc<left><left><left>
-" nnoremap <Leader>\ :%S///gc<left><left><left><left>
-" nnoremap <Leader>\\ :argdo %S///gc<left><left><left><left>
-"
+nnoremap <Leader>\ff yiw:%S/<C-R>0/<C-R>0/gc<left><left><left><left>
+nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
+nnoremap <Leader>\fs :%S///gc<left><left><left><left>
+
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-rake'
 Plug 'tpope/gem-ctags'
@@ -123,7 +119,7 @@ Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
 Plug 'sickill/vim-monokai'
-" ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+"mkdir -p ~/.vim/colors/ && ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -132,7 +128,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'andreicristianpetcu/vim-snippets'
 
 Plug 'andreicristianpetcu/argarg.vim'
-autocmd VimEnter * ArgArgLoadGitArgs
+" autocmd VimEnter * ArgArgLoadGitArgs
 
 " added ctags support that works
 Plug 'szw/vim-tags'
@@ -162,6 +158,7 @@ endfunction
 " silver searcher
 let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
+noremap <Leader>// :call SilverSearch("<cword>")<CR>
 noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
@@ -175,7 +172,15 @@ Plug 'skwp/greplace.vim'
 " let g:grep_cmd_opts = '--line-numbers --noheading'
 set grepprg=ack
 let g:grep_cmd_opts = '--noheading'
-nnoremap <Leader>\r :Gqfopen<CR>
+nnoremap <Leader>\rq :Gqfopen<CR>
+nnoremap <Leader>\rg :Greplace<CR>
+
+" map find replace
+nnoremap <Leader>\\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\w yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
@@ -209,8 +214,8 @@ nnoremap <Leader>um :Unite -start-insert mapping<CR>
 nnoremap <Leader>uj :Unite -start-insert jump<CR>
 nnoremap <Leader>ue :Unite -start-insert change<CR>
 noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>/L yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
-nnoremap <Leader>/l :UniteResume -start-insert<CR>
+noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+nnoremap <Leader>ur :UniteResume -start-insert<CR>
 
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
@@ -222,6 +227,19 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 endif
 nnoremap <space>/2 :Unite grep:. -start-insert<cr>
+
+" Angular.js stuff
+noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
+noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
+noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
+noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
+noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
+noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
+noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
+noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
+noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
+noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
+noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
 
 " most recent files
 Plug 'Shougo/neomru.vim'
@@ -273,7 +291,11 @@ nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>yra :Unite rake -start-insert<CR>
 
-" Autocomplete plugin
+Plug 'burnettk/vim-angular'
+let g:angular_source_directory = 'uwezo-presentation/yo/app'
+let g:angular_test_directory = 'uwezo-presentation/yo/app/test/spec'
+
+"Autocomplete plugin
 Plug 'Shougo/neocomplete'
 " enable neocomplete
 let g:neocomplete#enable_at_startup = 1
@@ -465,7 +487,6 @@ nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
-Plug 'szw/vim-ctrlspace'
 
 " sneak
 Plug 'justinmk/vim-sneak'
@@ -657,9 +678,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-
-nnoremap <C-W>x :only<CR>
-
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
 let g:multi_cursor_quit_key='<C-C>'
@@ -678,16 +696,6 @@ nnoremap <F7> <C-c>:set paste<CR>i
 " Map command W to write with sudo
 command! W  write !sudo tee %
 command! Q  quitall
-
-" map find replace
-nnoremap <Leader>rr :%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rR :%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rww yiw:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rwW yiw:%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWw yiW:%s/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rWW yiW:%S/<C-R>0//gc<left><left><left>
-nnoremap <Leader>rs :%s///gc<left><left><left><left>
-nnoremap <Leader>rS :%S///gc<left><left><left><left>
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
