@@ -353,7 +353,7 @@ fzkill() {
 }
 
 # fbr - checkout git branch
-fzgcob() {
+fzgb() {
   local branches branch
   branches=$(git branch) &&
   branch=$(echo "$branches" | fzf +s +m) &&
@@ -361,7 +361,7 @@ fzgcob() {
 }
 
 # fco - checkout git commit
-fzgcoc() {
+fzgc() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf +s +m -e) &&
@@ -369,7 +369,7 @@ fzgcoc() {
 }
 
 # fzgt - checkout git tags
-fzgcot() {
+fzgt() {
   local tags tag
   tags=$(git tag) &&
   tag=$(echo "$tags" | fzf +s +m) &&
