@@ -672,6 +672,7 @@ function! MaximizeToggle()
     only
   endif
 endfunction
+nnoremap <C-W>x :only<CR>
 
 " You complete me disabled for tab, only for control space
 " let g:ycm_auto_trigger = 0
