@@ -162,7 +162,11 @@ noremap <Leader>// :call SilverSearch("<cword>")<CR>
 noremap <Leader>/w :call SilverSearch("<cword>")<CR>
 noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
-noremap <Leader>/s :Ag 
+noremap <Leader>// :Ag -Q 
+noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
+noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/i" yi":call SilverSearch(expand(@0))<CR>
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -676,8 +680,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-nnoremap <C-W>x :only<CR>
-
 " terryma/vim-multiple-cursors
 " multi cursor map exit to ctrl+c
 let g:multi_cursor_quit_key='<C-C>'
