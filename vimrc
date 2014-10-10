@@ -141,7 +141,6 @@ let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.local/bin/jsctags'
 \ }
 
-Plug 'vim-scripts/EasyGrep'
 Plug 'jaredly/vim-debug'
 
 " crazy fast searching
@@ -307,10 +306,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Plug 'msanders/snipmate.vim'
-" Plug 'matthewsimo/angular-vim-snippets'
 Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -344,11 +340,6 @@ let g:neosnippet#enable_snipmate_compatibilit = 1
 
 " code-analysis engine for JavaScript
 Plug 'marijnh/tern_for_vim'
-
-" nerdtree - file manager
-Plug 'scrooloose/nerdtree'
-" NERD Tree specific stuff
-" nnoremap <Leader>n :NERDTreeFind<CR>
 
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
@@ -396,8 +387,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc.js'
 
-Plug 'kristijanhusak/vim-multiple-cursors'
-
 " GitGutter, easy diff
 Plug 'airblade/vim-gitgutter'
 nmap ]h <Plug>GitGutterNextHunk
@@ -418,19 +407,6 @@ Plug 'ap/vim-css-color'
 
 "closes quotes and other stuff
 Plug 'Raimondi/delimitMate'
-
-" Fuzzy finder - fast file navigation
-Plug 'vim-scripts/FuzzyFinder'
-noremap <Leader>fp :FufCoverageFile<CR>
-nnoremap <Leader>fl :FufLine<CR>
-nnoremap <Leader>fr :FufMruFile<CR>
-nnoremap <Leader>fh :FufHelp<CR>
-nnoremap <Leader>fc :FufMruCmd<CR>
-let g:fuf_modesDisable = []
-let g:fuf_keyOpenSplit = '<C-s>'
-let g:fuf_keyOpenVsplit = '<C-v>'
-let g:fuf_keyPrevPattern = '<C-h>'
-let g:fuf_keyNextPattern = '<C-l>'
 
 " Vim screen - GNU Screen/Tmux integration
 Plug 'ervandew/screen'
@@ -497,10 +473,6 @@ Plug 'glts/vim-textobj-comment'
 
 " support for coffeescript
 Plug 'kchmck/vim-coffee-script'
-
-" Vim auto save
-Plug '907th/vim-auto-save'
-let g:auto_save = 1
 
 Plug 'kana/vim-textobj-indent'
 
