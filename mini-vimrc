@@ -1,0 +1,5 @@
+" vim -Nu mini-vimrc
+call plug#begin('~/.vim/bundle')
+Plug 'sickill/vim-monokai'
+call plug#end()
+colo monokai
