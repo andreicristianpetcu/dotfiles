@@ -56,7 +56,7 @@ Plug 'gitv'
 nnoremap <Leader>gv :Gitv<CR>
 
 Plug 'sjl/gundo.vim'
-noremap <Leader>gn :Gnundo<CR>
+noremap <Leader>gn :GundoToggle<CR>
 
 " Fast buffer, change, search navigation
 Plug 'tpope/vim-unimpaired'
