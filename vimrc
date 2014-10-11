@@ -1,7 +1,14 @@
 " based on http://github.com/jferris/config_files/blob/master/vimrc
 
 if has('vim_starting')
-  set nocompatible               " Be iMproved
+  set nocompatible
+
+  let plug_vim=expand('~/.vim/autoload/plug.vim')
+  if !filereadable(plug_vim)
+    echom "Installing plug.."
+    silent !mkdir -p ~/.vim/bundle
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  endif
 
   " Required:
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -658,9 +665,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-" terryma/vim-multiple-cursors
-" multi cursor map exit to ctrl+c
-let g:multi_cursor_quit_key='<C-C>'
 
 " Required:
 filetype plugin indent on
