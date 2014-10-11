@@ -510,7 +510,6 @@ set history=1000		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set cursorline cursorcolumn
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -527,8 +526,12 @@ if $COLORTERM == 'drop-down-terminal'
   " set t_Co=256
   colorscheme desert 
 else
-  " Color scheme
-  colorscheme monokai
+  if has#colorscheme('monokai')
+    colorscheme monokai
+    set cursorline cursorcolumn
+  else
+    colorscheme desert 
+  endif
 endif
 
 " Switch wrap off for everything
