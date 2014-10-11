@@ -9,7 +9,6 @@ if has('vim_starting')
     echom "Installing Plug.vim.."
     silent !mkdir -p ~/.vim/autoload
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    echom "Installing Plug plugins.."
     autocmd VimEnter * PlugInstall
   endif
 
