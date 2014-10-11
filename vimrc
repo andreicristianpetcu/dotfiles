@@ -1,17 +1,13 @@
-" based on http://github.com/jferris/config_files/blob/master/vimrc
-
 if has('vim_starting')
   set nocompatible
 
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     echom "Installing plug.."
-    silent !mkdir -p ~/.vim/autoload
+    silent !mkdir -p ~/.vim/bundle
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " yeah.... use space as the leader
