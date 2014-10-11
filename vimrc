@@ -1,28 +1,32 @@
+" yeah.... use space as the leader
+let mapleader = "\<Space>"
+
 if has('vim_starting')
   set nocompatible
 
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
-    echom "Installing plug.."
+    echom "Installing Plug.vim.."
     silent !mkdir -p ~/.vim/bundle
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    call plug#begin('~/.vim/bundle')
+    echom "Installing Plug plugins.."
+    autocmd VimEnter * PlugInstall
+  else
+    call plug#begin('~/.vim/bundle')
   endif
 
 endif
 
-" yeah.... use space as the leader
-let mapleader = "\<Space>"
 
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
-call plug#begin('~/.vim/bundle')
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
+
 " Let NeoBundle manage NeoBundle
 " Required:
 " NeoBundleFetch 'Shougo/neobundle.vim'
 
-" My bundles here:
-"
 " Fugitive - Git wrapper
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>ga :Git add . --all<CR>
