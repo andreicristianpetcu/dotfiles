@@ -55,6 +55,10 @@ nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
 Plug 'gitv'
 nnoremap <Leader>gv :Gitv<CR>
 
+Plug 'sjl/gundo.vim'
+noremap <Leader>gn :Gnundo<CR>
+
+
 " Fast buffer, change, search navigation
 Plug 'tpope/vim-unimpaired'
 nnoremap ]g do]c:wall<CR>
@@ -491,8 +495,6 @@ Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'Valloric/MatchTagAlways'
-
-Plug 'sjl/gundo.vim'
 
 " vim-scripts repos
 Plug 'L9'
