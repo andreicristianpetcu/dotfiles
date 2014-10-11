@@ -6,8 +6,8 @@ case $operatingsystem {
   # centos: { $os_specific_packages = "httpd" }
   # Note that these matches are case-insensitive.
   # redhat: { $os_specific_packages = "httpd" }
-  debian: { $os_specific_packages = "ack-grep" }
-  ubuntu: { $os_specific_packages = "ack-grep" }
+  debian: { $os_specific_packages = ["ack-grep", "silversearcher-ag"] }
+  ubuntu: { $os_specific_packages = ["ack-grep", "silversearcher-ag"] }
   default: { fail("Unrecognized operating system " + $operatingsystem) }
 }
 package { $os_specific_packages: }
