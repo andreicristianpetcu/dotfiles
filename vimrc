@@ -492,6 +492,8 @@ nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'Valloric/MatchTagAlways'
 
+Plug 'sjl/gundo.vim'
+
 " vim-scripts repos
 Plug 'L9'
 
