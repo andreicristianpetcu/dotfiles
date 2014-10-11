@@ -209,14 +209,14 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
-noremap <leader>up :Unite -start-insert buffer file_rec<CR>
-noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
-nnoremap <Leader>um :Unite -start-insert mapping<CR>
-nnoremap <Leader>uj :Unite -start-insert jump<CR>
-nnoremap <Leader>ue :Unite -start-insert change<CR>
-noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
-nnoremap <Leader>ur :UniteResume -start-insert<CR>
+noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
+nnoremap <Leader>/m :Unite -start-insert mapping<CR>
+nnoremap <Leader>/j :Unite -start-insert jump<CR>
+nnoremap <Leader>/e :Unite -start-insert change<CR>
+nnoremap <Leader>/r :UniteResume -start-insert<CR>
+noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
@@ -244,23 +244,23 @@ noremap <leader>an :Unite -start-insert file_rec<CR>node_modules
 
 " most recent files
 Plug 'Shougo/neomru.vim'
-nnoremap <Leader>uR :Unite -start-insert file_mru<CR>
+nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
 
 " Unite for help
 Plug 'tsukkee/unite-help'
-nnoremap <Leader>uh :Unite -start-insert help<CR>
+nnoremap <Leader>/h :Unite -start-insert help<CR>
 
 " Unite for outline
 Plug 'Shougo/unite-outline'
-nnoremap <Leader>uo :Unite -start-insert outline<CR>
+nnoremap <Leader>/o :Unite -start-insert outline<CR>
 
 " Unite for command history
 Plug 'thinca/vim-unite-history'
-nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
+nnoremap <Leader>/c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
-nnoremap <Leader>ut :Unite tag -start-insert<CR>
+nnoremap <Leader>/t :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
@@ -287,10 +287,10 @@ nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
 nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
-nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
+nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
-nnoremap <Leader>yra :Unite rake -start-insert<CR>
+nnoremap <Leader>ra :Unite rake -start-insert<CR>
 
 Plug 'burnettk/vim-angular'
 let g:angular_source_directory = 'uwezo-presentation/yo/app'
