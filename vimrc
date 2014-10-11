@@ -526,12 +526,8 @@ if $COLORTERM == 'drop-down-terminal'
   " set t_Co=256
   colorscheme desert 
 else
-  if has#colorscheme('monokai')
-    colorscheme monokai
-    set cursorline cursorcolumn
-  else
-    colorscheme desert 
-  endif
+  colorscheme monokai
+  set cursorline cursorcolumn
 endif
 
 " Switch wrap off for everything
