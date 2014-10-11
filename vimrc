@@ -6,7 +6,7 @@ if has('vim_starting')
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     echom "Installing plug.."
-    silent !mkdir -p ~/.vim/bundle
+    silent !mkdir -p ~/.vim/autoload
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   endif
 
