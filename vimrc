@@ -125,9 +125,7 @@ endif
 Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
-" Plug 'sickill/vim-monokai'
-Plug 'sickill/vim-monokai' { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors/ && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
-" rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors/ && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+Plug 'sickill/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors/ && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
