@@ -58,7 +58,6 @@ nnoremap <Leader>gv :Gitv<CR>
 Plug 'sjl/gundo.vim'
 noremap <Leader>gn :Gnundo<CR>
 
-
 " Fast buffer, change, search navigation
 Plug 'tpope/vim-unimpaired'
 nnoremap ]g do]c:wall<CR>
