@@ -345,8 +345,8 @@ Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>nn :VimFilerExplorer -find -winwidth=80<CR>
-nnoremap <Leader>nd :VimFilerDouble -tab<CR>
+nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
+nnoremap <Leader>fd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
@@ -362,6 +362,11 @@ if &diff
     " diff mode
     set diffopt+=iwhite
 endif
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+nnoremap <Leader>fn :NERDTreeFind<CR>
+
 
 Plug 'Shougo/neossh.vim'
 
