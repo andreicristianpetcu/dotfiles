@@ -141,7 +141,6 @@ let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.local/bin/jsctags'
 \ }
 
-Plug 'vim-scripts/EasyGrep'
 Plug 'jaredly/vim-debug'
 
 " crazy fast searching
@@ -210,14 +209,14 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-h> unite#do_action('split')
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
-noremap <leader>up :Unite -start-insert buffer file_rec<CR>
-noremap <Leader>ul :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
-nnoremap <Leader>um :Unite -start-insert mapping<CR>
-nnoremap <Leader>uj :Unite -start-insert jump<CR>
-nnoremap <Leader>ue :Unite -start-insert change<CR>
-noremap <Leader>uw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>uW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
-nnoremap <Leader>ur :UniteResume -start-insert<CR>
+noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
+nnoremap <Leader>/m :Unite -start-insert mapping<CR>
+nnoremap <Leader>/j :Unite -start-insert jump<CR>
+nnoremap <Leader>/e :Unite -start-insert change<CR>
+nnoremap <Leader>/r :UniteResume -start-insert<CR>
+noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
 let g:unite_source_grep_max_candidates = 200
 if executable('ag')
@@ -245,23 +244,23 @@ noremap <leader>an :Unite -start-insert file_rec<CR>node_modules
 
 " most recent files
 Plug 'Shougo/neomru.vim'
-nnoremap <Leader>uR :Unite -start-insert file_mru<CR>
+nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
 
 " Unite for help
 Plug 'tsukkee/unite-help'
-nnoremap <Leader>uh :Unite -start-insert help<CR>
+nnoremap <Leader>/h :Unite -start-insert help<CR>
 
 " Unite for outline
 Plug 'Shougo/unite-outline'
-nnoremap <Leader>uo :Unite -start-insert outline<CR>
+nnoremap <Leader>/o :Unite -start-insert outline<CR>
 
 " Unite for command history
 Plug 'thinca/vim-unite-history'
-nnoremap <Leader>uc :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
+nnoremap <Leader>/c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
-nnoremap <Leader>ut :Unite tag -start-insert<CR>
+nnoremap <Leader>/t :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
@@ -288,10 +287,10 @@ nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
 nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
-nnoremap <Leader>yre ggO<Esc>:Unite ruby/require -start-insert<CR>
+nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
-nnoremap <Leader>yra :Unite rake -start-insert<CR>
+nnoremap <Leader>ra :Unite rake -start-insert<CR>
 
 Plug 'burnettk/vim-angular'
 let g:angular_source_directory = 'uwezo-presentation/yo/app'
@@ -307,10 +306,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Plug 'msanders/snipmate.vim'
-" Plug 'matthewsimo/angular-vim-snippets'
 Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -345,17 +341,12 @@ let g:neosnippet#enable_snipmate_compatibilit = 1
 " code-analysis engine for JavaScript
 Plug 'marijnh/tern_for_vim'
 
-" nerdtree - file manager
-Plug 'scrooloose/nerdtree'
-" NERD Tree specific stuff
-" nnoremap <Leader>n :NERDTreeFind<CR>
-
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
-nnoremap <Leader>nn :VimFilerExplorer -find -winwidth=80<CR>
-nnoremap <Leader>nd :VimFilerDouble -tab<CR>
+nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
+nnoremap <Leader>fd :VimFilerDouble -tab<CR>
 " edit files with double ckick
 autocmd FileType vimfiler
       \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
@@ -371,6 +362,11 @@ if &diff
     " diff mode
     set diffopt+=iwhite
 endif
+
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+nnoremap <Leader>fn :NERDTreeFind<CR>
+
 
 Plug 'Shougo/neossh.vim'
 
@@ -396,8 +392,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc.js'
 
-Plug 'kristijanhusak/vim-multiple-cursors'
-
 " GitGutter, easy diff
 Plug 'airblade/vim-gitgutter'
 nmap ]h <Plug>GitGutterNextHunk
@@ -418,19 +412,6 @@ Plug 'ap/vim-css-color'
 
 "closes quotes and other stuff
 Plug 'Raimondi/delimitMate'
-
-" Fuzzy finder - fast file navigation
-Plug 'vim-scripts/FuzzyFinder'
-noremap <Leader>fp :FufCoverageFile<CR>
-nnoremap <Leader>fl :FufLine<CR>
-nnoremap <Leader>fr :FufMruFile<CR>
-nnoremap <Leader>fh :FufHelp<CR>
-nnoremap <Leader>fc :FufMruCmd<CR>
-let g:fuf_modesDisable = []
-let g:fuf_keyOpenSplit = '<C-s>'
-let g:fuf_keyOpenVsplit = '<C-v>'
-let g:fuf_keyPrevPattern = '<C-h>'
-let g:fuf_keyNextPattern = '<C-l>'
 
 " Vim screen - GNU Screen/Tmux integration
 Plug 'ervandew/screen'
@@ -497,10 +478,6 @@ Plug 'glts/vim-textobj-comment'
 
 " support for coffeescript
 Plug 'kchmck/vim-coffee-script'
-
-" Vim auto save
-Plug '907th/vim-auto-save'
-let g:auto_save = 1
 
 Plug 'kana/vim-textobj-indent'
 
@@ -672,6 +649,7 @@ function! MaximizeToggle()
     only
   endif
 endfunction
+nnoremap <C-W>x :only<CR>
 
 " You complete me disabled for tab, only for control space
 " let g:ycm_auto_trigger = 0
