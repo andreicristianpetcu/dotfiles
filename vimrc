@@ -498,6 +498,8 @@ Plug 'codegram/vim-codereview'
 
 Plug 'Valloric/MatchTagAlways'
 
+Plug 'junegunn/goyo.vim'
+
 " vim-scripts repos
 Plug 'L9'
 
