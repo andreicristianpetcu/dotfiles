@@ -9,15 +9,13 @@ if has('vim_starting')
     echom "Installing Plug.vim.."
     silent !mkdir -p ~/.vim/autoload
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    call plug#begin('~/.vim/bundle')
     echom "Installing Plug plugins.."
     autocmd VimEnter * PlugInstall
-  else
-    call plug#begin('~/.vim/bundle')
   endif
 
 endif
 
+call plug#begin('~/.vim/bundle')
 
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
