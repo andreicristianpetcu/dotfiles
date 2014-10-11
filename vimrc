@@ -1,25 +1,28 @@
-" based on http://github.com/jferris/config_files/blob/master/vimrc
-
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
 " yeah.... use space as the leader
 let mapleader = "\<Space>"
 
+if has('vim_starting')
+  set nocompatible
+
+  let plug_vim=expand('~/.vim/autoload/plug.vim')
+  if !filereadable(plug_vim)
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall
+  endif
+
+endif
+
+call plug#begin('~/.vim/bundle')
+
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
-call plug#begin('~/.vim/bundle')
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
+
 " Let NeoBundle manage NeoBundle
 " Required:
 " NeoBundleFetch 'Shougo/neobundle.vim'
 
-" My bundles here:
-"
 " Fugitive - Git wrapper
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>ga :Git add . --all<CR>
@@ -118,8 +121,7 @@ endif
 Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
-Plug 'sickill/vim-monokai'
-"mkdir -p ~/.vim/colors/ && ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
+Plug 'sickill/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -490,6 +492,8 @@ nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'Valloric/MatchTagAlways'
 
+Plug 'sjl/gundo.vim'
+
 " vim-scripts repos
 Plug 'L9'
 
@@ -506,7 +510,6 @@ set history=1000		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set cursorline cursorcolumn
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -523,8 +526,12 @@ if $COLORTERM == 'drop-down-terminal'
   " set t_Co=256
   colorscheme desert 
 else
-  " Color scheme
-  colorscheme monokai
+  try
+    colorscheme monokai
+    set cursorline cursorcolumn
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert 
+  endtry
 endif
 
 " Switch wrap off for everything
@@ -658,9 +665,6 @@ let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
 map <C-C> w<ESC>
-" terryma/vim-multiple-cursors
-" multi cursor map exit to ctrl+c
-let g:multi_cursor_quit_key='<C-C>'
 
 " Required:
 filetype plugin indent on

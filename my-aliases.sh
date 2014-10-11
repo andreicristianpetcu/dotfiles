@@ -148,11 +148,6 @@ alias bundleinstallpathvendorbundle='bundle install --path vendor/bundle'
 alias bundlelistpaths='bundle list --paths'
 alias ctagsrbundlelistpaths='ctags -R . $(bundle list --paths)'
 
-# rvm
-alias rvmlist='rvm list'
-alias rvmlistknown='rvm list known'
-alias rvminstall='curl -L get.rvm.io | bash -s stable'
-
 # vim
 alias vimvimrc='vim ~/.vimrc'
 alias vimirbrc='vim ~/.irbrc'
@@ -188,6 +183,7 @@ psaxgrep() {
 export centos6url="https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
 
 # install various stuff
+alias installpuppetdev="sudo puppet apply -v ~/.puppet_dev.pp"
 alias installpyenv='curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash'
 alias installohmyzsh="rm -rf $HOME/.oh-my-zsh && wget --no-check-certificate http://install.ohmyz.sh -O - | sh"
 alias installrbenv='git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
