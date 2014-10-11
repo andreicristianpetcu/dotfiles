@@ -526,8 +526,12 @@ if $COLORTERM == 'drop-down-terminal'
   " set t_Co=256
   colorscheme desert 
 else
-  colorscheme monokai
-  set cursorline cursorcolumn
+  try
+    colorscheme monokai
+    set cursorline cursorcolumn
+  catch /^Vim\%((\a\+)\)\=:E185/
+    colorscheme desert 
+  endtry
 endif
 
 " Switch wrap off for everything
