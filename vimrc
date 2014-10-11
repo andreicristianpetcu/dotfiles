@@ -126,6 +126,7 @@ Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
 Plug 'sickill/vim-monokai'
+" Plug 'sickill/vim-monokai' { 'do': 'mkdir -p ~/.vim/colors/ && ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
 "mkdir -p ~/.vim/colors/ && ln -s ~/.vim/plugged/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim
 
 " snip mate and it's dependencyes
