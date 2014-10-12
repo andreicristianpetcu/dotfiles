@@ -497,8 +497,8 @@ Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
 Plug 'milkypostman/vim-togglelist'
-nmap <script> <silent> <leader>TL :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
