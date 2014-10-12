@@ -1,5 +1,6 @@
 Package { ensure =>  "installed" }
-$common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl", "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon"]
+$common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl",
+    "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "telnet"]
 
 $debian_packages = ["vim", "ack-grep", "silversearcher-ag"]
 $ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag"]

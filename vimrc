@@ -45,10 +45,17 @@ nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
+nnoremap <Leader>gd :Gdiff<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
 nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+
+Plug 'kablamo/vim-git-log'
+nnoremap <Leader>gl :GitLog<CR>
+nnoremap <Leader>grr :Ribbon<CR>
+nnoremap <Leader>gru :RibbonSave<CR>:Git pull<CR>
+nnoremap <Leader>grs :RibbonSave<CR>
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
@@ -59,6 +66,19 @@ Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'sjl/gundo.vim'
+if !isdirectory(expand("~/.vim/tmp/undo/"))
+  silent !mkdir -p ~/.vim/tmp/undo
+endif
+set undofile
+set undodir=~/.vim/tmp/undo//
+" set backupdir=~/.vim/tmp/backup
+" set directory=~/.vim/tmp/swap
+" set backupskip=/tmp/*
+" set backup
+" set writebackup
+set noswapfile
+set history=20
+set undolevels=20
 noremap <Leader>gn :GundoToggle<CR>
 
 Plug 'mbbill/undotree'
@@ -130,7 +150,7 @@ endif
 Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
-Plug 'sickill/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
+Plug 'andreicristianpetcu/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -498,6 +518,8 @@ Plug 'codegram/vim-codereview'
 
 Plug 'Valloric/MatchTagAlways'
 
+Plug 'junegunn/goyo.vim'
+
 " vim-scripts repos
 Plug 'L9'
 
@@ -507,10 +529,6 @@ runtime ftplugin/man.vim
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nobackup
-set noswapfile
-set nowritebackup
-set history=1000		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -619,6 +637,7 @@ if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
 endif
 
+
 " Numbers
 set number
 set numberwidth=5
@@ -635,8 +654,8 @@ set smartcase
 
 
 " Write file
-nnoremap ZW :w<CR>
-nnoremap ZA :wall<CR>
+nnoremap ZW :w!<CR>
+nnoremap ZA :wall!<CR>
 
 " set the system cliboard as the default yank source                                                                                                                                                                                      
 set clipboard=unnamedplus 
