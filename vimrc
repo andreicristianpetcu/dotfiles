@@ -7,7 +7,6 @@ if has('vim_starting')
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     silent !mkdir -p ~/.vim/autoload
-    silent !mkdir -p ~/.vim/tmp/undo
     silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     autocmd VimEnter * PlugInstall
   endif
@@ -60,6 +59,9 @@ Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'sjl/gundo.vim'
+if !isdirectory(expand("~/.vim/tmp/undo/"))
+  silent !mkdir -p ~/.vim/tmp/undo
+endif
 set undofile
 set undodir=~/.vim/tmp/undo
 " set backupdir=~/.vim/tmp/backup
