@@ -100,22 +100,6 @@ nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
 nnoremap <Leader>\fs :%S///gc<left><left><left><left>
 
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rake'
-Plug 'tpope/gem-ctags'
-Plug 'tpope/gem-browse'
-
-" Rails plugin
-Plug 'tpope/vim-rails'
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
-
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-dispatch'
-Plug 'asux/vim-capybara'
-
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
 
@@ -315,7 +299,7 @@ nnoremap <Leader>rL :Unite rails/log -start-insert<CR>
 nnoremap <Leader>rj :Unite rails/javascript -start-insert<CR>
 nnoremap <Leader>rs :Unite rails/stylesheet -start-insert<CR>
 nnoremap <Leader>rb :Unite rails/bundle -start-insert<CR>
-nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
+nnoremap <Leader>rge :Unite rails/bundled_gem -start-insert<CR>
 nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
@@ -323,6 +307,25 @@ nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>ra :Unite rake -start-insert<CR>
+
+Plug 'tpope/vim-bundler'
+nnoremap <Leader>rgo :Bopen<CR>
+nnoremap <Leader>rgi :Bundle install<CR>
+
+Plug 'tpope/vim-rake'
+Plug 'tpope/gem-ctags'
+Plug 'tpope/gem-browse'
+
+" Rails plugin
+Plug 'tpope/vim-rails'
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! Rschema :e db/schema.rb
+
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch'
+Plug 'asux/vim-capybara'
 
 Plug 'burnettk/vim-angular'
 let g:angular_source_directory = 'uwezo-presentation/yo/app'
@@ -558,7 +561,7 @@ else
 endif
 
 " Switch wrap off for everything
-set nowrap
+" set nowrap
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
