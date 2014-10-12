@@ -174,7 +174,7 @@ alias vimhtmlsminimalnippets='vim ~/.vim/bundle/vim-snippets/snippets/html_minim
 alias vimshellvariablessh='vim ~/.shell_variables.sh'
 alias vimcvimfilerdouble='vim -c "VimFilerDouble"'
 alias vimcpluginstallqall='vim -c "PlugInstall|qall!"'
-alias vimclean='rm -rf ~/.vim/autoload && rm -rf ~/.vim/bundle && rm -rf ~/.vim/colour'
+alias vimclean='rm -rf ~/.vim/autoload && rm -rf ~/.vim/bundle && rm -rf ~/.vim/colour && rm -rf ~/.vim/tmp'
 
 # functions
 psaxgrep() {
