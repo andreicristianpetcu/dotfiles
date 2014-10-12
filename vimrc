@@ -603,10 +603,15 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
+" reload .vimrc
+command! Reloadvimrc :so $MYVIMRC
+command! Editvimrc :e $MYVIMRC
+
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
+nnoremap <Leader>tr :Reloadvimrc<CR>
 nnoremap ]t :tabNext<CR>
 nnoremap [t :tabp<CR>
 
@@ -714,9 +719,5 @@ set mouse=a
 
 "be lazy
 set lazyredraw
-
-" reload .vimrc
-command! Reloadvimrc :so $MYVIMRC
-command! Editvimrc :e $MYVIMRC
 
 call plug#end()
