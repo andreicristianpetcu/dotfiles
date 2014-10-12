@@ -59,6 +59,16 @@ Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'sjl/gundo.vim'
+set undodir=~/.vim/tmp/undo//
+set backupdir=~/.vim/tmp/backup//
+set directory=~/.vim/tmp/swap//
+set backupskip=/tmp/*
+set backup
+set writebackup
+set noswapfile
+set undofile
+set history=20
+set undolevels=20
 noremap <Leader>gn :GundoToggle<CR>
 
 Plug 'mbbill/undotree'
@@ -509,10 +519,6 @@ runtime ftplugin/man.vim
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set nobackup
-set noswapfile
-set nowritebackup
-set history=1000		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
