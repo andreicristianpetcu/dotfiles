@@ -63,7 +63,7 @@ if !isdirectory(expand("~/.vim/tmp/undo/"))
   silent !mkdir -p ~/.vim/tmp/undo
 endif
 set undofile
-set undodir=~/.vim/tmp/undo
+set undodir=~/.vim/tmp/undo//
 " set backupdir=~/.vim/tmp/backup
 " set directory=~/.vim/tmp/swap
 " set backupskip=/tmp/*
