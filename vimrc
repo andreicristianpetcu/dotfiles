@@ -45,6 +45,7 @@ nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
+nnoremap <Leader>gd :Gdiff<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
