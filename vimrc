@@ -51,6 +51,12 @@ au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 nnoremap <Leader>gri :Git --cached 
 nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
 
+Plug 'kablamo/vim-git-log'
+nnoremap <Leader>gl :GitLog<CR>
+nnoremap <Leader>grr :Ribbon<CR>
+nnoremap <Leader>gru :RibbonSave<CR>:Git pull<CR>
+nnoremap <Leader>grs :RibbonSave<CR>
+
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
 Plug 'gitv'
