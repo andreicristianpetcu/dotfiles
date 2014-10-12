@@ -59,9 +59,9 @@ Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
 Plug 'sjl/gundo.vim'
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
+set undodir=~/.vim/tmp/undo
+set backupdir=~/.vim/tmp/backup
+set directory=~/.vim/tmp/swap
 set backupskip=/tmp/*
 set backup
 set writebackup
@@ -627,6 +627,7 @@ if executable("ack")
   set grepprg=ack\ -H\ --nogroup\ --nocolor\ --ignore-dir=tmp\ --ignore-dir=coverage
 endif
 
+
 " Numbers
 set number
 set numberwidth=5
@@ -643,8 +644,8 @@ set smartcase
 
 
 " Write file
-nnoremap ZW :w<CR>
-nnoremap ZA :wall<CR>
+nnoremap ZW :w!<CR>
+nnoremap ZA :wall!<CR>
 
 " set the system cliboard as the default yank source                                                                                                                                                                                      
 set clipboard=unnamedplus 
