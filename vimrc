@@ -288,10 +288,10 @@ let g:unite_source_tag_max_fname_length=140
 " unite rails
 Plug 'basyura/unite-rails'
 nnoremap <Leader>rm :Unite rails/model -start-insert<CR>
+nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
 nnoremap <Leader>rc :Unite rails/controller -start-insert<CR>
 nnoremap <Leader>rv :Unite rails/view -start-insert<CR>
 nnoremap <Leader>rh :Unite rails/helper -start-insert<CR>
-nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
 nnoremap <Leader>rl :Unite rails/lib -start-insert<CR>
 nnoremap <Leader>rd :Unite rails/db -start-insert<CR>
 nnoremap <Leader>rC :Unite rails/config -start-insert<CR>
