@@ -46,6 +46,7 @@ nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gre :Gread<CR>w!
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
@@ -98,22 +99,6 @@ nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
 nnoremap <Leader>\fs :%S///gc<left><left><left><left>
-
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-rake'
-Plug 'tpope/gem-ctags'
-Plug 'tpope/gem-browse'
-
-" Rails plugin
-Plug 'tpope/vim-rails'
-" Edit routes
-command! Rroutes :e config/routes.rb
-command! Rschema :e db/schema.rb
-
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-dispatch'
-Plug 'asux/vim-capybara'
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -303,10 +288,10 @@ let g:unite_source_tag_max_fname_length=140
 " unite rails
 Plug 'basyura/unite-rails'
 nnoremap <Leader>rm :Unite rails/model -start-insert<CR>
+nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
 nnoremap <Leader>rc :Unite rails/controller -start-insert<CR>
 nnoremap <Leader>rv :Unite rails/view -start-insert<CR>
 nnoremap <Leader>rh :Unite rails/helper -start-insert<CR>
-nnoremap <Leader>rM :Unite rails/mailer -start-insert<CR>
 nnoremap <Leader>rl :Unite rails/lib -start-insert<CR>
 nnoremap <Leader>rd :Unite rails/db -start-insert<CR>
 nnoremap <Leader>rC :Unite rails/config -start-insert<CR>
@@ -314,7 +299,7 @@ nnoremap <Leader>rL :Unite rails/log -start-insert<CR>
 nnoremap <Leader>rj :Unite rails/javascript -start-insert<CR>
 nnoremap <Leader>rs :Unite rails/stylesheet -start-insert<CR>
 nnoremap <Leader>rb :Unite rails/bundle -start-insert<CR>
-nnoremap <Leader>rg :Unite rails/bundled_gem -start-insert<CR>
+nnoremap <Leader>rge :Unite rails/bundled_gem -start-insert<CR>
 nnoremap <Leader>rro :Unite rails/route -start-insert<CR>
 
 Plug 'rhysd/unite-ruby-require.vim'
@@ -322,6 +307,25 @@ nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>ra :Unite rake -start-insert<CR>
+
+Plug 'tpope/vim-bundler'
+nnoremap <Leader>rgo :Bopen<CR>
+nnoremap <Leader>rgi :Bundle install<CR>
+
+Plug 'tpope/vim-rake'
+Plug 'tpope/gem-ctags'
+Plug 'tpope/gem-browse'
+
+" Rails plugin
+Plug 'tpope/vim-rails'
+" Edit routes
+command! Rroutes :e config/routes.rb
+command! Rschema :e db/schema.rb
+
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch'
+Plug 'asux/vim-capybara'
 
 Plug 'burnettk/vim-angular'
 let g:angular_source_directory = 'uwezo-presentation/yo/app'
@@ -496,8 +500,8 @@ Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
 Plug 'milkypostman/vim-togglelist'
-nmap <script> <silent> <leader>TL :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>TQ :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
@@ -557,7 +561,7 @@ else
 endif
 
 " Switch wrap off for everything
-set nowrap
+" set nowrap
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -602,10 +606,15 @@ set expandtab
 " Always display the status line
 set laststatus=2
 
+" reload .vimrc
+command! Reloadvimrc :so $MYVIMRC
+command! Editvimrc :e $MYVIMRC
+
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
+nnoremap <Leader>tr :Reloadvimrc<CR>
 nnoremap ]t :tabNext<CR>
 nnoremap [t :tabp<CR>
 
@@ -713,9 +722,5 @@ set mouse=a
 
 "be lazy
 set lazyredraw
-
-" reload .vimrc
-command! Reloadvimrc :so $MYVIMRC
-command! Editvimrc :e $MYVIMRC
 
 call plug#end()
