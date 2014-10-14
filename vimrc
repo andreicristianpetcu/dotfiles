@@ -46,7 +46,7 @@ nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gre :Gread<CR>w!
+nnoremap <Leader>gre :Gread<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
@@ -710,11 +710,6 @@ filetype plugin indent on
 
 " Map F2 to toggle paste
 nnoremap <F7> <C-c>:set paste<CR>i
-" set paste on insert and nopaste on exit
-autocmd InsertEnter *
-      \ if expand('%') != '' && &buftype == '' |
-      \ set paste |
-      \ endif
 
 " autosave
 set updatetime=1000
@@ -746,5 +741,8 @@ set mouse=a
 
 "be lazy
 set lazyredraw
+
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 
 call plug#end()
