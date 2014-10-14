@@ -136,6 +136,7 @@ Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
 Plug 'andreicristianpetcu/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
+Plug 'altercation/vim-colors-solarized'
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -307,6 +308,8 @@ nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>ra :Unite rake -start-insert<CR>
+
+Plug 'ujihisa/unite-colorscheme'
 
 Plug 'tpope/vim-bundler'
 nnoremap <Leader>rgo :Bopen<CR>
@@ -728,7 +731,7 @@ set lazyredraw
 " autosave
 set updatetime=1000
 autocmd BufLeave * update
-autocmd CursorHold * update
+" autocmd CursorHold * update
 autocmd InsertLeave * update
 
 call plug#end()
