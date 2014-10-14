@@ -706,8 +706,10 @@ filetype plugin indent on
 " NeoBundleCheck
 
 " Map F2 to toggle paste
-inoremap <F8> <Esc>:set nopaste<CR>
 nnoremap <F7> <C-c>:set paste<CR>i
+" set paste on insert and nopaste on exit
+" autocmd InsertEnter * :set paste
+autocmd InsertLeave * :set nopaste
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
@@ -722,10 +724,6 @@ set mouse=a
 
 "be lazy
 set lazyredraw
-
-" set paste on insert and nopaste on exit
-autocmd InsertEnter * :set paste
-autocmd InsertLeave * :set nopaste
 
 " autosave
 set updatetime=1000
