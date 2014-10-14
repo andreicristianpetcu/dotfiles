@@ -723,4 +723,8 @@ set mouse=a
 "be lazy
 set lazyredraw
 
+" set paste on insert and nopaste on exit
+autocmd InsertEnter * :set paste
+autocmd InsertLeave * :set nopaste
+
 call plug#end()
