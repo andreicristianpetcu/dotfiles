@@ -727,4 +727,10 @@ set lazyredraw
 autocmd InsertEnter * :set paste
 autocmd InsertLeave * :set nopaste
 
+" autosave
+set updatetime=1000
+autocmd BufLeave * update
+autocmd CursorHold * update
+autocmd InsertLeave * update
+
 call plug#end()
