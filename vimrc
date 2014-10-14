@@ -711,8 +711,27 @@ filetype plugin indent on
 " Map F2 to toggle paste
 nnoremap <F7> <C-c>:set paste<CR>i
 " set paste on insert and nopaste on exit
-" autocmd InsertEnter * :set paste
-autocmd InsertLeave * :set nopaste
+autocmd InsertEnter *
+      \ if expand('%') != '' && &buftype == '' |
+      \ set paste |
+      \ endif
+
+" autosave
+set updatetime=1000
+autocmd BufLeave *
+      \ if expand('%') != '' && &buftype == '' |
+      \ update |
+      \ endif
+autocmd CursorHold *
+      \ if expand('%') != '' && &buftype == '' |
+      \ update |
+      \ endif
+autocmd InsertLeave *
+      \ if expand('%') != '' && &buftype == '' |
+      \ update |
+      \ set nopaste |
+      \ endif
+
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
@@ -727,11 +746,5 @@ set mouse=a
 
 "be lazy
 set lazyredraw
-
-" autosave
-set updatetime=1000
-autocmd BufLeave * update
-" autocmd CursorHold * update
-autocmd InsertLeave * update
 
 call plug#end()
