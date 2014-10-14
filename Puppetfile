@@ -4,13 +4,13 @@
 forge "https://forgeapi.puppetlabs.com"
 
 # use dependencies defined in metadata.json
-metadata
+# metadata
 
 # use dependencies defined in Modulefile
 # modulefile
 
 mod 'puppetlabs-nodejs'
-mod 'puppetlabs-razor'
+# mod 'puppetlabs-razor'
 
 # A module from the Puppet Forge
 # mod 'puppetlabs-stdlib'
