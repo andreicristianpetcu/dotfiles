@@ -1,10 +1,10 @@
 Package { ensure =>  "installed" }
 $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl",
-    "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "telnet"]
+    "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python", "nodejs"]
 
-$debian_packages = ["vim", "ack-grep", "silversearcher-ag"]
-$ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag"]
-$archgnulinux_packages = ["gvim", "ack", "silver-searcher-git"]
+$debian_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet"]
+$ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet"]
+$archgnulinux_packages = ["gvim", "ack", "silver-searcher-git", "inetutils" ]
 
 case $operatingsystem {
   # centos: { $os_specific_packages = "httpd" }
