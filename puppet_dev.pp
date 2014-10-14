@@ -18,3 +18,8 @@ case $operatingsystem {
 
 package { $common_packages: }
 package { $os_specific_packages: }
+
+package { 'librarian-puppet':
+    ensure   => 'installed',
+    provider => 'gem',
+}
