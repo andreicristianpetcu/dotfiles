@@ -713,14 +713,14 @@ nnoremap <F7> <C-c>:set paste<CR>i
 
 " autosave
 set updatetime=1000
-autocmd BufLeave *
-      \ if expand('%') != '' && &buftype == '' |
-      \ update |
-      \ endif
-autocmd CursorHold *
-      \ if expand('%') != '' && &buftype == '' |
-      \ update |
-      \ endif
+" autocmd BufLeave *
+"       \ if expand('%') != '' && &buftype == '' |
+"       \ update |
+"       \ endif
+" autocmd CursorHold *
+"       \ if expand('%') != '' && &buftype == '' |
+"       \ update |
+"       \ endif
 autocmd InsertLeave *
       \ if expand('%') != '' && &buftype == '' |
       \ update |
