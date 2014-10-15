@@ -60,7 +60,7 @@ nnoremap <Leader>grs :RibbonSave<CR>
 
 " Gitv - a git log vizualizer
 " depends on tpope/vim-fugitive
-Plug 'gitv'
+Plug 'gregsexton/gitv'
 nnoremap <Leader>gv :Gitv<CR>
 
 Plug 'int3/vim-extradite'
