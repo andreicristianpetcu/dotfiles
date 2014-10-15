@@ -301,7 +301,7 @@ alias licenseagpl="wget https://gitorious.org/tribunal/tribunal/raw/LICENSE.txt"
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-fzed() {
+fed() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
@@ -311,21 +311,21 @@ fzed() {
 # fe [FUZZY PATTERN] - Delete selected file or directory
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-fzrmf() {
+frmf() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && rm -rf "$file"
 }
 
 # Equivalent to above, but opens it with `open` command
-fzo() {
+fop() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && open "$file"
 }
 
 # fd - cd to selected directory
-fzcd() {
+fcd() {
   local dir
   dir=$(find ${1:-*} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -339,19 +339,19 @@ fda() {
 }
 
 # cdf - cd into the directory of the selected file
-fzcdf() {
+fcdf() {
    local file
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
 
 # fkill - kill process
-fzkill() {
+fkill() {
   ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
 }
 
 # fbr - checkout git branch
-fzgb() {
+fgb() {
   local branches branch
   branches=$(git branch) &&
   branch=$(echo "$branches" | fzf +s +m) &&
@@ -359,7 +359,7 @@ fzgb() {
 }
 
 # fco - checkout git commit
-fzgc() {
+fgc() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf +s +m -e) &&
@@ -367,7 +367,7 @@ fzgc() {
 }
 
 # fzgt - checkout git tags
-fzgt() {
+fgt() {
   local tags tag
   tags=$(git tag) &&
   tag=$(echo "$tags" | fzf +s +m) &&
@@ -375,7 +375,7 @@ fzgt() {
 }
 
 # ftags - search ctags
-fztags() {
+ftags() {
   local line
   [ -e tags ] &&
   line=$(

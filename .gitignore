@@ -1,2 +1,4 @@
 vim/*
 node_modules/*
+.tmp/
+modules/

@@ -46,7 +46,7 @@ nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gdiff<CR>
-nnoremap <Leader>gre :Gread<CR>w!
+nnoremap <Leader>gre :Gread<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
@@ -136,6 +136,7 @@ Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
 Plug 'andreicristianpetcu/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
+Plug 'altercation/vim-colors-solarized'
 
 " snip mate and it's dependencyes
 Plug 'MarcWeber/vim-addon-mw-utils'
@@ -307,6 +308,8 @@ nnoremap <Leader>re ggO<Esc>:Unite ruby/require -start-insert<CR>
 
 Plug 'ujihisa/unite-rake'
 nnoremap <Leader>ra :Unite rake -start-insert<CR>
+
+Plug 'ujihisa/unite-colorscheme'
 
 Plug 'tpope/vim-bundler'
 nnoremap <Leader>rgo :Bopen<CR>
@@ -706,8 +709,24 @@ filetype plugin indent on
 " NeoBundleCheck
 
 " Map F2 to toggle paste
-inoremap <F8> <Esc>:set nopaste<CR>
 nnoremap <F7> <C-c>:set paste<CR>i
+
+" autosave
+set updatetime=1000
+" autocmd BufLeave *
+"       \ if expand('%') != '' && &buftype == '' |
+"       \ update |
+"       \ endif
+" autocmd CursorHold *
+"       \ if expand('%') != '' && &buftype == '' |
+"       \ update |
+"       \ endif
+autocmd InsertLeave *
+      \ if expand('%') != '' && &buftype == '' |
+      \ update |
+      \ set nopaste |
+      \ endif
+
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
@@ -722,5 +741,8 @@ set mouse=a
 
 "be lazy
 set lazyredraw
+
+set exrc            " enable per-directory .vimrc files
+set secure          " disable unsafe commands in local .vimrc files
 
 call plug#end()
