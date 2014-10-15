@@ -527,6 +527,10 @@ Plug 'Valloric/MatchTagAlways'
 
 Plug 'junegunn/goyo.vim'
 
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-inspect'
+Plug 'xolox/vim-lua-ftplugin'
+
 " vim-scripts repos
 Plug 'L9'
 
