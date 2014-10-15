@@ -4,7 +4,7 @@ $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "z
     "nodejs", "ncdu"]
       
 $ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
-    "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev"]
+    "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev", "ruby-dev"]
 $debian_packages = $ubuntu_packages
 $archgnulinux_packages = ["gvim", "ack", "silver-searcher-git", "inetutils", "base-devel"]
       
