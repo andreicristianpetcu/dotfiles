@@ -531,6 +531,8 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-lua-inspect'
 Plug 'xolox/vim-lua-ftplugin'
 
+Plug 'editorconfig/editorconfig-vim'
+
 " vim-scripts repos
 Plug 'L9'
 
