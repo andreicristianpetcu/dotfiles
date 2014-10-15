@@ -1,6 +1,7 @@
 Package { ensure =>  "installed" }                                                                                                                                                                                                      
 $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl",
-    "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python", "nodejs"]
+    "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python",
+    "nodejs", "ncdu"]
       
 $ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
     "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev"]
@@ -20,6 +21,10 @@ case $operatingsystem {
 package { $common_packages: }
 package { $os_specific_packages: }
       
+package { 'rake':
+    ensure   => 'installed',
+    provider => 'gem',
+}     
 package { 'bundler':
     ensure   => 'installed',
     provider => 'gem',
