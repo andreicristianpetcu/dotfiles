@@ -21,11 +21,10 @@ case $operatingsystem {
 package { $common_packages: }
 package { $os_specific_packages: }
       
-package { 'rake':
+$gem_packages = ["rake", "bundler", "rails", "pry", "spring", "pry-rails", "pry-nav", "pry-stack_explorer",
+  "pry-coolline"]
+
+package {$gem_packages:
     ensure   => 'installed',
     provider => 'gem',
-}     
-package { 'bundler':
-    ensure   => 'installed',
-    provider => 'gem',
-}     
+ }     
