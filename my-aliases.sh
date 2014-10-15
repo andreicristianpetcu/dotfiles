@@ -83,6 +83,9 @@ pacmanrs() {
 # git
 alias gitadd='git add . --all'
 alias gitpush='git push'
+alias gitpushgitorious='git push gitorious --all'
+alias gitpushgitlab='git push gitlab --all'
+alias gitpushgithub='git push github --all'
 alias gitstatus='git status'
 alias gitresethardgitcleanfd='git reset --hard && git clean -f -d'
 alias gitremotev='git remote -v'
