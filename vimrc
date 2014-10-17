@@ -200,7 +200,6 @@ nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
-" Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 
 " Airline, pretty ui plugin
