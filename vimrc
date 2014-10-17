@@ -135,7 +135,7 @@ endif
 Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
-Plug 'andreicristianpetcu/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
+Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
 
 " snip mate and it's dependencyes
@@ -200,9 +200,13 @@ nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
+" Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
+
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
 let g:airline_theme='powerlineish'
+" let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -216,6 +220,14 @@ let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 " enable  tagbar integration
 let g:airline#extensions#tagbar#enabled = 1
+
+Plug 'edkolev/promptline.vim'
+" let g:promptline_preset = {
+"         \'a' : [ promptline#slices#user() ],
+"         \'b' : [ promptline#slices#cwd() ],
+"         \'x' : [ promptline#slices#git_status() ],
+"         \'y' : [ promptline#slices#vcs_branch() ],
+"         \'warn' : [ promptline#slices#last_exit_code() ]}
 
 " Unite - for searching stuff
 Plug 'Shougo/unite.vim'
@@ -556,7 +568,7 @@ if $COLORTERM == 'drop-down-terminal'
   colorscheme desert 
 else
   try
-    colorscheme monokai
+    colorscheme modokay
     set cursorline cursorcolumn
   catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert 

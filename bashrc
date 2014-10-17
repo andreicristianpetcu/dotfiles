@@ -18,14 +18,14 @@ shopt -s histappend
 # update histfile after every command
 export PROMPT_COMMAND="history -a"
 
-if [ -f /usr/bin/virtualenvwrapper.sh ]
-then
-	export WORKON_HOME=~/.virtualenvs
-	source /usr/bin/virtualenvwrapper.sh
-fi
-
+# if [ -f /usr/bin/virtualenvwrapper.sh ]
+# then
+# 	export WORKON_HOME=~/.virtualenvs
+# 	source /usr/bin/virtualenvwrapper.sh
+# fi
+#
 if [ -d $HOME/.local/bin/ ]; then PATH=$PATH:$HOME/.local/bin/ ;fi
 if [ -f /etc/profile.d/autojump.bash ]; then source /etc/profile.d/autojump.bash ;fi
 if [ -f /usr/share/autojump/autojump.bash ]; then source /usr/share/autojump/autojump.bash ;fi
-if [ -f ~/.shell_prompt_promptline.sh ]; then source ~/.shell_prompt_promptline.sh ;fi
+if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
 if [ -f $HOME/.fzf.bash ]; then source $HOME/.fzf.bash ;fi
