@@ -54,7 +54,7 @@ if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/auto
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
 if [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
-  if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
+  # if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
 fi
 
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh ;fi
