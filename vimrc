@@ -222,12 +222,13 @@ let g:airline#extensions#tagbar#enabled = 1
 
 Plug 'edkolev/promptline.vim'
 " let g:promptline_preset = {
-"         \'a' : [ promptline#slices#user() ],
-"         \'b' : [ promptline#slices#cwd() ],
+"         \'a' : [ promptline#slices#host() ],
+"         \'b' : [ promptline#slices#user() ],
+"         \'c' : [ promptline#slices#cwd() ],
 "         \'x' : [ promptline#slices#git_status() ],
 "         \'y' : [ promptline#slices#vcs_branch() ],
 "         \'warn' : [ promptline#slices#last_exit_code() ]}
-
+"
 " Unite - for searching stuff
 Plug 'Shougo/unite.vim'
 autocmd FileType unite call s:unite_my_settings()

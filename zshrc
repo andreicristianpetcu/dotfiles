@@ -23,7 +23,9 @@ plugins=(archlinux bower command-not-found cp docker gem git git-extras
       \ systemd tmux vagrant web-search zsh_reload zshmarks)
 
 source ~/.common_shell.sh
-if [ $CONN = "sshd" ]; then ZSH_THEME="clean" ;fi
+if [ $CONN = "sshd" ]; then 
+  ZSH_THEME="clean"
+fi
 
 export TERM='xterm-256color'
 
@@ -50,4 +52,9 @@ fi
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
 if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/autojump.zsh ;fi
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
+if [ $CONN = "sshd" ]; then 
+  ZSH_THEME="clean"
+  if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
+fi
+
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh ;fi
