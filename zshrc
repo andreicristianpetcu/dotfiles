@@ -49,6 +49,5 @@ fi
 
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
 if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/autojump.zsh ;fi
-if [ -f /usr/share/zsh/site-contrib/powerline.zsh ]; then source /usr/share/zsh/site-contrib/powerline.zsh ;fi
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh ;fi
