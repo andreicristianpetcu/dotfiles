@@ -45,12 +45,14 @@ nnoremap <Leader>gsl :Git! stash list<CR>
 nnoremap <Leader>gsp :Git stash pop<CR>
 nnoremap <Leader>gss :Git stash<CR>
 nnoremap <Leader>gu :Git pull<CR>
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gre :Gread<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
 " git searches
 nnoremap <Leader>gri :Git --cached 
 nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+nnoremap <Leader>g2 :diffget //2<CR>
+nnoremap <Leader>g3 :diffget //3<CR>
 
 Plug 'kablamo/vim-git-log'
 nnoremap <Leader>gl :GitLog<CR>
@@ -135,7 +137,7 @@ endif
 Plug 'vim-scripts/tComment'
 Plug 'myusuf3/numbers.vim'
 
-Plug 'andreicristianpetcu/vim-monokai', { 'do': 'rm -rf ~/.vim/colors/monokai.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-monokai/colors/monokai.vim ~/.vim/colors/monokai.vim' }
+Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
 
 " snip mate and it's dependencyes
@@ -200,14 +202,18 @@ nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
+Plug 'edkolev/tmuxline.vim'
+
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
-let g:airline_theme='powerlineish'
+let g:airline_theme='luna'
+" let g:airline_theme='jellybeans'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
 let conn=$CONN
 if conn != 'sshd'
+  let g:airline_theme='powerlineish'
   let g:airline_powerline_fonts = 1
 endif
 " fugitive integration
@@ -217,6 +223,14 @@ let g:airline#extensions#syntastic#enabled = 1
 " enable  tagbar integration
 let g:airline#extensions#tagbar#enabled = 1
 
+Plug 'edkolev/promptline.vim'
+" let g:promptline_preset = {
+        " \'a' : [ promptline#slices#user() ],
+        " \'b' : [ promptline#slices#cwd() ],
+        " \'x' : [ promptline#slices#git_status() ],
+        " \'y' : [ promptline#slices#vcs_branch() ],
+        " \'warn' : [ promptline#slices#last_exit_code() ]}
+        "
 " Unite - for searching stuff
 Plug 'Shougo/unite.vim'
 autocmd FileType unite call s:unite_my_settings()
@@ -562,7 +576,7 @@ if $COLORTERM == 'drop-down-terminal'
   colorscheme desert 
 else
   try
-    colorscheme monokai
+    colorscheme modokay
     set cursorline cursorcolumn
   catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert 
