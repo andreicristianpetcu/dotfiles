@@ -55,7 +55,9 @@ nnoremap <Leader>g3 :diffget //3<CR>
 " seach in the index
 nnoremap <Leader>gri :Git --cached 
 " search in the commit diffs with the pixaxe option
-nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+nnoremap <Leader>grD :Glog -S --<Left><Left><Left>
+" search in the commit diffs with the pixaxe option in the current file
+nnoremap <Leader>grd :Gllog -S -- %<Left><Left><Left><Left><Left>
 " load in quickfix all the log
 nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
 " load in the quickfix list the 
