@@ -58,9 +58,11 @@ nnoremap <Leader>gri :Git --cached
 nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
 " load in quickfix all the log
 nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
+" load in the quickfix list the 
+nnoremap <Leader>glf :silent Gllog -- %<CR>:redraw!<CR>:lopen<CR>
 
 Plug 'kablamo/vim-git-log'
-nnoremap <Leader>gl :GitLog<CR>
+nnoremap <Leader>gll :GitLog<CR>
 nnoremap <Leader>grr :Ribbon<CR>
 nnoremap <Leader>gru :RibbonSave<CR>:Git pull<CR>
 nnoremap <Leader>grs :RibbonSave<CR>
