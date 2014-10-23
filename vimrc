@@ -48,11 +48,16 @@ nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gre :Gread<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
-" git searches
-nnoremap <Leader>gri :Git --cached 
-nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+" usefull when merging, you can pull from left (2) or right (3)
 nnoremap <Leader>g2 :diffget //2<CR>
 nnoremap <Leader>g3 :diffget //3<CR>
+" git searches, after you search, check the quicklist
+" seach in the index
+nnoremap <Leader>gri :Git --cached 
+" search in the commit diffs with the pixaxe option
+nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+" load in quickfix all the log
+nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
 
 Plug 'kablamo/vim-git-log'
 nnoremap <Leader>gl :GitLog<CR>
