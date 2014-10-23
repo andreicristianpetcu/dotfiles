@@ -60,7 +60,7 @@ nnoremap <Leader>grD :Glog -S --<Left><Left><Left>
 nnoremap <Leader>grd :Gllog -S -- %<Left><Left><Left><Left><Left>
 " load in quickfix all the log
 nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
-" load in the quickfix list the 
+" load in the location list the 
 nnoremap <Leader>glf :silent Gllog -- %<CR>:redraw!<CR>:lopen<CR>
 
 Plug 'kablamo/vim-git-log'
