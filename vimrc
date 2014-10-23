@@ -654,6 +654,7 @@ nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
 nnoremap <Leader>tr :Reloadvimrc<CR>
+nnoremap <Leader>tR :redraw!<CR>
 nnoremap ]t :tabNext<CR>
 nnoremap [t :tabp<CR>
 
