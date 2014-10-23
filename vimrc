@@ -655,8 +655,8 @@ nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
 nnoremap <Leader>tr :Reloadvimrc<CR>
 nnoremap <Leader>tR :redraw!<CR>
-nnoremap ]t :tabNext<CR>
-nnoremap [t :tabp<CR>
+nnoremap ]t :tabnext<CR>
+nnoremap [t :tabprevious<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
