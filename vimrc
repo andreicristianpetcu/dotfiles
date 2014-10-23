@@ -63,6 +63,13 @@ nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
 " load in the location list the 
 nnoremap <Leader>glf :silent Gllog -- %<CR>:redraw!<CR>:lopen<CR>
 
+" load in quickfix all the commits that contain the text message
+nnoremap <Leader>glM :silent Glog --grep= --<left><left><left>
+" load in the location list the commits that contain the text message for the
+" current file
+nnoremap <Leader>glm :silent Gllog --grep= -- %<left><left><left><left><left>
+
+
 Plug 'kablamo/vim-git-log'
 nnoremap <Leader>gll :GitLog<CR>
 nnoremap <Leader>grr :Ribbon<CR>
