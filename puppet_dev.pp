@@ -1,7 +1,9 @@
 Package { ensure =>  "installed" }                                                                                                                                                                                                      
 $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl",
     "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python",
-    "nodejs", "ncdu"]
+    "nodejs", "ncdu", "bpython", 
+    #networking stuff
+    "nethogs", "nload", "bmon", "slurm", "speedometer", "trafshow"]
       
 $ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
     "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev",
