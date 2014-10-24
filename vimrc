@@ -168,6 +168,12 @@ Plug 'andreicristianpetcu/argarg.vim'
 " added ctags support that works
 Plug 'szw/vim-tags'
 
+Plug 'xolox/vim-easytags'
+set tags=./tags;
+let g:easytags_dynamic_files = 2
+let g:easytags_always_enabled = 1
+let g:easytags_auto_highlight = 0
+
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose='1'
