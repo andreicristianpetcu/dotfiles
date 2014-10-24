@@ -257,11 +257,12 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
 noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
-noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
 nnoremap <Leader>/m :Unite -start-insert mapping<CR>
 nnoremap <Leader>/j :Unite -start-insert jump<CR>
 nnoremap <Leader>/e :Unite -start-insert change<CR>
 nnoremap <Leader>/r :UniteResume -start-insert<CR>
+noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/ll :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
 noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
 noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
@@ -736,7 +737,7 @@ let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
-map <C-C> w<ESC>
+map <C-C> <ESC>:w!<CR>
 
 " Required:
 filetype plugin indent on
