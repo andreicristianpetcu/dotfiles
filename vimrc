@@ -176,6 +176,7 @@ let g:easytags_auto_highlight = 0
 " might get heavy on Java files
 let g:easytags_include_members = 1
 let g:easytags_on_cursorhold = 0
+command! GlobalTagsClean !rm -rf ~/tags
 
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'
