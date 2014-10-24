@@ -173,6 +173,8 @@ set tags=./tags;
 let g:easytags_dynamic_files = 2
 let g:easytags_always_enabled = 1
 let g:easytags_auto_highlight = 0
+" might get heavy on Java files
+let g:easytags_include_members = 1
 
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'

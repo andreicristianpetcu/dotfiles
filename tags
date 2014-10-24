@@ -1,0 +1,231 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+<C-C>	/home/andrei/dotfiles/vimrc	/^map <C-C> <ESC>:w!<CR>$/;"	m	language:Vim
+<C-F>	/home/andrei/dotfiles/vimrc	/^imap <C-F> <C-R>=expand("%")<CR>$/;"	m	language:Vim
+<C-k>	/home/andrei/dotfiles/vimrc	/^imap <C-k>     <Plug>(neosnippet_expand_or_jump)$/;"	m	language:Vim
+<C-L>	/home/andrei/dotfiles/vimrc	/^imap <C-L> <Space>=><Space>$/;"	m	language:Vim
+<C-P>	/home/andrei/dotfiles/vimrc	/^cmap <C-P> <C-R>=expand("%:p:h") . "\/" <CR>$/;"	m	language:Vim
+<C-W><C-O>	/home/andrei/dotfiles/vimrc	/^nnoremap <C-W><C-O> :call MaximizeToggle()<CR>$/;"	m	language:Vim
+<C-W>O	/home/andrei/dotfiles/vimrc	/^nnoremap <C-W>O :call MaximizeToggle()<CR>$/;"	m	language:Vim
+<C-W>o	/home/andrei/dotfiles/vimrc	/^nnoremap <C-W>o :call MaximizeToggle()<CR>$/;"	m	language:Vim
+<C-W>x	/home/andrei/dotfiles/vimrc	/^nnoremap <C-W>x :only<CR>$/;"	m	language:Vim
+<F1>	/home/andrei/dotfiles/vimrc	/^nmap <F1> <Esc>$/;"	m	language:Vim
+<F7>	/home/andrei/dotfiles/vimrc	/^nnoremap <F7> <C-c>:set paste<CR>i$/;"	m	language:Vim
+<Leader>//	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/\/ :Ag -Q $/;"	m	language:Vim
+<Leader>//	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/\/ :call SilverSearch("<cword>")<CR>$/;"	m	language:Vim
+<Leader>/0	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/0 :call SilverSearch(expand(@0))<CR>$/;"	m	language:Vim
+<Leader>/a"	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/a" ya":call SilverSearch(expand(@0))<CR>$/;"	m	language:Vim
+<Leader>/a'	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/a' ya':call SilverSearch(expand(@0))<CR>$/;"	m	language:Vim
+<Leader>/c	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/c :Unite -buffer-name=commands -default-action=execute history\/command command -start-insert<CR>$/;"	m	language:Vim
+<Leader>/e	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/e :Unite -start-insert change<CR>$/;"	m	language:Vim
+<Leader>/h	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/h :Unite -start-insert help<CR>$/;"	m	language:Vim
+<Leader>/i"	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/i" yi":call SilverSearch(expand(@0))<CR>$/;"	m	language:Vim
+<Leader>/i'	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/i' yi':call SilverSearch(expand(@0))<CR>$/;"	m	language:Vim
+<Leader>/j	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/j :Unite -start-insert jump<CR>$/;"	m	language:Vim
+<Leader>/l	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>$/;"	m	language:Vim
+<Leader>/ll	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/ll :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>$/;"	m	language:Vim
+<Leader>/lW	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> $/;"	m	language:Vim
+<Leader>/lw	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>$/;"	m	language:Vim
+<Leader>/m	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/m :Unite -start-insert mapping<CR>$/;"	m	language:Vim
+<Leader>/o	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/o :Unite -start-insert outline<CR>$/;"	m	language:Vim
+<leader>/p	/home/andrei/dotfiles/vimrc	/^noremap <leader>\/p :Unite -start-insert buffer file_rec<CR>$/;"	m	language:Vim
+<Leader>/R	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/R :Unite -start-insert file_mru<CR>$/;"	m	language:Vim
+<Leader>/r	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/r :UniteResume -start-insert<CR>$/;"	m	language:Vim
+<Leader>/t	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\/t :Unite tag -start-insert<CR>$/;"	m	language:Vim
+<Leader>/w	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/w :call SilverSearch("<cword>")<CR>$/;"	m	language:Vim
+<Leader>/W	/home/andrei/dotfiles/vimrc	/^noremap <Leader>\/W :call SilverSearch("<cWORD>")<CR>$/;"	m	language:Vim
+<Leader>=	/home/andrei/dotfiles/vimrc	/^nmap <Leader>= mavae='a$/;"	m	language:Vim
+<Leader>a:	/home/andrei/dotfiles/vimrc	/^  nmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m	language:Vim
+<Leader>a:	/home/andrei/dotfiles/vimrc	/^  vmap <Leader>a: :Tabularize \/:\\zs<CR>$/;"	m	language:Vim
+<Leader>a=	/home/andrei/dotfiles/vimrc	/^  nmap <Leader>a= :Tabularize \/=<CR>$/;"	m	language:Vim
+<Leader>a=	/home/andrei/dotfiles/vimrc	/^  vmap <Leader>a= :Tabularize \/=<CR>$/;"	m	language:Vim
+<leader>ab	/home/andrei/dotfiles/vimrc	/^noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components $/;"	m	language:Vim
+<leader>ac	/home/andrei/dotfiles/vimrc	/^noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>ad	/home/andrei/dotfiles/vimrc	/^noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>am	/home/andrei/dotfiles/vimrc	/^noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>an	/home/andrei/dotfiles/vimrc	/^noremap <leader>an :Unite -start-insert file_rec<CR>node_modules $/;"	m	language:Vim
+<leader>as	/home/andrei/dotfiles/vimrc	/^noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>aS	/home/andrei/dotfiles/vimrc	/^noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>$/;"	m	language:Vim
+<leader>atc	/home/andrei/dotfiles/vimrc	/^noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>atd	/home/andrei/dotfiles/vimrc	/^noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>ats	/home/andrei/dotfiles/vimrc	/^noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>$/;"	m	language:Vim
+<leader>av	/home/andrei/dotfiles/vimrc	/^noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>$/;"	m	language:Vim
+<Leader>a^	/home/andrei/dotfiles/vimrc	/^  nmap <Leader>a^ :Tabularize \/^\\zs<CR>$/;"	m	language:Vim
+<Leader>a^	/home/andrei/dotfiles/vimrc	/^  vmap <Leader>a^ :Tabularize \/^\\zs<CR>$/;"	m	language:Vim
+<Leader>b	/home/andrei/dotfiles/vimrc	/^map <Leader>b <Plug>(easymotion-b)$/;"	m	language:Vim
+<Leader>B	/home/andrei/dotfiles/vimrc	/^map <Leader>B <Plug>(easymotion-B)$/;"	m	language:Vim
+<Leader>fd	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>fd :VimFilerDouble -tab<CR>$/;"	m	language:Vim
+<Leader>ff	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>$/;"	m	language:Vim
+<Leader>fn	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>fn :NERDTreeFind<CR>$/;"	m	language:Vim
+<Leader>g2	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>g2 :diffget \/\/2<CR>$/;"	m	language:Vim
+<Leader>g3	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>g3 :diffget \/\/3<CR>$/;"	m	language:Vim
+<Leader>ga	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>ga :Git add . --all<CR>$/;"	m	language:Vim
+<Leader>gbl	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gbl :Gblame<CR>$/;"	m	language:Vim
+<Leader>gbra	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gbra :Git! branch -a<CR>$/;"	m	language:Vim
+<Leader>gbrl	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gbrl :Git! branch --list<CR>$/;"	m	language:Vim
+<Leader>gca	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>$/;"	m	language:Vim
+<Leader>gcb	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gcb :Git checkout -b $/;"	m	language:Vim
+<Leader>gcm	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gcm :Git commit -m ""<left>$/;"	m	language:Vim
+<Leader>gco	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gco :Git checkout$/;"	m	language:Vim
+<Leader>gd	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gd :Gvdiff<CR>$/;"	m	language:Vim
+<Leader>gE	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gE :Extradite<CR>$/;"	m	language:Vim
+<Leader>ge	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>ge :Gedit<CR>$/;"	m	language:Vim
+<Leader>gf	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gf :Git fetch<CR>$/;"	m	language:Vim
+<Leader>gg	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gg :Gstatus<CR>$/;"	m	language:Vim
+<Leader>gL	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>$/;"	m	language:Vim
+<Leader>glf	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>glf :silent Gllog -- %<CR>:redraw!<CR>:lopen<CR>$/;"	m	language:Vim
+<Leader>gll	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gll :GitLog<CR>$/;"	m	language:Vim
+<Leader>glm	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>glm :silent Gllog --grep= -- %<left><left><left><left><left>$/;"	m	language:Vim
+<Leader>glM	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>glM :silent Glog --grep= --<left><left><left>$/;"	m	language:Vim
+<Leader>gn	/home/andrei/dotfiles/vimrc	/^noremap <Leader>gn :GundoToggle<CR>$/;"	m	language:Vim
+<Leader>gN	/home/andrei/dotfiles/vimrc	/^noremap <Leader>gN :UndotreeToggle<CR>$/;"	m	language:Vim
+<Leader>gpa	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gpa :Git push --all<CR>$/;"	m	language:Vim
+<Leader>gpf	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gpf :Git push --force<CR>$/;"	m	language:Vim
+<Leader>gpp	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gpp :Git push<CR>$/;"	m	language:Vim
+<Leader>grd	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>grd :Gllog -S -- %<Left><Left><Left><Left><Left>$/;"	m	language:Vim
+<Leader>grD	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>grD :Glog -S --<Left><Left><Left>$/;"	m	language:Vim
+<Leader>gre	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gre :Gread<CR>$/;"	m	language:Vim
+<Leader>grh	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>grh :Git reset --hard<CR>$/;"	m	language:Vim
+<Leader>gri	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gri :Git --cached $/;"	m	language:Vim
+<Leader>grr	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>grr :Ribbon<CR>$/;"	m	language:Vim
+<Leader>grs	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>grs :RibbonSave<CR>$/;"	m	language:Vim
+<Leader>gru	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gru :RibbonSave<CR>:Git pull<CR>$/;"	m	language:Vim
+<Leader>gsl	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gsl :Git! stash list<CR>$/;"	m	language:Vim
+<Leader>gsp	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gsp :Git stash pop<CR>$/;"	m	language:Vim
+<Leader>gss	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gss :Git stash<CR>$/;"	m	language:Vim
+<Leader>gt	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gt :tab split +Gstatus<CR>$/;"	m	language:Vim
+<Leader>gu	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gu :Git pull<CR>$/;"	m	language:Vim
+<Leader>gv	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>gv :Gitv<CR>$/;"	m	language:Vim
+<Leader>ha	/home/andrei/dotfiles/vimrc	/^nmap <Leader>ha <Plug>GitGutterStageHunk$/;"	m	language:Vim
+<Leader>hh	/home/andrei/dotfiles/vimrc	/^nmap <Leader>hh :GitGutterToggle<CR>$/;"	m	language:Vim
+<Leader>hr	/home/andrei/dotfiles/vimrc	/^nmap <Leader>hr <Plug>GitGutterRevertHunk$/;"	m	language:Vim
+<Leader>j	/home/andrei/dotfiles/vimrc	/^map <Leader>j <Plug>(easymotion-j)$/;"	m	language:Vim
+<Leader>k	/home/andrei/dotfiles/vimrc	/^map <Leader>k <Plug>(easymotion-k)$/;"	m	language:Vim
+<Leader>m	/home/andrei/dotfiles/vimrc	/^noremap <Leader>m :SignatureToggle<CR>$/;"	m	language:Vim
+<Leader>o	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>o :TagbarToggle<CR>$/;"	m	language:Vim
+<Leader>ra	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>ra :Unite rake -start-insert<CR>$/;"	m	language:Vim
+<Leader>rb	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rb :Unite rails\/bundle -start-insert<CR>$/;"	m	language:Vim
+<Leader>rC	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rC :Unite rails\/config -start-insert<CR>$/;"	m	language:Vim
+<Leader>rc	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rc :Unite rails\/controller -start-insert<CR>$/;"	m	language:Vim
+<Leader>rd	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rd :Unite rails\/db -start-insert<CR>$/;"	m	language:Vim
+<Leader>re	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>re ggO<Esc>:Unite ruby\/require -start-insert<CR>$/;"	m	language:Vim
+<leader>rfap	/home/andrei/dotfiles/vimrc	/^nnoremap <leader>rfap  :RAddParameter<cr>$/;"	m	language:Vim
+<leader>rfcpc	/home/andrei/dotfiles/vimrc	/^nnoremap <leader>rfcpc :RConvertPostConditional<cr>$/;"	m	language:Vim
+<leader>rfec	/home/andrei/dotfiles/vimrc	/^vnoremap <leader>rfec  :RExtractConstant<cr>$/;"	m	language:Vim
+<leader>rfel	/home/andrei/dotfiles/vimrc	/^nnoremap <leader>rfel  :RExtractLet<cr>$/;"	m	language:Vim
+<leader>rfelv	/home/andrei/dotfiles/vimrc	/^vnoremap <leader>rfelv :RExtractLocalVariable<cr>$/;"	m	language:Vim
+<leader>rfem	/home/andrei/dotfiles/vimrc	/^vnoremap <leader>rfem  :RExtractMethod<cr>$/;"	m	language:Vim
+<leader>rfit	/home/andrei/dotfiles/vimrc	/^nnoremap <leader>rfit  :RInlineTemp<cr>$/;"	m	language:Vim
+<leader>rfriv	/home/andrei/dotfiles/vimrc	/^vnoremap <leader>rfriv :RRenameInstanceVariable<cr>$/;"	m	language:Vim
+<leader>rfrlv	/home/andrei/dotfiles/vimrc	/^vnoremap <leader>rfrlv :RRenameLocalVariable<cr>$/;"	m	language:Vim
+<Leader>rge	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rge :Unite rails\/bundled_gem -start-insert<CR>$/;"	m	language:Vim
+<Leader>rgi	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rgi :Bundle install<CR>$/;"	m	language:Vim
+<Leader>rgo	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rgo :Bopen<CR>$/;"	m	language:Vim
+<Leader>rh	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rh :Unite rails\/helper -start-insert<CR>$/;"	m	language:Vim
+<Leader>rj	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rj :Unite rails\/javascript -start-insert<CR>$/;"	m	language:Vim
+<Leader>rl	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rl :Unite rails\/lib -start-insert<CR>$/;"	m	language:Vim
+<Leader>rL	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rL :Unite rails\/log -start-insert<CR>$/;"	m	language:Vim
+<Leader>rM	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rM :Unite rails\/mailer -start-insert<CR>$/;"	m	language:Vim
+<Leader>rm	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rm :Unite rails\/model -start-insert<CR>$/;"	m	language:Vim
+<Leader>rro	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rro :Unite rails\/route -start-insert<CR>$/;"	m	language:Vim
+<Leader>rs	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rs :Unite rails\/stylesheet -start-insert<CR>$/;"	m	language:Vim
+<Leader>rv	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>rv :Unite rails\/view -start-insert<CR>$/;"	m	language:Vim
+<Leader>SS	/home/andrei/dotfiles/vimrc	/^noremap <Leader>SS V:ScreenSend<CR>$/;"	m	language:Vim
+<Leader>tc	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>tc :tabclose<CR>$/;"	m	language:Vim
+<Leader>te	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>te :tabedit %<CR>$/;"	m	language:Vim
+<leader>tl	/home/andrei/dotfiles/vimrc	/^nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>$/;"	m	language:Vim
+<Leader>tn	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>tn :tabnew<CR>$/;"	m	language:Vim
+<Leader>to	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>to :tabonly<CR>$/;"	m	language:Vim
+<leader>tq	/home/andrei/dotfiles/vimrc	/^nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>$/;"	m	language:Vim
+<Leader>tR	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>tR :redraw!<CR>$/;"	m	language:Vim
+<Leader>tr	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>tr :Reloadvimrc<CR>$/;"	m	language:Vim
+<Leader>w	/home/andrei/dotfiles/vimrc	/^map <Leader>w <Plug>(easymotion-w)$/;"	m	language:Vim
+<Leader>W	/home/andrei/dotfiles/vimrc	/^map <Leader>W <Plug>(easymotion-W)$/;"	m	language:Vim
+<Leader>xp	/home/andrei/dotfiles/vimrc	/^noremap <Leader>xp :call VimuxRunCommand(expand(@0))<CR>`>j$/;"	m	language:Vim
+<Leader>xx	/home/andrei/dotfiles/vimrc	/^noremap <Leader>xx :call VimuxRunCommand(getline('.'))<CR>j$/;"	m	language:Vim
+<Leader>\0	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\0 :%s\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>\f0	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\f0 :%S\/\/\/gc<left><left><left><left>$/;"	m	language:Vim
+<Leader>\ff	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\ff yiw:%S\/<C-R>0\/<C-R>0\/gc<left><left><left><left>$/;"	m	language:Vim
+<Leader>\fs	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\fs :%S\/\/\/gc<left><left><left><left>$/;"	m	language:Vim
+<Leader>\fw	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\fw yiw:%S\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>\fW	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\fW yiW:%S\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>\rg	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\rg :Greplace<CR>$/;"	m	language:Vim
+<Leader>\rq	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\rq :Gqfopen<CR>$/;"	m	language:Vim
+<Leader>\s	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\s :%s\/\/\/gc<left><left><left><left>$/;"	m	language:Vim
+<Leader>\w	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\w yiw:%s\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>\W	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\W yiW:%s\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>\\	/home/andrei/dotfiles/vimrc	/^nnoremap <Leader>\\\\ yiw:%s\/<C-R>0\/<C-R>0\/gc<left><left><left>$/;"	m	language:Vim
+<Leader>{	/home/andrei/dotfiles/vimrc	/^noremap <Leader>{ {{)$/;"	m	language:Vim
+<Leader>}	/home/andrei/dotfiles/vimrc	/^noremap <Leader>} }}($/;"	m	language:Vim
+<space>/2	/home/andrei/dotfiles/vimrc	/^nnoremap <space>\/2 :Unite grep:. -start-insert<cr>$/;"	m	language:Vim
+<TAB>	/home/andrei/dotfiles/vimrc	/^imap <expr><TAB> neosnippet#expandable_or_jumpable() ?$/;"	m	language:Vim
+conn	/home/andrei/dotfiles/vimrc	/^let conn=$CONN$/;"	v	language:Vim
+D	/home/andrei/dotfiles/vimrc	/^vmap D y'>p$/;"	m	language:Vim
+Editvimrc	/home/andrei/dotfiles/vimrc	/^command! Editvimrc :e $MYVIMRC$/;"	c	language:Vim
+g:agprg	/home/andrei/dotfiles/vimrc	/^let g:agprg="ag -Q --column"$/;"	v	language:Vim
+g:airline#extensions#branch#enabled	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#branch#enabled = 1$/;"	v	language:Vim
+g:airline#extensions#syntastic#enabled	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#syntastic#enabled = 1$/;"	v	language:Vim
+g:airline#extensions#tabline#enabled	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#tabline#enabled = 1$/;"	v	language:Vim
+g:airline#extensions#tabline#show_buffers	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#tabline#show_buffers = 0$/;"	v	language:Vim
+g:airline#extensions#tabline#tab_min_count	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#tabline#tab_min_count = 2$/;"	v	language:Vim
+g:airline#extensions#tagbar#enabled	/home/andrei/dotfiles/vimrc	/^let g:airline#extensions#tagbar#enabled = 1$/;"	v	language:Vim
+g:airline_powerline_fonts	/home/andrei/dotfiles/vimrc	/^  let g:airline_powerline_fonts = 1$/;"	v	language:Vim
+g:airline_theme	/home/andrei/dotfiles/vimrc	/^  let g:airline_theme='powerlineish'$/;"	v	language:Vim
+g:airline_theme	/home/andrei/dotfiles/vimrc	/^let g:airline_theme='luna'$/;"	v	language:Vim
+g:angular_source_directory	/home/andrei/dotfiles/vimrc	/^let g:angular_source_directory = 'uwezo-presentation\/yo\/app'$/;"	v	language:Vim
+g:angular_test_directory	/home/andrei/dotfiles/vimrc	/^let g:angular_test_directory = 'uwezo-presentation\/yo\/app\/test\/spec'$/;"	v	language:Vim
+g:copypath_copy_to_unnamed_register	/home/andrei/dotfiles/vimrc	/^let g:copypath_copy_to_unnamed_register = 1$/;"	v	language:Vim
+g:EasyMotion_grouping	/home/andrei/dotfiles/vimrc	/^let g:EasyMotion_grouping=1$/;"	v	language:Vim
+g:EasyMotion_keys	/home/andrei/dotfiles/vimrc	/^let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'$/;"	v	language:Vim
+g:easytags_always_enabled	/home/andrei/dotfiles/vimrc	/^let g:easytags_always_enabled = 1$/;"	v	language:Vim
+g:easytags_auto_highlight	/home/andrei/dotfiles/vimrc	/^let g:easytags_auto_highlight = 0$/;"	v	language:Vim
+g:easytags_dynamic_files	/home/andrei/dotfiles/vimrc	/^let g:easytags_dynamic_files = 2$/;"	v	language:Vim
+g:easytags_include_members	/home/andrei/dotfiles/vimrc	/^let g:easytags_include_members = 1$/;"	v	language:Vim
+g:grep_cmd_opts	/home/andrei/dotfiles/vimrc	/^let g:grep_cmd_opts = '--noheading'$/;"	v	language:Vim
+g:loaded_netrwPlugin	/home/andrei/dotfiles/vimrc	/^let g:loaded_netrwPlugin = 1$/;"	v	language:Vim
+g:neocomplete#enable_at_startup	/home/andrei/dotfiles/vimrc	/^let g:neocomplete#enable_at_startup = 1$/;"	v	language:Vim
+g:neosnippet#enable_snipmate_compatibilit	/home/andrei/dotfiles/vimrc	/^let g:neosnippet#enable_snipmate_compatibilit = 1$/;"	v	language:Vim
+g:neosnippet#snippets_directory	/home/andrei/dotfiles/vimrc	/^let g:neosnippet#snippets_directory='~\/.vim\/bundle\/vim-snippets\/snippets'$/;"	v	language:Vim
+g:ScreenImpl	/home/andrei/dotfiles/vimrc	/^let g:ScreenImpl = 'Tmux'$/;"	v	language:Vim
+g:SignatureMap	/home/andrei/dotfiles/vimrc	/^let g:SignatureMap = {$/;"	v	language:Vim
+g:syntastic_always_populate_loc_list	/home/andrei/dotfiles/vimrc	/^let g:syntastic_always_populate_loc_list = 1$/;"	v	language:Vim
+g:syntastic_check_on_open	/home/andrei/dotfiles/vimrc	/^let g:syntastic_check_on_open = 1$/;"	v	language:Vim
+g:syntastic_javascript_jshint_args	/home/andrei/dotfiles/vimrc	/^let g:syntastic_javascript_jshint_args = '--config ~\/.jshintrc.js'$/;"	v	language:Vim
+g:tagbar_autoclose	/home/andrei/dotfiles/vimrc	/^let g:tagbar_autoclose='1'$/;"	v	language:Vim
+g:tagbar_type_javascript	/home/andrei/dotfiles/vimrc	/^let g:tagbar_type_javascript = {$/;"	v	language:Vim
+g:unite_source_grep_command	/home/andrei/dotfiles/vimrc	/^  let g:unite_source_grep_command = 'ag'$/;"	v	language:Vim
+g:unite_source_grep_default_opts	/home/andrei/dotfiles/vimrc	/^  let g:unite_source_grep_default_opts =$/;"	v	language:Vim
+g:unite_source_grep_max_candidates	/home/andrei/dotfiles/vimrc	/^let g:unite_source_grep_max_candidates = 200$/;"	v	language:Vim
+g:unite_source_grep_recursive_opt	/home/andrei/dotfiles/vimrc	/^  let g:unite_source_grep_recursive_opt = ''$/;"	v	language:Vim
+g:unite_source_tag_max_fname_length	/home/andrei/dotfiles/vimrc	/^let g:unite_source_tag_max_fname_length=140$/;"	v	language:Vim
+g:unite_source_tag_max_name_length	/home/andrei/dotfiles/vimrc	/^let g:unite_source_tag_max_name_length=30$/;"	v	language:Vim
+g:vimfiler_as_default_explorer	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_as_default_explorer = 1$/;"	v	language:Vim
+g:vimfiler_file_icon	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_file_icon = '-'$/;"	v	language:Vim
+g:vimfiler_marked_file_icon	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_marked_file_icon = '*'$/;"	v	language:Vim
+g:vimfiler_tree_closed_icon	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_tree_closed_icon = '▸'$/;"	v	language:Vim
+g:vimfiler_tree_leaf_icon	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_tree_leaf_icon = ' '$/;"	v	language:Vim
+g:vimfiler_tree_opened_icon	/home/andrei/dotfiles/vimrc	/^let g:vimfiler_tree_opened_icon = '▾'$/;"	v	language:Vim
+g:ycm_key_list_previous_completion	/home/andrei/dotfiles/vimrc	/^let g:ycm_key_list_previous_completion = ['<C-k']$/;"	v	language:Vim
+g:ycm_key_list_select_completion	/home/andrei/dotfiles/vimrc	/^let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']$/;"	v	language:Vim
+mapleader	/home/andrei/dotfiles/vimrc	/^let mapleader = "\\<Space>"$/;"	v	language:Vim
+MaximizeToggle	/home/andrei/dotfiles/vimrc	/^function! MaximizeToggle()$/;"	f	language:Vim
+P	/home/andrei/dotfiles/vimrc	/^vmap P p :call setreg('"', getreg('0')) <CR>$/;"	m	language:Vim
+PlugTakeSnapshot	/home/andrei/dotfiles/vimrc	/^command! PlugTakeSnapshot PlugSnapshot ~\/.vim_plug_snapshot.sh$/;"	c	language:Vim
+plug_vim	/home/andrei/dotfiles/vimrc	/^  let plug_vim=expand('~\/.vim\/autoload\/plug.vim')$/;"	v	language:Vim
+Q	/home/andrei/dotfiles/vimrc	/^command! Q  quitall$/;"	c	language:Vim
+Reloadvimrc	/home/andrei/dotfiles/vimrc	/^command! Reloadvimrc :so $MYVIMRC$/;"	c	language:Vim
+Rroutes	/home/andrei/dotfiles/vimrc	/^command! Rroutes :e config\/routes.rb$/;"	c	language:Vim
+Rschema	/home/andrei/dotfiles/vimrc	/^command! Rschema :e db\/schema.rb$/;"	c	language:Vim
+SilverSearch	/home/andrei/dotfiles/vimrc	/^function! SilverSearch(word)$/;"	f	language:Vim
+unite_my_settings	/home/andrei/dotfiles/vimrc	/^function! s:unite_my_settings()$/;"	f	language:Vim
+vimrcEx	/home/andrei/dotfiles/vimrc	/^  augroup vimrcEx$/;"	a	language:Vim
+W	/home/andrei/dotfiles/vimrc	/^command! W  write !sudo tee %$/;"	c	language:Vim
+ZA	/home/andrei/dotfiles/vimrc	/^nnoremap ZA :wall!<CR>$/;"	m	language:Vim
+ZW	/home/andrei/dotfiles/vimrc	/^nnoremap ZW :w!<CR>$/;"	m	language:Vim
+[g	/home/andrei/dotfiles/vimrc	/^nnoremap [g do[c:wall<CR>$/;"	m	language:Vim
+[h	/home/andrei/dotfiles/vimrc	/^nmap [h <Plug>GitGutterPrevHunk$/;"	m	language:Vim
+[r	/home/andrei/dotfiles/vimrc	/^nnoremap [r dp[c:wall<CR>$/;"	m	language:Vim
+[t	/home/andrei/dotfiles/vimrc	/^nnoremap [t :tabprevious<CR>$/;"	m	language:Vim
+]g	/home/andrei/dotfiles/vimrc	/^nnoremap ]g do]c:wall<CR>$/;"	m	language:Vim
+]h	/home/andrei/dotfiles/vimrc	/^nmap ]h <Plug>GitGutterNextHunk$/;"	m	language:Vim
+]r	/home/andrei/dotfiles/vimrc	/^nnoremap ]r dp]c:wall<CR>$/;"	m	language:Vim
+]t	/home/andrei/dotfiles/vimrc	/^nnoremap ]t :tabnext<CR>$/;"	m	language:Vim
