@@ -665,6 +665,8 @@ nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
+nnoremap <Leader>th :split<CR>
+nnoremap <Leader>tv :vsplit<CR>
 nnoremap <Leader>tr :Reloadvimrc<CR>
 nnoremap <Leader>tR :redraw!<CR>
 nnoremap ]t :tabnext<CR>
