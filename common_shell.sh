@@ -41,6 +41,9 @@ if [ -d $NDENV_HOME ]; then
   export PATH="$NDENV_HOME/bin:$PATH"
   eval "$(ndenv init -)"
 fi
+if [ -d $HOME/.local/lib/node_modules ]; then
+  export NODE_PATH=$NODE_PATH:$HOME/.local/lib/node_modules
+fi
 
 # jenv settings
 if [ -f $HOME/.jenv/bin/jenv-init.sh ]; then
