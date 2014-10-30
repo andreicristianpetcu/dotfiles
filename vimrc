@@ -167,17 +167,20 @@ Plug 'andreicristianpetcu/argarg.vim'
 
 " added ctags support that works
 Plug 'szw/vim-tags'
+let g:vim_tags_auto_generate = 1
+let g:vim_tags_use_vim_dispatch = 1
+" autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
 
-Plug 'xolox/vim-easytags'
-set tags=./tags;
-let g:easytags_dynamic_files = 2
-let g:easytags_always_enabled = 1
-let g:easytags_auto_highlight = 0
-" might get heavy on Java files
-let g:easytags_include_members = 1
-let g:easytags_on_cursorhold = 0
-" let g:easytags_autorecurse = 1
-command! GlobalTagsClean !rm -rf ~/tags
+" Plug 'xolox/vim-easytags'
+" set tags=./tags;
+" let g:easytags_dynamic_files = 2
+" let g:easytags_always_enabled = 1
+" let g:easytags_auto_highlight = 0
+" " might get heavy on Java files
+" let g:easytags_include_members = 1
+" let g:easytags_on_cursorhold = 0
+" " let g:easytags_autorecurse = 1
+command! GlobalTagsClean !rm -rf ~/.tags
 
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'
@@ -186,6 +189,21 @@ nnoremap <Leader>o :TagbarToggle<CR>
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.local/bin/jsctags'
 \ }
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+    \ 'ctagsbin' : 'coffeetags',
+    \ 'ctagsargs' : '',
+    \ 'kinds' : [
+      \ 'f:functions',
+      \ 'o:object',
+    \ ],
+    \ 'sro' : ".",
+    \ 'kind2scope' : {
+      \ 'f' : 'object',
+      \ 'o' : 'object',
+    \ }
+  \ }
+endif
 
 Plug 'jaredly/vim-debug'
 
