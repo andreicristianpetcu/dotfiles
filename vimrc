@@ -593,6 +593,8 @@ Plug 'xolox/vim-lua-ftplugin'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'Glench/Vim-Jinja2-Syntax'
+
 " vim-scripts repos
 Plug 'L9'
 
