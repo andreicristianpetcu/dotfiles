@@ -3,6 +3,7 @@ alias sshalaveteli='ssh alaveteli'
 sshcopyidisshidrsapubuserserver(){
   ssh-copy-id -i ~/.ssh/id_rsa_andrei.pub $1
 }
+alias sshoitmuxmongo='ssh oi -L 37017:donoratainstanta:27017 -t "command; tmux attach || tmux new"'
 
 # common
 alias ping8888='ping 8.8.8.8'
