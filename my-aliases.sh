@@ -180,6 +180,11 @@ alias vimcvimfilerdouble='vim -c "VimFilerDouble"'
 alias vimcpluginstallqall='vim -c "PlugInstall|qall!"'
 alias vimclean='rm -rf ~/.vim/autoload && rm -rf ~/.vim/bundle && rm -rf ~/.vim/colour && rm -rf ~/.vim/tmp'
 
+hosttoip(){
+  sudo sed -i "/$1/d" /etc/hosts
+  echo "$2 $1" | sudo tee -a /etc/hosts
+}
+
 # functions
 psaxgrep() {
   ps -ax|grep $1
