@@ -1,0 +1,20 @@
+let mapleader = "\<Space>"
+noremap <Leader>tr :source ~/.vimperatorrc
+set hintchars=hjklasdfg
+
+noremap <Leader>c :copy
+javascript <<EOM
+liberator.globalVariables.copy_templates = [
+  { label: 'titleAndUrl', value: '%TITLE% %URL%' },
+  { label: 'title', value: '%TITLE%' },
+  { label: 'url', value: '%URL%' },
+  { label: 'markdown', value: '[%TITLE%](%URL% "%TITLE%")' },
+  { label: 'markdownsel', value: '[%SEL%](%URL% "%TITLE%")' },
+  { label: 'htmlblockquote', value: '<blockquote cite="%URL%" title="%TITLE%">%HTMLSEL%</blockquote>' },
+  { label: 'titleAndshortenUrl', value: 'title and goo.gl short url', custom: function(){return buffer.title + ' ' + JSON.parse(util.httpGet('http://ggl-shortener.appspot.com/?url='+encodeURIComponent(buffer.URL)).responseText).short_url;} },
+  { label: 'shortenUrl', value: 'goo.gl short url', custom: function(){return JSON.parse(util.httpGet('http://ggl-shortener.appspot.com/?url='+encodeURIComponent(buffer.URL)).responseText).short_url;} },
+  { label: 'ASIN', value: 'ASIN code from amazon', custom: function(){return content.document.querySelector('input[name^="ASIN"]').value;} },
+  { label: 'Amazon', value: 'simple amazon url', custom: function(){return 'http://amazon.co.jp/o/ASIN/' + content.document.querySelector('input[name^="ASIN"]').value;} },
+  { label: 'AmazonAffiliate', value: 'simple amazon url with affiliate', custom: function(){return 'http://amazon.co.jp/o/ASIN/' + content.document.querySelector('input[name^="ASIN"]').value + '/mashiro00-22';} },
+];
+EOM
