@@ -229,25 +229,27 @@ installzshmarks(){
 }
 
 # Docker
-alias dockerbuild='docker build .'
-alias dockerbuilddockerrunlastimage='docker build . && dockerrunlastimage'
-alias systemctlstartdocker='sudo systemctl start docker'
-alias dockerimages='docker images'
+alias dobuild='docker build .'
+alias dobuildrunlastimage='docker build . && docker run -d `docker images -q|head -1`'
+alias dorestart='sudo systemctl start docker'
+alias doimages='docker images'
 #delete all stopped containers
-alias dockerrmdockerpsaq='docker rm $(docker ps -a -q)'
-alias dockerstopdockerpsq='docker stop $(docker ps -q)'
-alias dockerpsa='docker ps -a'
-alias dockerps='docker ps'
-alias dockerrmidockerimagesq='docker rmi `docker images -q`'
-alias dockernosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
-alias dockerimagesqhead1='docker images -q|head -1'
-alias dockerretrylast="dockerstoplast && dockerrunlastimage && sleep 1s && dockersshlast"
+alias dormall='docker rm $(docker ps -a -q)'
+alias dostopall='docker stop $(docker ps -q)'
+alias dopsa='docker ps -a'
+alias dops='docker ps'
+alias dormiall='docker rmi `docker images -q`'
+alias donosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
+alias dolastimage='docker images -q|head -1'
+alias dostoplast='docker stop `docker ps -q|head -1`'
+alias dorunlastimage='docker run -d `docker images -q|head -1`'
+alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
-alias dockerrmidockerimagesgrepnoneawkprint3="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
+alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias dockercleanup="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
+alias docleanall="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
 
-sshiinsecurekeyroot(){
+sshinsecure(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
 }
@@ -282,7 +284,7 @@ dockerstoplast(){
   docker stop $LAST_CONTAINER
 }
 
-dockersshlast(){
+dosshlast(){
   docker ps -l
   LAST_CONTAINER="`docker ps -lq`"
   CONTAINER_IP=$(docker inspect $LAST_CONTAINER | grep IPAddress| awk '{print $2}'| awk -F\" '{print $2}')
