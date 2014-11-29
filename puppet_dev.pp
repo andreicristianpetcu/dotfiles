@@ -3,7 +3,7 @@ $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "z
     "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python",
     "nodejs", "ncdu", "bpython", 
     #networking stuff
-    "nethogs", "nload", "bmon", "slurm", "speedometer"]
+    "nethogs", "nload", "bmon", "slurm", "speedometer", "wavemon"]
       
 $ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
     "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev",
