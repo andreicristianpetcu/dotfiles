@@ -249,7 +249,7 @@ alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{p
 #cleanpup. delete all stopped containers and remove untagged images
 alias docleanall="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
 
-sshinsecure(){
+sshinsecuretest(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
 }
