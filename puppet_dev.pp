@@ -28,7 +28,7 @@ package { $common_packages: }
 package { $os_specific_packages: }
       
 $gem_packages = ["rake", "bundler", "rails", "pry", "spring", "pry-rails", "pry-nav", "pry-stack_explorer",
-  "pry-coolline"]
+  "pry-coolline", "bropages"]
 
 package {$gem_packages:
     ensure   => 'installed',
