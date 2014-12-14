@@ -3,3 +3,5 @@
 guake gvim synapse clipit python-pip rake ctags cscope
 #VirtualMachine
 vim ag ack nmap emacs ctags git tig mc zsh wget curl tmux rsync htop iotop lsof llvm make nmon python ruby
+#update grub
+sudo grub-mkconfig -o /boot/grub/grub.cfg
