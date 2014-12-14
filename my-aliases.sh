@@ -5,6 +5,9 @@ sshcopyidisshidrsapubuserserver(){
 }
 alias sshoitmuxmongo='ssh oi -L 37017:donoratainstanta:27017 -t "command; tmux attach || tmux new"'
 
+# Arch GNU/Linux
+alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
+
 # common
 alias ping8888='ping 8.8.8.8'
 alias emacsnw='emacs -nw'
