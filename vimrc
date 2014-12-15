@@ -332,7 +332,8 @@ Plug 'Shougo/unite-outline'
 nnoremap <Leader>/o :Unite -start-insert outline<CR>
 
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_max_height='20'
+let g:ctrlp_max_height='40'
+nnoremap <Leader>/L :CtrlPLine<CR>
 
 Plug 'junegunn/fzf'
 command! FZFLines call fzf#run({
