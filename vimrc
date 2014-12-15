@@ -333,6 +333,7 @@ nnoremap <Leader>/o :Unite -start-insert outline<CR>
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='40'
+let g:ctrlp_regexp = 1
 nnoremap <Leader>/L :CtrlPLine<CR>
 
 Plug 'junegunn/fzf'
