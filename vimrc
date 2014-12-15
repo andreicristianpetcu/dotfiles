@@ -48,14 +48,30 @@ nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap <Leader>gre :Gread<CR>
 au FileType gitcommit nmap <buffer> U :Git checkout -- <c-r><c-g><cr>
-" git searches
-nnoremap <Leader>gri :Git --cached 
-nnoremap <Leader>grd :Glog -S --<Left><Left><Left>
+" usefull when merging, you can pull from left (2) or right (3)
 nnoremap <Leader>g2 :diffget //2<CR>
 nnoremap <Leader>g3 :diffget //3<CR>
+" git searches, after you search, check the quicklist
+" seach in the index
+nnoremap <Leader>gri :Git --cached 
+" search in the commit diffs with the pixaxe option
+nnoremap <Leader>grD :Glog -S --<Left><Left><Left>
+" search in the commit diffs with the pixaxe option in the current file
+nnoremap <Leader>grd :Gllog -S -- %<Left><Left><Left><Left><Left>
+" load in quickfix all the log
+nnoremap <Leader>gL :silent Glog --<CR>:redraw!<CR>:copen<CR>
+" load in the location list the 
+nnoremap <Leader>glf :silent Gllog -- %<CR>:redraw!<CR>:lopen<CR>
+
+" load in quickfix all the commits that contain the text message
+nnoremap <Leader>glM :silent Glog --grep= --<left><left><left>
+" load in the location list the commits that contain the text message for the
+" current file
+nnoremap <Leader>glm :silent Gllog --grep= -- %<left><left><left><left><left>
+
 
 Plug 'kablamo/vim-git-log'
-nnoremap <Leader>gl :GitLog<CR>
+nnoremap <Leader>gll :GitLog<CR>
 nnoremap <Leader>grr :Ribbon<CR>
 nnoremap <Leader>gru :RibbonSave<CR>:Git pull<CR>
 nnoremap <Leader>grs :RibbonSave<CR>
@@ -112,7 +128,7 @@ Plug 'tpope/vim-haml'
 
 " Fast navigation
 Plug 'Lokaltog/vim-easymotion'
-let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwxyz1234567890'
+let g:EasyMotion_keys = 'hjklasdfg'
 let g:EasyMotion_grouping=1
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>W <Plug>(easymotion-W)
@@ -151,6 +167,20 @@ Plug 'andreicristianpetcu/argarg.vim'
 
 " added ctags support that works
 Plug 'szw/vim-tags'
+let g:vim_tags_auto_generate = 1
+let g:vim_tags_use_vim_dispatch = 1
+" autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
+
+" Plug 'xolox/vim-easytags'
+" set tags=./tags;
+" let g:easytags_dynamic_files = 2
+" let g:easytags_always_enabled = 1
+" let g:easytags_auto_highlight = 0
+" " might get heavy on Java files
+" let g:easytags_include_members = 1
+" let g:easytags_on_cursorhold = 0
+" " let g:easytags_autorecurse = 1
+command! GlobalTagsClean !rm -rf ~/.tags
 
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'
@@ -159,6 +189,21 @@ nnoremap <Leader>o :TagbarToggle<CR>
 let g:tagbar_type_javascript = {
     \ 'ctagsbin' : '~/.local/bin/jsctags'
 \ }
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+    \ 'ctagsbin' : 'coffeetags',
+    \ 'ctagsargs' : '',
+    \ 'kinds' : [
+      \ 'f:functions',
+      \ 'o:object',
+    \ ],
+    \ 'sro' : ".",
+    \ 'kind2scope' : {
+      \ 'f' : 'object',
+      \ 'o' : 'object',
+    \ }
+  \ }
+endif
 
 Plug 'jaredly/vim-debug'
 
@@ -241,11 +286,12 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
 noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
-noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
 nnoremap <Leader>/m :Unite -start-insert mapping<CR>
 nnoremap <Leader>/j :Unite -start-insert jump<CR>
 nnoremap <Leader>/e :Unite -start-insert change<CR>
 nnoremap <Leader>/r :UniteResume -start-insert<CR>
+noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/ll :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
 noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
 noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
@@ -284,6 +330,34 @@ nnoremap <Leader>/h :Unite -start-insert help<CR>
 " Unite for outline
 Plug 'Shougo/unite-outline'
 nnoremap <Leader>/o :Unite -start-insert outline<CR>
+
+Plug 'kien/ctrlp.vim'
+let g:ctrlp_max_height='55'
+let g:ctrlp_regexp = 1
+nnoremap <Leader>/L :CtrlPLine<CR>
+
+Plug 'junegunn/fzf'
+command! FZFLines call fzf#run({
+  \ 'source':  BuffersLines(),
+  \ 'sink':    function('LineHandler'),
+  \ 'options': '--extended --nth=3..,',
+  \ 'tmux_height': '60%'
+\})
+
+function! LineHandler(l)
+  let keys = split(a:l, ':\t')
+  exec 'buf ' . keys[0]
+  exec keys[1]
+  normal! ^zz
+endfunction
+
+function! BuffersLines()
+  let res = []
+  for b in filter(range(1, bufnr('$')), 'buflisted(v:val)')
+    call extend(res, map(getbufline(b,0,"$"), 'b . ":\t" . (v:key + 1) . ":\t" . v:val '))
+  endfor
+  return res
+endfunction
 
 " Unite for command history
 Plug 'thinca/vim-unite-history'
@@ -547,6 +621,10 @@ Plug 'xolox/vim-lua-ftplugin'
 
 Plug 'editorconfig/editorconfig-vim'
 
+Plug 'chase/vim-ansible-yaml'
+
+Plug 'Glench/Vim-Jinja2-Syntax'
+
 " vim-scripts repos
 Plug 'L9'
 
@@ -637,9 +715,12 @@ nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>te :tabedit %<CR>
+nnoremap <Leader>th :split<CR>
+nnoremap <Leader>tv :vsplit<CR>
 nnoremap <Leader>tr :Reloadvimrc<CR>
-nnoremap ]t :tabNext<CR>
-nnoremap [t :tabp<CR>
+nnoremap <Leader>tR :redraw!<CR>
+nnoremap ]t :tabnext<CR>
+nnoremap [t :tabprevious<CR>
 
 " Inserts the path of the currently edited file into a command
 " Command mode: Ctrl+P
@@ -719,7 +800,7 @@ let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
 " numbers do not show for Control+C, they show only for Esc
-map <C-C> w<ESC>
+map <C-C> <ESC>:w!<CR>
 
 " Required:
 filetype plugin indent on

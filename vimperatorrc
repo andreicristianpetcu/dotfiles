@@ -1,0 +1,13 @@
+let mapleader = ","
+noremap <Leader>tr :source ~/.vimperatorrc
+noremap <Leader>g :set defsearch=google<CR>t
+noremap <Leader>d :set defsearch=duckduckgo<CR>t
+
+set hintchars=hjklasdfg
+
+noremap <Leader>c :copy
+javascript <<EOM
+window.content.window.myfunctioni = function(){
+  alert('test');
+}
+EOM

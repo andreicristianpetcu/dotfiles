@@ -2,3 +2,5 @@ vim/*
 node_modules/*
 .tmp/
 modules/
+/tags
+npm-debug.log
