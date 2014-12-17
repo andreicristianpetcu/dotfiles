@@ -62,3 +62,7 @@ if [ -d $HOME/.pyenv/bin ]; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi 
+
+if [ -d "$HOME/dotfiles/bin" ]; then
+  export PATH="$PATH:$HOME/dotfiles/bin"
+fi
