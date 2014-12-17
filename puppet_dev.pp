@@ -1,7 +1,7 @@
 Package { ensure =>  "installed" }                                                                                                                                                                                                      
 $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "zsh", "wget", "curl",
     "rsync", "htop", "iotop", "lsof", "llvm", "make", "nmon", "autojump", "elinks", "ruby", "python",
-    "nodejs", "ncdu", "bpython", 
+    "nodejs", "ncdu", "bpython", "atop",
     #networking stuff
     "nethogs", "nload", "bmon", "slurm", "speedometer", "wavemon"]
       
