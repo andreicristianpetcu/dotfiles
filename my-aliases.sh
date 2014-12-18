@@ -204,6 +204,7 @@ alias installrbenv='git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
+alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
