@@ -66,3 +66,5 @@ fi
 if [ -d "$HOME/dotfiles/bin" ]; then
   export PATH="$PATH:$HOME/dotfiles/bin"
 fi
+
+export FZF_DEFAULT_OPTS="+s -e"
