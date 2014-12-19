@@ -58,5 +58,10 @@ if [ $CONN = "sshd" ]; then
 fi
 
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh ;fi
-alias grep="grep ${GREP_OPTIONS}"
-unset GREP_OPTIONS
+zmodload -i zsh/parameter
+insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+
+bindkey "^X^L" insert-last-command-output 
