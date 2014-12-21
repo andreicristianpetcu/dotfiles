@@ -35,7 +35,7 @@ nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>gg :wall<CR>:Gstatus<CR>
 nnoremap <Leader>gt :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpa :Git push --all<CR>
@@ -655,7 +655,13 @@ if $COLORTERM == 'drop-down-terminal'
 else
   try
     colorscheme modokay
-    set cursorline cursorcolumn
+    " set cursorline 
+    augroup CursorLineOnlyInActiveWindow
+      autocmd!
+      autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+      autocmd WinLeave * setlocal nocursorline
+    augroup END 
+    " set cursorcolumn
   catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert 
   endtry
