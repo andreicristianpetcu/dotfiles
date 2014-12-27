@@ -361,6 +361,7 @@ fcdf() {
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
+bindkey -s '^O' '^qfcdf\n'
 
 # fkill - kill process
 fkill() {
@@ -374,6 +375,7 @@ fgb() {
   branch=$(echo "$branches" | fzf +s +m) &&
   git checkout $(echo "$branch" | sed "s/.* //")
 }
+bindkey -s '^G' '^qfgb\n'
 
 # fco - checkout git commit
 fgc() {
