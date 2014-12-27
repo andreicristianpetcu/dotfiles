@@ -403,3 +403,12 @@ ftags() {
   ) && $EDITOR $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }
+
+#read man pages with vim
+vman() {
+  vim -c "SuperMan $*"
+
+  if [ "$?" != "0" ]; then
+    echo "No manual entry for $*"
+  fi
+}

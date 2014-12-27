@@ -625,6 +625,8 @@ Plug 'chase/vim-ansible-yaml'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 
+Plug 'Z1MM32M4N/vim-superman'
+
 " vim-scripts repos
 Plug 'L9'
 
