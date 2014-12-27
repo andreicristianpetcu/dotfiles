@@ -322,6 +322,7 @@ fed() {
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
+bindkey -s '^V' '^qfed\n'
 
 # fzf magic
 # fe [FUZZY PATTERN] - Delete selected file or directory
