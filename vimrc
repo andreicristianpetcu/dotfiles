@@ -807,9 +807,6 @@ nnoremap <C-W>x :only<CR>
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
-" numbers do not show for Control+C, they show only for Esc
-map <C-C> <ESC>:w!<CR>
-
 " Required:
 filetype plugin indent on
 
@@ -820,22 +817,39 @@ filetype plugin indent on
 " Map F2 to toggle paste
 nnoremap <F7> <C-c>:set paste<CR>i
 
-" autosave
-set updatetime=1000
-" autocmd BufLeave *
-"       \ if expand('%') != '' && &buftype == '' |
-"       \ update |
-"       \ endif
-" autocmd CursorHold *
-"       \ if expand('%') != '' && &buftype == '' |
-"       \ update |
-"       \ endif
-autocmd InsertLeave *
-      \ if expand('%') != '' && &buftype == '' |
-      \ update |
-      \ set nopaste |
-      \ endif
-
+map <C-C> <ESC>
+" " autosave
+" set updatetime=1000
+" " numbers do not show for Control+C, they show only for Esc
+" function WriteIfPossible()
+"   if !&readonly
+"   "   if !&modifiable
+"       if expand('%') != '' && &buftype == ''
+"         echom "Written file"
+"         update
+"         set nopaste
+"       endif
+"       " w
+"   "   endif
+"   endif
+" endfunction
+" map <C-C> <ESC>:call WriteIfPossible()<CR>
+"
+" " autocmd BufLeave *
+" "       \ if expand('%') != '' && &buftype == '' |
+" "       \ update |
+" "       \ endif
+" " autocmd CursorHold *
+" "       \ if expand('%') != '' && &buftype == '' |
+" "       \ update |
+" "       \ endif
+"
+" autocmd InsertLeave * call WriteIfPossible()
+"       " \ if expand('%') != '' && &buftype == '' |
+"       " \ update |
+"       " \ set nopaste |
+"       " \ endif
+"       "
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
