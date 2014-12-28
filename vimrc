@@ -627,7 +627,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 
 Plug 'Z1MM32M4N/vim-superman'
 
-Plug 'andreicristianpetcu/vim-auto-save'
+Plug '907th/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
