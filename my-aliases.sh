@@ -266,23 +266,23 @@ dockerinspectidgrepipaddress(){
   docker inspect $1 | grep IPAddress
 }
 
-dockerinspectname(){
+doinspectname(){
   docker inspect $1|grep Name| tr -d ' '| awk -F\" '{print $4}'
 }
-dockerinspectimage(){
+doinspectimage(){
   docker inspect $1|grep Image| head  -1 | tr -d ' '| awk -F\" '{print $4}'
 }
 
-dockerinspectipaddress(){
+doinspectipaddress(){
   docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
 }
 
-dockerrunlastimage(){
+dorunlastimage(){
   echo "Running `dockerimagesqhead1`"
   docker run -d -v /mnt/docker_volume:/mnt/parent_directory `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
-dockerstoplast(){
+dostoplast(){
   docker ps -l
   LAST_CONTAINER="`docker ps -lq`"
   docker stop $LAST_CONTAINER
@@ -299,13 +299,13 @@ dosshlast(){
   ssh -i ~/.insecure_key root@$CONTAINER_IP
 }
 
-dockerlist(){
+dolist(){
   echo "IP Address      Container ID    Image ID         Name"
-  for cont in $(dockerps -q);
+  for cont in $(docker ps -q);
   do 
-    echo "`dockerinspectipaddress $cont`     $cont    `dockerinspectimage $cont`     `dockerinspectname $cont`"|grep `dockerinspectipaddress $cont`
+    echo "`doinspectipaddress $cont`     $cont    `doinspectimage $cont`     `doinspectname $cont`"|grep `doinspectipaddress $cont`
   done
-  echo "Total containers `dockerps -q| wc -l`"
+  echo "Total containers `docker ps -q| wc -l`"
 }
 
 # Licenses
