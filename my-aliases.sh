@@ -246,7 +246,8 @@ alias dormiall='docker rmi `docker images -q`'
 alias donosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 alias dolastimage='docker images -q|head -1'
 alias dostoplast='docker stop `docker ps -q|head -1`'
-alias dorunlastimage='docker run -d `docker images -q|head -1`'
+alias doimagesqhead1='docker images -q|head -1'
+# alias dorunlastimage='docker run -d `docker images -q|head -1`'
 alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
@@ -278,14 +279,8 @@ doinspectipaddress(){
 }
 
 dorunlastimage(){
-  echo "Running `dockerimagesqhead1`"
-  docker run -d -v /mnt/docker_volume:/mnt/parent_directory `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
-}
-
-dostoplast(){
-  docker ps -l
-  LAST_CONTAINER="`docker ps -lq`"
-  docker stop $LAST_CONTAINER
+  echo "Running `doimagesqhead1`"
+  docker run -d -v /mnt/docker_volume:/mnt/parent_directory `doimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dosshlast(){
