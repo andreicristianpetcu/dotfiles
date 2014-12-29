@@ -18,6 +18,7 @@ call plug#begin('~/.vim/bundle')
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
+command! PlugRestoreSnapshot !~/.vim_plug_snapshot.sh
 
 " Let NeoBundle manage NeoBundle
 " Required:
