@@ -363,6 +363,9 @@ endfunction
 Plug 'thinca/vim-unite-history'
 nnoremap <Leader>/c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
+Plug 'andreicristianpetcu/vim-superman'
+nnoremap <Leader>/M :Unite manpage -start-insert<CR>
+
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
 nnoremap <Leader>/t :Unite tag -start-insert<CR>
@@ -624,8 +627,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'chase/vim-ansible-yaml'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
-
-Plug 'andreicristianpetcu/vim-superman'
 
 Plug '907th/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
