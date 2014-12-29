@@ -97,7 +97,6 @@ alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --deco
 alias gitinit='git init'
 alias gitcheckoutmaster='git checkout master'
 alias gitpushall='for remote in `git remote|grep -E lab\|hub\|origin`; do git push $remote --all; done'
-alias gitpush2='git push github --all && git push gitorious --all'
 alias gitpullall='git pull --all'
 alias gitbranch='git branch'
 alias gitbrancha='git branch -a'
