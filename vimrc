@@ -18,6 +18,7 @@ call plug#begin('~/.vim/bundle')
 " Required:
 " call neobundle#rc(expand('~/.vim/bundle/'))
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
+command! PlugRestoreSnapshot !~/.vim_plug_snapshot.sh
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -35,7 +36,7 @@ nnoremap <Leader>gcm :Git commit -m ""<left>
 nnoremap <Leader>gca :Gcommit --amend --reuse-message=HEAD<CR>
 nnoremap <Leader>gf :Git fetch<CR>
 nnoremap <Leader>ge :Gedit<CR>
-nnoremap <Leader>gg :Gstatus<CR>
+nnoremap <Leader>gg :wall<CR>:Gstatus<CR>
 nnoremap <Leader>gt :tab split +Gstatus<CR>
 nnoremap <Leader>gpp :Git push<CR>
 nnoremap <Leader>gpa :Git push --all<CR>
@@ -290,8 +291,10 @@ nnoremap <Leader>/m :Unite -start-insert mapping<CR>
 nnoremap <Leader>/j :Unite -start-insert jump<CR>
 nnoremap <Leader>/e :Unite -start-insert change<CR>
 nnoremap <Leader>/r :UniteResume -start-insert<CR>
-noremap <Leader>/l :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/ll :Unite -start-insert line -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
+noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
+noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/lb :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
 noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
 noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
@@ -329,7 +332,7 @@ nnoremap <Leader>/h :Unite -start-insert help<CR>
 
 " Unite for outline
 Plug 'Shougo/unite-outline'
-nnoremap <Leader>/o :Unite -start-insert outline<CR>
+nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
@@ -362,6 +365,9 @@ endfunction
 " Unite for command history
 Plug 'thinca/vim-unite-history'
 nnoremap <Leader>/c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
+
+Plug 'andreicristianpetcu/vim-superman'
+nnoremap <Leader>/M :Unite manpage -start-insert<CR>
 
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
@@ -625,6 +631,12 @@ Plug 'chase/vim-ansible-yaml'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 
+Plug '907th/vim-auto-save'
+let g:auto_save = 1  " enable AutoSave on Vim startup
+let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
+
+Plug 'severin-lemaignan/vim-minimap'
+
 " vim-scripts repos
 Plug 'L9'
 
@@ -655,7 +667,13 @@ if $COLORTERM == 'drop-down-terminal'
 else
   try
     colorscheme modokay
-    set cursorline cursorcolumn
+    " set cursorline 
+    augroup CursorLineOnlyInActiveWindow
+      autocmd!
+      autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+      autocmd WinLeave * setlocal nocursorline
+    augroup END 
+    " set cursorcolumn
   catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme desert 
   endtry
@@ -799,9 +817,6 @@ nnoremap <C-W>x :only<CR>
 let g:ycm_key_list_select_completion = ['<C-j>', '<C-Space>']
 let g:ycm_key_list_previous_completion = ['<C-k']
 
-" numbers do not show for Control+C, they show only for Esc
-map <C-C> <ESC>:w!<CR>
-
 " Required:
 filetype plugin indent on
 
@@ -812,22 +827,39 @@ filetype plugin indent on
 " Map F2 to toggle paste
 nnoremap <F7> <C-c>:set paste<CR>i
 
-" autosave
-set updatetime=1000
-" autocmd BufLeave *
-"       \ if expand('%') != '' && &buftype == '' |
-"       \ update |
-"       \ endif
-" autocmd CursorHold *
-"       \ if expand('%') != '' && &buftype == '' |
-"       \ update |
-"       \ endif
-autocmd InsertLeave *
-      \ if expand('%') != '' && &buftype == '' |
-      \ update |
-      \ set nopaste |
-      \ endif
-
+map <C-C> <ESC>
+" " autosave
+" set updatetime=1000
+" " numbers do not show for Control+C, they show only for Esc
+" function WriteIfPossible()
+"   if !&readonly
+"   "   if !&modifiable
+"       if expand('%') != '' && &buftype == ''
+"         echom "Written file"
+"         update
+"         set nopaste
+"       endif
+"       " w
+"   "   endif
+"   endif
+" endfunction
+" map <C-C> <ESC>:call WriteIfPossible()<CR>
+"
+" " autocmd BufLeave *
+" "       \ if expand('%') != '' && &buftype == '' |
+" "       \ update |
+" "       \ endif
+" " autocmd CursorHold *
+" "       \ if expand('%') != '' && &buftype == '' |
+" "       \ update |
+" "       \ endif
+"
+" autocmd InsertLeave * call WriteIfPossible()
+"       " \ if expand('%') != '' && &buftype == '' |
+"       " \ update |
+"       " \ set nopaste |
+"       " \ endif
+"       "
 
 " Map command W to write with sudo
 command! W  write !sudo tee %

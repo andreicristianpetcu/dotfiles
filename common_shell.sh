@@ -29,7 +29,7 @@ if [ -d /usr/share/maven ]; then export M2_HOME='/usr/share/maven' ;fi
 if [ -n $M2_HOME ]; then export PATH="$M2_HOME/bin:$PATH" ;fi
 
 # ruby version management with rbenv
-RBENV_ROOT="$HOME/.rbenv"                                                                                                                                                                                                      
+RBENV_ROOT="$HOME/.rbenv"
 if [ -d $RBENV_ROOT ]; then
   export PATH="$RBENV_ROOT/bin:$PATH"
   eval "$(rbenv init -)"
@@ -62,3 +62,9 @@ if [ -d $HOME/.pyenv/bin ]; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi 
+
+if [ -d "$HOME/dotfiles/bin" ]; then
+  export PATH="$PATH:$HOME/dotfiles/bin"
+fi
+
+export FZF_DEFAULT_OPTS="+s -e"

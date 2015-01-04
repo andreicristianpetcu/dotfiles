@@ -96,7 +96,7 @@ alias gitremotev='git remote -v'
 alias gitlogallgraphonelindecoratesource='git log --all --graph --oneline --decorate --source'
 alias gitinit='git init'
 alias gitcheckoutmaster='git checkout master'
-alias gitpush2='git push github --all && git push gitorious --all'
+alias gitpushall='for remote in `git remote|grep -E lab\|hub\|origin`; do git push $remote --all; done'
 alias gitpullall='git pull --all'
 alias gitbranch='git branch'
 alias gitbrancha='git branch -a'
@@ -204,6 +204,7 @@ alias installrbenv='git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
+alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
@@ -245,7 +246,8 @@ alias dormiall='docker rmi `docker images -q`'
 alias donosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
 alias dolastimage='docker images -q|head -1'
 alias dostoplast='docker stop `docker ps -q|head -1`'
-alias dorunlastimage='docker run -d `docker images -q|head -1`'
+alias doimagesqhead1='docker images -q|head -1'
+# alias dorunlastimage='docker run -d `docker images -q|head -1`'
 alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
@@ -265,26 +267,20 @@ dockerinspectidgrepipaddress(){
   docker inspect $1 | grep IPAddress
 }
 
-dockerinspectname(){
+doinspectname(){
   docker inspect $1|grep Name| tr -d ' '| awk -F\" '{print $4}'
 }
-dockerinspectimage(){
+doinspectimage(){
   docker inspect $1|grep Image| head  -1 | tr -d ' '| awk -F\" '{print $4}'
 }
 
-dockerinspectipaddress(){
+doinspectipaddress(){
   docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
 }
 
-dockerrunlastimage(){
-  echo "Running `dockerimagesqhead1`"
-  docker run -d -v /mnt/docker_volume:/mnt/parent_directory `dockerimagesqhead1` /sbin/my_init --enable-insecure-key
-}
-
-dockerstoplast(){
-  docker ps -l
-  LAST_CONTAINER="`docker ps -lq`"
-  docker stop $LAST_CONTAINER
+dorunlastimage(){
+  echo "Running `doimagesqhead1`"
+  docker run -d -v /mnt/docker_volume:/mnt/parent_directory `doimagesqhead1` /sbin/my_init --enable-insecure-key
 }
 
 dosshlast(){
@@ -298,13 +294,13 @@ dosshlast(){
   ssh -i ~/.insecure_key root@$CONTAINER_IP
 }
 
-dockerlist(){
+dolist(){
   echo "IP Address      Container ID    Image ID         Name"
-  for cont in $(dockerps -q);
+  for cont in $(docker ps -q);
   do 
-    echo "`dockerinspectipaddress $cont`     $cont    `dockerinspectimage $cont`     `dockerinspectname $cont`"|grep `dockerinspectipaddress $cont`
+    echo "`doinspectipaddress $cont`     $cont    `doinspectimage $cont`     `doinspectname $cont`"|grep `doinspectipaddress $cont`
   done
-  echo "Total containers `dockerps -q| wc -l`"
+  echo "Total containers `docker ps -q| wc -l`"
 }
 
 # Licenses
@@ -321,6 +317,7 @@ fed() {
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
+bindkey -s '^V' '^qfed\n'
 
 # fzf magic
 # fe [FUZZY PATTERN] - Delete selected file or directory
@@ -359,6 +356,7 @@ fcdf() {
    local dir
    file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
+bindkey -s '^O' '^qfcdf\n'
 
 # fkill - kill process
 fkill() {
@@ -372,6 +370,7 @@ fgb() {
   branch=$(echo "$branches" | fzf +s +m) &&
   git checkout $(echo "$branch" | sed "s/.* //")
 }
+bindkey -s '^G' '^qfgb\n'
 
 # fco - checkout git commit
 fgc() {
@@ -398,4 +397,13 @@ ftags() {
     cut -c1-80 | fzf --nth=1,2
   ) && $EDITOR $(cut -f3 <<< "$line") -c "set nocst" \
                                       -c "silent tag $(cut -f2 <<< "$line")"
+}
+
+#read man pages with vim
+vman() {
+  vim -c "SuperMan $*"
+
+  if [ "$?" != "0" ]; then
+    echo "No manual entry for $*"
+  fi
 }

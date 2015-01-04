@@ -1,8 +1,9 @@
 # /mnt/lastboot is my chroot dir
 cd /mnt/lastboot
-sudo mkdir proc
-sudo mkdir sys
-sudo mkdir dev
+sudo mkdir -p proc
+sudo mkdir -p sys
+sudo mkdir -p dev
+sudo mkdir -p tmp
 
 sudo mount -t proc proc proc/
 sudo mount --rbind /sys sys/
