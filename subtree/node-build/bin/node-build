@@ -1,0 +1,614 @@
+#!/usr/bin/env bash
+
+NODE_BUILD_VERSION="20140629"
+
+set -E
+exec 3<&2 # preserve original stderr at fd 3
+
+
+lib() {
+  parse_options() {
+    OPTIONS=()
+    ARGUMENTS=()
+    local arg option index
+
+    for arg in "$@"; do
+      if [ "${arg:0:1}" = "-" ]; then
+        if [ "${arg:1:1}" = "-" ]; then
+          OPTIONS[${#OPTIONS[*]}]="${arg:2}"
+        else
+          index=1
+          while option="${arg:$index:1}"; do
+            [ -n "$option" ] || break
+            OPTIONS[${#OPTIONS[*]}]="$option"
+            index=$(($index+1))
+          done
+        fi
+      else
+        ARGUMENTS[${#ARGUMENTS[*]}]="$arg"
+      fi
+    done
+  }
+
+  if [ "$1" == "--$FUNCNAME" ]; then
+    declare -f "$FUNCNAME"
+    echo "$FUNCNAME \"\$1\";"
+    exit
+  fi
+}
+lib "$1"
+
+
+resolve_link() {
+  $(type -p greadlink readlink | head -1) "$1"
+}
+
+abs_dirname() {
+  local cwd="$(pwd)"
+  local path="$1"
+
+  while [ -n "$path" ]; do
+    cd "${path%/*}"
+    local name="${path##*/}"
+    path="$(resolve_link "$name" || true)"
+  done
+
+  pwd
+  cd "$cwd"
+}
+
+capitalize() {
+  printf "%s" "$1" | tr a-z A-Z
+}
+
+sanitize() {
+  printf "%s" "$1" | sed "s/[^A-Za-z0-9.-]/_/g; s/__*/_/g"
+}
+
+build_failed() {
+  { echo
+    echo "BUILD FAILED"
+    echo
+
+    if ! rmdir "${BUILD_PATH}" 2>/dev/null; then
+      echo "Inspect or clean up the working tree at ${BUILD_PATH}"
+
+      if file_is_not_empty "$LOG_PATH"; then
+        echo "Results logged to ${LOG_PATH}"
+        echo
+        echo "Last 10 log lines:"
+        tail -n 10 "$LOG_PATH"
+      fi
+    fi
+  } >&3
+  exit 1
+}
+
+file_is_not_empty() {
+  local filename="$1"
+  local line_count="$(wc -l "$filename" 2>/dev/null || true)"
+
+  if [ -n "$line_count" ]; then
+    words=( $line_count )
+    [ "${words[0]}" -gt 0 ]
+  else
+    return 1
+  fi
+}
+
+install_package() {
+  install_package_using "tarball" 1 "$@"
+}
+
+install_git() {
+  install_package_using "git" 2 "$@"
+}
+
+install_svn() {
+  install_package_using "svn" 2 "$@"
+}
+
+install_package_using() {
+  local package_type="$1"
+  local package_type_nargs="$2"
+  local package_name="$3"
+  shift 3
+
+  local fetch_args=( "$package_name" "${@:1:$package_type_nargs}" )
+  local make_args=( "$package_name" )
+  local arg last_arg
+
+  for arg in "${@:$(( $package_type_nargs + 1 ))}"; do
+    if [ "$last_arg" = "--if" ]; then
+      "$arg" || return 0
+    elif [ "$arg" != "--if" ]; then
+      make_args["${#make_args[@]}"]="$arg"
+    fi
+    last_arg="$arg"
+  done
+
+  pushd "$BUILD_PATH" >&4
+  "fetch_${package_type}" "${fetch_args[@]}"
+  make_package "${make_args[@]}"
+  popd >&4
+
+  { echo "Installed ${package_name} to ${PREFIX_PATH}"
+    echo
+  } >&2
+}
+
+make_package() {
+  local package_name="$1"
+  shift
+
+  pushd "$package_name" >&4
+  before_install_package "$package_name"
+  build_package "$package_name" $*
+  after_install_package "$package_name"
+  fix_directory_permissions
+  popd >&4
+}
+
+compute_sha1() {
+  if type shasum &>/dev/null; then
+    local output="$(shasum)"
+    echo $output | awk '{print $1}'
+  elif type sha1sum &>/dev/null; then
+    local output="$(sha1sum)"
+    echo $output | awk '{print $1}'
+  else
+    return 1
+  fi
+}
+
+verify_checksum() {
+  # If there's no SHA1 support, return success
+  [ -n "$HAS_SHA1_SUPPORT" ] || return 0
+
+  # If the specified filename doesn't exist, return success
+  local filename="$1"
+  [ -e "$filename" ] || return 0
+
+  # If there's no expected checksum, return success
+  local expected_checksum="$2"
+  [ -n "$expected_checksum" ] || return 0
+
+  # If the computed checksum is empty, return failure
+  local computed_checksum="$(compute_sha1 < "$filename")"
+  [ -n "$computed_checksum" ] || return 1
+
+  if [ "$expected_checksum" != "$computed_checksum" ]; then
+    { echo
+      echo "checksum mismatch: ${filename} (file is corrupt)"
+      echo "expected '$expected_checksum', got '$computed_checksum'"
+      echo
+    } >&4
+    return 1
+  fi
+}
+
+http() {
+  local method="$1"
+  local url="$2"
+  local file="$3"
+  [ -n "$url" ] || return 1
+
+  if type curl &>/dev/null; then
+    "http_${method}_curl" "$url" "$file"
+  elif type wget &>/dev/null; then
+    "http_${method}_wget" "$url" "$file"
+  else
+    echo "error: please install \`curl\` or \`wget\` and try again" >&2
+    exit 1
+  fi
+}
+
+http_head_curl() {
+  curl -qsILf "$1" >&4 2>&1
+}
+
+http_get_curl() {
+  curl -C - -o "${2:--}" -qsSLf "$1"
+}
+
+http_head_wget() {
+  wget -q --spider "$1" >&4 2>&1
+}
+
+http_get_wget() {
+  wget -nv -c -O "${2:--}" "$1"
+}
+
+fetch_tarball() {
+  local package_name="$1"
+  local package_url="$2"
+  local mirror_url
+  local checksum
+
+  if [ "$package_url" != "${package_url/\#}" ]; then
+    checksum="${package_url#*#}"
+    package_url="${package_url%%#*}"
+
+    if [ -n "$NODE_BUILD_MIRROR_URL" ]; then
+      mirror_url="${NODE_BUILD_MIRROR_URL}/$checksum"
+    fi
+  fi
+
+  local package_filename="${package_name}.tar.gz"
+  symlink_tarball_from_cache "$package_filename" "$checksum" || {
+    echo "Downloading ${package_filename}..." >&2
+    { http head "$mirror_url" &&
+      download_tarball "$mirror_url" "$package_filename" "$checksum"
+    } ||
+    download_tarball "$package_url" "$package_filename" "$checksum"
+  }
+
+  { if tar xzvf "$package_filename"; then
+      if [ -z "$KEEP_BUILD_PATH" ]; then
+        rm -f "$package_filename"
+      else
+        true
+      fi
+    fi
+  } >&4 2>&1
+}
+
+symlink_tarball_from_cache() {
+  [ -n "$NODE_BUILD_CACHE_PATH" ] || return 1
+
+  local package_filename="$1"
+  local cached_package_filename="${NODE_BUILD_CACHE_PATH}/$package_filename"
+  local checksum="$2"
+
+  [ -e "$cached_package_filename" ] || return 1
+  verify_checksum "$cached_package_filename" "$checksum" >&4 2>&1 || return 1
+  ln -s "$cached_package_filename" "$package_filename" >&4 2>&1 || return 1
+}
+
+download_tarball() {
+  local package_url="$1"
+  [ -n "$package_url" ] || return 1
+
+  local package_filename="$2"
+  local checksum="$3"
+
+  echo "-> $package_url" >&2
+
+  { http get "$package_url" "$package_filename"
+    verify_checksum "$package_filename" "$checksum"
+  } >&4 2>&1 || return 1
+
+  if [ -n "$NODE_BUILD_CACHE_PATH" ]; then
+    local cached_package_filename="${NODE_BUILD_CACHE_PATH}/$package_filename"
+    { mv "$package_filename" "$cached_package_filename"
+      ln -s "$cached_package_filename" "$package_filename"
+    } >&4 2>&1 || return 1
+  fi
+}
+
+fetch_git() {
+  local package_name="$1"
+  local git_url="$2"
+  local git_ref="$3"
+
+  echo "Cloning ${git_url}..." >&2
+
+  if type git &>/dev/null; then
+    if [ -n "$NODE_BUILD_CACHE_PATH" ]; then
+      pushd "$NODE_BUILD_CACHE_PATH" >&4
+      local clone_name="$(sanitize "$git_url")"
+      if [ -e "${clone_name}" ]; then
+        { cd "${clone_name}"
+          git fetch --force "$git_url" "+${git_ref}:${git_ref}"
+        } >&4 2>&1
+      else
+        git clone --bare --branch "$git_ref" "$git_url" "${clone_name}" >&4 2>&1
+      fi
+      git_url="$NODE_BUILD_CACHE_PATH/${clone_name}"
+      popd >&4
+    fi
+
+    git clone --depth 1 --branch "$git_ref" "$git_url" "${package_name}" >&4 2>&1
+  else
+    echo "error: please install \`git\` and try again" >&2
+    exit 1
+  fi
+}
+
+fetch_svn() {
+  local package_name="$1"
+  local svn_url="$2"
+  local svn_rev="$3"
+
+  echo "Checking out ${svn_url}..." >&2
+
+  if type svn &>/dev/null; then
+    svn co -r "$svn_rev" "$svn_url" "${package_name}" >&4 2>&1
+  else
+    echo "error: please install \`svn\` and try again" >&2
+    exit 1
+  fi
+}
+
+build_package() {
+  local package_name="$1"
+  shift
+
+  if [ "$#" -eq 0 ]; then
+    local commands="standard"
+  else
+    local commands="$*"
+  fi
+
+  echo "Installing ${package_name}..." >&2
+
+  for command in $commands; do
+    "build_package_${command}" "$package_name"
+  done
+}
+
+package_option() {
+  local package_name="$1"
+  local command_name="$2"
+  local variable="$(capitalize "${package_name}_${command_name}")_OPTS_ARRAY"
+  local array="$variable[@]"
+  shift 2
+  local value=( "${!array}" "$@" )
+  eval "$variable=( \"\${value[@]}\" )"
+}
+
+build_package_standard() {
+  local package_name="$1"
+
+  if [ "${MAKEOPTS+defined}" ]; then
+    MAKE_OPTS="$MAKEOPTS"
+  elif [ -z "${MAKE_OPTS+defined}" ]; then
+    MAKE_OPTS="-j 2"
+  fi
+
+  # Support YAML_CONFIGURE_OPTS, RUBY_CONFIGURE_OPTS, etc.
+  local package_var_name="$(capitalize "${package_name%%-*}")"
+  local PACKAGE_CONFIGURE="${package_var_name}_CONFIGURE"
+  local PACKAGE_PREFIX_PATH="${package_var_name}_PREFIX_PATH"
+  local PACKAGE_CONFIGURE_OPTS="${package_var_name}_CONFIGURE_OPTS"
+  local PACKAGE_CONFIGURE_OPTS_ARRAY="${package_var_name}_CONFIGURE_OPTS_ARRAY[@]"
+  local PACKAGE_MAKE_OPTS="${package_var_name}_MAKE_OPTS"
+  local PACKAGE_MAKE_OPTS_ARRAY="${package_var_name}_MAKE_OPTS_ARRAY[@]"
+  local PACKAGE_CFLAGS="${package_var_name}_CFLAGS"
+
+  ( if [ "${CFLAGS+defined}" ] || [ "${!PACKAGE_CFLAGS+defined}" ]; then
+      export CFLAGS="$CFLAGS ${!PACKAGE_CFLAGS}"
+    fi
+    ${!PACKAGE_CONFIGURE:-./configure} --prefix="${!PACKAGE_PREFIX_PATH:-$PREFIX_PATH}" $CONFIGURE_OPTS ${!PACKAGE_CONFIGURE_OPTS} "${!PACKAGE_CONFIGURE_OPTS_ARRAY}"
+  ) >&4 2>&1
+
+  { "$MAKE" $MAKE_OPTS ${!PACKAGE_MAKE_OPTS} "${!PACKAGE_MAKE_OPTS_ARRAY}"
+    "$MAKE" install
+  } >&4 2>&1
+}
+
+build_package_autoconf() {
+  { autoconf
+  } >&4 2>&1
+}
+
+build_package_copy() {
+  mkdir -p "$PREFIX_PATH"
+  cp -R . "$PREFIX_PATH"
+}
+
+before_install_package() {
+  local stub=1
+}
+
+after_install_package() {
+  local stub=1
+}
+
+fix_directory_permissions() {
+  # Ensure installed directories are not world-writable to avoid Bundler warnings
+  find "$PREFIX_PATH" -type d \( -perm -020 -o -perm -002 \) -exec chmod go-w {} \;
+}
+
+version() {
+  echo "node-build ${NODE_BUILD_VERSION}"
+}
+
+usage() {
+  { version
+    echo "usage: node-build [-k|--keep] [-v|--verbose] definition prefix"
+    echo "       node-build --definitions"
+  } >&2
+
+  if [ -z "$1" ]; then
+    exit 1
+  fi
+}
+
+list_definitions() {
+  curl -s http://nodejs.org/dist/ \
+    | egrep -o 'v[0-9]+\.[0-9]+\.[0-9]+' \
+    | sort -t. -u -k 1.2,1n -k 2,2n -k 3,3n
+}
+
+ls_remote() {
+  local PATTERN=$1
+  local VERSIONS
+  if [ "$PATTERN" ]; then
+    if echo "${PATTERN}" | grep -v '^v' ; then
+      PATTERN=v$PATTERN
+    fi
+  else
+    PATTERN=".*"
+  fi
+  VERSIONS=$(list_definitions | grep -w "${PATTERN}")
+  if [ ! "$VERSIONS" ]; then
+    echo "N/A"
+    return
+  fi
+  echo "$VERSIONS"
+  return
+}
+
+remote_version() {
+  local PATTERN=$1
+  VERSION=$(ls_remote "$PATTERN" | tail -n1)
+  echo "$VERSION"
+
+  if [ "$VERSION" = 'N/A' ]; then
+    return
+  fi
+}
+
+install_node() {
+  local VERSION="$1"
+
+  local uname="$(uname -a)"
+  local os=
+  local arch="$(uname -m)"
+  case "$uname" in
+    Linux\ *) os=linux ;;
+    Darwin\ *) os=darwin ;;
+    SunOS\ *) os=sunos ;;
+    FreeBSD\ *) os=freebsd ;;
+  esac
+  case "$uname" in
+    *x86_64*) arch=x64 ;;
+    *i*86*) arch=x86 ;;
+  esac
+
+  case "$arch" in
+    armv6l) arch=arm-pi ;;
+  esac
+
+  nobinary=0
+  if [ "$os" = "freebsd" ]; then
+    nobinary=1
+  fi
+
+  if [ $nobinary -ne 1 ]; then
+    # shortcut - try the binary if possible.
+    if [ -n "$os" ]; then
+      binavail=
+      # binaries started with node 0.8.6
+      case "$VERSION" in
+        v0.8.[012345]) binavail=0 ;;
+        v0.[1234567].*) binavail=0 ;;
+        *) binavail=1 ;;
+      esac
+      if [ $binavail -eq 1 ]; then
+        t="$VERSION-$os-$arch"
+        sum=`curl -s http://nodejs.org/dist/$VERSION/SHASUMS.txt | grep node-${t}.tar.gz | awk '{print $1}'`
+        url="http://nodejs.org/dist/$VERSION/node-${t}.tar.gz#${sum}"
+        install_package "node-${t}" "$url" copy
+      fi
+    fi
+  fi
+} 
+
+
+unset VERBOSE
+unset KEEP_BUILD_PATH
+NODE_BUILD_ROOT="$(abs_dirname "$0")/.."
+
+parse_options "$@"
+
+for option in "${OPTIONS[@]}"; do
+  case "$option" in
+  "h" | "help" )
+    usage without_exiting
+    { echo
+      echo "  -k/--keep        Do not remove source tree after installation"
+      echo "  -v/--verbose     Verbose mode: print compilation status to stdout"
+      echo "  --definitions    List all built-in definitions"
+      echo
+    } >&2
+    exit 0
+    ;;
+  "definitions" )
+    list_definitions
+    exit 0
+    ;;
+  "k" | "keep" )
+    KEEP_BUILD_PATH=true
+    ;;
+  "v" | "verbose" )
+    VERBOSE=true
+    ;;
+  "version" )
+    version
+    exit 0
+    ;;
+  esac
+done
+
+NODE_VERSION=$(remote_version "${ARGUMENTS[0]}")
+
+PREFIX_PATH="${ARGUMENTS[1]}"
+if [ -z "$PREFIX_PATH" ]; then
+  usage
+fi
+
+if [ -z "$TMPDIR" ]; then
+  TMP="/tmp"
+else
+  TMP="${TMPDIR%/}"
+fi
+
+if [ -z "$MAKE" ]; then
+  export MAKE="make"
+fi
+
+if [ -n "$NODE_BUILD_CACHE_PATH" ] && [ -d "$NODE_BUILD_CACHE_PATH" ]; then
+  NODE_BUILD_CACHE_PATH="${NODE_BUILD_CACHE_PATH%/}"
+else
+  unset NODE_BUILD_CACHE_PATH
+fi
+
+if [ -z "$NODE_BUILD_MIRROR_URL" ]; then
+  NODE_BUILD_MIRROR_URL="http://dqw8nmjcqpjn7.cloudfront.net"
+else
+  NODE_BUILD_MIRROR_URL="${NODE_BUILD_MIRROR_URL%/}"
+fi
+
+if [ -n "$NODE_BUILD_SKIP_MIRROR" ]; then
+  unset NODE_BUILD_MIRROR_URL
+fi
+
+if echo test | compute_sha1 >/dev/null; then
+  HAS_SHA1_SUPPORT=1
+else
+  unset HAS_SHA1_SUPPORT
+  unset NODE_BUILD_MIRROR_URL
+fi
+
+SEED="$(date "+%Y%m%d%H%M%S").$$"
+LOG_PATH="${TMP}/node-build.${SEED}.log"
+NODE_BIN="${PREFIX_PATH}/bin/node"
+CWD="$(pwd)"
+
+if [ -z "$NODE_BUILD_BUILD_PATH" ]; then
+  BUILD_PATH="${TMP}/node-build.${SEED}"
+else
+  BUILD_PATH="$NODE_BUILD_BUILD_PATH"
+fi
+
+exec 4<> "$LOG_PATH" # open the log file at fd 4
+if [ -n "$VERBOSE" ]; then
+  tail -f "$LOG_PATH" &
+  TAIL_PID=$!
+  trap "kill $TAIL_PID" SIGINT SIGTERM EXIT
+fi
+
+export LDFLAGS="-L'${PREFIX_PATH}/lib' ${LDFLAGS}"
+export CPPFLAGS="-I'${PREFIX_PATH}/include' ${CPPFLAGS}"
+
+unset NODEOPT
+unset NODELIB
+
+trap build_failed ERR
+mkdir -p "$BUILD_PATH"
+#source "$DEFINITION_PATH"
+install_node "$NODE_VERSION"
+[ -z "${KEEP_BUILD_PATH}" ] && rm -fr "$BUILD_PATH"
+trap - ERR
