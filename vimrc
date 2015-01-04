@@ -366,7 +366,7 @@ endfunction
 Plug 'thinca/vim-unite-history'
 nnoremap <Leader>/c :Unite -buffer-name=commands -default-action=execute history/command command -start-insert<CR>
 
-Plug 'andreicristianpetcu/vim-van'
+Plug 'andreicristianpetcu/vim-superman'
 nnoremap <Leader>/M :Unite manpage -start-insert<CR>
 
 " Unite for ctags
