@@ -637,6 +637,17 @@ let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
 
 Plug 'severin-lemaignan/vim-minimap'
 
+Plug 'krisajenkins/vim-pipe'
+autocmd BufReadPost,BufReadPost *.mql
+      \setlocal filetype=mongoql
+      \let b:vimpipe_command="mongo"
+      \let b:vimpipe_filetype="javascript"
+nnoremap <Leader>p :call VimPipe()<CR>
+
+" In ~/.vim/ftplugin/mql.vim
+let b:vimpipe_command="mongo"
+let b:vimpipe_filetype="javascript"
+
 " vim-scripts repos
 Plug 'L9'
 
