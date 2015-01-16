@@ -116,8 +116,8 @@ Plug 'tpope/vim-abolish'
 nnoremap <Leader>\ff yiw:%S/<C-R>0/<C-R>0/gc<left><left><left><left>
 nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
-nnoremap <Leader>\fs :%S///gc<left><left><left><left>
+nnoremap <Leader>\f0 :%S/<C-R>0/<C-R>0/gc<left><left><left><left>
+nnoremap <Leader>\f :%S///gc<left><left><left><left>
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
