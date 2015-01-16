@@ -471,7 +471,7 @@ let g:neosnippet#enable_snipmate_compatibilit = 1
 
 
 " code-analysis engine for JavaScript
-Plug 'marijnh/tern_for_vim'
+" Plug 'marijnh/tern_for_vim'
 
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
