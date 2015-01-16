@@ -874,7 +874,7 @@ map <C-C> <ESC>
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
-command! Q  quitall
+command! Q  quitall!
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(
