@@ -287,6 +287,7 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
 noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+noremap <leader>/T :Unite -start-insert tab<CR>
 nnoremap <Leader>/m :Unite -start-insert mapping<CR>
 nnoremap <Leader>/j :Unite -start-insert jump<CR>
 nnoremap <Leader>/e :Unite -start-insert change<CR>
