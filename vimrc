@@ -799,9 +799,6 @@ set smartcase
 nnoremap ZW :w!<CR>
 nnoremap ZA :wall!<CR>
 
-" set the system cliboard as the default yank source                                                                                                                                                                                      
-set clipboard=unnamedplus 
-
 " Minimize and maximize
 nnoremap <C-W>O :call MaximizeToggle()<CR>
 nnoremap <C-W>o :call MaximizeToggle()<CR>
@@ -835,9 +832,10 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 " NeoBundleCheck
 
+" set the system cliboard as the default yank source
+set clipboard=unnamedplus 
 " Map F2 to toggle paste
-nnoremap <F7> <C-c>:set paste<CR>i
-
+nnoremap <F7> <C-c>:set paste<CR>i<C-R>+<ESC>:set nopaste<CR>
 imap <C-C> <ESC>:set nopaste<CR>
 autocmd InsertLeave * set nopaste
 
