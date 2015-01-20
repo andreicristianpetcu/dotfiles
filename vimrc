@@ -170,7 +170,7 @@ Plug 'andreicristianpetcu/argarg.vim'
 Plug 'szw/vim-tags'
 let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
-" autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
+autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
 
 " Plug 'xolox/vim-easytags'
 " set tags=./tags;
@@ -506,6 +506,7 @@ Plug 'Shougo/neossh.vim'
 Plug 'Shougo/vimshell.vim'
 
 Plug 'rodjek/vim-puppet'
+au FileType puppet setlocal isk+=:
 
 " ruby refactoring
 Plug 'ecomba/vim-ruby-refactoring'
