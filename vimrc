@@ -295,7 +295,7 @@ nnoremap <Leader>/r :UniteResume -start-insert<CR>
 noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
 noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
 noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/lb :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
 noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
 noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
