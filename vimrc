@@ -346,6 +346,8 @@ set wildignore+=*/tmp/*,*.db,.DS_Store,*.log
 set wildignore+=*.bmp,*.gif,*.jpeg,*.jpg,*.png
 set wildignore+=*.so,*.sw?
 set wildignore+=*.pyc
+set wildignore+=*.woff
+set wildignore+=*.odt,*.odp,*.ods,*.eot,*.svg,*.tff
 nnoremap <Leader>/L :CtrlPLine<CR>
 
 
