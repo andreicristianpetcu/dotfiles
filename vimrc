@@ -117,7 +117,7 @@ nnoremap <Leader>\ff yiw:%S/<C-R>0/<C-R>0/gc<left><left><left><left>
 nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\f0 :%S/<C-R>0/<C-R>0/gc<left><left><left><left>
-nnoremap <Leader>\f :%S///gc<left><left><left><left>
+nnoremap <Leader>\ yiw:%S/<C-R>0//gc<left><left><left><left>
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -244,7 +244,6 @@ nnoremap <Leader>\rg :Greplace<CR>
 " map find replace
 nnoremap <Leader>\: :%S///gc<left><left><left><left>
 nnoremap <Leader>\\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
