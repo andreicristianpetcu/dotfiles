@@ -340,7 +340,7 @@ Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
 let g:ctrlp_regexp = 1
 set wildignore+=*.avi,*.m3u,*.mp3,*.mp4,*.mpg,*.sfv,*.wmv,*.mov
-set wildignore+=*.doc,*.numbers,*.pages,*.pdf,*.ppt,*.pptx,*.docx
+set wildignore+=*.doc,*.numbers,*.pages,*.pdf,*.ppt,*.pptx,*.docx,*.xls,*.xlsx
 set wildignore+=*.dmg,*.gz,*.rar,*.tbz,*.zip
 set wildignore+=*/tmp/*,*.db,.DS_Store,*.log
 set wildignore+=*.bmp,*.gif,*.jpeg,*.jpg,*.png,*.tif
@@ -348,7 +348,7 @@ set wildignore+=*.so,*.sw?
 set wildignore+=*.pyc
 set wildignore+=*.woff
 set wildignore+=*.odt,*.odp,*.ods,*.eot,*.svg,*.tff
-set wildignore+=*.pem,*.crt,*.key,*keystore,*truststore
+set wildignore+=*.pem,*.crt,*.key,*keystore,*truststore,*.p12
 set wildignore+=*.war,*.jar,*.zip,*.tar,*.gz
 nnoremap <Leader>/L :CtrlPLine<CR>
 
