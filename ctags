@@ -2,6 +2,10 @@
 --exclude=node_modules
 --exclude=dist
 --exclude=target
+--exclude=**/*.war
+--exclude=**/*.jar
+--exclude=**/*.class
+--exclude=**/.idea/
 
 --langdef=puppet
 --langmap=puppet:.pp
