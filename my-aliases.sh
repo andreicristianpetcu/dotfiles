@@ -414,7 +414,7 @@ ftags() {
 }
 
 #read man pages with vim
-vman() {
+van() {
   vim -c "SuperMan $*"
 
   if [ "$?" != "0" ]; then
