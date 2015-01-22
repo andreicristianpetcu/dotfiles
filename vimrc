@@ -339,7 +339,15 @@ nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
 let g:ctrlp_regexp = 1
+set wildignore+=*.avi,*.m3u,*.mp3,*.mp4,*.mpg,*.sfv,*.wmv,*.mov
+set wildignore+=*.doc,*.numbers,*.pages,*.pdf,*.ppt,*.pptx,*.docx
+set wildignore+=*.dmg,*.gz,*.rar,*.tbz,*.zip
+set wildignore+=*/tmp/*,*.db,.DS_Store,*.log
+set wildignore+=*.bmp,*.gif,*.jpeg,*.jpg,*.png
+set wildignore+=*.so,*.sw?
+set wildignore+=*.pyc
 nnoremap <Leader>/L :CtrlPLine<CR>
+
 
 Plug 'junegunn/fzf'
 command! FZFLines call fzf#run({
