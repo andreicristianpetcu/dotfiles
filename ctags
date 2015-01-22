@@ -1,3 +1,5 @@
+--exclude=.git
+
 --langdef=puppet
 --langmap=puppet:.pp
 --regex-puppet=/^class[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/

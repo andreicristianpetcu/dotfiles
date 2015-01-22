@@ -170,6 +170,7 @@ Plug 'andreicristianpetcu/argarg.vim'
 Plug 'szw/vim-tags'
 let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
+set tags=./.tags,.tags,./tags,tags
 autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
 
 " Plug 'xolox/vim-easytags'
@@ -222,11 +223,10 @@ endfunction
 " silver searcher
 let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
-noremap <Leader>// :call SilverSearch("<cword>")<CR>
-noremap <Leader>/w :call SilverSearch("<cword>")<CR>
-noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
+noremap <Leader>/: :Ag -Q ""<Left>
+noremap <Leader>/ yiw:call SilverSearch(expand(@0))<CR>
+noremap <Leader>/W yiW:call SilverSearch(expand(@0))<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
-noremap <Leader>// :Ag -Q 
 noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
 noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
@@ -242,8 +242,9 @@ nnoremap <Leader>\rq :Gqfopen<CR>
 nnoremap <Leader>\rg :Greplace<CR>
 
 " map find replace
+nnoremap <Leader>\: :%S///gc<left><left><left><left>
 nnoremap <Leader>\\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\w yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
+nnoremap <Leader>\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
