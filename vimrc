@@ -489,6 +489,7 @@ let g:neosnippet#enable_snipmate_compatibilit = 1
 
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
 nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
