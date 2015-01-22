@@ -348,6 +348,8 @@ set wildignore+=*.so,*.sw?
 set wildignore+=*.pyc
 set wildignore+=*.woff
 set wildignore+=*.odt,*.odp,*.ods,*.eot,*.svg,*.tff
+set wildignore+=*.pem,*.crt,*.key,*keystore,*truststore
+set wildignore+=*.war,*.jar,*.zip,*.tar,*.gz
 nnoremap <Leader>/L :CtrlPLine<CR>
 
 
