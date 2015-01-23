@@ -20,4 +20,8 @@
 
 --langdef=angularjs
 --langmap=angularjs:.js
---regex-angularjs=/.*controller.*\('([a-zA-Z0-9_]+)'/\1/d,definition/
+--regex-angularjs=/.*[.][\s]*controller\(['"]([a-zA-Z0-9_.]+)['"]/\1/d,controller/
+--regex-angularjs=/.*[.][\s]*directive\(['"]([a-zA-Z0-9_.]+)['"]/\1/d,directive/
+--regex-angularjs=/.*[.][\s]*service\(['"]([a-zA-Z0-9_.]+)['"]/\1/d,service/
+--regex-angularjs=/.*[.][\s]*factory\(['"]([a-zA-Z0-9_.]+)['"]/\1/d,factory/
+--regex-angularjs=/.*[.][\s]*module\(['"]([a-zA-Z0-9_\.]+)['"]/\1/d,module/
