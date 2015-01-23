@@ -129,7 +129,7 @@ Plug 'tpope/vim-haml'
 
 " Fast navigation
 Plug 'Lokaltog/vim-easymotion'
-let g:EasyMotion_keys = 'hjklasdfg'
+let g:EasyMotion_keys = 'hjklasdf'
 let g:EasyMotion_grouping=1
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>W <Plug>(easymotion-W)
