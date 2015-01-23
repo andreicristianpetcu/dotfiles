@@ -17,3 +17,7 @@
 --langdef=html2
 --langmap=html2:.html
 --regex-html2=/id="([a-zA-Z0-9_]+)"/\1/d,definition/
+
+--langdef=angularjs
+--langmap=angularjs:.js
+--regex-angularjs=/.*controller.*\('([a-zA-Z0-9_]+)'/\1/d,definition/
