@@ -172,6 +172,9 @@ let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
 set tags=./.tags,.tags,./tags,tags
 autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
+au BufWritePost *.* silent! echom "test"
+au InsertLeave *.* silent! echom "test2"
+" au BufWritePost *.js,*.java,*.rb,*.erb,*.pp,*.c,*.cpp,*.h silent! TagsGenerate
 
 " Plug 'xolox/vim-easytags'
 " set tags=./tags;
@@ -648,10 +651,11 @@ Plug 'chase/vim-ansible-yaml'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 
-Plug '907th/vim-auto-save'
+Plug 'andreicristianpetcu/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-
+let g:vim_tags_auto_generate = 1
+let g:auto_save_postsave_hook = 'TagsGenerate'
 Plug 'severin-lemaignan/vim-minimap'
 
 Plug 'krisajenkins/vim-pipe'
