@@ -13,3 +13,7 @@
 --regex-puppet=/^site[ \t]*([a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
 --regex-puppet=/^node[ \t]*(['a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
 --regex-puppet=/^define[ \t]*([:a-zA-Z0-9_\-]+)[ \t]*/\1/d,definition/
+
+--langdef=html2
+--langmap=html2:.html
+--regex-html2=/id="([a-zA-Z0-9_]+)"/\1/d,definition/
