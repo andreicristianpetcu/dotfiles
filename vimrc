@@ -658,6 +658,10 @@ let g:vim_tags_auto_generate = 1
 let g:auto_save_postsave_hook = 'TagsGenerate'
 Plug 'severin-lemaignan/vim-minimap'
 
+Plug 'kana/vim-textobj-diff'
+
+Plug 'wellle/targets.vim'
+
 Plug 'krisajenkins/vim-pipe'
 autocmd BufReadPost,BufReadPost *.mql
       \setlocal filetype=mongoql
