@@ -29,4 +29,4 @@
 --langdef=javaspring
 --langmap=javaspring:.java
 --regex-javaspring=/@RequestMapping\(.*value.*=.*['"]([a-zA-Z0-9\/{}]+)['"]/@RequestMapping=\1/
---regex-javaspring=/@Subscribe([a-z ]+)(\s+)([a-zA-Z]*)\(([a-zA-Z]*)/@Subscribe \3 \4 *1\1*2\2*3\3*4\4/
+--regex-javaspring=/^\s*@Subscribe[a-z \s]+\s([a-zA-Z]+)\(([a-zA-Z]+).*$/@Subscribe \1 \2*/
