@@ -391,6 +391,7 @@ nnoremap <Leader>/t :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
+\| nnoremap <buffer> <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR> 
 \| endif
 
 let g:unite_source_tag_max_name_length=30
