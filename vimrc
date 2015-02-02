@@ -209,6 +209,27 @@ if executable('coffeetags')
     \ }
   \ }
 endif
+let g:tagbar_type_puppet = {
+    \ 'ctagstype' : 'puppet',
+    \ 'kinds'     : [
+        \ 'n:node',
+        \ 'c:class',
+        \ 's:site',
+        \ 'd:define'
+    \ ]
+\ }
+
+" let g:tagbar_type_angularjs = {
+"     \ 'ctagstype' : 'angularjs',
+"     \ 'kinds'     : [
+"         \ 'c:controller',
+"         \ 'd:directive',
+"         \ 's:service',
+"         \ 'f:factory',
+"         \ 'm:module',
+"         \ 'r:route'
+"     \ ]
+" \ }
 
 Plug 'jaredly/vim-debug'
 
