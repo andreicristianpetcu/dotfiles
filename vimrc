@@ -116,8 +116,8 @@ Plug 'tpope/vim-abolish'
 nnoremap <Leader>\ff yiw:%S/<C-R>0/<C-R>0/gc<left><left><left><left>
 nnoremap <Leader>\fw yiw:%S/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\fW yiW:%S/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\f0 :%S///gc<left><left><left><left>
-nnoremap <Leader>\fs :%S///gc<left><left><left><left>
+nnoremap <Leader>\f0 :%S/<C-R>0/<C-R>0/gc<left><left><left><left>
+nnoremap <Leader>\ yiw:%S/<C-R>0//gc<left><left><left><left>
 
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-endwise'
@@ -129,7 +129,7 @@ Plug 'tpope/vim-haml'
 
 " Fast navigation
 Plug 'Lokaltog/vim-easymotion'
-let g:EasyMotion_keys = 'hjklasdfg'
+let g:EasyMotion_keys = 'hjklasdf'
 let g:EasyMotion_grouping=1
 map <Leader>w <Plug>(easymotion-w)
 map <Leader>W <Plug>(easymotion-W)
@@ -170,7 +170,11 @@ Plug 'andreicristianpetcu/argarg.vim'
 Plug 'szw/vim-tags'
 let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
-" autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
+set tags=./.tags,.tags,./tags,tags
+autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
+au BufWritePost *.* silent! echom "test"
+au InsertLeave *.* silent! echom "test2"
+" au BufWritePost *.js,*.java,*.rb,*.erb,*.pp,*.c,*.cpp,*.h silent! TagsGenerate
 
 " Plug 'xolox/vim-easytags'
 " set tags=./tags;
@@ -205,6 +209,27 @@ if executable('coffeetags')
     \ }
   \ }
 endif
+let g:tagbar_type_puppet = {
+    \ 'ctagstype' : 'puppet',
+    \ 'kinds'     : [
+        \ 'n:node',
+        \ 'c:class',
+        \ 's:site',
+        \ 'd:define'
+    \ ]
+\ }
+
+" let g:tagbar_type_angularjs = {
+"     \ 'ctagstype' : 'angularjs',
+"     \ 'kinds'     : [
+"         \ 'c:controller',
+"         \ 'd:directive',
+"         \ 's:service',
+"         \ 'f:factory',
+"         \ 'm:module',
+"         \ 'r:route'
+"     \ ]
+" \ }
 
 Plug 'jaredly/vim-debug'
 
@@ -222,11 +247,10 @@ endfunction
 " silver searcher
 let g:agprg="ag -Q --column"
 " Search with ag for the content of register s
-noremap <Leader>// :call SilverSearch("<cword>")<CR>
-noremap <Leader>/w :call SilverSearch("<cword>")<CR>
-noremap <Leader>/W :call SilverSearch("<cWORD>")<CR>
+noremap <Leader>/: :Ag -Q ""<Left>
+noremap <Leader>/ yiw:call SilverSearch(expand(@0))<CR>
+noremap <Leader>/W yiW:call SilverSearch(expand(@0))<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
-noremap <Leader>// :Ag -Q 
 noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
 noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
@@ -242,8 +266,8 @@ nnoremap <Leader>\rq :Gqfopen<CR>
 nnoremap <Leader>\rg :Greplace<CR>
 
 " map find replace
+nnoremap <Leader>\: :%S///gc<left><left><left><left>
 nnoremap <Leader>\\ yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
-nnoremap <Leader>\w yiw:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
@@ -287,6 +311,7 @@ function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 endfunction
 noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+noremap <leader>/T :Unite -start-insert tab<CR>
 nnoremap <Leader>/m :Unite -start-insert mapping<CR>
 nnoremap <Leader>/j :Unite -start-insert jump<CR>
 nnoremap <Leader>/e :Unite -start-insert change<CR>
@@ -294,7 +319,7 @@ nnoremap <Leader>/r :UniteResume -start-insert<CR>
 noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
 noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
 noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/lb :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
+noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
 noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
 noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
@@ -337,7 +362,19 @@ nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
 let g:ctrlp_regexp = 1
+set wildignore+=*.avi,*.m3u,*.mp3,*.mp4,*.mpg,*.sfv,*.wmv,*.mov
+set wildignore+=*.doc,*.numbers,*.pages,*.pdf,*.ppt,*.pptx,*.docx,*.xls,*.xlsx
+set wildignore+=*.dmg,*.gz,*.rar,*.tbz,*.zip
+set wildignore+=*/tmp/*,*.db,.DS_Store,*.log
+set wildignore+=*.bmp,*.gif,*.jpeg,*.jpg,*.png,*.tif
+set wildignore+=*.so,*.sw?
+set wildignore+=*.pyc
+set wildignore+=*.woff
+set wildignore+=*.odt,*.odp,*.ods,*.eot,*.svg,*.tff
+set wildignore+=*.pem,*.crt,*.key,*keystore,*truststore,*.p12
+set wildignore+=*.war,*.jar,*.zip,*.tar,*.gz
 nnoremap <Leader>/L :CtrlPLine<CR>
+
 
 Plug 'junegunn/fzf'
 command! FZFLines call fzf#run({
@@ -375,6 +412,7 @@ nnoremap <Leader>/t :Unite tag -start-insert<CR>
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
+\| nnoremap <buffer> <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR> 
 \| endif
 
 let g:unite_source_tag_max_name_length=30
@@ -471,10 +509,11 @@ let g:neosnippet#enable_snipmate_compatibilit = 1
 
 
 " code-analysis engine for JavaScript
-Plug 'marijnh/tern_for_vim'
+" Plug 'marijnh/tern_for_vim'
 
 Plug 'Shougo/vimfiler.vim'
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
 " Disable netrw.vim
 let g:loaded_netrwPlugin = 1
 nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
@@ -505,6 +544,7 @@ Plug 'Shougo/neossh.vim'
 Plug 'Shougo/vimshell.vim'
 
 Plug 'rodjek/vim-puppet'
+au FileType puppet setlocal isk+=:
 
 " ruby refactoring
 Plug 'ecomba/vim-ruby-refactoring'
@@ -523,6 +563,8 @@ Plug 'scrooloose/syntastic'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_jshint_args = '--config ~/.jshintrc.js'
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['java'] }
 
 " GitGutter, easy diff
 Plug 'airblade/vim-gitgutter'
@@ -631,11 +673,27 @@ Plug 'chase/vim-ansible-yaml'
 
 Plug 'Glench/Vim-Jinja2-Syntax'
 
-Plug '907th/vim-auto-save'
+Plug 'andreicristianpetcu/vim-auto-save'
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:auto_save_in_insert_mode = 0  " do not save while in insert mode
-
+let g:vim_tags_auto_generate = 1
+let g:auto_save_postsave_hook = 'TagsGenerate'
 Plug 'severin-lemaignan/vim-minimap'
+
+Plug 'kana/vim-textobj-diff'
+
+Plug 'wellle/targets.vim'
+
+Plug 'krisajenkins/vim-pipe'
+autocmd BufReadPost,BufReadPost *.mql
+      \setlocal filetype=mongoql
+      \let b:vimpipe_command="mongo"
+      \let b:vimpipe_filetype="javascript"
+nnoremap <Leader>p :call VimPipe()<CR>
+
+" In ~/.vim/ftplugin/mql.vim
+let b:vimpipe_command="mongo"
+let b:vimpipe_filetype="javascript"
 
 " vim-scripts repos
 Plug 'L9'
@@ -788,9 +846,6 @@ set smartcase
 nnoremap ZW :w!<CR>
 nnoremap ZA :wall!<CR>
 
-" set the system cliboard as the default yank source                                                                                                                                                                                      
-set clipboard=unnamedplus 
-
 " Minimize and maximize
 nnoremap <C-W>O :call MaximizeToggle()<CR>
 nnoremap <C-W>o :call MaximizeToggle()<CR>
@@ -824,46 +879,16 @@ filetype plugin indent on
 " this will conveniently prompt you to install them.
 " NeoBundleCheck
 
+" set the system cliboard as the default yank source
+set clipboard=unnamedplus 
 " Map F2 to toggle paste
-nnoremap <F7> <C-c>:set paste<CR>i
-
-map <C-C> <ESC>
-" " autosave
-" set updatetime=1000
-" " numbers do not show for Control+C, they show only for Esc
-" function WriteIfPossible()
-"   if !&readonly
-"   "   if !&modifiable
-"       if expand('%') != '' && &buftype == ''
-"         echom "Written file"
-"         update
-"         set nopaste
-"       endif
-"       " w
-"   "   endif
-"   endif
-" endfunction
-" map <C-C> <ESC>:call WriteIfPossible()<CR>
-"
-" " autocmd BufLeave *
-" "       \ if expand('%') != '' && &buftype == '' |
-" "       \ update |
-" "       \ endif
-" " autocmd CursorHold *
-" "       \ if expand('%') != '' && &buftype == '' |
-" "       \ update |
-" "       \ endif
-"
-" autocmd InsertLeave * call WriteIfPossible()
-"       " \ if expand('%') != '' && &buftype == '' |
-"       " \ update |
-"       " \ set nopaste |
-"       " \ endif
-"       "
+nnoremap <F7> <C-c>:set paste<CR>i<C-R>+<ESC>:set nopaste<CR>
+imap <C-C> <ESC>:set nopaste<CR>
+autocmd InsertLeave * set nopaste
 
 " Map command W to write with sudo
 command! W  write !sudo tee %
-command! Q  quitall
+command! Q  quitall!
 
 " added easy jump to next and previous paragraps
 noremap <Leader>} }}(

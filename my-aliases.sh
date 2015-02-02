@@ -73,6 +73,20 @@ whencef(){
   whence -f $1
 }
 
+# desktop
+installgnomekeys(){
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift><Alt>j', '<Control><Shift><Alt>Down']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift><Alt>k', '<Control><Shift><Alt>Up']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control><Alt>j', '<Control><Alt>Down']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control><Alt>k', '<Control><Alt>Up']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift><Alt>l', '<Control><Shift><Alt>Right']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift><Alt>h', '<Control><Shift><Alt>Left']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>l', '<Control><Alt>Right']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>h', '<Control><Alt>Left']"
+}
+
+alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"
+
 # pacman
 alias pacmansyu='sudo pacman -Syu'        # Synchronize with repositories and then upgrade packages that are out of date on the local system.
 
@@ -400,7 +414,7 @@ ftags() {
 }
 
 #read man pages with vim
-vman() {
+van() {
   vim -c "SuperMan $*"
 
   if [ "$?" != "0" ]; then

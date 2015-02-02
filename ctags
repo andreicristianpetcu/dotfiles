@@ -1,0 +1,32 @@
+--exclude=.git
+--exclude=node_modules
+--exclude=target
+--exclude=**/*.war
+--exclude=**/*.jar
+--exclude=**/*.class
+--exclude=**/.idea/
+
+--langdef=puppet
+--langmap=puppet:.pp
+--regex-puppet=/^class[ \t']*([:a-zA-Z0-9_\-]+)[ \t']*/\1/c,class/
+--regex-puppet=/^site[ \t']*([a-zA-Z0-9_\-]+)[ \t']*/\1/s,site/
+--regex-puppet=/^node[ \t']*([a-zA-Z0-9_\-]+)[ \t']*/\1/n,node/
+--regex-puppet=/^define[ \t']*([:a-zA-Z0-9_\-]+)[ \t']*/\1/d,define/
+
+--langdef=html2
+--langmap=html2:.html
+--regex-html2=/id="([a-zA-Z0-9_]+)"/\1/d,definition/
+
+--langdef=angularjs
+--langmap=angularjs:.js
+--regex-angularjs=/.*[.][\s]*controller\(['"]([a-zA-Z0-9_.]+)['"]/\1/c,controller/
+--regex-angularjs=/.*[.][\s]*directive\(['"]([a-zA-Z0-9_.]+)['"]/\1/d,directive/
+--regex-angularjs=/.*[.][\s]*service\(['"]([a-zA-Z0-9_.]+)['"]/\1/s,service/
+--regex-angularjs=/.*[.][\s]*factory\(['"]([a-zA-Z0-9_.]+)['"]/\1/f,factory/
+--regex-angularjs=/.*[.][\s]*module\(['"]([a-zA-Z0-9_\.]+)['"]/\1/m,module/
+--regex-angularjs=/[.](when\(['"][a-zA-Z0-9_\/]+['"])/\1/r,ngRoute/
+
+--langdef=javaspring
+--langmap=javaspring:.java
+--regex-javaspring=/@RequestMapping\(.*value.*=.*['"]([a-zA-Z0-9\/{}]+)['"]/@RequestMapping=\1/rm,@RequestMapping/
+--regex-javaspring=/^\s*@Subscribe[a-z \s]+\s([a-zA-Z]+)\(([a-zA-Z]+).*$/@Subscribe \1 \2*/
