@@ -253,8 +253,8 @@ noremap <Leader>/W yiW:call SilverSearch(expand(@0))<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
-noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
-noremap <Leader>/i" yi":call SilverSearch(expand(@0))<CR>
+noremap <Leader>/' yi':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/" yi":call SilverSearch(expand(@0))<CR>
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -467,9 +467,15 @@ let g:angular_source_directory = 'uwezo-presentation/yo/app'
 let g:angular_test_directory = 'uwezo-presentation/yo/app/test/spec'
 
 "Autocomplete plugin
-Plug 'Shougo/neocomplete'
-" enable neocomplete
-let g:neocomplete#enable_at_startup = 1
+" Plug 'Shougo/neocomplcache.vim'
+if has('nvim')
+  Plug 'Shougo/neocomplcache.vim'
+  let g:neocomplcache_enable_at_startup = 1
+else
+  Plug 'Shougo/neocomplete'
+  let g:neocomplete#enable_at_startup = 1
+endif
+
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
