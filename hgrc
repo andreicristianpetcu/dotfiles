@@ -1,2 +1,7 @@
 [extensions]
 progress =
+hgext.churn=
+color =
+hgext.extdiff =
+hgk =
+graphlog = 
