@@ -85,21 +85,18 @@ nnoremap <Leader>gv :Gitv<CR>
 Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
-Plug 'sjl/gundo.vim'
-if !isdirectory(expand("~/.vim/tmp/undo/"))
-  silent !mkdir -p ~/.vim/tmp/undo
+if has('persistent_undo')
+  Plug 'sjl/gundo.vim'
+  if !isdirectory(expand("~/.vim/tmp/undo/"))
+    silent !mkdir -p ~/.vim/tmp/undo
+  endif
+  set undofile
+  set undodir=~/.vim/tmp/undo//
+  set noswapfile
+  set history=20
+  set undolevels=20
+  noremap <Leader>gn :GundoToggle<CR>
 endif
-set undofile
-set undodir=~/.vim/tmp/undo//
-" set backupdir=~/.vim/tmp/backup
-" set directory=~/.vim/tmp/swap
-" set backupskip=/tmp/*
-" set backup
-" set writebackup
-set noswapfile
-set history=20
-set undolevels=20
-noremap <Leader>gn :GundoToggle<CR>
 
 Plug 'mbbill/undotree'
 noremap <Leader>gN :UndotreeToggle<CR>
