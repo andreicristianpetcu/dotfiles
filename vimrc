@@ -7,7 +7,7 @@ if has('vim_starting')
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/8a525f165c2b36072bc5b11096f0d1fc6eaf103d/plug.vim
     autocmd VimEnter * PlugInstall
   endif
 
@@ -19,10 +19,6 @@ call plug#begin('~/.vim/bundle')
 " call neobundle#rc(expand('~/.vim/bundle/'))
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
 command! PlugRestoreSnapshot !~/.vim_plug_snapshot.sh
-
-" Let NeoBundle manage NeoBundle
-" Required:
-" NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Fugitive - Git wrapper
 Plug 'tpope/vim-fugitive'
