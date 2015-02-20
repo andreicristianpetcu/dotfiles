@@ -275,7 +275,7 @@ let g:airline#extensions#tagbar#enabled = 1
 
 Plug 'edkolev/promptline.vim'
 
-if v:version >= 703
+if v:version >= 702
   Plug 'Shougo/vimfiler.vim'
   let g:vimfiler_as_default_explorer = 1
   let g:vimfiler_safe_mode_by_default = 0
@@ -293,6 +293,9 @@ if v:version >= 703
   let g:vimfiler_tree_closed_icon = '▸'
   let g:vimfiler_file_icon = '-'
   let g:vimfiler_marked_file_icon = '*'
+endif
+
+if v:version >= 703
 
   Plug 'myusuf3/numbers.vim'
 
