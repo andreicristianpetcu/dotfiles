@@ -145,7 +145,9 @@ if exists(":Tabularize")
 endif
 
 Plug 'vim-scripts/tComment'
-Plug 'myusuf3/numbers.vim'
+if v:version >= 703
+  Plug 'myusuf3/numbers.vim'
+endif
 
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
