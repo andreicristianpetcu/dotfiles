@@ -3,6 +3,7 @@
 	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
 	co = checkout
+  lg = <%= "log --graph --pretty=format:'%Cgreen%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit" %>
 [color]
 	diff = auto
 	status = auto
