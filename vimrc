@@ -276,6 +276,24 @@ let g:airline#extensions#tagbar#enabled = 1
 Plug 'edkolev/promptline.vim'
 
 if v:version >= 703
+  Plug 'Shougo/vimfiler.vim'
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  " Disable netrw.vim
+  let g:loaded_netrwPlugin = 1
+  nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
+  nnoremap <Leader>fd :VimFilerDouble -tab<CR>
+  " edit files with double ckick
+  autocmd FileType vimfiler
+        \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+  autocmd FileType vimfiler
+        \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
+  let g:vimfiler_tree_leaf_icon = ' '
+  let g:vimfiler_tree_opened_icon = '▾'
+  let g:vimfiler_tree_closed_icon = '▸'
+  let g:vimfiler_file_icon = '-'
+  let g:vimfiler_marked_file_icon = '*'
+
   Plug 'myusuf3/numbers.vim'
 
   Plug 'Shougo/vimshell.vim'
@@ -484,39 +502,6 @@ endif
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibilit = 1
-
-" let vimproc_updcmd = has('win64') ?
-"       \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-" execute "Plug 'Shougo/vimproc.vim'," . string({
-"       \ 'build' : {
-"       \     'windows' : vimproc_updcmd,
-"       \     'cygwin' : 'make -f make_cygwin.mak',
-"       \     'mac' : 'make -f make_mac.mak',
-"       \     'unix' : 'make -f make_unix.mak',
-"       \    },
-"       \ })
-
-
-" code-analysis engine for JavaScript
-" Plug 'marijnh/tern_for_vim'
-
-Plug 'Shougo/vimfiler.vim'
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-" Disable netrw.vim
-let g:loaded_netrwPlugin = 1
-nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
-nnoremap <Leader>fd :VimFilerDouble -tab<CR>
-" edit files with double ckick
-autocmd FileType vimfiler
-      \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
-autocmd FileType vimfiler
-      \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
 
 if &diff
     " diff mode
