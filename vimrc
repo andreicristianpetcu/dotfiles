@@ -165,19 +165,7 @@ let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
 set tags=./.tags,.tags,./tags,tags
 autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
-au BufWritePost *.* silent! echom "test"
-au InsertLeave *.* silent! echom "test2"
-" au BufWritePost *.js,*.java,*.rb,*.erb,*.pp,*.c,*.cpp,*.h silent! TagsGenerate
 
-" Plug 'xolox/vim-easytags'
-" set tags=./tags;
-" let g:easytags_dynamic_files = 2
-" let g:easytags_always_enabled = 1
-" let g:easytags_auto_highlight = 0
-" " might get heavy on Java files
-" let g:easytags_include_members = 1
-" let g:easytags_on_cursorhold = 0
-" " let g:easytags_autorecurse = 1
 command! GlobalTagsClean !rm -rf ~/.tags
 
 " tagbar, cool outline viewer
@@ -465,8 +453,10 @@ if has('nvim')
   Plug 'Shougo/neocomplcache.vim'
   let g:neocomplcache_enable_at_startup = 1
 else
-  Plug 'Shougo/neocomplete'
-  let g:neocomplete#enable_at_startup = 1
+  if has('if_lua')
+    Plug 'Shougo/neocomplete'
+    let g:neocomplete#enable_at_startup = 1
+  endif
 endif
 
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
