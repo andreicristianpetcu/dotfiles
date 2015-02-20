@@ -145,9 +145,6 @@ if exists(":Tabularize")
 endif
 
 Plug 'vim-scripts/tComment'
-if v:version >= 703
-  Plug 'myusuf3/numbers.vim'
-endif
 
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
@@ -277,70 +274,71 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
 Plug 'edkolev/promptline.vim'
-" let g:promptline_preset = {
-        " \'a' : [ promptline#slices#user() ],
-        " \'b' : [ promptline#slices#cwd() ],
-        " \'x' : [ promptline#slices#git_status() ],
-        " \'y' : [ promptline#slices#vcs_branch() ],
-        " \'warn' : [ promptline#slices#last_exit_code() ]}
-        "
-" Unite - for searching stuff
-Plug 'Shougo/unite.vim'
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " Overwrite settings.
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-h> unite#do_action('split')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-endfunction
-noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
-noremap <leader>/T :Unite -start-insert tab<CR>
-nnoremap <Leader>/m :Unite -start-insert mapping<CR>
-nnoremap <Leader>/j :Unite -start-insert jump<CR>
-nnoremap <Leader>/e :Unite -start-insert change<CR>
-nnoremap <Leader>/r :UniteResume -start-insert<CR>
-noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
-noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
-noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
-let g:unite_source_grep_max_candidates = 200
-if executable('ag')
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
-  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
+if v:version >= 703
+  Plug 'myusuf3/numbers.vim'
+
+  Plug 'Shougo/vimshell.vim'
+
+  " Unite - for searching stuff
+  Plug 'Shougo/unite.vim'
+  autocmd FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings()
+    " Overwrite settings.
+    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    imap <silent><buffer><expr> <C-h> unite#do_action('split')
+    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+  endfunction
+  noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+  noremap <leader>/T :Unite -start-insert tab<CR>
+  nnoremap <Leader>/m :Unite -start-insert mapping<CR>
+  nnoremap <Leader>/j :Unite -start-insert jump<CR>
+  nnoremap <Leader>/e :Unite -start-insert change<CR>
+  nnoremap <Leader>/r :UniteResume -start-insert<CR>
+  noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
+  noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
+  noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
+  noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
+  noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+  noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+
+  let g:unite_source_grep_max_candidates = 200
+  if executable('ag')
+    " Use ag in unite grep source.
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+          \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
+          \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+  nnoremap <space>/2 :Unite grep:. -start-insert<cr>
+
+  " Angular.js stuff
+  noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
+  noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
+  noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
+  noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
+  noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
+  noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
+  noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
+  noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
+  noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
+  noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
+  noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
+
+  " most recent files
+  Plug 'Shougo/neomru.vim'
+  nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
+
+  " Unite for help
+  Plug 'tsukkee/unite-help'
+  nnoremap <Leader>/h :Unite -start-insert help<CR>
+
+  " Unite for outline
+  Plug 'Shougo/unite-outline'
+  nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
+
 endif
-nnoremap <space>/2 :Unite grep:. -start-insert<cr>
-
-" Angular.js stuff
-noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
-noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
-noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
-noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
-noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
-noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
-noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
-noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
-noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
-noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
-noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
-
-" most recent files
-Plug 'Shougo/neomru.vim'
-nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
-
-" Unite for help
-Plug 'tsukkee/unite-help'
-nnoremap <Leader>/h :Unite -start-insert help<CR>
-
-" Unite for outline
-Plug 'Shougo/unite-outline'
-nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
@@ -531,8 +529,6 @@ nnoremap <Leader>fn :NERDTreeFind<CR>
 
 
 Plug 'Shougo/neossh.vim'
-
-Plug 'Shougo/vimshell.vim'
 
 Plug 'rodjek/vim-puppet'
 au FileType puppet setlocal isk+=:
