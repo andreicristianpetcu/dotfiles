@@ -7,7 +7,7 @@ if has('vim_starting')
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/8a525f165c2b36072bc5b11096f0d1fc6eaf103d/plug.vim
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/bb48508c3eb474ad2213f733104d1f33a7bbe5e5/plug.vim
     autocmd VimEnter * PlugInstall| so ~/.vimrc
   endif
 
