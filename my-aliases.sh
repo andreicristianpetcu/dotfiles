@@ -267,7 +267,7 @@ alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias docleanall="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
+alias docleanall="dormall && dormiall"
 
 sshinsecuretest(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
