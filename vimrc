@@ -146,6 +146,8 @@ endif
 
 Plug 'vim-scripts/tComment'
 
+Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
+
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
 
