@@ -307,11 +307,13 @@ if v:version >= 703
     imap <silent><buffer><expr> <C-h> unite#do_action('split')
     imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
   endfunction
-  noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
-  noremap <leader>/pp :Unite -start-insert buffer file_rec<CR>
-  noremap <leader>/pw yiw:Unite -start-insert buffer file_rec<CR><C-R>0
-  noremap <leader>" yi":Unite -start-insert file_rec<CR><C-R>0
-  noremap <leader>' yi':Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p :Unite -start-insert file_rec<CR>
+  noremap <leader>pp :Unite -start-insert file_rec<CR>
+
+  noremap <leader>pw yiw:Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p" yi":Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p' yi':Unite -start-insert file_rec<CR><C-R>0
+
   noremap <leader>/T :Unite -start-insert tab<CR>
   nnoremap <Leader>/m :Unite -start-insert mapping<CR>
   nnoremap <Leader>/j :Unite -start-insert jump<CR>
@@ -411,7 +413,12 @@ nnoremap <Leader>/M :Unite manpage -start-insert<CR>
 
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
-nnoremap <Leader>/t :Unite tag -start-insert<CR>
+noremap <leader>t :Unite -start-insert tag<CR>
+noremap <leader>tt :Unite -start-insert tag<CR>
+noremap <leader>tw yiw:Unite -start-insert tag<CR><C-R>0
+noremap <leader>t" yi":Unite -start-insert tag<CR><C-R>0
+noremap <leader>t' yi':Unite -start-insert tag<CR><C-R>0
+
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
@@ -659,13 +666,6 @@ Plug 'severin-lemaignan/vim-minimap'
 Plug 'kana/vim-textobj-diff'
 
 Plug 'wellle/targets.vim'
-
-Plug 'krisajenkins/vim-pipe'
-autocmd BufReadPost,BufReadPost *.mql
-      \setlocal filetype=mongoql
-      \let b:vimpipe_command="mongo"
-      \let b:vimpipe_filetype="javascript"
-nnoremap <Leader>p :call VimPipe()<CR>
 
 " In ~/.vim/ftplugin/mql.vim
 let b:vimpipe_command="mongo"
