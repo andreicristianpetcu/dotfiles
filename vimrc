@@ -316,6 +316,7 @@ if v:version >= 703
   noremap <leader>pw yiw:Unite -start-insert file_rec<CR><C-R>0
   noremap <leader>p" yi":Unite -start-insert file_rec<CR><C-R>0
   noremap <leader>p' yi':Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p< yi<:Unite -start-insert file_rec<CR><C-R>0
 
   noremap <leader>/T :Unite -start-insert tab<CR>
   nnoremap <Leader>/m :Unite -start-insert mapping<CR>
@@ -421,6 +422,7 @@ noremap <leader>tt :Unite -start-insert tag<CR>
 noremap <leader>tw yiw:Unite -start-insert tag<CR><C-R>0
 noremap <leader>t" yi":Unite -start-insert tag<CR><C-R>0
 noremap <leader>t' yi':Unite -start-insert tag<CR><C-R>0
+noremap <leader>t< yi<:Unite -start-insert tag<CR><C-R>0
 
 autocmd BufEnter *
 \   if empty(&buftype)
