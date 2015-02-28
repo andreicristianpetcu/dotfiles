@@ -667,6 +667,11 @@ nnoremap <Leader>p :call VimPipe()<CR>
 let b:vimpipe_command="mongo"
 let b:vimpipe_filetype="javascript"
 
+" alternate for header files
+Plug 'vim-scripts/a.vim'
+
+Plug 'vim-scripts/refactor'
+
 " vim-scripts repos
 Plug 'L9'
 
