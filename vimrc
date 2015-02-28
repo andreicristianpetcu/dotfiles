@@ -308,6 +308,10 @@ if v:version >= 703
     imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
   endfunction
   noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
+  noremap <leader>/pp :Unite -start-insert buffer file_rec<CR>
+  noremap <leader>/pw yiw:Unite -start-insert buffer file_rec<CR><C-R>0
+  noremap <leader>" yi":Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>' yi':Unite -start-insert file_rec<CR><C-R>0
   noremap <leader>/T :Unite -start-insert tab<CR>
   nnoremap <Leader>/m :Unite -start-insert mapping<CR>
   nnoremap <Leader>/j :Unite -start-insert jump<CR>
