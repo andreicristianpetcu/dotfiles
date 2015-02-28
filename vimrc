@@ -309,6 +309,7 @@ if v:version >= 703
   endfunction
   noremap <leader>p :Unite -start-insert file_rec<CR>
   noremap <leader>pp :Unite -start-insert file_rec<CR>
+  noremap <leader>pd :Unite -start-insert directory<CR>
 
   noremap <leader>pw yiw:Unite -start-insert file_rec<CR><C-R>0
   noremap <leader>p" yi":Unite -start-insert file_rec<CR><C-R>0
