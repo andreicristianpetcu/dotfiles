@@ -615,8 +615,8 @@ Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
 Plug 'milkypostman/vim-togglelist'
-nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>vl :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>vq :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
@@ -768,14 +768,15 @@ set laststatus=2
 command! Reloadvimrc :so $MYVIMRC
 command! Editvimrc :e $MYVIMRC
 
-nnoremap <Leader>tn :tabnew<CR>
-nnoremap <Leader>tc :tabclose<CR>
-nnoremap <Leader>to :tabonly<CR>
-nnoremap <Leader>te :tabedit %<CR>
-nnoremap <Leader>th :split<CR>
-nnoremap <Leader>tv :vsplit<CR>
-nnoremap <Leader>tr :Reloadvimrc<CR>
-nnoremap <Leader>tR :redraw!<CR>
+nnoremap <Leader>vtn :tabnew<CR>
+nnoremap <Leader>vtc :tabclose<CR>
+nnoremap <Leader>vto :tabonly<CR>
+nnoremap <Leader>vte :tabedit %<CR>
+nnoremap <Leader>vh :split<CR>
+nnoremap <Leader>vv :vsplit<CR>
+nnoremap <Leader>vr :Reloadvimrc<CR>
+nnoremap <Leader>vR :redraw!<CR>
+nnoremap <Leader>v<CR> :<UP><CR>
 nnoremap ]t :tabnext<CR>
 nnoremap [t :tabprevious<CR>
 
