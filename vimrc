@@ -566,6 +566,8 @@ nmap <Leader>hh :GitGutterToggle<CR>
 Plug 'vim-scripts/copypath.vim'
 let g:copypath_copy_to_unnamed_register = 1
 
+Plug 'vim-scripts/OmniCppComplete'
+
 " nice nodejs plugin
 Plug 'moll/vim-node'
 
@@ -679,7 +681,7 @@ let b:vimpipe_filetype="javascript"
 " alternate for header files
 Plug 'vim-scripts/a.vim'
 
-Plug 'vim-scripts/refactor'
+" Plug 'vim-scripts/refactor'
 
 " vim-scripts repos
 Plug 'L9'
