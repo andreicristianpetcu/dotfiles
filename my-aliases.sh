@@ -214,10 +214,11 @@ export centos6url="https://github.com/2creatives/vagrant-centos/releases/downloa
 alias installpuppetdev="sudo puppet apply -v ~/.puppet_dev.pp"
 alias installpyenv='curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash'
 alias installohmyzsh="rm -rf $HOME/.oh-my-zsh && wget --no-check-certificate http://install.ohmyz.sh -O - | sh"
-alias installrbenv='git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
+alias installrbenv='rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
+alias installndenv='rm -rf ~/.ndenv && git clone https://github.com/riywo/ndenv ~/.ndenv && git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build'
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
-alias installfzf='git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
+alias installfzf='rm -rf ~/.fzf && git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
 alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
 
 installjenv(){
@@ -266,7 +267,8 @@ alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias docleanall="dockerrmdockerpsaq && dockerrmidockerimagesgrepnoneawkprint3"
+alias docleanall="dormall && dormiall"
+alias dormunused="docker rm `docker ps -f status=exited -q`"
 
 sshinsecuretest(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1

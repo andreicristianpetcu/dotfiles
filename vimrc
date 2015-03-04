@@ -7,8 +7,8 @@ if has('vim_starting')
   let plug_vim=expand('~/.vim/autoload/plug.vim')
   if !filereadable(plug_vim)
     silent !mkdir -p ~/.vim/autoload
-    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall
+    silent !curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/bb48508c3eb474ad2213f733104d1f33a7bbe5e5/plug.vim
+    autocmd VimEnter * PlugInstall| so ~/.vimrc
   endif
 
 endif
@@ -19,10 +19,6 @@ call plug#begin('~/.vim/bundle')
 " call neobundle#rc(expand('~/.vim/bundle/'))
 command! PlugTakeSnapshot PlugSnapshot ~/.vim_plug_snapshot.sh
 command! PlugRestoreSnapshot !~/.vim_plug_snapshot.sh
-
-" Let NeoBundle manage NeoBundle
-" Required:
-" NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Fugitive - Git wrapper
 Plug 'tpope/vim-fugitive'
@@ -85,21 +81,18 @@ nnoremap <Leader>gv :Gitv<CR>
 Plug 'int3/vim-extradite'
 nnoremap <Leader>gE :Extradite<CR>
 
-Plug 'sjl/gundo.vim'
-if !isdirectory(expand("~/.vim/tmp/undo/"))
-  silent !mkdir -p ~/.vim/tmp/undo
+if has('persistent_undo')
+  Plug 'sjl/gundo.vim'
+  if !isdirectory(expand("~/.vim/tmp/undo/"))
+    silent !mkdir -p ~/.vim/tmp/undo
+  endif
+  set undofile
+  set undodir=~/.vim/tmp/undo//
+  set noswapfile
+  set history=20
+  set undolevels=20
+  noremap <Leader>gn :GundoToggle<CR>
 endif
-set undofile
-set undodir=~/.vim/tmp/undo//
-" set backupdir=~/.vim/tmp/backup
-" set directory=~/.vim/tmp/swap
-" set backupskip=/tmp/*
-" set backup
-" set writebackup
-set noswapfile
-set history=20
-set undolevels=20
-noremap <Leader>gn :GundoToggle<CR>
 
 Plug 'mbbill/undotree'
 noremap <Leader>gN :UndotreeToggle<CR>
@@ -152,7 +145,10 @@ if exists(":Tabularize")
 endif
 
 Plug 'vim-scripts/tComment'
-Plug 'myusuf3/numbers.vim'
+
+" Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
+
+Plug 'justmao945/vim-clang.git'
 
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
@@ -172,19 +168,7 @@ let g:vim_tags_auto_generate = 1
 let g:vim_tags_use_vim_dispatch = 1
 set tags=./.tags,.tags,./tags,tags
 autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --languages=js -f ./js.tags 2>/dev/null'
-au BufWritePost *.* silent! echom "test"
-au InsertLeave *.* silent! echom "test2"
-" au BufWritePost *.js,*.java,*.rb,*.erb,*.pp,*.c,*.cpp,*.h silent! TagsGenerate
 
-" Plug 'xolox/vim-easytags'
-" set tags=./tags;
-" let g:easytags_dynamic_files = 2
-" let g:easytags_always_enabled = 1
-" let g:easytags_auto_highlight = 0
-" " might get heavy on Java files
-" let g:easytags_include_members = 1
-" let g:easytags_on_cursorhold = 0
-" " let g:easytags_autorecurse = 1
 command! GlobalTagsClean !rm -rf ~/.tags
 
 " tagbar, cool outline viewer
@@ -253,8 +237,8 @@ noremap <Leader>/W yiW:call SilverSearch(expand(@0))<CR>
 noremap <Leader>/0 :call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a' ya':call SilverSearch(expand(@0))<CR>
 noremap <Leader>/a" ya":call SilverSearch(expand(@0))<CR>
-noremap <Leader>/i' yi':call SilverSearch(expand(@0))<CR>
-noremap <Leader>/i" yi":call SilverSearch(expand(@0))<CR>
+noremap <Leader>/' yi':call SilverSearch(expand(@0))<CR>
+noremap <Leader>/" yi":call SilverSearch(expand(@0))<CR>
 
 " greplace
 Plug 'skwp/greplace.vim'
@@ -294,70 +278,97 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 
 Plug 'edkolev/promptline.vim'
-" let g:promptline_preset = {
-        " \'a' : [ promptline#slices#user() ],
-        " \'b' : [ promptline#slices#cwd() ],
-        " \'x' : [ promptline#slices#git_status() ],
-        " \'y' : [ promptline#slices#vcs_branch() ],
-        " \'warn' : [ promptline#slices#last_exit_code() ]}
-        "
-" Unite - for searching stuff
-Plug 'Shougo/unite.vim'
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " Overwrite settings.
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-  imap <silent><buffer><expr> <C-h> unite#do_action('split')
-  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-endfunction
-noremap <leader>/p :Unite -start-insert buffer file_rec<CR>
-noremap <leader>/T :Unite -start-insert tab<CR>
-nnoremap <Leader>/m :Unite -start-insert mapping<CR>
-nnoremap <Leader>/j :Unite -start-insert jump<CR>
-nnoremap <Leader>/e :Unite -start-insert change<CR>
-nnoremap <Leader>/r :UniteResume -start-insert<CR>
-noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
-noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
-noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
-noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
-noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
 
-let g:unite_source_grep_max_candidates = 200
-if executable('ag')
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
-  \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
+if v:version >= 703
+  Plug 'Shougo/vimfiler.vim'
+  let g:vimfiler_as_default_explorer = 1
+  let g:vimfiler_safe_mode_by_default = 0
+  " Disable netrw.vim
+  let g:loaded_netrwPlugin = 1
+  nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
+  nnoremap <Leader>fd :VimFilerDouble -tab<CR>
+  " edit files with double ckick
+  autocmd FileType vimfiler
+        \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
+  autocmd FileType vimfiler
+        \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
+  let g:vimfiler_tree_leaf_icon = ' '
+  let g:vimfiler_tree_opened_icon = '▾'
+  let g:vimfiler_tree_closed_icon = '▸'
+  let g:vimfiler_file_icon = '-'
+  let g:vimfiler_marked_file_icon = '*'
+
+  Plug 'myusuf3/numbers.vim'
+
+  Plug 'Shougo/vimshell.vim'
+
+  " Unite - for searching stuff
+  Plug 'Shougo/unite.vim'
+  autocmd FileType unite call s:unite_my_settings()
+  function! s:unite_my_settings()
+    " Overwrite settings.
+    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    imap <silent><buffer><expr> <C-h> unite#do_action('split')
+    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+  endfunction
+  noremap <leader>p :Unite -start-insert file_rec<CR>
+  noremap <leader>pp :Unite -start-insert file_rec<CR>
+  noremap <leader>pd :Unite -start-insert directory<CR>
+
+  noremap <leader>pw yiw:Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p" yi":Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p' yi':Unite -start-insert file_rec<CR><C-R>0
+  noremap <leader>p< yi<:Unite -start-insert file_rec<CR><C-R>0
+
+  noremap <leader>/T :Unite -start-insert tab<CR>
+  nnoremap <Leader>/m :Unite -start-insert mapping<CR>
+  nnoremap <Leader>/j :Unite -start-insert jump<CR>
+  nnoremap <Leader>/e :Unite -start-insert change<CR>
+  nnoremap <Leader>/r :UniteResume -start-insert<CR>
+  noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
+  noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
+  noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
+  noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
+  noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
+  noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
+
+  let g:unite_source_grep_max_candidates = 200
+  if executable('ag')
+    " Use ag in unite grep source.
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+          \ '-i --line-numbers --nocolor --nogroup --hidden --ignore --literal' .
+          \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+  endif
+  nnoremap <space>/2 :Unite grep:. -start-insert<cr>
+
+  " Angular.js stuff
+  noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
+  noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
+  noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
+  noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
+  noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
+  noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
+  noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
+  noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
+  noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
+  noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
+  noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
+
+  " most recent files
+  Plug 'Shougo/neomru.vim'
+  nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
+
+  " Unite for help
+  Plug 'tsukkee/unite-help'
+  nnoremap <Leader>/h :Unite -start-insert help<CR>
+
+  " Unite for outline
+  Plug 'Shougo/unite-outline'
+  nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
+
 endif
-nnoremap <space>/2 :Unite grep:. -start-insert<cr>
-
-" Angular.js stuff
-noremap <leader>ac :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts controller  .js<left><left><left><left>
-noremap <leader>as :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts service  .js<left><left><left><left>
-noremap <leader>ad :Unite -start-insert file_rec<CR>!bower_components !node_modules app scripts directive  .js<left><left><left><left>
-noremap <leader>am :Unite -start-insert file_rec<CR>!bower_components !node_modules app !controller !service !directive  .js<left><left><left><left>
-noremap <leader>av :Unite -start-insert file_rec<CR>!bower_components !node_modules app views  .html<left><left><left><left><left><left>
-noremap <leader>aS :Unite -start-insert file_rec<CR>!bower_components !node_modules app styles  .css<left><left><left><left><left>
-noremap <leader>atc :Unite -start-insert file_rec<CR>!bower_components !node_modules test controller  .js<left><left><left><left>
-noremap <leader>ats :Unite -start-insert file_rec<CR>!bower_components !node_modules test service  .js<left><left><left><left>
-noremap <leader>atd :Unite -start-insert file_rec<CR>!bower_components !node_modules test directive  .js<left><left><left><left>
-noremap <leader>ab :Unite -start-insert file_rec<CR>bower_components 
-noremap <leader>an :Unite -start-insert file_rec<CR>node_modules 
-
-" most recent files
-Plug 'Shougo/neomru.vim'
-nnoremap <Leader>/R :Unite -start-insert file_mru<CR>
-
-" Unite for help
-Plug 'tsukkee/unite-help'
-nnoremap <Leader>/h :Unite -start-insert help<CR>
-
-" Unite for outline
-Plug 'Shougo/unite-outline'
-nnoremap <Leader>/o :Unite -start-insert outline -vertical<CR>
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
@@ -408,7 +419,13 @@ nnoremap <Leader>/M :Unite manpage -start-insert<CR>
 
 " Unite for ctags
 Plug 'tsukkee/unite-tag'
-nnoremap <Leader>/t :Unite tag -start-insert<CR>
+noremap <leader>t :Unite -start-insert tag<CR>
+noremap <leader>tt :Unite -start-insert tag<CR>
+noremap <leader>tw yiw:Unite -start-insert tag<CR><C-R>0
+noremap <leader>t" yi":Unite -start-insert tag<CR><C-R>0
+noremap <leader>t' yi':Unite -start-insert tag<CR><C-R>0
+noremap <leader>t< yi<:Unite -start-insert tag<CR><C-R>0
+
 autocmd BufEnter *
 \   if empty(&buftype)
 \| nnoremap <buffer> <C-]> yiw:Unite -start-insert tag<CR><C-R>0
@@ -467,9 +484,17 @@ let g:angular_source_directory = 'uwezo-presentation/yo/app'
 let g:angular_test_directory = 'uwezo-presentation/yo/app/test/spec'
 
 "Autocomplete plugin
-Plug 'Shougo/neocomplete'
-" enable neocomplete
-let g:neocomplete#enable_at_startup = 1
+" Plug 'Shougo/neocomplcache.vim'
+" if has('nvim')
+"   Plug 'Shougo/neocomplcache.vim'
+"   let g:neocomplcache_enable_at_startup = 1
+" else
+"   if has('if_lua')
+"     Plug 'Shougo/neocomplete'
+"     let g:neocomplete#enable_at_startup = 1
+"   endif
+" endif
+"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -496,39 +521,6 @@ endif
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 let g:neosnippet#enable_snipmate_compatibilit = 1
 
-" let vimproc_updcmd = has('win64') ?
-"       \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-" execute "Plug 'Shougo/vimproc.vim'," . string({
-"       \ 'build' : {
-"       \     'windows' : vimproc_updcmd,
-"       \     'cygwin' : 'make -f make_cygwin.mak',
-"       \     'mac' : 'make -f make_mac.mak',
-"       \     'unix' : 'make -f make_unix.mak',
-"       \    },
-"       \ })
-
-
-" code-analysis engine for JavaScript
-" Plug 'marijnh/tern_for_vim'
-
-Plug 'Shougo/vimfiler.vim'
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_safe_mode_by_default = 0
-" Disable netrw.vim
-let g:loaded_netrwPlugin = 1
-nnoremap <Leader>ff :VimFilerExplorer -find -winwidth=80<CR>
-nnoremap <Leader>fd :VimFilerDouble -tab<CR>
-" edit files with double ckick
-autocmd FileType vimfiler
-      \ nmap <buffer> <2-LeftMouse> <Plug>(vimfiler_edit_file)
-autocmd FileType vimfiler
-      \ nmap <buffer> <CR> <Plug>(vimfiler_edit_file)
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
-
 if &diff
     " diff mode
     set diffopt+=iwhite
@@ -540,8 +532,6 @@ nnoremap <Leader>fn :NERDTreeFind<CR>
 
 
 Plug 'Shougo/neossh.vim'
-
-Plug 'Shougo/vimshell.vim'
 
 Plug 'rodjek/vim-puppet'
 au FileType puppet setlocal isk+=:
@@ -577,6 +567,8 @@ nmap <Leader>hh :GitGutterToggle<CR>
 "copy paths in a easy way
 Plug 'vim-scripts/copypath.vim'
 let g:copypath_copy_to_unnamed_register = 1
+
+" Plug 'vim-scripts/OmniCppComplete'
 
 " nice nodejs plugin
 Plug 'moll/vim-node'
@@ -639,8 +631,8 @@ Plug 'heavenshell/vim-jsdoc'
 
 " toggle lists
 Plug 'milkypostman/vim-togglelist'
-nmap <script> <silent> <leader>tl :call ToggleLocationList()<CR>
-nmap <script> <silent> <leader>tq :call ToggleQuickfixList()<CR>
+nmap <script> <silent> <leader>vl :call ToggleLocationList()<CR>
+nmap <script> <silent> <leader>vq :call ToggleQuickfixList()<CR>
 
 " docker file syntax
 Plug 'honza/dockerfile.vim'
@@ -684,16 +676,14 @@ Plug 'kana/vim-textobj-diff'
 
 Plug 'wellle/targets.vim'
 
-Plug 'krisajenkins/vim-pipe'
-autocmd BufReadPost,BufReadPost *.mql
-      \setlocal filetype=mongoql
-      \let b:vimpipe_command="mongo"
-      \let b:vimpipe_filetype="javascript"
-nnoremap <Leader>p :call VimPipe()<CR>
-
 " In ~/.vim/ftplugin/mql.vim
 let b:vimpipe_command="mongo"
 let b:vimpipe_filetype="javascript"
+
+" alternate for header files
+Plug 'vim-scripts/a.vim'
+
+" Plug 'vim-scripts/refactor'
 
 " vim-scripts repos
 Plug 'L9'
@@ -787,14 +777,15 @@ set laststatus=2
 command! Reloadvimrc :so $MYVIMRC
 command! Editvimrc :e $MYVIMRC
 
-nnoremap <Leader>tn :tabnew<CR>
-nnoremap <Leader>tc :tabclose<CR>
-nnoremap <Leader>to :tabonly<CR>
-nnoremap <Leader>te :tabedit %<CR>
-nnoremap <Leader>th :split<CR>
-nnoremap <Leader>tv :vsplit<CR>
-nnoremap <Leader>tr :Reloadvimrc<CR>
-nnoremap <Leader>tR :redraw!<CR>
+nnoremap <Leader>vtn :tabnew<CR>
+nnoremap <Leader>vtc :tabclose<CR>
+nnoremap <Leader>vto :tabonly<CR>
+nnoremap <Leader>vte :tabedit %<CR>
+nnoremap <Leader>vh :split<CR>
+nnoremap <Leader>vv :vsplit<CR>
+nnoremap <Leader>vr :Reloadvimrc<CR>
+nnoremap <Leader>vR :redraw!<CR>
+nnoremap <Leader>v<CR> :<UP><CR>
 nnoremap ]t :tabnext<CR>
 nnoremap [t :tabprevious<CR>
 
