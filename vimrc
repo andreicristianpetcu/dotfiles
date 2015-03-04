@@ -146,7 +146,9 @@ endif
 
 Plug 'vim-scripts/tComment'
 
-Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
+" Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
+
+Plug 'justmao945/vim-clang.git'
 
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
@@ -463,7 +465,7 @@ nnoremap <Leader>rgo :Bopen<CR>
 nnoremap <Leader>rgi :Bundle install<CR>
 
 Plug 'tpope/vim-rake'
-Plug 'tpope/gem-ctags'
+" Plug 'tpope/gem-ctags'
 Plug 'tpope/gem-browse'
 
 " Rails plugin
@@ -483,16 +485,16 @@ let g:angular_test_directory = 'uwezo-presentation/yo/app/test/spec'
 
 "Autocomplete plugin
 " Plug 'Shougo/neocomplcache.vim'
-if has('nvim')
-  Plug 'Shougo/neocomplcache.vim'
-  let g:neocomplcache_enable_at_startup = 1
-else
-  if has('if_lua')
-    Plug 'Shougo/neocomplete'
-    let g:neocomplete#enable_at_startup = 1
-  endif
-endif
-
+" if has('nvim')
+"   Plug 'Shougo/neocomplcache.vim'
+"   let g:neocomplcache_enable_at_startup = 1
+" else
+"   if has('if_lua')
+"     Plug 'Shougo/neocomplete'
+"     let g:neocomplete#enable_at_startup = 1
+"   endif
+" endif
+"
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -566,7 +568,7 @@ nmap <Leader>hh :GitGutterToggle<CR>
 Plug 'vim-scripts/copypath.vim'
 let g:copypath_copy_to_unnamed_register = 1
 
-Plug 'vim-scripts/OmniCppComplete'
+" Plug 'vim-scripts/OmniCppComplete'
 
 " nice nodejs plugin
 Plug 'moll/vim-node'
