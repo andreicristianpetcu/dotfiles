@@ -465,7 +465,7 @@ nnoremap <Leader>rgo :Bopen<CR>
 nnoremap <Leader>rgi :Bundle install<CR>
 
 Plug 'tpope/vim-rake'
-" Plug 'tpope/gem-ctags'
+Plug 'tpope/gem-ctags'
 Plug 'tpope/gem-browse'
 
 " Rails plugin
