@@ -688,6 +688,8 @@ Plug 'vim-scripts/a.vim'
 " vim-scripts repos
 Plug 'L9'
 
+Plug 'chrisbra/NrrwRgn'
+
 " open man pages in vim
 runtime ftplugin/man.vim
 
