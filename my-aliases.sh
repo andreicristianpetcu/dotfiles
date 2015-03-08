@@ -73,6 +73,10 @@ whencef(){
   whence -f $1
 }
 
+countsimilar(){
+  grep -roh "$1" .| sort | uniq -c
+}
+
 # desktop
 installgnomekeys(){
   gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift><Alt>j', '<Control><Shift><Alt>Down']"
