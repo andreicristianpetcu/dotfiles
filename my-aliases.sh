@@ -74,7 +74,7 @@ whencef(){
 }
 
 countsimilar(){
-  grep -roh "$1" .| sort | uniq -c
+  grep -roh "$1" .| sort | uniq -c| sort -k1,1nr -k2,2 | cut -c-100 | grep --color=auto "$1"
 }
 
 # desktop
