@@ -73,8 +73,12 @@ whencef(){
   whence -f $1
 }
 
+#sample usage
+#countsimilar "\w+::\w+\s*"
+#countsimilar "#include <.*>"
+#countsimilar "#include <\w*?/"
 countsimilar(){
-  grep -roh "$1" .| sort | uniq -c| sort -k1,1nr -k2,2 | cut -c-100 | grep --color=auto "$1"
+  egrep -roh "$1" .| sort | uniq -c| cut -c-100 | sort -k1,1nr -k2,2 | head -n 100 | egrep --color=auto "$1"
 }
 
 # desktop
