@@ -146,9 +146,41 @@ endif
 
 Plug 'vim-scripts/tComment'
 
+" Plug 'brookhong/cscope.vim'
 " Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
 " Plug 'justmao945/vim-clang'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.sh' }
+" git submodule update --init --recursive
+Plug 'Valloric/YouCompleteMe'
+
+" , { 'do': 'git submodule update --init --recursive && ./install.sh --clang-completer' }
+
+" let g:clang_complete_copen=1
+" let g:clang_periodic_quickfix=1
+" let g:clang_snippets=1
+" let g:clang_close_preview=1
+" let g:clang_use_library=1
+" let g:clang_user_options='-std=c++11'
+" let g:neocomplcache_enable_at_startup = 1
+" let g:clang_library_path='/usr/lib/llvm-3.4/lib/'
+
+" let g:clang_auto_select=1
+" let g:clang_complete_auto=0
+" let g:clang_complete_copen=1
+" let g:clang_hl_errors=1
+" let g:clang_periodic_quickfix=0
+" let g:clang_snippets=1
+" let g:clang_snippets_engine="clang_complete"
+" let g:clang_conceal_snippets=1
+" let g:clang_exec="clang"
+" let g:clang_user_options=""
+" let g:clang_auto_user_options="path, .clang_complete"
+" let g:clang_use_library=1
+" let g:clang_library_path="/usr/lib/"
+" let g:clang_sort_algo="priority"
+" let g:clang_complete_macros=1
+" let g:clang_complete_patterns=0
+" let g:clang_debug=1
+"
 
 Plug 'andreicristianpetcu/vim-modokay', { 'do': 'rm -rf ~/.vim/colors/modokay.vim && mkdir -p ~/.vim/colors && ln -s ~/.vim/bundle/vim-modokay/colors/modokay.vim ~/.vim/colors/modokay.vim' }
 Plug 'altercation/vim-colors-solarized'
