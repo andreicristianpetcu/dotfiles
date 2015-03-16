@@ -10,7 +10,6 @@ cd $PLUG_HOME/L9/ && git reset --hard c822b05
 cd $PLUG_HOME/MatchTagAlways/ && git reset --hard ca74f05
 cd $PLUG_HOME/NrrwRgn/ && git reset --hard 118fa8c
 cd $PLUG_HOME/Vim-Jinja2-Syntax/ && git reset --hard 4eb6761
-cd $PLUG_HOME/YouCompleteMe/ && git reset --hard 8f49e9b
 cd $PLUG_HOME/a.vim/ && git reset --hard 2cbe946
 cd $PLUG_HOME/ag.vim/ && git reset --hard f05f313
 cd $PLUG_HOME/argarg.vim/ && git reset --hard c1a8fc3

@@ -153,7 +153,7 @@ Plug 'vim-scripts/tComment'
 " Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
 " Plug 'justmao945/vim-clang'
 " git submodule update --init --recursive
-Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && ./install.sh --clang-completer' }
+" Plug 'Valloric/YouCompleteMe', { 'do': 'git submodule update --init --recursive && ./install.sh --clang-completer' }
 
 " let g:clang_complete_copen=1
 " let g:clang_periodic_quickfix=1
