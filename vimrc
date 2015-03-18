@@ -149,6 +149,8 @@ endif
 
 Plug 'vim-scripts/tComment'
 
+Plug 'vim-scripts/scons.vim'
+
 " Plug 'brookhong/cscope.vim'
 " Plug 'Rip-Rip/clang_complete', {'do':  'make install'}
 " Plug 'justmao945/vim-clang'
