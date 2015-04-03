@@ -277,6 +277,11 @@ alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{p
 #cleanpup. delete all stopped containers and remove untagged images
 alias docleanall="dormall && dormiall"
 
+alias bleachbitcleanall="bleachbit -c firefox.cache && bleachbit -c chromium.cache && bleachbit -c google_chrome.cache && bleachbit -c thumbnails.cache \
+  && bleachbit -c deepscan.thumbs_db"
+
+alias cleanall="sudo aura -Cc && bleachbitcleanall"
+
 dormunused(){
   docker rm $(docker ps -f status=exited -q)
 }
