@@ -26,6 +26,12 @@ alias sudosu='sudo su'
 alias sudosupostgres='sudo su postgres'
 alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
+tmuxlocal(){                                                                                                                                                                                                
+  echo "unbind C-b
+set -g prefix C-q
+bind C-q send-prefix" > ~/.tmux.conf.local
+}
+
 axgrep() {
   ps -ax|grep $1
 }
