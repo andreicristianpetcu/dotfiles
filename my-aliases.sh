@@ -235,6 +235,8 @@ alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='rm -rf ~/.fzf && git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
 alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
 alias installvagrantguestaditions="vagrant plugin install vagrant-vbguest"
+alias bowerinstalloffline="bower install --offline"
+alias npminstallcachemin999999="npm install --cache-min 999999"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
