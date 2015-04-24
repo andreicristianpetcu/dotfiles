@@ -237,6 +237,7 @@ alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/d
 alias installvagrantguestaditions="vagrant plugin install vagrant-vbguest"
 alias bowerinstalloffline="bower install --offline"
 alias npminstallcachemin999999="npm install --cache-min 999999"
+alias installgdbpp="git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
