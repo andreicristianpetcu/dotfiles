@@ -238,6 +238,7 @@ alias installvagrantguestaditions="vagrant plugin install vagrant-vbguest"
 alias bowerinstalloffline="bower install --offline"
 alias npminstallcachemin999999="npm install --cache-min 999999"
 alias installgdbpp="git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
+alias installboostprettyprint="git clone git://github.com/ruediger/Boost-Pretty-Printer.git ~/.Boost-Pretty-Printer.git"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
