@@ -286,7 +286,7 @@ alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias docleanall="dormall && dormiall"
+alias docleanall="dormall ; dormiall"
 
 alias bleachbitcleanall="bleachbit -c firefox.cache && bleachbit -c chromium.cache && bleachbit -c google_chrome.cache && bleachbit -c thumbnails.cache \
   && bleachbit -c deepscan.thumbs_db"
