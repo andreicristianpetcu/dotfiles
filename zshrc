@@ -17,7 +17,7 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 
-plugins=(archlinux bower command-not-found cp docker gem git git-extras
+plugins=(bower command-not-found cp docker gem git git-extras
       \ gitignore gradle heroku history-substring-search jsontools mvn node
       \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin
       \ systemd tmux vagrant web-search zsh_reload zshmarks)

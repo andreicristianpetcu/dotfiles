@@ -45,6 +45,11 @@ if [ -d $HOME/.local/lib/node_modules ]; then
   export NODE_PATH=$NODE_PATH:$HOME/.local/lib/node_modules
 fi
 
+export GOPATH=~/Dev/go
+if [ -d $GOPATH ]; then
+  export PATH=$PATH:~/Dev/go/bin
+fi
+
 # jenv settings
 if [ -f $HOME/.jenv/bin/jenv-init.sh ]; then
   source $HOME/.jenv/bin/jenv-init.sh

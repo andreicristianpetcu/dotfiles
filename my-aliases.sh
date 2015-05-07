@@ -26,6 +26,12 @@ alias sudosu='sudo su'
 alias sudosupostgres='sudo su postgres'
 alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
+tmuxlocal(){                                                                                                                                                                                                
+  echo "unbind C-b
+set -g prefix C-q
+bind C-q send-prefix" > ~/.tmux.conf.local
+}
+
 axgrep() {
   ps -ax|grep $1
 }
@@ -71,6 +77,14 @@ aliasgrep(){
 
 whencef(){
   whence -f $1
+}
+
+#sample usage
+#countsimilar "\w+::\w+\s*"
+#countsimilar "#include <.*>"
+#countsimilar "#include <\w*?/"
+countsimilar(){
+  egrep -roh "$1" .| sort | uniq -c| cut -c-100 | sort -k1,1nr -k2,2 | head -n 100 | egrep --color=auto "$1"
 }
 
 # desktop
@@ -220,6 +234,11 @@ alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git 
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='rm -rf ~/.fzf && git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
 alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
+alias installvagrantguestaditions="vagrant plugin install vagrant-vbguest"
+alias bowerinstalloffline="bower install --offline"
+alias npminstallcachemin999999="npm install --cache-min 999999"
+alias installgdbpp="rm -rf ~/.libstdc--v3python && git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
+alias installboostprettyprint="rm -rf ~/.Boost-Pretty-Printer.git && git clone https://github.com/mateidavid/Boost-Pretty-Printer.git ~/.Boost-Pretty-Printer.git"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
@@ -258,7 +277,7 @@ alias dostopall='docker stop $(docker ps -q)'
 alias dopsa='docker ps -a'
 alias dops='docker ps'
 alias dormiall='docker rmi `docker images -q`'
-alias donosudo='sudo groupadd docker && sudo gpasswd -a ${USERNAME} docker && sudo service docker restart'
+alias donosudo='sudo groupadd docker ; usermod -a -G docker ${USERNAME} ; sudo gpasswd -a ${USERNAME} docker ; sudo service docker restart'
 alias dolastimage='docker images -q|head -1'
 alias dostoplast='docker stop `docker ps -q|head -1`'
 alias doimagesqhead1='docker images -q|head -1'
@@ -267,8 +286,16 @@ alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
 #delete all untagged images
 alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
 #cleanpup. delete all stopped containers and remove untagged images
-alias docleanall="dormall && dormiall"
-alias dormunused="docker rm `docker ps -f status=exited -q`"
+alias docleanall="dormall ; dormiall"
+
+alias bleachbitcleanall="bleachbit -c firefox.cache && bleachbit -c chromium.cache && bleachbit -c google_chrome.cache && bleachbit -c thumbnails.cache \
+  && bleachbit -c deepscan.thumbs_db"
+
+alias cleanall="sudo aura -Cc && bleachbitcleanall"
+
+dormunused(){
+  docker rm $(docker ps -f status=exited -q)
+}
 
 sshinsecuretest(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1

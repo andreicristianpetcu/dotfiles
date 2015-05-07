@@ -5,6 +5,10 @@
 --exclude=**/*.jar
 --exclude=**/*.class
 --exclude=**/.idea/
+--exclude=build
+--exclude=Builds
+--exclude=doc
+--exclude=tmp
 
 --langdef=puppet
 --langmap=puppet:.pp
