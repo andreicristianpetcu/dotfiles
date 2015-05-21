@@ -26,6 +26,15 @@ alias sudosu='sudo su'
 alias sudosupostgres='sudo su postgres'
 alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
+installrootdotfiles(){
+  sudo rm -rf /root/.shell_promptline.sh
+  sudo ln -s $HOME/.shell_promptline.sh /root/.shell_promptline.sh
+  sudo rm -rf /root/.shell_promptline_root.sh
+  sudo ln -s $HOME/.shell_promptline_root.sh /root/.shell_promptline_root.sh
+  sudo rm -rf /root/.bashrc
+  sudo ln -s $HOME/.bashrc /root/.bashrc
+}
+
 tmuxlocal(){                                                                                                                                                                                                
   echo "unbind C-b
 set -g prefix C-q

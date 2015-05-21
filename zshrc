@@ -52,6 +52,11 @@ fi
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
 if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/autojump.zsh ;fi
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
+
+if [ $USER = "root" ]; then
+  if [ -f /root/.shell_promptline_root.sh ]; then source /root/.shell_promptline_root.sh ;fi
+fi
+
 if [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
   if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
