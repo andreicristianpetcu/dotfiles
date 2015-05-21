@@ -27,7 +27,7 @@ then
   source $HOME/.common_shell.sh
 fi
 
-if [ $CONN = "sshd" ]; then 
+if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
 fi
 
@@ -68,7 +68,7 @@ if [ $USER = "root" ]; then
   if [ -f /root/.shell_promptline_root.sh ]; then source /root/.shell_promptline_root.sh ;fi
 fi
 
-if [ $CONN = "sshd" ]; then 
+if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
   if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
 fi
