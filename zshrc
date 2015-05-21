@@ -22,15 +22,26 @@ plugins=(bower command-not-found cp docker gem git git-extras
       \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin
       \ systemd tmux vagrant web-search zsh_reload zshmarks)
 
-source ~/.common_shell.sh
+if [ -f $HOME/.common_shell.sh ]
+then
+  source $HOME/.common_shell.sh
+fi
+
 if [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
 fi
 
 export TERM='xterm-256color'
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.my-aliases.sh
+if [ -f $ZSH/oh-my-zsh.sh ]
+then
+  source $ZSH/oh-my-zsh.sh
+fi
+
+if [ -f $HOME/.my-aliases.sh ]
+then
+  source $HOME/.my-aliases.sh
+fi
 
 # Autocomplete with double tab like bash
 

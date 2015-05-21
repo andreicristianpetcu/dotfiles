@@ -33,6 +33,8 @@ installrootdotfiles(){
   sudo ln -s $HOME/.shell_promptline_root.sh /root/.shell_promptline_root.sh
   sudo rm -rf /root/.bashrc
   sudo ln -s $HOME/.bashrc /root/.bashrc
+  sudo rm -rf /root/.zshrc
+  sudo ln -s $HOME/.zshrc /root/.zshrc
 }
 
 tmuxlocal(){                                                                                                                                                                                                
