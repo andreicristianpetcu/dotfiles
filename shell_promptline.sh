@@ -65,6 +65,55 @@ function __promptline_vcs_branch {
   fi
   return 1
 }
+function __promptline_git_status {
+  [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
+
+  local added_symbol="●"
+  local unmerged_symbol="✖"
+  local modified_symbol="✚"
+  local clean_symbol="✔"
+  local has_untracked_files_symbol="…"
+
+  local ahead_symbol="↑"
+  local behind_symbol="↓"
+
+  local unmerged_count=0 modified_count=0 has_untracked_files=0 added_count=0 is_clean=""
+
+  set -- $(git rev-list --left-right --count @{upstream}...HEAD 2>/dev/null)
+  local behind_count=$1
+  local ahead_count=$2
+
+  # Added (A), Copied (C), Deleted (D), Modified (M), Renamed (R), changed (T), Unmerged (U), Unknown (X), Broken (B)
+  while read line; do
+    case "$line" in
+      M*) modified_count=$(( $modified_count + 1 )) ;;
+      U*) unmerged_count=$(( $unmerged_count + 1 )) ;;
+    esac
+  done < <(git diff --name-status)
+
+  while read line; do
+    case "$line" in
+      *) added_count=$(( $added_count + 1 )) ;;
+    esac
+  done < <(git diff --name-status --cached)
+
+  if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+    has_untracked_files=1
+  fi
+
+  if [ $(( unmerged_count + modified_count + has_untracked_files + added_count )) -eq 0 ]; then
+    is_clean=1
+  fi
+
+  local leading_whitespace=""
+  [[ $ahead_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$ahead_symbol$ahead_count"; leading_whitespace=" "; }
+  [[ $behind_count -gt 0 ]]        && { printf "%s" "$leading_whitespace$behind_symbol$behind_count"; leading_whitespace=" "; }
+  [[ $modified_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$modified_symbol$modified_count"; leading_whitespace=" "; }
+  [[ $unmerged_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$unmerged_symbol$unmerged_count"; leading_whitespace=" "; }
+  [[ $added_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$added_symbol$added_count"; leading_whitespace=" "; }
+  [[ $has_untracked_files -gt 0 ]] && { printf "%s" "$leading_whitespace$has_untracked_files_symbol"; leading_whitespace=" "; }
+  [[ $is_clean -gt 0 ]]            && { printf "%s" "$leading_whitespace$clean_symbol"; leading_whitespace=" "; }
+}
 function __promptline_cwd {
   local dir_limit="3"
   local truncation="⋯"
@@ -134,6 +183,11 @@ function __promptline_right_prompt {
   # section "warn" slices
   __promptline_wrapper "$(__promptline_last_exit_code)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
+  # section "x" header
+  slice_prefix="${x_sep_fg}${rsep}${x_fg}${x_bg}${space}" slice_suffix="$space${x_sep_fg}" slice_joiner="${x_fg}${x_bg}${alt_rsep}${space}" slice_empty_prefix=""
+  # section "x" slices
+  __promptline_wrapper "$(__promptline_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
+
   # section "y" header
   slice_prefix="${y_sep_fg}${rsep}${y_fg}${y_bg}${space}" slice_suffix="$space${y_sep_fg}" slice_joiner="${y_fg}${y_bg}${alt_rsep}${space}" slice_empty_prefix=""
   # section "y" slices
@@ -173,6 +227,9 @@ function __promptline {
   local warn_fg="${wrap}38;5;231${end_wrap}"
   local warn_bg="${wrap}48;5;52${end_wrap}"
   local warn_sep_fg="${wrap}38;5;52${end_wrap}"
+  local x_fg="${wrap}38;5;231${end_wrap}"
+  local x_bg="${wrap}48;5;233${end_wrap}"
+  local x_sep_fg="${wrap}38;5;233${end_wrap}"
   local y_fg="${wrap}38;5;250${end_wrap}"
   local y_bg="${wrap}48;5;236${end_wrap}"
   local y_sep_fg="${wrap}38;5;236${end_wrap}"
