@@ -533,7 +533,7 @@
       <key>style/font/palette</key>
       <schema_key>/schemas/apps/guake/style/font/palette</schema_key>
       <value>
-        <string>#000000000000:#cdcb00000000:#0000cdcb0000:#cdcbcdcb0000:#1e1a908fffff:#cdcb0000cdcb:#0000cdcbcdcb:#e5e2e5e2e5e2:#4ccc4ccc4ccc:#ffff00000000:#0000ffff0000:#ffffffff0000:#46458281b4ae:#ffff0000ffff:#0000ffffffff:#ffffffffffff:#FFFFFFFFFFFF:#000000000000</string>
+        <string>#000000000000:#cccc00000000:#4e4e9a9a0606:#c4c4a0a00000:#34346565a4a4:#757550507b7b:#060698209a9a:#d3d3d7d7cfcf:#555557575353:#efef29292929:#8a8ae2e23434:#fcfce9e94f4f:#72729f9fcfcf:#adad7f7fa8a8:#3434e2e2e2e2:#eeeeeeeeecec:#ffffffffffff:#000000000000</string>
       </value>
     </entry>
     <entry>
@@ -547,7 +547,7 @@
       <key>style/font/style</key>
       <schema_key>/schemas/apps/guake/style/font/style</schema_key>
       <value>
-        <string>Source Code Pro Ultra-Light 10</string>
+        <string>Source Code Pro for Powerline Ultra-Light 10</string>
       </value>
     </entry>
   </entrylist>
