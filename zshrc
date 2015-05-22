@@ -70,7 +70,7 @@ fi
 
 if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 
   ZSH_THEME="clean"
-  if [ -f ~/.shell_prompt_remote.sh ]; then source ~/.shell_prompt_remote.sh ;fi
+  if [ -f ~/.shell_promptline_remote.sh ]; then source ~/.shell_promptline_remote.sh ;fi
 fi
 
 if [ -f $HOME/.fzf.zsh ]; then source $HOME/.fzf.zsh ;fi
