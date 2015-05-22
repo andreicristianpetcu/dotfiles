@@ -28,13 +28,13 @@ alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
 installrootdotfiles(){
   sudo rm -rf /root/.shell_promptline.sh
-  sudo ln -s $HOME/.shell_promptline.sh /root/.shell_promptline.sh
+  sudo cp $HOME/.shell_promptline.sh /root/.shell_promptline.sh
   sudo rm -rf /root/.shell_promptline_root.sh
-  sudo ln -s $HOME/.shell_promptline_root.sh /root/.shell_promptline_root.sh
+  sudo cp $HOME/.shell_promptline_root.sh /root/.shell_promptline_root.sh
   sudo rm -rf /root/.bashrc
-  sudo ln -s $HOME/.bashrc /root/.bashrc
+  sudo cp $HOME/.bashrc /root/.bashrc
   sudo rm -rf /root/.zshrc
-  sudo ln -s $HOME/.zshrc /root/.zshrc
+  sudo cp $HOME/.zshrc /root/.zshrc
 }
 
 tmuxlocal(){                                                                                                                                                                                                
