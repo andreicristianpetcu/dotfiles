@@ -113,8 +113,9 @@ installgnomekeys(){
 saveguakesettings(){
   gconftool-2 --dump /apps/guake > $HOME/.gconftool2_guake.xml
 }
+
 loadguakesettings(){
-  gconftool-2 --load /apps/guake > $HOME/.gconftool2_guake.xml
+  gconftool-2 --load $HOME/.gconftool2_guake.xml
 }
 
 alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"
