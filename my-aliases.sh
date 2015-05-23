@@ -280,6 +280,14 @@ installjsstuff(){
   npm install -g git://github.com/ramitos/jsctags.git
 }
 
+npminstallglobals(){
+ npm install -g grunt-cli bower karma karma-firefox-launcher karma-chrome-launcher http-server
+}
+
+starthttpserver(){
+  http-server -p 7080
+}
+
 installzshmarks(){
   cd ~/.oh-my-zsh/custom/plugins
   git clone git://github.com/jocelynmallon/zshmarks.git
