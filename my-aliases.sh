@@ -258,6 +258,7 @@ alias bowerinstalloffline="bower install --offline"
 alias npminstallcachemin999999="npm install --cache-min 999999"
 alias installgdbpp="rm -rf ~/.libstdc--v3python && git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
 alias installboostprettyprint="rm -rf ~/.Boost-Pretty-Printer.git && git clone https://github.com/mateidavid/Boost-Pretty-Printer.git ~/.Boost-Pretty-Printer.git"
+alias installdocker2aci="go get github.com/appc/docker2aci"
 
 installjenv(){
   rm -rf "$HOME/.jenv"
