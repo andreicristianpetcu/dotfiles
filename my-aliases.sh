@@ -367,9 +367,16 @@ doenterlastcontainer(){
   sudo docker-enter `dopsqhead1`
 }
 
+doenterlast(){
+  dolist
+  LAST_CONTAINER="`docker ps -q`"
+  echo "Entering $LAST_CONTAINER"
+  sudo docker-enter "$LAST_CONTAINER"
+}
+
 dosshlast(){
   docker ps -l
-  LAST_CONTAINER="`docker ps -lq`"
+  LAST_CONTAINER="`docker ps -q`"
   CONTAINER_IP=$(docker inspect $LAST_CONTAINER | grep IPAddress| awk '{print $2}'| awk -F\" '{print $2}')
   docker inspect $LAST_CONTAINER | grep Name| tr -d ' '|grep Name
   docker inspect $LAST_CONTAINER | grep Image| head -1| tr -d ' '|grep Image
