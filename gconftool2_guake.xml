@@ -265,6 +265,13 @@
       </value>
     </entry>
     <entry>
+      <key>keybindings/global/show_hide</key>
+      <schema_key>/schemas/apps/guake/keybindings/global/show_hide</schema_key>
+      <value>
+        <string>&lt;Shift&gt;&lt;Alt&gt;j</string>
+      </value>
+    </entry>
+    <entry>
       <key>keybindings/local/clipboard_copy</key>
       <schema_key>/schemas/apps/guake/keybindings/local/clipboard_copy</schema_key>
       <value>
@@ -540,7 +547,7 @@
       <key>style/font/style</key>
       <schema_key>/schemas/apps/guake/style/font/style</schema_key>
       <value>
-        <string>Source Code Pro for Powerline Ultra-Light 10</string>
+        <string>Source Code Pro for Powerline Bold 10</string>
       </value>
     </entry>
   </entrylist>
