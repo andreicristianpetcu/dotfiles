@@ -363,15 +363,9 @@ dorunlastimage(){
 }
 
 doenterlastcontainer(){
+  dolist
   echo "Entering `dopsqhead1`"
   sudo docker-enter `dopsqhead1`
-}
-
-doenterlast(){
-  dolist
-  LAST_CONTAINER="`docker ps -q`"
-  echo "Entering $LAST_CONTAINER"
-  sudo docker-enter "$LAST_CONTAINER"
 }
 
 dosshlast(){
