@@ -283,6 +283,8 @@ installjsstuff(){
 
 npminstallglobals(){
  npm install -g grunt-cli bower karma karma-firefox-launcher karma-chrome-launcher http-server
+ npm install -g yo generator-angular generator-angular-fullstack generator-jhipster \
+   generator-firefoxos-app generator-generator generator-reveal generator-cordova generator-electron
 }
 
 starthttpserver(){
