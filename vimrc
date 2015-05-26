@@ -206,6 +206,8 @@ autocmd FileType javascript let g:vim_tags_project_tags_command = 'ctags --langu
 
 command! GlobalTagsClean !rm -rf ~/.tags
 
+command! JSONFormat %!python -m json.tool
+
 " tagbar, cool outline viewer
 Plug 'majutsushi/tagbar'
 let g:tagbar_autoclose='1'
