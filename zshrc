@@ -80,4 +80,9 @@ insert-last-command-output() {
 }
 zle -N insert-last-command-output
 
+if [ -d $HOME/.zsh ]
+then
+  source $HOME/.zsh/tmux_autocomplete.sh
+fi
+
 bindkey "^X^L" insert-last-command-output 
