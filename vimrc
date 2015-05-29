@@ -816,10 +816,10 @@ set laststatus=2
 command! Reloadvimrc :so $MYVIMRC
 command! Editvimrc :e $MYVIMRC
 
-nnoremap <Leader>vtn :tabnew<CR>
-nnoremap <Leader>vtc :tabclose<CR>
-nnoremap <Leader>vto :tabonly<CR>
-nnoremap <Leader>vte :tabedit %<CR>
+nnoremap <Leader>vn :tabnew<CR>
+nnoremap <Leader>vc :tabclose<CR>
+nnoremap <Leader>vo :tabonly<CR>
+nnoremap <Leader>ve :tabedit %<CR>
 nnoremap <Leader>vh :split<CR>
 nnoremap <Leader>vv :vsplit<CR>
 nnoremap <Leader>vr :Reloadvimrc<CR>
