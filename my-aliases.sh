@@ -282,7 +282,7 @@ installjsstuff(){
 }
 
 npminstallglobals(){
- npm install -g grunt-cli bower karma http-server node-inspector
+ npm install -g grunt grunt-cli bower karma http-server node-inspector pm2
 }
 npminstallglobalsextended(){
  npm install -g karma-firefox-launcher karma-chrome-launcher
@@ -495,3 +495,5 @@ van() {
     echo "No manual entry for $*"
   fi
 }
+
+bindkey -s '^X' '^qfc\n'
