@@ -3,7 +3,9 @@ export EDITOR="vim"
 export GIT_EDITOR='vim'
 
 # ssh connection check
-if [[ -z "$CONN" ]] then export CONN=`cat /proc/$PPID/status | head -1 | cut -f2` ;fi
+if [[ -z "$CONN" ]]; then
+  export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
+fi
 
 # lazy add local bin
 LOCAL_BIN="$HOME/.local/bin"

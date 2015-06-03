@@ -15,6 +15,8 @@ export BASH_IT_THEME='bobby'
 export NGINX_PATH='/opt/nginx'
 
 # Load Bash It
-if [ -f $BASH_IT/bash_it.sh ]; then source $BASH_IT/bash_it.sh fi
+if [ -f $BASH_IT/bash_it.sh ]; then
+  source $BASH_IT/bash_it.sh
+fi
 
-source ~/.common_shell.sh
+source $HOME/.common_shell.sh
