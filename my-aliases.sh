@@ -26,6 +26,19 @@ alias sudosu='sudo su'
 alias sudosupostgres='sudo su postgres'
 alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
+installvagrantplugins(){
+  vagrant plugin install vagrant-hostsupdater
+  vagrant plugin install vagrant-hostsupdater
+  vagrant plugin install vagrant-hostsupdater
+  vagrant plugin install vagrant-libvirt
+  vagrant plugin install vagrant-vbox-snapshot
+}
+
+installautojump(){
+  rm -rf ~/.autojump
+  git clone git://github.com/joelthelion/autojump.git ~/.autojump
+}
+
 installrootdotfiles(){
   sudo rm -rf /root/.shell_promptline.sh
   sudo cp $HOME/.shell_promptline.sh /root/.shell_promptline.sh

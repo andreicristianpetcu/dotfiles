@@ -32,6 +32,7 @@ if [ -d $HOME/.local/bin/ ]; then PATH=$PATH:$HOME/.local/bin/ ;fi
 if [ -f /etc/profile.d/autojump.bash ]; then source /etc/profile.d/autojump.bash ;fi
 if [ -f /usr/share/autojump/autojump.bash ]; then source /usr/share/autojump/autojump.bash ;fi
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
+if [ -f $HOME/.autojump/bin/autojump.bash ]; then source $HOME/.autojump/bin/autojump.bash ;fi
 
 if [ $USER = "root" ]; then
   if [ -f /root/.shell_promptline_root.sh ]; then source /root/.shell_promptline_root.sh ;fi

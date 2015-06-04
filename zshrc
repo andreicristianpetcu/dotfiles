@@ -62,6 +62,7 @@ fi
 
 if [ -f /etc/profile.d/autojump.zsh ]; then source /etc/profile.d/autojump.zsh ;fi
 if [ -f /usr/share/autojump/autojump.zsh ]; then source /usr/share/autojump/autojump.zsh ;fi
+if [ -f $HOME/.autojump/bin/autojump.zsh ]; then source $HOME/.autojump/bin/autojump.zsh ;fi
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
 
 if [ $USER = "root" ]; then
