@@ -28,8 +28,6 @@ alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
 installvagrantplugins(){
   vagrant plugin install vagrant-hostsupdater
-  vagrant plugin install vagrant-hostsupdater
-  vagrant plugin install vagrant-hostsupdater
   vagrant plugin install vagrant-libvirt
   vagrant plugin install vagrant-vbox-snapshot
 }
