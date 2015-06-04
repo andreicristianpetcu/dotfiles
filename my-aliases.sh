@@ -260,7 +260,6 @@ export centos6url="https://github.com/2creatives/vagrant-centos/releases/downloa
 alias installpuppetdev="sudo puppet apply -v ~/.puppet_dev.pp"
 alias installpyenv='curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash'
 alias installohmyzsh="rm -rf $HOME/.oh-my-zsh && wget --no-check-certificate http://install.ohmyz.sh -O - | sh"
-alias installrbenv='rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv'
 alias installndenv='rm -rf ~/.ndenv && git clone https://github.com/riywo/ndenv ~/.ndenv && git clone https://github.com/riywo/node-build.git ~/.ndenv/plugins/node-build'
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
@@ -272,6 +271,10 @@ alias npminstallcachemin999999="npm install --cache-min 999999"
 alias installgdbpp="rm -rf ~/.libstdc--v3python && git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
 alias installboostprettyprint="rm -rf ~/.Boost-Pretty-Printer.git && git clone https://github.com/mateidavid/Boost-Pretty-Printer.git ~/.Boost-Pretty-Printer.git"
 alias installdocker2aci="go get github.com/appc/docker2aci"
+installrbenv(){
+  rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+}
 
 installjenv(){
   rm -rf "$HOME/.jenv"
