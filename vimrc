@@ -914,7 +914,7 @@ set clipboard=unnamedplus
 " Map F2 to toggle paste
 nnoremap <F7> <C-c>:set paste<CR>i<C-R>+<ESC>:set nopaste<CR>
 imap <C-C> <ESC>:set nopaste<CR>
-imap <C-S> <ESC>:wq<CR>
+imap <C-F> <ESC>:wq<CR>
 autocmd InsertLeave * set nopaste
 
 " Map command W to write with sudo

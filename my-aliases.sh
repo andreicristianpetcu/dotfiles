@@ -513,4 +513,4 @@ yan() {
   yelp man:$*
 }
 
-bindkey -s '^S' '^qfc\n'
+bindkey -s '^F' '^qfc\n'
