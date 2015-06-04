@@ -75,3 +75,5 @@ if [ -d "$HOME/dotfiles/bin" ]; then
 fi
 
 export FZF_DEFAULT_OPTS="+s -e"
+export FZF_TMUX_HEIGHT=100%
+stty stop undef

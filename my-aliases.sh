@@ -511,5 +511,8 @@ van() {
     echo "No manual entry for $*"
   fi
 }
+yan() {
+  yelp man:$*
+}
 
-bindkey -s '^X' '^qfc\n'
+bindkey -s '^S' '^qfc\n'
