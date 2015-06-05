@@ -296,7 +296,7 @@ installjsstuff(){
 }
 
 npminstallglobals(){
- npm install -g grunt grunt-cli bower karma http-server node-inspector pm2
+ npm install -g grunt grunt-cli bower karma http-server node-inspector pm2 tmp
 }
 npminstallglobalsextended(){
  npm install -g karma-firefox-launcher karma-chrome-launcher
