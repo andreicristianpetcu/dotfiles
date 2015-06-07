@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Log out
+Comment=Logs out the user
+Exec=gnome-session-quit --logout --force --no-prompt
+Icon=$HOME/.myfiles/icons/gnome-logout.svg
+Terminal=false
+Categories=System;power

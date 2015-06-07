@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Shut down
+Comment=Shuts down the computer
+Exec=shutdown now
+Icon=$HOME/.myfiles/icons/gnome-shutdown.svg
+Terminal=false
+Categories=System;power

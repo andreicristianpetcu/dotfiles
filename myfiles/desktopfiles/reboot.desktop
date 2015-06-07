@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Reboot
+Comment=Suspends the computer
+Exec=reboot
+Icon=../icons/gnome-session-reboot.svg
+Terminal=false
+Categories=System;power

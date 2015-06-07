@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Hibernate
+Comment=Hibernates the computer
+Exec=systemctl hibernate
+Icon=$HOME/.myfiles/icons/gnome-session-hibernate.svg
+Terminal=false
+Categories=System;power

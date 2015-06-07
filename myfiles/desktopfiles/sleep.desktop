@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Sleep
+Comment=Suspends the computer
+Exec=systemctl suspend
+Icon=$HOME/.myfiles/icons/gnome-session-suspend.svg
+Terminal=false
+Categories=System;power
