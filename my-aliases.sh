@@ -313,6 +313,10 @@ installzshmarks(){
   git clone git://github.com/jocelynmallon/zshmarks.git
 }
 
+installdesktopfiles(){
+  rsync -aAXv $HOME/.myfiles/desktopfiles/ $HOME/.local/share/applications/
+}
+
 # Docker
 alias dobuild='docker build .'
 alias dobuildrunlastimage='docker build . && docker run -d `docker images -q|head -1`'
