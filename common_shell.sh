@@ -40,7 +40,7 @@ fi
 # ndenv variable
 NDENV_HOME="$HOME/.ndenv"
 if [ -d $NDENV_HOME ]; then
-  export PATH="$NDENV_HOME/bin:$PATH"
+  export PATH="$NDENV_HOME/bin:$NDENV_HOME/shims:$PATH"
   eval "$(ndenv init -)"
 fi
 if [ -d $HOME/.local/lib/node_modules ]; then
