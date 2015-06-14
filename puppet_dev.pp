@@ -13,6 +13,11 @@ $debian_packages = $ubuntu_packages
 $archgnulinux_packages = ["gvim", "ack", "silver-searcher-git", "inetutils", "base-devel",
     #network stuff
     "trafshow"]
+
+$fedora_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
+    "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev",
+    #  Ubuntu specific stuff   
+    "ruby-dev", "npm"]
       
 case $operatingsystem {
   # centos: { $os_specific_packages = "httpd" }
@@ -20,6 +25,7 @@ case $operatingsystem {
   # redhat: { $os_specific_packages = "httpd" }
   debian: { $os_specific_packages = $debian_packages }
   ubuntu: { $os_specific_packages = $ubuntu_packages }
+  fedora: { $os_specific_packages = $fedora_packages }
   Archlinux: { $os_specific_packages = $archgnulinux_packages }
   default: { fail("Unrecognized operating system $operatingsystem") }
 }     
