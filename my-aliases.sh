@@ -296,12 +296,13 @@ installjsstuff(){
 }
 
 npminstallglobals(){
- npm install -g grunt grunt-cli bower karma http-server node-inspector pm2 tmp
+ npm install -g grunt grunt-cli bower karma http-server node-inspector pm2 tmp gulp
 }
 npminstallglobalsextended(){
  npm install -g karma-firefox-launcher karma-chrome-launcher
  npm install -g yo generator-angular generator-angular-fullstack generator-jhipster \
-   generator-firefoxos-app generator-generator generator-reveal generator-cordova generator-electron
+   generator-firefoxos-app generator-generator generator-reveal generator-cordova generator-electron \
+   generator-m
 }
 
 starthttpserver(){
