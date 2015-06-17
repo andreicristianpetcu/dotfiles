@@ -1,14 +1,13 @@
 # /mnt/lastboot is my chroot dir
 cd /mnt/lastboot
-sudo mkdir -p proc
-sudo mkdir -p sys
-sudo mkdir -p dev
-sudo mkdir -p tmp
+sudo mkdir -p {proc,sys,dev,tmp}
 
 sudo mount -t proc proc proc/
 sudo mount --rbind /sys sys/
 sudo mount --rbind /dev dev/
 
-cp /etc/resolv.conf etc/resolv.conf
+sudo cp /etc/resolv.conf etc/resolv.conf
 
-chroot /mnt/lastboot /bin/bash
+sudoc hroot /mnt/lastboot /bin/bash
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
