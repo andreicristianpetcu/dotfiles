@@ -13,7 +13,6 @@ alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
 export EDITOR="vim" 
-eval "$(rbenv init -)"
 
 # no duplicate entries
 export HISTCONTROL=ignoreboth:erasedups

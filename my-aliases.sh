@@ -318,6 +318,11 @@ installdesktopfiles(){
   rsync -aAXv $HOME/.myfiles/desktopfiles/ $HOME/.local/share/applications/
 }
 
+loadsshagent(){
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+}
+
 # Docker
 alias dobuild='docker build .'
 alias dobuildrunlastimage='docker build . && docker run -d `docker images -q|head -1`'
