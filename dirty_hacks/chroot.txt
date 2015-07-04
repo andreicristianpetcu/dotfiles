@@ -8,6 +8,6 @@ sudo mount --rbind /dev dev/
 
 sudo cp /etc/resolv.conf etc/resolv.conf
 
-sudoc hroot /mnt/lastboot /bin/bash
+sudo chroot /mnt/lastboot /bin/bash
 grub-mkconfig -o /boot/grub/grub.cfg
 exit
