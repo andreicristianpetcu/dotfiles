@@ -30,6 +30,12 @@
 --regex-angularjs=/.*[.][\s]*factory\(['"]([a-zA-Z0-9_.]+)['"]/\1/f,factory/
 --regex-angularjs=/.*[.][\s]*module\(['"]([a-zA-Z0-9_\.]+)['"]/\1/m,module/
 --regex-angularjs=/[.](when\(['"][a-zA-Z0-9_\/]+['"])/\1/r,ngRoute/
+--regex-angularjs=/([A-Za-z0-9_$]+)[ \t]*[:=][ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
+--regex-angularjs=/\[[ \t]*['"]([A-Za-z0-9_$ ]+)['"][ \t]*\][ \t]*=[ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
+--regex-angularjs=/['"]([A-Za-z0-9_$ ]+)['"][ \t]*:[ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
+--regex-angularjs=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*([^)])/\1/f, function, functions/
+--regex-angularjs=/(\b[A-Z][A-Za-z0-9_$]*)[ \t]*=[ \t]*new[ \t]+/\1/v, variable, variables/
+--regex-angularjs=/(\b[A-Z][A-Z0-9_$]*)[ \t]*=/\1/c, constant, contants/
 
 --langdef=javaspring
 --langmap=javaspring:.java
