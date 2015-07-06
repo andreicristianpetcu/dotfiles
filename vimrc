@@ -726,6 +726,7 @@ Plug 'vim-scripts/a.vim'
 Plug 'L9'
 
 Plug 'chrisbra/NrrwRgn'
+let g:nrrw_rgn_nohl = 1
 
 " open man pages in vim
 runtime ftplugin/man.vim
