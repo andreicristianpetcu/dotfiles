@@ -10,6 +10,7 @@
 --exclude=Builds
 --exclude=doc
 --exclude=tmp
+--exclude=*.spec.js
 
 --langdef=puppet
 --langmap=puppet:.pp
@@ -30,12 +31,23 @@
 --regex-angularjs=/.*[.][\s]*factory\(['"]([a-zA-Z0-9_.]+)['"]/\1/f,factory/
 --regex-angularjs=/.*[.][\s]*module\(['"]([a-zA-Z0-9_\.]+)['"]/\1/m,module/
 --regex-angularjs=/[.](when\(['"][a-zA-Z0-9_\/]+['"])/\1/r,ngRoute/
---regex-angularjs=/([A-Za-z0-9_$]+)[ \t]*[:=][ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
---regex-angularjs=/\[[ \t]*['"]([A-Za-z0-9_$ ]+)['"][ \t]*\][ \t]*=[ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
---regex-angularjs=/['"]([A-Za-z0-9_$ ]+)['"][ \t]*:[ \t]*function[A-Za-z0-9_$ \t]*\(/\1/f, function, functions/
---regex-angularjs=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*([^)])/\1/f, function, functions/
---regex-angularjs=/(\b[A-Z][A-Za-z0-9_$]*)[ \t]*=[ \t]*new[ \t]+/\1/v, variable, variables/
---regex-angularjs=/(\b[A-Z][A-Z0-9_$]*)[ \t]*=/\1/c, constant, contants/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\{/\5/,object/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*function[ \t]*\(/\5/,function/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\[/\5/,array/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*[^"]'[^']*/\5/,string/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*(true|false)/\5/,boolean/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*[0-9]+/\5/,number/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*.+([,;=]|$)/\5/,variable/
+--regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*[ \t]*([,;]|$)/\5/,variable/
+--regex-angularjs=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*\([^)]*\)/\1/,function/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*\{/\2/,object/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t]*\(/\2/,function/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*\[/\2/,array/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[^"]'[^']*/\2/,string/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*(true|false)/\2/,boolean/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[0-9]+/\2/,number/
+--regex-angularjs=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[^=]+([,;]|$)/\2/,variable/
+
 
 --langdef=javaspring
 --langmap=javaspring:.java
