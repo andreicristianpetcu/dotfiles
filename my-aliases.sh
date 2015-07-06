@@ -28,8 +28,9 @@ alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
 installvagrantplugins(){
   vagrant plugin install vagrant-hostsupdater
-  vagrant plugin install vagrant-libvirt
+  vagrant plugin install vagrant-vbguest
   vagrant plugin install vagrant-vbox-snapshot
+  vagrant plugin install vagrant-libvirt
 }
 
 installautojump(){
@@ -263,7 +264,6 @@ alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git 
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='rm -rf ~/.fzf && git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
 alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
-alias installvagrantguestaditions="vagrant plugin install vagrant-vbguest"
 alias bowerinstalloffline="bower install --offline"
 alias npminstallcachemin999999="npm install --cache-min 999999"
 alias installgdbpp="rm -rf ~/.libstdc--v3python && git clone https://github.com/andreicristianpetcu/libstdc--v3python ~/.libstdc--v3python"
