@@ -215,7 +215,8 @@ alias bundlelistpaths='bundle list --paths'
 alias ctagsrbundlelistpaths='ctags -R . $(bundle list --paths)'
 
 # vim
-alias vim='vimx'
+which vimx > /dev/null && alias vim='vimx'
+
 alias vimvimrc='vim ~/.vimrc'
 alias vimgitignore='vim .gitignore'
 alias vimirbrc='vim ~/.irbrc'
