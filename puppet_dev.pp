@@ -5,7 +5,7 @@ $common_packages = [ "tmux", "emacs", "ctags", "git", "ranger", "nmap", "mc", "z
     #networking stuff
     "nethogs", "nload", "bmon", "wavemon"]
       
-$ubuntu_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
+$ubuntu_packages = ["vim-gtk", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
     "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev",
 #  Ubuntu specific stuff   
     "ruby-dev", "npm"]
@@ -14,7 +14,7 @@ $archgnulinux_packages = ["gvim", "ack", "silver-searcher-git", "inetutils", "ba
     #network stuff
     "trafshow"]
 
-$fedora_packages = ["vim", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
+$fedora_packages = ["vim-X11", "ack-grep", "silversearcher-ag", "telnet", "autoconf", "bison", "build-essential", 
     "libssl-dev", "libyaml-dev", "libreadline6-dev", "zlib1g-dev", "libncurses5-dev",
     #  Ubuntu specific stuff   
     "ruby-dev", "npm"]
