@@ -12,7 +12,7 @@ cd $PLUG_HOME/NrrwRgn/ && git reset --hard e6dd8f4
 cd $PLUG_HOME/Vim-Jinja2-Syntax/ && git reset --hard 4eb6761
 cd $PLUG_HOME/a.vim/ && git reset --hard 2cbe946
 cd $PLUG_HOME/ag.vim/ && git reset --hard f05f313
-cd $PLUG_HOME/argarg.vim/ && git reset --hard c1a8fc3
+cd $PLUG_HOME/argarg.vim/ && git reset --hard 0a0ed0c
 cd $PLUG_HOME/copypath.vim/ && git reset --hard b7c5e7f
 cd $PLUG_HOME/ctrlp.vim/ && git reset --hard b5d3fe6
 cd $PLUG_HOME/delimitMate/ && git reset --hard 9a77c3a
