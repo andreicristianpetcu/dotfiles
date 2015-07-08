@@ -37,6 +37,9 @@
 --regex-angularjs=/[.](put\(['"][a-zA-Z0-9_\/]+['"])/\1/r,expressRoute/
 --regex-angularjs=/[.](patch\(['"][a-zA-Z0-9_\/]+['"])/\1/r,expressRoute/
 --regex-angularjs=/[.](delete\(['"][a-zA-Z0-9_\/]+['"])/\1/r,expressRoute/
+--regex-angularjs=/(on\(['"].+['"])/\1/o,onEvent/
+--regex-angularjs=/(emit\(['"].+['"])/\1/e,emitEvent/
+--regex-angularjs=/(broadcast\(['"].+['"])/\1/b,broadcastEvent/
 --regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\{/\5/,object/
 --regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*function[ \t]*\(/\5/,function/
 --regex-angularjs=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\[/\5/,array/
