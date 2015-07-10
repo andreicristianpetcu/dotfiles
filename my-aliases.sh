@@ -276,6 +276,15 @@ installrbenv(){
   rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 }
+installdockerenter(){
+  cd /tmp
+  git clone git@github.com:Pithikos/docker-enter.git
+  cd docker-enter
+  git checkout 8b62a13
+  gcc docker-enter.c -o docker-enter
+  sudo mv docker-enter /usr/bin/
+  rm -rf /tmp/docker-enter
+}
 
 installjenv(){
   rm -rf "$HOME/.jenv"
