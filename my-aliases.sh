@@ -409,7 +409,7 @@ doenterlastcontainer(){
 
 dosshlast(){
   docker ps -l
-  LAST_CONTAINER="`docker ps -q`"
+  LAST_CONTAINER="`docker ps -q| head -1`"
   CONTAINER_IP=$(docker inspect $LAST_CONTAINER | grep IPAddress| awk '{print $2}'| awk -F\" '{print $2}')
   docker inspect $LAST_CONTAINER | grep Name| tr -d ' '|grep Name
   docker inspect $LAST_CONTAINER | grep Image| head -1| tr -d ' '|grep Image
