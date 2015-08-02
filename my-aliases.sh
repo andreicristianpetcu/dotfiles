@@ -9,7 +9,7 @@ alias sshoitmuxmongo='ssh oi -L 37017:donoratainstanta:27017 -t "command; tmux a
 alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
 
 # common
-alias ping8888='prettyping 8.8.8.8'
+alias pingdebian='prettyping debian.org'
 alias emacsnw='emacs -nw'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
