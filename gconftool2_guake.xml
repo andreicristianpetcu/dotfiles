@@ -220,7 +220,7 @@
       <key>general/window_losefocus</key>
       <schema_key>/schemas/apps/guake/general/window_losefocus</schema_key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
       </value>
     </entry>
     <entry>
