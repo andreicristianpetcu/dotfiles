@@ -204,6 +204,7 @@
     </entry>
     <entry>
       <key>general/window_height</key>
+      <schema_key>/schemas/apps/guake/general/window_height</schema_key>
       <value>
         <int>76</int>
       </value>
@@ -219,7 +220,7 @@
       <key>general/window_losefocus</key>
       <schema_key>/schemas/apps/guake/general/window_losefocus</schema_key>
       <value>
-        <bool>false</bool>
+        <bool>true</bool>
       </value>
     </entry>
     <entry>
