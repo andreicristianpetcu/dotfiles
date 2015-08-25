@@ -1,0 +1,19 @@
+{
+  "libs": [
+    "browser",
+    "ecma5",
+    "ecma6",
+    "jquery"
+  ],
+  "plugins": {
+    "complete_strings": {},
+    "node": {},
+    "lint": {},
+    "angular": {},
+    "requirejs": {},
+    "doc_comment": {
+      "fullDocs": true
+    }
+  }
+}
+
