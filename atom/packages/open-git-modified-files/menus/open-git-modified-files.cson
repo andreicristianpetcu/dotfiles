@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle open-git-modified-files'
+      'command': 'open-git-modified-files:open'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'open-git-modified-files'
+      'submenu': [
+        {
+          'label': 'Open'
+          'command': 'open-git-modified-files:open'
+        }
+      ]
+    ]
+  }
+]

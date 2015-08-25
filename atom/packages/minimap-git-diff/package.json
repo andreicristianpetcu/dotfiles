@@ -1,0 +1,143 @@
+{
+  "name": "minimap-git-diff",
+  "main": "./lib/minimap-git-diff",
+  "version": "4.1.8",
+  "description": "A minimap binding for the git diff package",
+  "author": {
+    "name": "Cédric Néhémie",
+    "email": "cedric.nehemie@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom-minimap/minimap-git-diff"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.125.0"
+  },
+  "consumedServices": {
+    "minimap": {
+      "versions": {
+        "1.0.0": "consumeMinimapServiceV1"
+      }
+    }
+  },
+  "dependencies": {
+    "mixto": "1.x",
+    "fs-plus": "^2.0.0"
+  },
+  "readme": "# minimap-git-diff package\n\nA minimap binding for the Atom git-diff package.\n\n![Minimap Git Diff Screenshot](https://github.com/atom-minimap/minimap-git-diff/blob/master/screenshot.png?raw=true)\n\nYou will need the [Minimap package](https://github.com/fundon/atom-minimap) installed to use this package.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/atom-minimap/minimap-git-diff/issues"
+  },
+  "homepage": "https://github.com/atom-minimap/minimap-git-diff",
+  "_id": "minimap-git-diff@4.1.8",
+  "_shasum": "88eb85021495e35d102c15e8554d7d893626eb1c",
+  "_resolved": "file:../d-115725-13515-1vgvfco/package.tgz",
+  "_from": "../d-115725-13515-1vgvfco/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "fs-plus",
+        "version": "2.8.1",
+        "path": "node_modules/fs-plus/lib/fs-plus.js"
+      },
+      {
+        "name": "async",
+        "version": "0.2.10",
+        "path": "node_modules/fs-plus/node_modules/async/lib/async.js"
+      },
+      {
+        "name": "mkdirp",
+        "version": "0.3.5",
+        "path": "node_modules/fs-plus/node_modules/mkdirp/index.js"
+      },
+      {
+        "name": "rimraf",
+        "version": "2.2.8",
+        "path": "node_modules/fs-plus/node_modules/rimraf/rimraf.js"
+      },
+      {
+        "name": "underscore-plus",
+        "version": "1.6.6",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js"
+      },
+      {
+        "name": "underscore",
+        "version": "1.6.0",
+        "path": "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/mixto/lib/mixin.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib/helpers.coffee",
+        "lib/minimap-git-diff-binding.coffee",
+        "lib/minimap-git-diff.coffee"
+      ],
+      ".js": [
+        "node_modules/fs-plus/lib/fs-plus.js",
+        "node_modules/fs-plus/node_modules/async/lib/async.js",
+        "node_modules/fs-plus/node_modules/mkdirp/examples/pow.js",
+        "node_modules/fs-plus/node_modules/mkdirp/index.js",
+        "node_modules/fs-plus/node_modules/rimraf/bin.js",
+        "node_modules/fs-plus/node_modules/rimraf/rimraf.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/underscore.js",
+        "node_modules/mixto/lib/mixin.js"
+      ],
+      ".json": [
+        "node_modules/fs-plus/node_modules/async/component.json",
+        "node_modules/fs-plus/node_modules/async/package.json",
+        "node_modules/fs-plus/node_modules/mkdirp/package.json",
+        "node_modules/fs-plus/node_modules/rimraf/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/node_modules/underscore/package.json",
+        "node_modules/fs-plus/node_modules/underscore-plus/package.json",
+        "node_modules/fs-plus/package.json",
+        "node_modules/mixto/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          "",
+          "spec"
+        ],
+        "dependencies": {
+          "mixto": "1.x",
+          "fs-plus": "^2.0.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/lib",
+          "node_modules/fs-plus"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mkdirp": "~0.3.5",
+          "rimraf": "~2.2.2",
+          "async": "~0.2.9"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/fs-plus/node_modules/underscore-plus/lib",
+          "node_modules/fs-plus/node_modules/underscore-plus"
+        ],
+        "dependencies": {
+          "underscore": "~1.6.0"
+        }
+      }
+    ]
+  }
+}
