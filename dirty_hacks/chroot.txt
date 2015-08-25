@@ -10,4 +10,5 @@ sudo cp /etc/resolv.conf etc/resolv.conf
 
 sudo chroot /mnt/lastboot /bin/bash
 grub-mkconfig -o /boot/grub/grub.cfg
+#hmmm check this out https://fedoraproject.org/wiki/GRUB_2
 exit
