@@ -1,0 +1,5 @@
+'atom-text-editor:not(.mini)':
+  'ctrl-alt-r': 'refactor:rename'
+  'enter': 'refactor:done'
+  # "'": 'refactor:singlequote'
+  # '"': 'refactor:doublequote'

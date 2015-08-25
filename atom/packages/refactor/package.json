@@ -1,0 +1,91 @@
+{
+  "name": "refactor",
+  "main": "./lib/refactor",
+  "version": "0.5.1",
+  "description": "Refactoring support",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hax/refactor"
+  },
+  "license": "MIT",
+  "auther": {
+    "name": "Daisuke Mino",
+    "url": "http://dsk.mn"
+  },
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "scripts": {
+    "test": "apm test"
+  },
+  "dependencies": {
+    "eventemitter2": "^0.4.14",
+    "semver": "^2.3.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-este-watch": "^0.1.16",
+    "grunt-notify": "^0.3.0"
+  },
+  "readme": "# Refactor Package\n\n**:zap:Notification:zap:: Activate 'Use React Editor' in preferences pane.**\nRefactor package greater than v0.3 no longer supports for the legacy editor.\nIf you want more info about the React Editor, you can see [React Editor Enabled by Default](http://blog.atom.io/2014/07/22/default-to-react-editor.html).\n\nLet's refactor code!\nWith this package, you can rename the name of variables and functions easily.\n\n![capture_rename](https://cloud.githubusercontent.com/assets/514164/2929354/b4e848d4-d788-11e3-99c2-620f406d5e6f.gif)\n\n## Language plugins\n\nThis package works with these language plugins.\nYou can install using the preferences pane.\n\n* [coffee-refactor](https://atom.io/packages/coffee-refactor) for CoffeeScript\n* [js-refactor](https://atom.io/packages/js-refactor) for JavaScript\n\n## Usage\n\n1. Set cursor to a symbol.\n2. Start renaming by using `ctrl-alt-r`.\n3. Type new name.\n4. Finish renaming by using `enter` or removing cursor from the focused symbol.\n\n## User setting\n\n* Override [keymap](kaymaps/refactor.cson) by using `Atom > Open Your Keymap`.\n* Override [stylesheet](styles/refactor.less) by using `Atom > Open Your Stylesheet`.\n\n## API Documentation (for plugin developer)\n\n### package.json\n\nAdd `refactor` as `engines` in `package.json`.\n\n```\n{\n  ...\n  \"engines\": {\n    \"atom\": \">0.50.0\",\n    \"refactor\": \">0.4.0\"\n  },\n  ...\n}\n```\n\n### Interface\n\nYou should implement `Ripper` class in main module.\n\n* `Ripper.scopeNames []String` : **[Required]** Array of scope name, like 'source.coffee', 'source.js' and all that.\n* `Ripper#parse(code String, callback Function)` : **[Required]** Parse code, and you should callback when the parsing process is done. Callback specify the params as an array of error `Object`. The error `Object` should have params `range` and `message`.\n* `Ripper#find(point Point) []Range` : **[Required]** Return an array of found symbols' [`Range`](https://atom.io/docs/api/latest/api/classes/Range) at the passed [`Point`](https://atom.io/docs/api/latest/api/classes/Point).\n\n```coffeescript\n{ Range, Point } = require 'atom'\nclass Riper\n  @scopeNames: []\n  parse: (code, callback) ->\n    # parse code\n    callback [\n      range = new Range()\n      message: 'foo'\n    ]\n  find: (point) ->\n    # find references\n    [\n      new Range()\n      new Range()\n      ...\n      new Range()\n    ]\n```\n\n### Examples\n\n* [minodisk/coffee-refactor](https://github.com/minodisk/coffee-refactor)\n* [minodisk/js-refactor](https://github.com/minodisk/js-refactor)\n\n\n## See\n\n* [Changelog](CHANGELOG.md)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/hax/refactor/issues"
+  },
+  "homepage": "https://github.com/hax/refactor",
+  "_id": "refactor@0.5.1",
+  "_shasum": "acec6b3d0ef91b2c9e309cd2c39f698b774fbedb",
+  "_resolved": "file:../d-115725-14745-fxxm11/package.tgz",
+  "_from": "../d-115725-14745-fxxm11/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "eventemitter2",
+        "version": "0.4.14",
+        "path": "node_modules/eventemitter2/lib/eventemitter2.js"
+      },
+      {
+        "name": "semver",
+        "version": "2.3.2",
+        "path": "node_modules/semver/semver.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "Gruntfile.coffee",
+        "lib/location_data_util.coffee",
+        "lib/module_manager.coffee",
+        "lib/refactor.coffee",
+        "lib/watcher.coffee"
+      ],
+      ".js": [
+        "node_modules/eventemitter2/index.js",
+        "node_modules/eventemitter2/lib/eventemitter2.js",
+        "node_modules/semver/foot.js",
+        "node_modules/semver/head.js",
+        "node_modules/semver/semver.browser.js",
+        "node_modules/semver/semver.js",
+        "node_modules/semver/semver.min.js"
+      ],
+      ".json": [
+        "node_modules/eventemitter2/package.json",
+        "node_modules/semver/package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "lib",
+          "spec"
+        ],
+        "dependencies": {
+          "eventemitter2": "^0.4.14",
+          "semver": "^2.3.1"
+        }
+      }
+    ]
+  }
+}
