@@ -1,0 +1,6 @@
+[7438:0825/213855:ERROR:browser_main_loop.cc(170)] Running without the SUID sandbox! See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment for more information on developing with the sandbox on.
+ATTENTION: default value of option force_s3tc_enable overridden by environment.
+App load time: 319ms
+[7542:0825/213856:INFO:renderer_main.cc(212)] Renderer process started
+[7438:0825/213857:INFO:CONSOLE(28)] "Setting GTK theme variant to "dark".", source: /home/andrei/.atom/packages/gtk-dark-theme/lib/gtk-dark-theme.js (28)
+[7438:0825/213857:INFO:CONSOLE(56)] "Window load time: 1003ms", source: file:///usr/share/atom/resources/app.asar/static/index.js (56)
