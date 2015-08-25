@@ -1,0 +1,1 @@
+{".source.js":{"for in":{"prefix":"fi","body":"for (${1:prop} in ${2:obj}) {\n  if (${2:obj}.hasOwnProperty(${1:prop})) {\n    ${0:// body...}\n  }\n}"}}}

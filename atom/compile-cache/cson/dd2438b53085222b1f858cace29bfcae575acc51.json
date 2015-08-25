@@ -1,0 +1,1 @@
+{".source.js":{"it synchronous":{"prefix":"its","body":"it('${1:description}', function() {\n  ${0:// body...}\n});"}}}

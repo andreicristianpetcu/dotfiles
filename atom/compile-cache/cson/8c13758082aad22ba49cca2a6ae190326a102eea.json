@@ -1,0 +1,1 @@
+{".source.js":{"setInterval":{"prefix":"si","body":"setInterval(function() {\n  ${0:// body...}\n}, ${1:delay});"}}}

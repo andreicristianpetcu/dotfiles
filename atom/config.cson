@@ -6,7 +6,7 @@
   core:
     disabledPackages: [
       "symbol-gen"
-      "atom-ctags"
+      "symbols-view"
     ]
   editor:
     invisibles: {}

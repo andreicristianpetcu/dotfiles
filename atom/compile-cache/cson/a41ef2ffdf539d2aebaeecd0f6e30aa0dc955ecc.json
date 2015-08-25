@@ -1,0 +1,1 @@
+{".source.js":{"function as a property of an object":{"prefix":"ofn","body":"${1:functionName}: function(${2:arguments}) {\n  ${3:// body...}\n}"}}}

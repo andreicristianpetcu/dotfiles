@@ -1,0 +1,1 @@
+{".source.js":{"describe":{"prefix":"desc","body":"describe('${1:description}', function() {\n  ${0:// body...}\n});"}}}

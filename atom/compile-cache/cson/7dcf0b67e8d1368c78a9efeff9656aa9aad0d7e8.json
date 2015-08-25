@@ -1,0 +1,1 @@
+{".source.js":{"function call":{"prefix":"call","body":"${1:methodName}.call(${2:context}, ${3:arguments})"}}}

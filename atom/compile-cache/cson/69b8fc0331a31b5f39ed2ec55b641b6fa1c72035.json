@@ -1,0 +1,1 @@
+{".source.js":{"innerHTML":{"prefix":"tc","body":"${1:document}.textContent = '${2:content}';"}}}

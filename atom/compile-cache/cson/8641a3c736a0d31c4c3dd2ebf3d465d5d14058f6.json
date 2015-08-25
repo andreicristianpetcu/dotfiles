@@ -1,0 +1,1 @@
+{".source.js":{"it asynchronous":{"prefix":"ita","body":"it('${1:description}', function(done) {\n  ${0:// body...}\n});"}}}
