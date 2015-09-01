@@ -37,8 +37,8 @@
   "homepage": "https://github.com/hax/js-refactor",
   "_id": "js-refactor@0.4.2",
   "_shasum": "e1cb00488e2a7296b51c5b3572a6aab665b681a1",
-  "_resolved": "file:../d-115725-14745-170iyej/package.tgz",
-  "_from": "../d-115725-14745-170iyej/package.tgz",
+  "_resolved": "file:../d-115725-17915-jql4fs/package.tgz",
+  "_from": "../d-115725-17915-jql4fs/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
