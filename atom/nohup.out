@@ -1,25 +1,10 @@
-[4715:0825/230312:ERROR:browser_main_loop.cc(170)] Running without the SUID sandbox! See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment for more information on developing with the sandbox on.
+[6060:0915/195843:ERROR:browser_main_loop.cc(170)] Running without the SUID sandbox! See https://code.google.com/p/chromium/wiki/LinuxSUIDSandboxDevelopment for more information on developing with the sandbox on.
 ATTENTION: default value of option force_s3tc_enable overridden by environment.
-App load time: 471ms
-[4832:0825/230313:INFO:renderer_main.cc(212)] Renderer process started
-[4715:0825/230315:INFO:CONSOLE(70)] "[atom-ctags:readTags] /home/andrei/Dev/riweb/.tags start...", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (70)
-[4715:0825/230315:INFO:CONSOLE(133)] "Loading Emmet extensions from", source: /home/andrei/dotfiles/atom/packages/emmet/lib/emmet.coffee (133)
-[4715:0825/230315:INFO:CONSOLE(150)] "Emmet: no such extension folder:", source: /home/andrei/dotfiles/atom/packages/emmet/lib/emmet.coffee (150)
-[4715:0825/230315:INFO:CONSOLE(28)] "Setting GTK theme variant to "dark".", source: /home/andrei/dotfiles/atom/packages/gtk-dark-theme/lib/gtk-dark-theme.js (28)
-[4715:0825/230316:INFO:CONSOLE(56)] "Window load time: 2861ms", source: file:///usr/share/atom/resources/app.asar/static/index.js (56)
-[4715:0825/230318:INFO:CONSOLE(91)] "[atom-ctags:readTags] /home/andrei/Dev/riweb/.tags cost: 3310ms", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (91)
-[4715:0825/230505:INFO:CONSOLE(178)] "Git-plus: Using git at", source: /home/andrei/dotfiles/atom/packages/git-plus/lib/git.coffee (178)
-[4715:0825/230505:INFO:CONSOLE(178)] "Git-plus: Using git at", source: /home/andrei/dotfiles/atom/packages/git-plus/lib/git.coffee (178)
-[4715:0825/230601:INFO:CONSOLE(105)] "[atom-ctags:findTags] tags empty, did you RebuildTags or set extraTagFiles?", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (105)
-[4715:0825/230604:INFO:CONSOLE(105)] "[atom-ctags:findTags] tags empty, did you RebuildTags or set extraTagFiles?", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (105)
-[4715:0825/230607:INFO:CONSOLE(131)] "[atom-ctags:rebuild] start @/home/andrei/Dev/riweb/client/app/RippleWalletService/RippleWalletService.service.js@ tags...", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (131)
-[4715:0825/230607:INFO:CONSOLE(81)] "atom-ctags: command error, ctags-linux: Warning: Language "Go" already defined
-", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/tag-generator.coffee (81)
-[4715:0825/230607:INFO:CONSOLE(138)] "[atom-ctags:rebuild] command done @/home/andrei/Dev/riweb/client/app/RippleWalletService/RippleWalletService.service.js@ tags. cost: 38ms", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (138)
-[4715:0825/230607:INFO:CONSOLE(70)] "[atom-ctags:readTags] /home/andrei/Dev/riweb/.tags1 start...", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (70)
-[4715:0825/230607:INFO:CONSOLE(91)] "[atom-ctags:readTags] /home/andrei/Dev/riweb/.tags1 cost: 64ms", source: /home/andrei/dotfiles/atom/packages/atom-ctags/lib/ctags-cache.coffee (91)
-[4715:0825/231410:INFO:CONSOLE(658)] "Error serializing package 'node-debugger'", source: /usr/share/atom/resources/app.asar/src/package.js (658)
-[4715:0825/231410:INFO:CONSOLE(685)] "Error deactivating package 'nuclide-click-to-symbol'", source: /usr/share/atom/resources/app.asar/src/package.js (685)
-[4715:0825/231410:INFO:CONSOLE(685)] "Error deactivating package 'refactor'", source: /usr/share/atom/resources/app.asar/src/package.js (685)
-[4715:0825/231410:INFO:CONSOLE(14)] "Uncaught TypeError: Converting circular structure to JSON", source: /usr/share/atom/resources/app.asar/src/storage-folder.js (14)
-[8011:0825/231410:INFO:renderer_main.cc(212)] Renderer process started
+App load time: 249ms
+[6109:0915/195844:INFO:renderer_main.cc(212)] Renderer process started
+[6060:0915/195845:INFO:CONSOLE(133)] "Loading Emmet extensions from", source: /home/andrei/dotfiles/atom/packages/emmet/lib/emmet.coffee (133)
+[6060:0915/195845:INFO:CONSOLE(150)] "Emmet: no such extension folder:", source: /home/andrei/dotfiles/atom/packages/emmet/lib/emmet.coffee (150)
+[6060:0915/195845:INFO:CONSOLE(28)] "Setting GTK theme variant to "dark".", source: /home/andrei/dotfiles/atom/packages/gtk-dark-theme/lib/gtk-dark-theme.js (28)
+[6060:0915/195845:INFO:CONSOLE(46)] "Window load time: 1167ms", source: file:///usr/share/atom/resources/app.asar/static/index.js (46)
+[6060:0915/200157:INFO:CONSOLE(658)] "Error serializing package 'node-debugger'", source: /usr/share/atom/resources/app.asar/src/package.js (658)
+[6060:0915/200157:INFO:CONSOLE(685)] "Error deactivating package 'refactor'", source: /usr/share/atom/resources/app.asar/src/package.js (685)
