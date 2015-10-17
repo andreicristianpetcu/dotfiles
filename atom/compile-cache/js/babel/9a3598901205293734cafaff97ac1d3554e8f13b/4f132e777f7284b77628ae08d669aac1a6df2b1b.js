@@ -1,0 +1,92 @@
+'use babel';
+
+/*
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the LICENSE file in
+ * the root directory of this source tree.
+ */
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { var callNext = step.bind(null, 'next'); var callThrow = step.bind(null, 'throw'); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(callNext, callThrow); } } callNext(); }); }; }
+
+var clickToSymbols = [];
+var delegates = [];
+var editorViewSubscription;
+var usesCmdKeyToActivate;
+var cmdKeySettingObserver;
+
+function findClickableRangesAndCallback(editor, row, column, shiftKey) {
+  var _require = require('nuclide-commons');
+
+  var asyncFind = _require.asyncFind;
+
+  var test = _asyncToGenerator(function* (delegate) {
+    return yield delegate.getClickableRangesAndCallback(editor, row, column, shiftKey);
+  });
+  return asyncFind(delegates, test);
+}
+
+function shouldUseCmdKeyToActivate() {
+  return usesCmdKeyToActivate;
+}
+
+module.exports = {
+  config: {
+    useCmdKey: {
+      type: 'boolean',
+      'default': true,
+      description: 'Use cmd key instead of alt to trigger click to symbol.'
+    }
+  },
+
+  activate: function activate() {
+    var addClickToSymbolToEditorView = function addClickToSymbolToEditorView(textEditor) {
+      var ClickToSymbol = require('./ClickToSymbol');
+      var clickToSymbol = new ClickToSymbol(textEditor, shouldUseCmdKeyToActivate, findClickableRangesAndCallback);
+      clickToSymbols.push(clickToSymbol);
+    };
+
+    editorViewSubscription = atom.workspace.observeTextEditors(addClickToSymbolToEditorView);
+
+    cmdKeySettingObserver = atom.config.observe('nuclide-click-to-symbol.useCmdKey', function (value) {
+      usesCmdKeyToActivate = value;
+    });
+  },
+
+  deactivate: function deactivate() {
+    editorViewSubscription.off();
+    editorViewSubscription = null;
+
+    cmdKeySettingObserver.off();
+    cmdKeySettingObserver = null;
+
+    clickToSymbols.forEach(function (clickToSymbol) {
+      clickToSymbol.dispose();
+    });
+    clickToSymbols = [];
+    delegates = [];
+  },
+
+  registerDelegate: function registerDelegate(delegate) {
+    // Delegates must be sorted in priority order.
+    var priority = delegate.getPriority();
+    for (var i = 0, len = delegates.length; i < len; i++) {
+      var item = delegates[i];
+      if (delegate === item) {
+        return;
+      }
+
+      if (priority > item.getPriority()) {
+        delegates.splice(i, 0, delegate);
+        return;
+      }
+    }
+
+    // If we made it all the way through the loop, delegate must be lower
+    // priority than all of the existing delegates, so add it to the end.
+    delegates.push(delegate);
+  }
+};
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FuZHJlaS9kb3RmaWxlcy9hdG9tL3BhY2thZ2VzL251Y2xpZGUtY2xpY2stdG8tc3ltYm9sL2xpYi9tYWluLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQVcsQ0FBQzs7Ozs7Ozs7Ozs7O0FBV1osSUFBSSxjQUFvQyxHQUFHLEVBQUUsQ0FBQztBQUM5QyxJQUFJLFNBQXVDLEdBQUcsRUFBRSxDQUFDO0FBQ2pELElBQUksc0JBQStCLENBQUM7QUFDcEMsSUFBSSxvQkFBNkIsQ0FBQztBQUNsQyxJQUFJLHFCQUE4QixDQUFDOztBQUVuQyxTQUFTLDhCQUE4QixDQUNuQyxNQUFrQixFQUNsQixHQUFXLEVBQ1gsTUFBYyxFQUNkLFFBQWlCLEVBQVc7aUJBQ1osT0FBTyxDQUFDLGlCQUFpQixDQUFDOztNQUF2QyxTQUFTLFlBQVQsU0FBUzs7QUFDZCxNQUFJLElBQUkscUJBQUcsV0FBZSxRQUFRLEVBQUU7QUFDbEMsV0FBTyxNQUFNLFFBQVEsQ0FBQyw2QkFBNkIsQ0FBQyxNQUFNLEVBQUUsR0FBRyxFQUFFLE1BQU0sRUFBRSxRQUFRLENBQUMsQ0FBQztHQUNwRixDQUFBLENBQUM7QUFDRixTQUFPLFNBQVMsQ0FBQyxTQUFTLEVBQUUsSUFBSSxDQUFDLENBQUM7Q0FDbkM7O0FBRUQsU0FBUyx5QkFBeUIsR0FBWTtBQUM1QyxTQUFPLG9CQUFvQixDQUFDO0NBQzdCOztBQUVELE1BQU0sQ0FBQyxPQUFPLEdBQUc7QUFDZixRQUFNLEVBQUU7QUFDTixhQUFTLEVBQUU7QUFDVCxVQUFJLEVBQUUsU0FBUztBQUNmLGlCQUFTLElBQUk7QUFDYixpQkFBVyxFQUFFLHdEQUF3RDtLQUN0RTtHQUNGOztBQUVELFVBQVEsRUFBRSxvQkFBVztBQUNuQixRQUFJLDRCQUE0QixHQUFHLFNBQS9CLDRCQUE0QixDQUFZLFVBQXNCLEVBQUU7QUFDbEUsVUFBSSxhQUFhLEdBQUcsT0FBTyxDQUFDLGlCQUFpQixDQUFDLENBQUM7QUFDL0MsVUFBSSxhQUFhLEdBQUcsSUFBSSxhQUFhLENBQ2pDLFVBQVUsRUFDVix5QkFBeUIsRUFDekIsOEJBQThCLENBQUMsQ0FBQztBQUNwQyxvQkFBYyxDQUFDLElBQUksQ0FBQyxhQUFhLENBQUMsQ0FBQztLQUNwQyxDQUFDOztBQUVGLDBCQUFzQixHQUFHLElBQUksQ0FBQyxTQUFTLENBQUMsa0JBQWtCLENBQ3RELDRCQUE0QixDQUFDLENBQUM7O0FBRWxDLHlCQUFxQixHQUFHLElBQUksQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUN2QyxtQ0FBbUMsRUFDbkMsVUFBQSxLQUFLLEVBQUk7QUFBRSwwQkFBb0IsR0FBRyxLQUFLLENBQUM7S0FBRSxDQUM3QyxDQUFDO0dBQ0g7O0FBRUQsWUFBVSxFQUFFLHNCQUFXO0FBQ3JCLDBCQUFzQixDQUFDLEdBQUcsRUFBRSxDQUFDO0FBQzdCLDBCQUFzQixHQUFHLElBQUksQ0FBQzs7QUFFOUIseUJBQXFCLENBQUMsR0FBRyxFQUFFLENBQUM7QUFDNUIseUJBQXFCLEdBQUcsSUFBSSxDQUFDOztBQUU3QixrQkFBYyxDQUFDLE9BQU8sQ0FBQyxVQUFDLGFBQWEsRUFBSztBQUN4QyxtQkFBYSxDQUFDLE9BQU8sRUFBRSxDQUFDO0tBQ3pCLENBQUMsQ0FBQztBQUNILGtCQUFjLEdBQUcsRUFBRSxDQUFDO0FBQ3BCLGFBQVMsR0FBRyxFQUFFLENBQUM7R0FDaEI7O0FBRUQsa0JBQWdCLEVBQUUsMEJBQVMsUUFBK0IsRUFBRTs7QUFFMUQsUUFBSSxRQUFRLEdBQUcsUUFBUSxDQUFDLFdBQVcsRUFBRSxDQUFDO0FBQ3RDLFNBQUssSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLEdBQUcsR0FBRyxTQUFTLENBQUMsTUFBTSxFQUFFLENBQUMsR0FBRyxHQUFHLEVBQUUsQ0FBQyxFQUFFLEVBQUU7QUFDcEQsVUFBSSxJQUFJLEdBQUcsU0FBUyxDQUFDLENBQUMsQ0FBQyxDQUFDO0FBQ3hCLFVBQUksUUFBUSxLQUFLLElBQUksRUFBRTtBQUNyQixlQUFPO09BQ1I7O0FBRUQsVUFBSSxRQUFRLEdBQUcsSUFBSSxDQUFDLFdBQVcsRUFBRSxFQUFFO0FBQ2pDLGlCQUFTLENBQUMsTUFBTSxDQUFDLENBQUMsRUFBRSxDQUFDLEVBQUUsUUFBUSxDQUFDLENBQUM7QUFDakMsZUFBTztPQUNSO0tBQ0Y7Ozs7QUFJRCxhQUFTLENBQUMsSUFBSSxDQUFDLFFBQVEsQ0FBQyxDQUFDO0dBQzFCO0NBQ0YsQ0FBQyIsImZpbGUiOiIvaG9tZS9hbmRyZWkvZG90ZmlsZXMvYXRvbS9wYWNrYWdlcy9udWNsaWRlLWNsaWNrLXRvLXN5bWJvbC9saWIvbWFpbi5qcyIsInNvdXJjZXNDb250ZW50IjpbIid1c2UgYmFiZWwnO1xuLyogQGZsb3cgKi9cblxuLypcbiAqIENvcHlyaWdodCAoYykgMjAxNS1wcmVzZW50LCBGYWNlYm9vaywgSW5jLlxuICogQWxsIHJpZ2h0cyByZXNlcnZlZC5cbiAqXG4gKiBUaGlzIHNvdXJjZSBjb2RlIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBsaWNlbnNlIGZvdW5kIGluIHRoZSBMSUNFTlNFIGZpbGUgaW5cbiAqIHRoZSByb290IGRpcmVjdG9yeSBvZiB0aGlzIHNvdXJjZSB0cmVlLlxuICovXG5cbnZhciBjbGlja1RvU3ltYm9sczogQXJyYXk8Q2xpY2tUb1N5bWJvbD4gPSBbXTtcbnZhciBkZWxlZ2F0ZXM6IEFycmF5PENsaWNrVG9TeW1ib2xEZWxlZ2F0ZT4gPSBbXTtcbnZhciBlZGl0b3JWaWV3U3Vic2NyaXB0aW9uOiA/T2JqZWN0O1xudmFyIHVzZXNDbWRLZXlUb0FjdGl2YXRlOiBib29sZWFuO1xudmFyIGNtZEtleVNldHRpbmdPYnNlcnZlcjogP09iamVjdDtcblxuZnVuY3Rpb24gZmluZENsaWNrYWJsZVJhbmdlc0FuZENhbGxiYWNrKFxuICAgIGVkaXRvcjogVGV4dEVkaXRvcixcbiAgICByb3c6IG51bWJlcixcbiAgICBjb2x1bW46IG51bWJlcixcbiAgICBzaGlmdEtleTogYm9vbGVhbik6IFByb21pc2Uge1xuICB2YXIge2FzeW5jRmluZH0gPSByZXF1aXJlKCdudWNsaWRlLWNvbW1vbnMnKTtcbiAgdmFyIHRlc3QgPSBhc3luYyBmdW5jdGlvbihkZWxlZ2F0ZSkge1xuICAgIHJldHVybiBhd2FpdCBkZWxlZ2F0ZS5nZXRDbGlja2FibGVSYW5nZXNBbmRDYWxsYmFjayhlZGl0b3IsIHJvdywgY29sdW1uLCBzaGlmdEtleSk7XG4gIH07XG4gIHJldHVybiBhc3luY0ZpbmQoZGVsZWdhdGVzLCB0ZXN0KTtcbn1cblxuZnVuY3Rpb24gc2hvdWxkVXNlQ21kS2V5VG9BY3RpdmF0ZSgpOiBib29sZWFuIHtcbiAgcmV0dXJuIHVzZXNDbWRLZXlUb0FjdGl2YXRlO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHtcbiAgY29uZmlnOiB7XG4gICAgdXNlQ21kS2V5OiB7XG4gICAgICB0eXBlOiAnYm9vbGVhbicsXG4gICAgICBkZWZhdWx0OiB0cnVlLFxuICAgICAgZGVzY3JpcHRpb246ICdVc2UgY21kIGtleSBpbnN0ZWFkIG9mIGFsdCB0byB0cmlnZ2VyIGNsaWNrIHRvIHN5bWJvbC4nLFxuICAgIH0sXG4gIH0sXG5cbiAgYWN0aXZhdGU6IGZ1bmN0aW9uKCkge1xuICAgIHZhciBhZGRDbGlja1RvU3ltYm9sVG9FZGl0b3JWaWV3ID0gZnVuY3Rpb24odGV4dEVkaXRvcjogVGV4dEVkaXRvcikge1xuICAgICAgdmFyIENsaWNrVG9TeW1ib2wgPSByZXF1aXJlKCcuL0NsaWNrVG9TeW1ib2wnKTtcbiAgICAgIHZhciBjbGlja1RvU3ltYm9sID0gbmV3IENsaWNrVG9TeW1ib2woXG4gICAgICAgICAgdGV4dEVkaXRvcixcbiAgICAgICAgICBzaG91bGRVc2VDbWRLZXlUb0FjdGl2YXRlLFxuICAgICAgICAgIGZpbmRDbGlja2FibGVSYW5nZXNBbmRDYWxsYmFjayk7XG4gICAgICBjbGlja1RvU3ltYm9scy5wdXNoKGNsaWNrVG9TeW1ib2wpO1xuICAgIH07XG5cbiAgICBlZGl0b3JWaWV3U3Vic2NyaXB0aW9uID0gYXRvbS53b3Jrc3BhY2Uub2JzZXJ2ZVRleHRFZGl0b3JzKFxuICAgICAgICBhZGRDbGlja1RvU3ltYm9sVG9FZGl0b3JWaWV3KTtcblxuICAgIGNtZEtleVNldHRpbmdPYnNlcnZlciA9IGF0b20uY29uZmlnLm9ic2VydmUoXG4gICAgICAgICdudWNsaWRlLWNsaWNrLXRvLXN5bWJvbC51c2VDbWRLZXknLFxuICAgICAgICB2YWx1ZSA9PiB7IHVzZXNDbWRLZXlUb0FjdGl2YXRlID0gdmFsdWU7IH1cbiAgICApO1xuICB9LFxuXG4gIGRlYWN0aXZhdGU6IGZ1bmN0aW9uKCkge1xuICAgIGVkaXRvclZpZXdTdWJzY3JpcHRpb24ub2ZmKCk7XG4gICAgZWRpdG9yVmlld1N1YnNjcmlwdGlvbiA9IG51bGw7XG5cbiAgICBjbWRLZXlTZXR0aW5nT2JzZXJ2ZXIub2ZmKCk7XG4gICAgY21kS2V5U2V0dGluZ09ic2VydmVyID0gbnVsbDtcblxuICAgIGNsaWNrVG9TeW1ib2xzLmZvckVhY2goKGNsaWNrVG9TeW1ib2wpID0+IHtcbiAgICAgIGNsaWNrVG9TeW1ib2wuZGlzcG9zZSgpO1xuICAgIH0pO1xuICAgIGNsaWNrVG9TeW1ib2xzID0gW107XG4gICAgZGVsZWdhdGVzID0gW107XG4gIH0sXG5cbiAgcmVnaXN0ZXJEZWxlZ2F0ZTogZnVuY3Rpb24oZGVsZWdhdGU6IENsaWNrVG9TeW1ib2xEZWxlZ2F0ZSkge1xuICAgIC8vIERlbGVnYXRlcyBtdXN0IGJlIHNvcnRlZCBpbiBwcmlvcml0eSBvcmRlci5cbiAgICB2YXIgcHJpb3JpdHkgPSBkZWxlZ2F0ZS5nZXRQcmlvcml0eSgpO1xuICAgIGZvciAodmFyIGkgPSAwLCBsZW4gPSBkZWxlZ2F0ZXMubGVuZ3RoOyBpIDwgbGVuOyBpKyspIHtcbiAgICAgIHZhciBpdGVtID0gZGVsZWdhdGVzW2ldO1xuICAgICAgaWYgKGRlbGVnYXRlID09PSBpdGVtKSB7XG4gICAgICAgIHJldHVybjtcbiAgICAgIH1cblxuICAgICAgaWYgKHByaW9yaXR5ID4gaXRlbS5nZXRQcmlvcml0eSgpKSB7XG4gICAgICAgIGRlbGVnYXRlcy5zcGxpY2UoaSwgMCwgZGVsZWdhdGUpO1xuICAgICAgICByZXR1cm47XG4gICAgICB9XG4gICAgfVxuXG4gICAgLy8gSWYgd2UgbWFkZSBpdCBhbGwgdGhlIHdheSB0aHJvdWdoIHRoZSBsb29wLCBkZWxlZ2F0ZSBtdXN0IGJlIGxvd2VyXG4gICAgLy8gcHJpb3JpdHkgdGhhbiBhbGwgb2YgdGhlIGV4aXN0aW5nIGRlbGVnYXRlcywgc28gYWRkIGl0IHRvIHRoZSBlbmQuXG4gICAgZGVsZWdhdGVzLnB1c2goZGVsZWdhdGUpO1xuICB9LFxufTtcbiJdfQ==
+//# sourceURL=/home/andrei/dotfiles/atom/packages/nuclide-click-to-symbol/lib/main.js

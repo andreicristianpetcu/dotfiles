@@ -1,0 +1,10 @@
+# pack-refs with: peeled fully-peeled 
+1d0097c33e0f8d449090442cb91633d43997fc4d refs/heads/master
+9898ef9e5cfa483d8531c4657d68214d5d16bb9c refs/heads/old-fork
+9e39f98c3564eb7b800df2a0b47674746a165354 refs/pull/1/head
+54a27b04ec9992a67cdf351a11830aa6ea5b98cc refs/pull/2/head
+330611b37f19c10c0c79f357d0c170ed8d6b9f53 refs/pull/2/merge
+79e8f72ceab3a4bdfb0cd21836304680f0e9bfae refs/pull/3/head
+41ce0d99f2c98799afed6af00be66aa21e83ec49 refs/pull/4/head
+5fc4b44fece794fdad3387ccfe9a9126b54d026d refs/tags/v0.0.7
+^4dc33f790af2a3a0ddbefc904ba35d9788e87e50

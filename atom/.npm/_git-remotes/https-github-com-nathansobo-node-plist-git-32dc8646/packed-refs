@@ -1,0 +1,8 @@
+# pack-refs with: peeled fully-peeled 
+46107cf692c7f74510cb43581761ab921d7d0e34 refs/heads/allow-node-with-window
+77d3504795d9d6fc1ea0f68c59b9f66aa01a92e4 refs/heads/dont-log-nonfatal-errors
+bd3a93387f1d4b2cff819b200870d35465796e77 refs/heads/master
+30aaef54a2fa597be0252a676b06a44bf2aaf42c refs/heads/npm-ignore
+d63c65d97f835b607425a5fcd18bd38f279385a2 refs/tags/v0.1.0
+c1678e195e16bca8f681bf75eb423b94e9e05db8 refs/tags/v0.1.1
+4f7e6971bc9c9c7fb51778378813c22061fad3f2 refs/tags/v0.2.1

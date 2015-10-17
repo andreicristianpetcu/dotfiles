@@ -1,0 +1,7 @@
+{
+  ".source.clojure": {
+    "editor": {
+      "commentStart": "; "
+    }
+  }
+}

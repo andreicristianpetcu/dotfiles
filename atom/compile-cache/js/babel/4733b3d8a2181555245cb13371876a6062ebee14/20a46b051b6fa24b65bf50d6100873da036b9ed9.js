@@ -1,0 +1,64 @@
+Object.defineProperty(exports, '__esModule', {
+	value: true
+});
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var _editorconfig = require('editorconfig');
+
+var _editorconfig2 = _interopRequireDefault(_editorconfig);
+
+var _commandsGenerate = require('./commands/generate');
+
+var _commandsGenerate2 = _interopRequireDefault(_commandsGenerate);
+
+'use babel';
+
+function init(editor) {
+	(0, _commandsGenerate2['default'])();
+
+	if (!editor) {
+		return;
+	}
+
+	var file = editor.getURI();
+
+	if (!file) {
+		return;
+	}
+
+	_editorconfig2['default'].parse(file).then(function (config) {
+		if (Object.keys(config).length === 0) {
+			return;
+		}
+
+		var indentStyle = config.indent_style || (editor.getSoftTabs() ? 'space' : 'tab');
+
+		if (indentStyle === 'tab') {
+			editor.setSoftTabs(false);
+
+			if (config.tab_width) {
+				editor.setTabLength(config.tab_width);
+			}
+		} else if (indentStyle === 'space') {
+			editor.setSoftTabs(true);
+
+			if (config.indent_size) {
+				editor.setTabLength(config.indent_size);
+			}
+		}
+
+		if (config.charset) {
+			// EditorConfig charset names matches iconv charset names.
+			// Which is used by Atom. So no charset name convertion is needed.
+			editor.setEncoding(config.charset);
+		}
+	});
+}
+
+var activate = function activate() {
+	atom.workspace.observeTextEditors(init);
+};
+exports.activate = activate;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FuZHJlaS9kb3RmaWxlcy9hdG9tL3BhY2thZ2VzL2VkaXRvcmNvbmZpZy9pbmRleC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7NEJBQ3lCLGNBQWM7Ozs7Z0NBQ1oscUJBQXFCOzs7O0FBRmhELFdBQVcsQ0FBQzs7QUFJWixTQUFTLElBQUksQ0FBQyxNQUFNLEVBQUU7QUFDckIscUNBQWdCLENBQUM7O0FBRWpCLEtBQUksQ0FBQyxNQUFNLEVBQUU7QUFDWixTQUFPO0VBQ1A7O0FBRUQsS0FBTSxJQUFJLEdBQUcsTUFBTSxDQUFDLE1BQU0sRUFBRSxDQUFDOztBQUU3QixLQUFJLENBQUMsSUFBSSxFQUFFO0FBQ1YsU0FBTztFQUNQOztBQUVELDJCQUFhLEtBQUssQ0FBQyxJQUFJLENBQUMsQ0FBQyxJQUFJLENBQUMsVUFBQSxNQUFNLEVBQUk7QUFDdkMsTUFBSSxNQUFNLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxDQUFDLE1BQU0sS0FBSyxDQUFDLEVBQUU7QUFDckMsVUFBTztHQUNQOztBQUVELE1BQU0sV0FBVyxHQUFHLE1BQU0sQ0FBQyxZQUFZLEtBQUssTUFBTSxDQUFDLFdBQVcsRUFBRSxHQUFHLE9BQU8sR0FBRyxLQUFLLENBQUEsQUFBQyxDQUFDOztBQUVwRixNQUFJLFdBQVcsS0FBSyxLQUFLLEVBQUU7QUFDMUIsU0FBTSxDQUFDLFdBQVcsQ0FBQyxLQUFLLENBQUMsQ0FBQzs7QUFFMUIsT0FBSSxNQUFNLENBQUMsU0FBUyxFQUFFO0FBQ3JCLFVBQU0sQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxDQUFDO0lBQ3RDO0dBQ0QsTUFBTSxJQUFJLFdBQVcsS0FBSyxPQUFPLEVBQUU7QUFDbkMsU0FBTSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsQ0FBQzs7QUFFekIsT0FBSSxNQUFNLENBQUMsV0FBVyxFQUFFO0FBQ3ZCLFVBQU0sQ0FBQyxZQUFZLENBQUMsTUFBTSxDQUFDLFdBQVcsQ0FBQyxDQUFDO0lBQ3hDO0dBQ0Q7O0FBRUQsTUFBSSxNQUFNLENBQUMsT0FBTyxFQUFFOzs7QUFHbkIsU0FBTSxDQUFDLFdBQVcsQ0FBQyxNQUFNLENBQUMsT0FBTyxDQUFDLENBQUM7R0FDbkM7RUFDRCxDQUFDLENBQUM7Q0FDSDs7QUFFTSxJQUFNLFFBQVEsR0FBRyxTQUFYLFFBQVEsR0FBUztBQUM3QixLQUFJLENBQUMsU0FBUyxDQUFDLGtCQUFrQixDQUFDLElBQUksQ0FBQyxDQUFDO0NBQ3hDLENBQUMiLCJmaWxlIjoiL2hvbWUvYW5kcmVpL2RvdGZpbGVzL2F0b20vcGFja2FnZXMvZWRpdG9yY29uZmlnL2luZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBiYWJlbCc7XG5pbXBvcnQgZWRpdG9yY29uZmlnIGZyb20gJ2VkaXRvcmNvbmZpZyc7XG5pbXBvcnQgZ2VuZXJhdGVDb25maWcgZnJvbSAnLi9jb21tYW5kcy9nZW5lcmF0ZSc7XG5cbmZ1bmN0aW9uIGluaXQoZWRpdG9yKSB7XG5cdGdlbmVyYXRlQ29uZmlnKCk7XG5cblx0aWYgKCFlZGl0b3IpIHtcblx0XHRyZXR1cm47XG5cdH1cblxuXHRjb25zdCBmaWxlID0gZWRpdG9yLmdldFVSSSgpO1xuXG5cdGlmICghZmlsZSkge1xuXHRcdHJldHVybjtcblx0fVxuXG5cdGVkaXRvcmNvbmZpZy5wYXJzZShmaWxlKS50aGVuKGNvbmZpZyA9PiB7XG5cdFx0aWYgKE9iamVjdC5rZXlzKGNvbmZpZykubGVuZ3RoID09PSAwKSB7XG5cdFx0XHRyZXR1cm47XG5cdFx0fVxuXG5cdFx0Y29uc3QgaW5kZW50U3R5bGUgPSBjb25maWcuaW5kZW50X3N0eWxlIHx8IChlZGl0b3IuZ2V0U29mdFRhYnMoKSA/ICdzcGFjZScgOiAndGFiJyk7XG5cblx0XHRpZiAoaW5kZW50U3R5bGUgPT09ICd0YWInKSB7XG5cdFx0XHRlZGl0b3Iuc2V0U29mdFRhYnMoZmFsc2UpO1xuXG5cdFx0XHRpZiAoY29uZmlnLnRhYl93aWR0aCkge1xuXHRcdFx0XHRlZGl0b3Iuc2V0VGFiTGVuZ3RoKGNvbmZpZy50YWJfd2lkdGgpO1xuXHRcdFx0fVxuXHRcdH0gZWxzZSBpZiAoaW5kZW50U3R5bGUgPT09ICdzcGFjZScpIHtcblx0XHRcdGVkaXRvci5zZXRTb2Z0VGFicyh0cnVlKTtcblxuXHRcdFx0aWYgKGNvbmZpZy5pbmRlbnRfc2l6ZSkge1xuXHRcdFx0XHRlZGl0b3Iuc2V0VGFiTGVuZ3RoKGNvbmZpZy5pbmRlbnRfc2l6ZSk7XG5cdFx0XHR9XG5cdFx0fVxuXG5cdFx0aWYgKGNvbmZpZy5jaGFyc2V0KSB7XG5cdFx0XHQvLyBFZGl0b3JDb25maWcgY2hhcnNldCBuYW1lcyBtYXRjaGVzIGljb252IGNoYXJzZXQgbmFtZXMuXG5cdFx0XHQvLyBXaGljaCBpcyB1c2VkIGJ5IEF0b20uIFNvIG5vIGNoYXJzZXQgbmFtZSBjb252ZXJ0aW9uIGlzIG5lZWRlZC5cblx0XHRcdGVkaXRvci5zZXRFbmNvZGluZyhjb25maWcuY2hhcnNldCk7XG5cdFx0fVxuXHR9KTtcbn1cblxuZXhwb3J0IGNvbnN0IGFjdGl2YXRlID0gKCkgPT4ge1xuXHRhdG9tLndvcmtzcGFjZS5vYnNlcnZlVGV4dEVkaXRvcnMoaW5pdCk7XG59O1xuIl19
+//# sourceURL=/home/andrei/dotfiles/atom/packages/editorconfig/index.js

@@ -1,0 +1,17 @@
+'use babel';
+
+/*
+ * Copyright (c) 2015-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the license found in the LICENSE file in
+ * the root directory of this source tree.
+ */
+
+try {
+  module.exports = require('./fb/analytics');
+} catch (e) {
+  module.exports = require('./analytics');
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL2FuZHJlaS9kb3RmaWxlcy9hdG9tL3BhY2thZ2VzL251Y2xpZGUtY2xpY2stdG8tc3ltYm9sL25vZGVfbW9kdWxlcy9udWNsaWRlLWFuYWx5dGljcy9saWIvbWFpbi5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxXQUFXLENBQUM7Ozs7Ozs7Ozs7QUFXWixJQUFJO0FBQ0YsUUFBTSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztDQUM1QyxDQUFDLE9BQU8sQ0FBQyxFQUFFO0FBQ1YsUUFBTSxDQUFDLE9BQU8sR0FBRyxPQUFPLENBQUMsYUFBYSxDQUFDLENBQUM7Q0FDekMiLCJmaWxlIjoiL2hvbWUvYW5kcmVpL2RvdGZpbGVzL2F0b20vcGFja2FnZXMvbnVjbGlkZS1jbGljay10by1zeW1ib2wvbm9kZV9tb2R1bGVzL251Y2xpZGUtYW5hbHl0aWNzL2xpYi9tYWluLmpzIiwic291cmNlc0NvbnRlbnQiOlsiJ3VzZSBiYWJlbCc7XG4vKiBAZmxvdyAqL1xuXG4vKlxuICogQ29weXJpZ2h0IChjKSAyMDE1LXByZXNlbnQsIEZhY2Vib29rLCBJbmMuXG4gKiBBbGwgcmlnaHRzIHJlc2VydmVkLlxuICpcbiAqIFRoaXMgc291cmNlIGNvZGUgaXMgbGljZW5zZWQgdW5kZXIgdGhlIGxpY2Vuc2UgZm91bmQgaW4gdGhlIExJQ0VOU0UgZmlsZSBpblxuICogdGhlIHJvb3QgZGlyZWN0b3J5IG9mIHRoaXMgc291cmNlIHRyZWUuXG4gKi9cblxudHJ5IHtcbiAgbW9kdWxlLmV4cG9ydHMgPSByZXF1aXJlKCcuL2ZiL2FuYWx5dGljcycpO1xufSBjYXRjaCAoZSkge1xuICBtb2R1bGUuZXhwb3J0cyA9IHJlcXVpcmUoJy4vYW5hbHl0aWNzJyk7XG59XG4iXX0=
+//# sourceURL=/home/andrei/dotfiles/atom/packages/nuclide-click-to-symbol/node_modules/nuclide-analytics/lib/main.js
