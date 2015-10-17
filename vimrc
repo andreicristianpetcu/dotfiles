@@ -409,7 +409,8 @@ endif
 
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_max_height='55'
-let g:ctrlp_regexp = 1
+let g:ctrlp_mruf_case_sensitive = 0
+let g:ctrlp_regexp = 0
 set wildignore+=*.avi,*.m3u,*.mp3,*.mp4,*.mpg,*.sfv,*.wmv,*.mov
 set wildignore+=*.doc,*.numbers,*.pages,*.pdf,*.ppt,*.pptx,*.docx,*.xls,*.xlsx
 set wildignore+=*.dmg,*.gz,*.rar,*.tbz,*.zip
