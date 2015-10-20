@@ -350,6 +350,7 @@ alias donosudo='sudo groupadd docker ; usermod -a -G docker ${USERNAME} ; sudo g
 alias dolastimage='docker images -q|head -1'
 alias dostoplast='docker stop `docker ps -q|head -1`'
 alias doimagesqhead1='docker images -q|head -1'
+alias docontainersqhead1='docker ps -a -q|head -1'
 alias dopsqhead1='docker ps -q|head -1'
 # alias dorunlastimage='docker run -d `docker images -q|head -1`'
 alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
@@ -394,6 +395,11 @@ doinspectipaddress(){
 dorunlastpassengerimage(){
   echo "Running `doimagesqhead1`"
   docker run -d -v /mnt/docker_volume:/mnt/parent_directory `doimagesqhead1` /sbin/my_init --enable-insecure-key
+}
+
+dostartlastcontainer(){
+  echo "Running `docontainersqhead1`"
+  docker start `docontainersqhead1`
 }
 
 dorunlastimage(){
