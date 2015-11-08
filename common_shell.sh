@@ -76,4 +76,7 @@ fi
 
 export FZF_DEFAULT_OPTS="+s -e"
 export FZF_TMUX_HEIGHT=100%
+
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
 stty stop undef
