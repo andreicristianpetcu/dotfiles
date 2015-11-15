@@ -62,3 +62,11 @@
 --langmap=javaspring:.java
 --regex-javaspring=/@RequestMapping\(.*value.*=.*['"]([a-zA-Z0-9\/{}]+)['"]/@RequestMapping=\1/rm,@RequestMapping/
 --regex-javaspring=/^\s*@Subscribe[a-z \s]+\s([a-zA-Z]+)\(([a-zA-Z]+).*$/@Subscribe \1 \2*/
+
+--langdef=yml
+--langmap=yml:.yml
+--regex-yaml=/name:(.*)$/AnsibleTask \1/task/
+
+--langdef=yaml
+--langmap=yaml:.yaml
+--regex-yaml=/name:(.*)$/AnsibleTask \1/task/
