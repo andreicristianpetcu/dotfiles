@@ -7,6 +7,14 @@ if [[ -z "$CONN" ]]; then
   export CONN=`cat /proc/$PPID/status | head -1 | cut -f2`
 fi
 
+if [ -f $HOME/.ssh/id_rsa ]; then
+  if [ -z "$(pgrep ssh-agent)" ]; then
+    echo "Starting ssh-agent"
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+  fi
+fi
+
 # lazy add local bin
 LOCAL_BIN="$HOME/.local/bin"
 if [ -d $LOCAL_BIN ]; then export PATH="$PATH:$LOCAL_BIN" ;fi
