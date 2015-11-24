@@ -11,9 +11,10 @@ if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -z "$(pgrep ssh-agent)" ]; then
     echo "Starting ssh-agent"
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
+    # ssh-add ~/.ssh/id_rsa
   fi
 fi
+alias sshaddidrsa="ssh-add ~/.ssh/id_rsa"
 
 # lazy add local bin
 LOCAL_BIN="$HOME/.local/bin"
