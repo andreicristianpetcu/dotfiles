@@ -750,23 +750,18 @@ if $COLORTERM == 'gnome-terminal' || $TERM == 'xterm' || $TERM == 'screen'
   set t_Co=256
 endif
 
-if $COLORTERM == 'drop-down-terminal'
-  " set t_Co=256
+try
+  colorscheme modokay
+  " set cursorline 
+  augroup CursorLineOnlyInActiveWindow
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+  augroup END 
+  " set cursorcolumn
+catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme desert 
-else
-  try
-    colorscheme modokay
-    " set cursorline 
-    augroup CursorLineOnlyInActiveWindow
-      autocmd!
-      autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-      autocmd WinLeave * setlocal nocursorline
-    augroup END 
-    " set cursorcolumn
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme desert 
-  endtry
-endif
+endtry
 
 " Switch wrap off for everything
 " set nowrap
