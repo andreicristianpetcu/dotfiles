@@ -1,1 +1,0 @@
-{"menu":[{"label":"Packages","submenu":[{"label":"Symbols","submenu":[{"label":"Generate for Project","command":"symbol-gen:generate"},{"label":"Purge Generated Tags","command":"symbol-gen:purge"}]}]}]}

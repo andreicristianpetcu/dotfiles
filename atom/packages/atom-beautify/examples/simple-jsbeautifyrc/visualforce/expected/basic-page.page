@@ -1,5 +1,0 @@
-<apex:page standardController="Contact">
-
-  <apex:sectionHeader subtitle="{!contact.account.name}" title="{!contact.firstname}"/>
-
-</apex:page>

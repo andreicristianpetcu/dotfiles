@@ -1,6 +1,0 @@
-".source.js":
-  "it pending":
-    "prefix": "itp"
-    "body": """
-    it('${1:description}');
-    """
