@@ -453,12 +453,17 @@ generatecertificate(){
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
+fee() {
+    local file
+    file=$(fzf --query="$1" --select-1 --exit-0)
+    [ -n "$file" ] && emacsclient "$file"
+}
 fed() {
   local file
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
-bindkey -s '^V' '^qfed\n'
+bindkey -s '^V' '^qfee\n'
 
 # fzf magic
 # fe [FUZZY PATTERN] - Delete selected file or directory
