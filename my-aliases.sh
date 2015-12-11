@@ -456,7 +456,10 @@ generatecertificate(){
 fee() {
     local file
     file=$(fzf --query="$1" --select-1 --exit-0)
-    [ -n "$file" ] && emacsclient "$file"
+    [ -n "$file" ] && emacsclient -nw "$file"
+}
+ema(){
+    emacsclient -nw $1
 }
 fed() {
   local file
