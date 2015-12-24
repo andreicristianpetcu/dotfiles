@@ -245,6 +245,14 @@ alias vimcvimfilerdouble='vim -c "VimFilerDouble"'
 alias vimcpluginstallqall='vim -c "PlugInstall|qall!"'
 alias vimclean='rm -rf ~/.vim/autoload && rm -rf ~/.vim/bundle && rm -rf ~/.vim/colour && rm -rf ~/.vim/tmp'
 
+opensslconnect(){
+  openssl s_client -connect $1 -state -nbio 2>&1 
+}
+
+opensslgetcertificate(){
+  openssl s_client -showcerts -connect $1 < /dev/null | openssl x509 -outform DER > derp.der
+}
+
 hosttoip(){
   sudo sed -i "/$1/d" /etc/hosts
   echo "$2 $1" | sudo tee -a /etc/hosts
@@ -379,10 +387,6 @@ dockerrundyourimagesbinmyinitenableinsecurekey(){
   docker run -d $1 /sbin/my_init --enable-insecure-key
 }
 
-dockerinspectidgrepipaddress(){
-  docker inspect $1 | grep IPAddress
-}
-
 doinspectname(){
   docker inspect $1|grep Name| tr -d ' '| awk -F\" '{print $4}'
 }
@@ -391,7 +395,7 @@ doinspectimage(){
 }
 
 doinspectipaddress(){
-  docker inspect $1|grep IPAddress| tr -d ' '| awk -F\" '{print $4}'
+  docker inspect $1|grep "\"IPAddress\""| head -1| tr -d ' '| awk -F\" '{print $4}'
 }
 
 dorunlastpassengerimage(){
