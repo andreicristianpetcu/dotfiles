@@ -9,8 +9,7 @@ fi
 
 if [ -f $HOME/.ssh/id_rsa ]; then
   if [ -z "$(pgrep ssh-agent)" ]; then
-    echo "Starting ssh-agent"
-    eval "$(ssh-agent -s)"
+    nohup eval "$(ssh-agent -s)" > /dev/null 2>&1
   fi
 fi
 alias sshaddidrsa="ssh-add ~/.ssh/id_rsa"
@@ -19,7 +18,7 @@ export ALTERNATE_EDITOR=emacs
 export EDITOR="emacsclient -nw"
 export VISUAL=emacsclient
 if [ -z "$(pgrep emacs)" ]; then
-  emacs --daemon &>/dev/null &
+  nohup emacs --daemon > /dev/null 2>&1
 fi
 
 # lazy add local bin
