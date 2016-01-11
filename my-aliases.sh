@@ -387,6 +387,11 @@ dormunused(){
   docker rm $(docker ps -f status=exited -q)
 }
 
+sshforce(){
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
+    ssh $1
+}
+
 sshinsecuretest(){
   ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
   ssh -i ~/.insecure_key root@$1
