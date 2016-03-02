@@ -17,9 +17,9 @@ alias sshaddidrsa="ssh-add ~/.ssh/id_rsa"
 export ALTERNATE_EDITOR=emacs
 export EDITOR="emacsclient -nw"
 export VISUAL=emacsclient
-if [ -z "$(pgrep emacs)" ]; then
-  nohup emacs --daemon > /dev/null 2>&1
-fi
+#if [ -z "$(pgrep emacs)" ]; then
+#  nohup emacs --daemon > /dev/null 2>&1
+#fi
 
 # lazy add local bin
 LOCAL_BIN="$HOME/.local/bin"
