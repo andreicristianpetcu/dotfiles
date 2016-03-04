@@ -256,6 +256,10 @@ layers configuration. You are free to put any user code."
       )
     )
   (add-hook 'evil-insert-state-exit-hook 'my-save-if-bufferfilename)
+
+  (global-set-key "\C-xp" (lambda ()
+                            (interactive)
+                            (other-window -1)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
