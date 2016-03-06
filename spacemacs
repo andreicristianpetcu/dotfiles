@@ -38,8 +38,10 @@ values."
      version-control
      yaml
      ruby
+     ruby-on-rails
      python
      javascript
+     vimscript
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -239,6 +241,8 @@ values."
    ))
 
 (defun dotspacemacs/user-init ()
+  (setq-default git-magit-status-fullscreen t)
+  (global-git-commit-mode t)
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
