@@ -49,7 +49,7 @@ installrootdotfiles(){
   sudo cp $HOME/.zshrc /root/.zshrc
 }
 
-tmuxlocal(){                                                                                                                                                                                                
+tmuxlocal(){
   echo "unbind C-b
 set -g prefix C-q
 bind C-q send-prefix" > ~/.tmux.conf.local
