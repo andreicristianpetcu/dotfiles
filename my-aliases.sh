@@ -10,7 +10,7 @@ alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
 
 # common
 alias pingdebian='prettyping debian.org'
-alias emacsnw='emacs -nw'
+alias emacs='emacs -nw'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
 alias tmuxattachtmuxnew='tmux attach || tmux new'
