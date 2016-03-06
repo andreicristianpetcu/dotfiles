@@ -4,3 +4,4 @@ node_modules/*
 modules/
 /tags
 npm-debug.log
+TAGS
