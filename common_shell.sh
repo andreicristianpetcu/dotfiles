@@ -1,6 +1,8 @@
 # Set my editor and git editor
-export EDITOR="vim"
-export GIT_EDITOR='vim'
+export EDITOR="emacsclient -nw"
+export ALTERNATE_EDITOR="$EDITOR"
+export VISUAL="$EDITOR"
+export GIT_EDITOR="$EDITOR"
 
 # ssh connection check
 if [[ -z "$CONN" ]]; then
@@ -14,9 +16,6 @@ if [ -f $HOME/.ssh/id_rsa ]; then
 fi
 alias sshaddidrsa="ssh-add ~/.ssh/id_rsa"
 
-export ALTERNATE_EDITOR=emacs
-export EDITOR="emacsclient -nw"
-export VISUAL=emacsclient
 #if [ -z "$(pgrep emacs)" ]; then
 #  nohup emacs --daemon > /dev/null 2>&1
 #fi

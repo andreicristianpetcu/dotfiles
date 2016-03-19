@@ -10,7 +10,6 @@ alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
 
 # common
 alias pingdebian='prettyping debian.org'
-alias emacs='emacs -nw'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
 alias tmuxattachtmuxnew='tmux attach || tmux new'
@@ -476,8 +475,12 @@ fee() {
     file=$(fzf --query="$1" --select-1 --exit-0)
     [ -n "$file" ] && emacsclient -nw "$file"
 }
-ema(){
+alias e='emacs -nw .'
+ec(){
     emacsclient -nw $1
+}
+en() {
+    TMP=$(mktemp) && cat > $TMP && ec $TMP ; rm $TMP
 }
 fed() {
   local file

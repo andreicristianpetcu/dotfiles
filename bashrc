@@ -12,8 +12,6 @@ fi
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-export EDITOR="vim" 
-
 # no duplicate entries
 export HISTCONTROL=ignoreboth:erasedups
 # append history file
