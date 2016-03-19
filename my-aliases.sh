@@ -476,11 +476,11 @@ fee() {
     [ -n "$file" ] && emacsclient -nw "$file"
 }
 alias e='emacs -nw .'
-ec(){
+em(){
     emacsclient -nw $1
 }
 ep() {
-    TMP=$(mktemp) && cat > $TMP && ec $TMP ; rm $TMP
+    TMP=$(mktemp) && cat > $TMP && emacsclient -nw $TMP ; rm $TMP
 }
 fed() {
   local file
