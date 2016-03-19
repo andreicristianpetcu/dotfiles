@@ -479,7 +479,7 @@ alias e='emacs -nw .'
 ec(){
     emacsclient -nw $1
 }
-en() {
+ep() {
     TMP=$(mktemp) && cat > $TMP && ec $TMP ; rm $TMP
 }
 fed() {
