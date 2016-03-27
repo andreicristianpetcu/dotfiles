@@ -387,8 +387,12 @@ dormunused(){
 }
 
 sshforce(){
-    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $1
-    ssh $1
+    USER_AT_DOMAIN=$1
+    DOMAIN=`echo $USER_AT_DOMAIN | cut -d @ -f 2`
+    echo "Removing known_host for $DOMAIN"
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $DOMAIN
+    echo "SSH-ing to $USER_AT_DOMAIN"
+    ssh $USER_AT_DOMAIN
 }
 
 sshinsecuretest(){
