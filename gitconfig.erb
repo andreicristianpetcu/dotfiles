@@ -1,9 +1,11 @@
 [user]
 	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
 	email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+	signingkey = <%= print("Your PGP key: "); STDOUT.flush; STDIN.gets.chomp %>
 [alias]
 	co = checkout
   lg = <%= "log --graph --pretty=format:'%Cgreen%h%Creset %C(bold blue)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)' --abbrev-commit" %>
+  pgp = config commit.gpgsign true
 [color]
 	diff = auto
 	status = auto
