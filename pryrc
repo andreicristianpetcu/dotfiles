@@ -13,3 +13,5 @@ end
 
 # require "awesome_print"
 # AwesomePrint.pry!
+# Pry.config.editor = "emacsclient"
+Pry.config.editor = proc { |file, line| "emacsclient +#{line} #{file}" }
