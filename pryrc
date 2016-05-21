@@ -11,6 +11,8 @@ if defined?(PryNav)
   Pry.commands.alias_command 'n', 'next'
 end
 
+Pry.config.history.file = "~/.irb_history"
+
 # require "awesome_print"
 # AwesomePrint.pry!
 # Pry.config.editor = "emacsclient"
