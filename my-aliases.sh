@@ -289,6 +289,7 @@ alias installgdbpp="rm -rf ~/.libstdc--v3python && git clone https://github.com/
 alias installboostprettyprint="rm -rf ~/.Boost-Pretty-Printer.git && git clone https://github.com/mateidavid/Boost-Pretty-Printer.git ~/.Boost-Pretty-Printer.git"
 alias installdocker2aci="go get github.com/appc/docker2aci"
 alias installspacemacs='rm -rf ~/.emacs.d && git clone --recursive https://github.com/syl20bnr/spacemacs ~/.emacs.d'
+alias ansiblekeepremotefiles="export ANSIBLE_KEEP_REMOTE_FILES=1"
 installrbenv(){
   rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
