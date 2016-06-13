@@ -355,28 +355,31 @@ loadsshagent(){
 }
 
 # Docker
-alias dobuild='docker build .'
-alias dobuildrunlastimage='docker build . && docker run -d `docker images -q|head -1`'
-alias dorestart='sudo systemctl start docker'
-alias doimages='docker images'
-#delete all stopped containers
-alias dormall='docker rm $(docker ps -a -q)'
-alias dostopall='docker stop $(docker ps -q)'
-alias dopsa='docker ps -a'
-alias dops='docker ps'
-alias dormiall='docker rmi `docker images -q`'
-alias donosudo='sudo groupadd docker ; usermod -a -G docker ${USERNAME} ; sudo gpasswd -a ${USERNAME} docker ; sudo service docker restart'
-alias dolastimage='docker images -q|head -1'
-alias dostoplast='docker stop `docker ps -q|head -1`'
-alias doimagesqhead1='docker images -q|head -1'
-alias docontainersqhead1='docker ps -a -q|head -1'
-alias dopsqhead1='docker ps -q|head -1'
-# alias dorunlastimage='docker run -d `docker images -q|head -1`'
-alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
-#delete all untagged images
-alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
-#cleanpup. delete all stopped containers and remove untagged images
-alias docleanall="dormall ; dormiall"
+docker_is_active=`systemctl is-active docker &> /dev/null`
+if [ $docker_is_active ]; then
+    alias dobuild='docker build .'
+    alias dobuildrunlastimage='docker build . && docker run -d `docker images -q|head -1`'
+    alias dorestart='sudo systemctl start docker'
+    alias doimages='docker images'
+    #delete all stopped containers
+    alias dormall='docker rm $(docker ps -a -q)'
+    alias dostopall='docker stop $(docker ps -q)'
+    alias dopsa='docker ps -a'
+    alias dops='docker ps'
+    alias dormiall='docker rmi `docker images -q`'
+    alias donosudo='sudo groupadd docker ; usermod -a -G docker ${USERNAME} ; sudo gpasswd -a ${USERNAME} docker ; sudo service docker restart'
+    alias dolastimage='docker images -q|head -1'
+    alias dostoplast='docker stop `docker ps -q|head -1`'
+    alias doimagesqhead1='docker images -q|head -1'
+    alias docontainersqhead1='docker ps -a -q|head -1'
+    alias dopsqhead1='docker ps -q|head -1'
+    # alias dorunlastimage='docker run -d `docker images -q|head -1`'
+    alias doretrylast="dostoplast && dorunlastimage && sleep 1s && dosshlast"
+    #delete all untagged images
+    alias docleanintermediary="docker rmi $(docker images | grep '^<none>' | awk '{print $3}')"
+    #cleanpup. delete all stopped containers and remove untagged images
+    alias docleanall="dormall ; dormiall"
+;fi
 
 alias bleachbitcleanall="bleachbit -c firefox.cache && bleachbit -c chromium.cache && bleachbit -c google_chrome.cache && bleachbit -c thumbnails.cache \
   && bleachbit -c deepscan.thumbs_db"
