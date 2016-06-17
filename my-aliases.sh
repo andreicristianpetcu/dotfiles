@@ -393,8 +393,10 @@ dormunused(){
 sshforce(){
     USER_AT_DOMAIN=$1
     DOMAIN=`echo $USER_AT_DOMAIN | cut -d @ -f 2`
-    echo "Removing known_host for $DOMAIN"
+    IP_ADDRESS=`host $DOMAIN|grep "has address"| cut -d' ' -f4`
+    echo "Removing known_host for domain=$DOMAIN ip=$IP_ADDRESS"
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R $DOMAIN
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $IP_ADDRESS
     echo "SSH-ing to $USER_AT_DOMAIN"
     ssh $USER_AT_DOMAIN
 }
