@@ -394,9 +394,11 @@ sshforce(){
     USER_AT_DOMAIN=$1
     DOMAIN=`echo $USER_AT_DOMAIN | cut -d @ -f 2`
     IP_ADDRESS=`host $DOMAIN|grep "has address"| cut -d' ' -f4`
-    echo "Removing known_host for domain=$DOMAIN ip=$IP_ADDRESS"
+    PING_IP_ADDRESS=`ping -c 1 $DOMAIN|grep " from "|grep -Po "\(([\d.]*)\)"|sed 's/[()]//g'`
+    echo "Removing known_host for domain=$DOMAIN, ping_ip=$PING_IP_ADDRESS, ip=$IP_ADDRESS"
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R $DOMAIN
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R $IP_ADDRESS
+    ssh-keygen -f "$HOME/.ssh/known_hosts" -R $PING_IP_ADDRESS
     echo "SSH-ing to $USER_AT_DOMAIN"
     ssh $USER_AT_DOMAIN
 }
