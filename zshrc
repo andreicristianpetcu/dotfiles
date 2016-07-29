@@ -20,7 +20,7 @@ setopt HIST_SAVE_NO_DUPS
 plugins=(bower command-not-found cp gem git git-extras
       \ gitignore gradle heroku history-substring-search jsontools mvn node
       \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin
-      \ systemd tmux vagrant web-search zsh_reload zshmarks)
+      \ systemd tmux vagrant web-search zsh_reload zshmarks z)
 
 if [ -f $HOME/.common_shell.sh ]
 then
