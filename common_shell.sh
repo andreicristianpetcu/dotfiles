@@ -3,6 +3,7 @@ export EDITOR="emacsclient -nw"
 export ALTERNATE_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
+export MANPAGER="/usr/bin/most -s"
 
 # ssh connection check
 if [[ -z "$CONN" ]]; then
