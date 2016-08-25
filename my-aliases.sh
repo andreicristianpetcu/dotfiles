@@ -47,6 +47,24 @@ installrootdotfiles(){
   sudo cp $HOME/.zshrc /root/.zshrc
 }
 
+installemacsdaemon(){
+    mkdir -p ~/.config/systemd/user/
+    echo "[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs -nw --daemon
+ExecStop=/usr/bin/emacsclient --eval \"(kill-emacs)\"
+Restart=always
+
+[Install]
+WantedBy=default.target" > ~/.config/systemd/user/emacs.service
+    systemctl --user daemon-reload
+    systemctl --user enable emacs.service
+    systemctl --user start emacs.service
+}
+
 tmuxlocal(){
   echo "unbind C-b
 set -g prefix C-q
