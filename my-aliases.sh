@@ -29,6 +29,8 @@ installvagrantplugins(){
   vagrant plugin install vagrant-vbguest
   vagrant plugin install vagrant-vbox-snapshot
   vagrant plugin install vagrant-libvirt
+  vagrant plugin install rb-readline
+  vagrant plugin install pry
 }
 
 installautojump(){
