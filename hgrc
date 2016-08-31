@@ -1,3 +1,6 @@
+[ui]
+username = Andrei Petcu <andrei.petcu@connectis.nl>
+
 [extensions]
 progress =
 hgext.churn=
@@ -5,3 +8,6 @@ color =
 hgext.extdiff =
 hgk =
 graphlog = 
+mq =
+strip =
+pager =
