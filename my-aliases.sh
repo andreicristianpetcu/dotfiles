@@ -16,7 +16,6 @@ alias tmuxattachtmuxnew='tmux attach || tmux new'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
 alias execshelll='exec $SHELL -l'
 alias yankpwd='echo `pwd` | xclip -sel clip'
-alias mvncleaninstall='mvn clean install'
 alias dirspv='dirs -pv'
 alias shaclip='xclip -o -selection | read line; echo -n $line | openssl sha1 | awk '"'"'{print $2}'"'"' | xclip -sel clip'
 alias sudo!!='sudo !!'
@@ -46,6 +45,24 @@ installrootdotfiles(){
   sudo cp $HOME/.bashrc /root/.bashrc
   sudo rm -rf /root/.zshrc
   sudo cp $HOME/.zshrc /root/.zshrc
+}
+
+installemacsdaemon(){
+    mkdir -p ~/.config/systemd/user/
+    echo "[Unit]
+Description=Emacs: the extensible, self-documenting text editor
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/emacs -nw --daemon
+ExecStop=/usr/bin/emacsclient --eval \"(kill-emacs)\"
+Restart=always
+
+[Install]
+WantedBy=default.target" > ~/.config/systemd/user/emacs.service
+    systemctl --user daemon-reload
+    systemctl --user enable emacs.service
+    systemctl --user start emacs.service
 }
 
 tmuxlocal(){

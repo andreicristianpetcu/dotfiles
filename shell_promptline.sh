@@ -186,7 +186,7 @@ function __promptline_right_prompt {
   # section "x" header
   slice_prefix="${x_sep_fg}${rsep}${x_fg}${x_bg}${space}" slice_suffix="$space${x_sep_fg}" slice_joiner="${x_fg}${x_bg}${alt_rsep}${space}" slice_empty_prefix=""
   # section "x" slices
-  __promptline_wrapper "$(__promptline_git_status)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
+  __promptline_wrapper "$(__promptline_git_status)$(hg_prompt_info)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
   # section "y" header
   slice_prefix="${y_sep_fg}${rsep}${y_fg}${y_bg}${space}" slice_suffix="$space${y_sep_fg}" slice_joiner="${y_fg}${y_bg}${alt_rsep}${space}" slice_empty_prefix=""
