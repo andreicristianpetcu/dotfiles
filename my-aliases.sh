@@ -458,7 +458,7 @@ dosshlast(){
 dolist(){
   echo "IP Address      Container ID    Image ID         Name"
   for cont in $(docker ps -q);
-  do 
+  do
     echo "`doinspectipaddress $cont`     $cont    `doinspectimage $cont`     `doinspectname $cont`"|grep `doinspectipaddress $cont`
   done
   echo "Total containers `docker ps -q| wc -l`"
