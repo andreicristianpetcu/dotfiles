@@ -1,6 +1,16 @@
 [ui]
 username = <%= print("Your Name and email like 'John Doe <john.doe@example.com>': "); STDOUT.flush; STDIN.gets.chomp %>
 
+[alias]
+lg = log --template "{label('custom.rev', rev)}\t{label('custom.phase',phase)}\t{label('custom.tag',tags)}\t{desc|firstline} {label('custom.age', date|age)} {label('custom.user', author|user)}\n"
+
+[color]
+custom.rev = yellow
+custom.phase = bold
+custom.user = cyan
+custom.age = bold
+custom.tag = bold yellow
+
 [extensions]
 progress =
 hgext.churn=
@@ -11,3 +21,6 @@ graphlog =
 mq =
 strip =
 pager =
+shelve =
+purge =
+shelve =
