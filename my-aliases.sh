@@ -581,6 +581,14 @@ fhb() {
 }
 bindkey -s '^G' '^qfgb\n'
 
+# fbr - checkout git branch
+k() {
+    local directories directory
+    directories=$(fasd -ldtR) &&
+    directory=$(echo "$directories" | fzf +s +m) &&
+    cd $(echo "$directory")
+}
+
 # fco - checkout git commit
 fgc() {
   local commits commit
