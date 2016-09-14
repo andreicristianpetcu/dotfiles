@@ -571,6 +571,7 @@ fgb() {
         branch=$(echo "$branches" | fzf +s +m) &&
         git checkout $(echo "$branch" | sed "s/.* //")
 }
+bindkey -s '^G' '^qfgb\n'
 
 # fbr - checkout git branch
 fhb() {
@@ -579,15 +580,16 @@ fhb() {
   branch=$(echo "$branches" | fzf +s +m) &&
   hg checkout $(echo "$branch")
 }
-bindkey -s '^G' '^qfgb\n'
+bindkey -s '^H' '^qfhb\n'
 
-# fbr - checkout git branch
+# k - change directory from a list
 k() {
     local directories directory
-    directories=$(fasd -ldtR) &&
+    directories=$(fasd -ldrR | awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- ) &&
     directory=$(echo "$directories" | fzf +s +m) &&
     cd $(echo "$directory")
 }
+bindkey -s '^K' '^qk\n'
 
 # fco - checkout git commit
 fgc() {
