@@ -551,13 +551,14 @@ fda() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-# cdf - cd into the directory of the selected file
-fcdf() {
-   local file
-   local dir
-   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+# ffasd - change directory from a list
+ffasd() {
+    local directories directory
+    directories=$(fasd -ldrR | awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- ) &&
+        directory=$(echo "$directories" | fzf +s +m) &&
+        cd $(echo "$directory")
 }
-bindkey -s '^O' '^qfcdf\n'
+bindkey -s '^O' '^qffasd\n'
 
 # fkill - kill process
 fkill() {
@@ -581,15 +582,6 @@ fhb() {
   hg checkout $(echo "$branch")
 }
 bindkey -s '^H' '^qfhb\n'
-
-# k - change directory from a list
-k() {
-    local directories directory
-    directories=$(fasd -ldrR | awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- ) &&
-    directory=$(echo "$directories" | fzf +s +m) &&
-    cd $(echo "$directory")
-}
-bindkey -s '^K' '^qk\n'
 
 # fco - checkout git commit
 fgc() {
