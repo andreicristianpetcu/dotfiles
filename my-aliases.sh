@@ -190,6 +190,12 @@ alias gitdiffcachedpatch='git diff --cached > ~/patch.txt'
 #get git root directory
 alias gitpwd='git rev-parse --show-toplevel'
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
+alias hgdiffpatch='hg update -C && hg purge && \
+    hg diff -r default -r `hg branch` > /tmp/patch.txt && \
+    sed -i "/SNAPSHOT/d" /tmp/patch.txt
+    hg checkout default && \
+    hg import --no-commit /tmp/patch.txt && \
+    hg add .'
 
 gitcommitam() {
     git add . --all
@@ -579,7 +585,7 @@ fhb() {
   local branches branch
   branches=$(hg branches | sed "s/\s.*//") &&
   branch=$(echo "$branches" | fzf +s +m) &&
-  hg checkout $(echo "$branch")
+  hg purge; hg pull; hg update $(echo "$branch") -C
 }
 bindkey -s '^H' '^qfhb\n'
 
