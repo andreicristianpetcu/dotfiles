@@ -512,8 +512,8 @@ fee() {
     file=$(fzf --query="$1" --select-1 --exit-0)
     [ -n "$file" ] && emacsclient -nw "$file"
 }
-alias e='emacs -nw .'
-em(){
+alias em='emacs -nw .'
+e(){
     emacsclient -nw $1
 }
 ep() {
