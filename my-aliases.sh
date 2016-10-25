@@ -200,25 +200,15 @@ hgdiffpatch(){
 }
 
 hgreview(){
-    hg update -C && hg purge
-    COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default) and ! merge()' --template '-r {rev} '`
-    COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default)' --template '-r {rev} '`
-    #COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default) and ! merge()' --template '{rev}\n'|tac`
-    hg update -C default && hg purge
-    echo "$COMMITS_TO_REVIEW"
-    eval "hg diff $COMMITS_TO_REVIEW > /tmp/patch.txt"
-    sed -i "/SNAPSHOT/d" /tmp/patch.txt
+    BRANCH_TO_REVIEW=`hg branch`
+    hg update -C -r .
+    hg purge; hg update -C default
+    eval "hg merge $BRANCH_TO_REVIEW"
+    hg ci -m "Merge for review, never push this"
+    rm -rf /tmp/patch.txt
+    hg export -o /tmp/patch.txt -r tip > /dev/null
+    hg strip `hg id -i`
     hg import --no-commit /tmp/patch.txt
-    #hg add .
-
-    #echo $COMMITS_TO_REVIEW | while read COMMIT
-    ##for COMMIT in $COMMITS_TO_REVIEW
-    #do
-    #    echo "Diffing commit $COMMIT"
-    #    hg diff -r $COMMIT > /tmp/patch.txt
-    #    hg import --no-commit /tmp/patch.txt
-    #    rm -rf /tmp/patch.txt
-    #done
     hg add .
 }
 
