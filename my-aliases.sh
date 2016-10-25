@@ -190,12 +190,37 @@ alias gitdiffcachedpatch='git diff --cached > ~/patch.txt'
 #get git root directory
 alias gitpwd='git rev-parse --show-toplevel'
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
-alias hgdiffpatch='hg update -C && hg purge && \
-    hg diff -r default -r `hg branch` > /tmp/patch.txt && \
+hgdiffpatch(){
+    hg update -C && hg purge
+    hg diff -r default -r `hg branch` > /tmp/patch.txt
     sed -i "/SNAPSHOT/d" /tmp/patch.txt
-    hg checkout default && \
-    hg import --no-commit /tmp/patch.txt && \
-    hg add .'
+    hg checkout default
+    hg import --no-commit /tmp/patch.txt
+    hg add .
+}
+
+hgreview(){
+    hg update -C && hg purge
+    COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default) and ! merge()' --template '-r {rev} '`
+    COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default)' --template '-r {rev} '`
+    #COMMITS_TO_REVIEW=`hg log -r 'branch(.) and not branch(default) and ! merge()' --template '{rev}\n'|tac`
+    hg update -C default && hg purge
+    echo "$COMMITS_TO_REVIEW"
+    eval "hg diff $COMMITS_TO_REVIEW > /tmp/patch.txt"
+    sed -i "/SNAPSHOT/d" /tmp/patch.txt
+    hg import --no-commit /tmp/patch.txt
+    #hg add .
+
+    #echo $COMMITS_TO_REVIEW | while read COMMIT
+    ##for COMMIT in $COMMITS_TO_REVIEW
+    #do
+    #    echo "Diffing commit $COMMIT"
+    #    hg diff -r $COMMIT > /tmp/patch.txt
+    #    hg import --no-commit /tmp/patch.txt
+    #    rm -rf /tmp/patch.txt
+    #done
+    hg add .
+}
 
 gitcommitam() {
     git add . --all
