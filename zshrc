@@ -57,7 +57,7 @@ fi
 if [ "$ATTACH_TMUX" = "true" ]; then
   export ZSH_TMUX_AUTOSTART='true'
   export ZSH_TMUX_AUTOCONNECT='true'
-  if [ "$TMUX" = "" ] && [ $CONN != "sshd" ]; then 
+  if [ "$TMUX" = "" ] && [ $CONN != "sshd" ] && [ $CONN != "java" ]; then
     tmux attach || tmux new
   fi
 fi
