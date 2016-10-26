@@ -200,9 +200,17 @@ hgdiffpatch(){
 }
 
 hgreview(){
+    if [ -z "$1" ]
+    then
+        BASE_BRANCH="default"
+    else
+        BASE_BRANCH="$1"
+    fi
     BRANCH_TO_REVIEW=`hg branch`
     hg update -C -r .
-    hg purge; hg update -C default
+    echo "switching to branch $BASE_BRANCH"
+    eval "hg purge; hg update -C $BASE_BRANCH"
+    echo "merging $BRANCH_TO_REVIEW into $BASE_BRANCH"
     eval "hg merge $BRANCH_TO_REVIEW"
     hg ci -m "Merge for review, never push this"
     rm -rf /tmp/patch.txt
