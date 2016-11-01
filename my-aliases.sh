@@ -203,10 +203,11 @@ hgreview(){
     if [ -z "$1" ]
     then
         BASE_BRANCH="default"
+        BRANCH_TO_REVIEW=`hg branch`
     else
         BASE_BRANCH="$1"
+        BRANCH_TO_REVIEW="$2"
     fi
-    BRANCH_TO_REVIEW=`hg branch`
     hg update -C -r .
     echo "switching to branch $BASE_BRANCH"
     eval "hg purge; hg update -C $BASE_BRANCH"
@@ -302,7 +303,21 @@ alias vimcpluginstallqall='vim -c "PlugInstall|qall!"'
 alias vimclean='rm -rf ~/.vim/autoload && rm -rf ~/.vim/bundle && rm -rf ~/.vim/colour && rm -rf ~/.vim/tmp'
 
 opensslconnect(){
-  openssl s_client -connect $1 -state -nbio 2>&1 
+  openssl s_client -connect $1 -state -nbio 2>&1
+}
+
+opensslprint(){
+    CLIPBOARD_CONTENT=`xclip -o`
+    # CLIPBOARD_CONTENT=`echo ${CLIPBOARD_CONTENT:0:-1}`
+    PREFIX="-----BEGIN CERTIFICATE-----\n"
+    echo "$CLIPBOARD_CONTENT" > /tmp/cert_to_view_from_clipboard.crt
+    sed -i 's/ //g' /tmp/cert_to_view_from_clipboard.crt
+    fold -w 64 -s /tmp/cert_to_view_from_clipboard.crt > /tmp/cert_to_view_content.crt
+    echo -e "-----BEGIN CERTIFICATE-----\n`cat /tmp/cert_to_view_content.crt`\n-----END CERTIFICATE-----" > /tmp/cert_to_view.crt
+    openssl x509 -in /tmp/cert_to_view.crt -text -noout
+    rm -rf /tmp/cert_to_view_from_clipboard.crt
+    rm -rf /tmp/cert_to_view_content.crt
+    rm -rf /tmp/cert_to_view.crt
 }
 
 opensslgetcertificate(){
@@ -596,6 +611,7 @@ fkill() {
 
 # fbr - checkout git branch
 fgb() {
+    hg pull
     local branches branch
     branches=$(git branch) &&
         branch=$(echo "$branches" | fzf +s +m) &&
