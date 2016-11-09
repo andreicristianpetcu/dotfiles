@@ -215,7 +215,7 @@ hgreview(){
     eval "hg merge $BRANCH_TO_REVIEW"
     hg ci -m "Merge for review, never push this"
     rm -rf /tmp/patch.txt
-    hg export -o /tmp/patch.txt -r tip > /dev/null
+    hg export -a -o /tmp/patch.txt -r tip > /dev/null
     hg strip `hg id -i`
     hg import --no-commit /tmp/patch.txt
     hg add .
