@@ -621,10 +621,11 @@ bindkey -s '^G' '^qfgb\n'
 
 # fbr - checkout git branch
 fhb() {
+  hg pull
   local branches branch
   branches=$(hg branches | sed "s/\s.*//") &&
   branch=$(echo "$branches" | fzf +s +m) &&
-  hg purge; hg pull; hg update $(echo "$branch") -C
+  hg purge; hg update $(echo "$branch") -C
 }
 bindkey -s '^H' '^qfhb\n'
 

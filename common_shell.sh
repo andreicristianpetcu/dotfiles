@@ -1,5 +1,10 @@
 # Set my editor and git editor
-export EDITOR="emacsclient -nw"
+if [ -f $HOME/.editor.sh ]; then
+    source $HOME/.editor.sh
+    export EDITOR="$MY_DEFAULT_EDITOR"
+else
+    export EDITOR="vim"
+fi
 export ALTERNATE_EDITOR="$EDITOR"
 export VISUAL="$EDITOR"
 export GIT_EDITOR="$EDITOR"
@@ -82,7 +87,7 @@ if [ -d $HOME/.pyenv/bin ]; then
   export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
-fi 
+fi
 
 if [ -d "$HOME/dotfiles/bin" ]; then
   export PATH="$PATH:$HOME/dotfiles/bin"
