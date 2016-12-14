@@ -290,6 +290,8 @@ layers configuration. You are free to put any user code."
     )
   (evil-leader/set-key "o y" 'copy-to-clipboard)
   (evil-leader/set-key "o p" 'paste-from-clipboard)
+  (global-set-key (kbd "C-M-C") 'copy-to-clipboard)
+  (global-set-key (kbd "C-M-P") 'paste-from-clipboard)
 
   (defun my-save-if-bufferfilename ()
     (if (buffer-file-name)
