@@ -212,8 +212,8 @@ hgreview(){
     echo "switching to branch $BASE_BRANCH"
     eval "hg purge; hg update -C $BASE_BRANCH"
     echo "merging $BRANCH_TO_REVIEW into $BASE_BRANCH"
-    eval "hg merge $BRANCH_TO_REVIEW"
-    hg ci -m "Merge for review, never push this"
+    eval "hg merge $BRANCH_TO_REVIEW --config ui.merge=:merge"
+    hg ci -m "Merge for review, never push this" -s
     rm -rf /tmp/patch.txt
     hg export -a -o /tmp/patch.txt -r tip > /dev/null
     hg strip `hg id -i`
@@ -623,7 +623,7 @@ bindkey -s '^G' '^qfgb\n'
 fhb() {
   hg pull
   local branches branch
-  branches=$(hg branches | sed "s/\s.*//") &&
+  branches=$(hg branches --closed | sed "s/\s.*//") &&
   branch=$(echo "$branches" | fzf +s +m) &&
   hg purge; hg update $(echo "$branch") -C
 }
