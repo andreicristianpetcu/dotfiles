@@ -24,6 +24,12 @@ alias sudosu='sudo su'
 alias sudosupostgres='sudo su postgres'
 alias sudoupostgrescreateusersuserp='sudo -u postgres createuser -s $USER -P'
 
+prettifyjson(){
+    JSON_FILE="$1"
+    python -m json.tool $JSON_FILE > /tmp/pretty.json
+    mv /tmp/pretty.json $JSON_FILE
+}
+
 installvagrantplugins(){
   vagrant plugin install vagrant-hostsupdater
   vagrant plugin install vagrant-vbguest
