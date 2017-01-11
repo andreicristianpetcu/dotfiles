@@ -259,6 +259,10 @@ vagrantinit(){
     vagrant init $1
 }
 
+vagrantrebuild(){
+    sudo echo "getting sudo password" && vagrant destroy -f $1 && vagrant up $1
+}
+
 # rails
 alias railsc='rails c'
 alias railsdb='rails db'
