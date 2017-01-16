@@ -630,15 +630,23 @@ fgb() {
 }
 bindkey -s '^G' '^qfgb\n'
 
-# fbr - checkout git branch
+# fbr - checkout mercurial branch force refresh
 fhb() {
-  hg pull
+    hg pull
+    local branches branch
+    branches=$(hg branches --closed | sed "s/\s.*//") &&
+        branch=$(echo "$branches" | fzf +s +m) &&
+        hg purge; hg update $(echo "$branch") -C
+}
+bindkey -s '^[^H' '^qfhb\n'
+# fbr - checkout local mercurial branch
+fhbb() {
   local branches branch
   branches=$(hg branches --closed | sed "s/\s.*//") &&
   branch=$(echo "$branches" | fzf +s +m) &&
   hg purge; hg update $(echo "$branch") -C
 }
-bindkey -s '^H' '^qfhb\n'
+bindkey -s '^H' '^qfhbb\n'
 
 # fco - checkout git commit
 fgc() {
