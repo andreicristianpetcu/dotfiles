@@ -319,9 +319,12 @@ opensslconnect(){
 
 opensslprint(){
     CLIPBOARD_CONTENT=`xclip -o`
-    # CLIPBOARD_CONTENT=`echo ${CLIPBOARD_CONTENT:0:-1}`
-    PREFIX="-----BEGIN CERTIFICATE-----\n"
     echo "$CLIPBOARD_CONTENT" > /tmp/cert_to_view_from_clipboard.crt
+    dos2unix /tmp/cert_to_view_from_clipboard.crt
+    sed -i 's/-----BEGIN CERTIFICATE-----//g' /tmp/cert_to_view_from_clipboard.crt
+    sed -i 's/-----END CERTIFICATE-----//g' /tmp/cert_to_view_from_clipboard.crt
+    sed -i '/^\s*$/d' /tmp/cert_to_view_from_clipboard.crt
+    sed -i '/\r/d' /tmp/cert_to_view_from_clipboard.crt
     sed -i 's/ //g' /tmp/cert_to_view_from_clipboard.crt
     fold -w 64 -s /tmp/cert_to_view_from_clipboard.crt > /tmp/cert_to_view_content.crt
     echo -e "-----BEGIN CERTIFICATE-----\n`cat /tmp/cert_to_view_content.crt`\n-----END CERTIFICATE-----" > /tmp/cert_to_view.crt
@@ -343,6 +346,13 @@ hosttoip(){
 # functions
 psaxgrep() {
   ps -ax|grep $1
+}
+
+lssha1sum(){
+    for file in `ls -p | grep -v / `
+    do
+        echo "`sha1sum $file`"
+    done
 }
 
 # Vagrant urls
