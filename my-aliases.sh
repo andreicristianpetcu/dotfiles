@@ -228,6 +228,18 @@ hgreview(){
     hg add .
 }
 
+whichtests(){
+    ag -a -G .txt "(Errors|Failures): [1-9]" `hg root`
+}
+
+cdhgroot(){
+    cd `hg root`
+}
+
+meldgoodandbad(){
+    echo "" > /tmp/{good,bad}.txt && meld /tmp/good.txt /tmp/bad.txt &
+}
+
 gitcommitam() {
     git add . --all
     git commit -a -m "$*"
