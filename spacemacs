@@ -328,6 +328,7 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(global-evil-search-highlight-persist nil)
  '(helm-ag-base-command "ag --nocolor --nogroup -Q")
  '(helm-ag-use-emacs-lisp-regexp nil)
  '(helm-follow-mode-persistent t)
