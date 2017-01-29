@@ -206,6 +206,28 @@ hgdiffpatch(){
     hg add .
 }
 
+gitreview(){
+    if [ -z "$1" ]
+    then
+        BASE_BRANCH="master"
+        BRANCH_TO_REVIEW=`git rev-parse --abbrev-ref HEAD`
+    else
+        BASE_BRANCH="$1"
+        BRANCH_TO_REVIEW="$2"
+    fi
+    git reset --hard; git clean -f -d
+    echo "switching to branch $BASE_BRANCH"
+    eval "git checkout $BASE_BRANCH"
+    echo "merging $BRANCH_TO_REVIEW into $BASE_BRANCH"
+    eval "git merge $BRANCH_TO_REVIEW"
+#    hg ci -m "Merge for review, never push this" -s
+#    rm -rf /tmp/patch.txt
+#    hg export -a -o /tmp/patch.txt -r tip > /dev/null
+#    hg strip `hg id -i`
+#    hg import --no-commit /tmp/patch.txt
+#    hg add .
+}
+
 hgreview(){
     if [ -z "$1" ]
     then
