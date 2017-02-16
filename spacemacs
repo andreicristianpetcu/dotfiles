@@ -332,6 +332,7 @@ layers configuration. You are free to put any user code."
  '(helm-ag-base-command "ag --nocolor --nogroup -Q")
  '(helm-ag-use-emacs-lisp-regexp nil)
  '(helm-follow-mode-persistent t)
+ '(helm-source-names-using-follow (quote ("Imenu")))
  '(js-indent-level 2)
  '(js2-mode-show-strict-warnings 0)
  '(magit-pull-arguments nil)

@@ -156,6 +156,10 @@ installgnomekeys(){
   gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/ binding "'<Super><Alt>space'"
 }
 
+gsettingsetscreencast0(){
+    gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
+}
+
 saveguakesettings(){
   gconftool-2 --dump /apps/guake > $HOME/.gconftool2_guake.xml
 }
