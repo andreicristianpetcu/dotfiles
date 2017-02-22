@@ -591,6 +591,11 @@ alias licensegpl="wget https://gitlab.com/andreicristianpetcu/dotfiles/raw/maste
 alias licenseagpl="wget https://gitorious.org/tribunal/tribunal/raw/LICENSE.txt"
 alias licenseccbysa40="wget https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt -O LICENSE.txt"
 
+watchtests(){
+    echo "watching $1"
+    watch -n 1 -d -c "cat $1 | grep -E '(✗|✓)'"
+}
+
 generatecertificate(){
   export WEBSITE=$1
   echo "Generating certificate for $WEBSITE .key, .crt, .pem"
