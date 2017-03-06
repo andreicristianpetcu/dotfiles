@@ -522,6 +522,7 @@ sshforce(){
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R $IP_ADDRESS
     ssh-keygen -f "$HOME/.ssh/known_hosts" -R $PING_IP_ADDRESS
     echo "SSH-ing to $USER_AT_DOMAIN"
+    ssh-copy-id $USER_AT_DOMAIN
     ssh $USER_AT_DOMAIN
 }
 
