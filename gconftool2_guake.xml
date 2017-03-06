@@ -206,14 +206,14 @@
       <key>general/window_height</key>
       <schema_key>/schemas/apps/guake/general/window_height</schema_key>
       <value>
-        <int>76</int>
+        <int>100</int>
       </value>
     </entry>
     <entry>
       <key>general/window_height_f</key>
       <schema_key>/schemas/apps/guake/general/window_height_f</schema_key>
       <value>
-        <float>50</float>
+        <float>100</float>
       </value>
     </entry>
     <entry>
@@ -524,6 +524,13 @@
       </value>
     </entry>
     <entry>
+      <key>style/font/allow_bold</key>
+      <schema_key>/schemas/apps/guake/style/font/allow_bold</schema_key>
+      <value>
+        <bool>true</bool>
+      </value>
+    </entry>
+    <entry>
       <key>style/font/color</key>
       <schema_key>/schemas/apps/guake/style/font/color</schema_key>
       <value>
@@ -534,7 +541,7 @@
       <key>style/font/palette</key>
       <schema_key>/schemas/apps/guake/style/font/palette</schema_key>
       <value>
-        <string>#262626262626:#cccc00000000:#4e4e9a9a0606:#c4c4a0a00000:#444444444444:#757550507b7b:#060698209a9a:#d3d3d7d7cfcf:#555557575353:#efef29292929:#8a8ae2e23434:#fcfce9e94f4f:#72729f9fcfcf:#adad7f7fa8a8:#3434e2e2e2e2:#eeeeeeeeecec</string>
+        <string>#262626262626:#cccc00000000:#4e4e9a9a0606:#c4c4a0a00000:#a0a066666666:#757550507b7b:#060698209a9a:#d3d3d7d7cfcf:#555557575353:#efef29292929:#8a8ae2e23434:#fcfce9e94f4f:#72729f9fcfcf:#adad7f7fa8a8:#3434e2e2e2e2:#eeeeeeeeecec:#000000000000:#000000000000</string>
       </value>
     </entry>
     <entry>
