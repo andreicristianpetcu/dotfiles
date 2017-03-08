@@ -298,7 +298,12 @@ vagrantinit(){
 }
 
 vagrantrebuild(){
-    sudo echo "getting sudo password" && vagrant destroy -f $1 && vagrant up $1
+    sudo echo "getting sudo password" && vagrant destroy -f $1
+    vagrant up --no-provision $1
+    vagrant snapshot take $1 noprovision
+    vagrant provision $1
+    vagrant snapshot take $1 provisioned
+    vagrant snapshot list $1
 }
 
 # rails
