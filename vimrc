@@ -347,8 +347,7 @@ if v:version >= 703
     imap <silent><buffer><expr> <C-h> unite#do_action('split')
     imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
   endfunction
-  noremap <leader>p :Unite -start-insert file_rec<CR>
-  noremap <leader>pp :Unite -start-insert file_rec<CR>
+  noremap <leader>pf :Unite -start-insert file_rec<CR>
   noremap <leader>pd :Unite -start-insert directory<CR>
 
   noremap <leader>pw yiw:Unite -start-insert file_rec<CR><C-R>0
@@ -362,8 +361,7 @@ if v:version >= 703
   nnoremap <Leader>/e :Unite -start-insert change<CR>
   nnoremap <Leader>/r :UniteResume -start-insert<CR>
   noremap <Leader>ss :Unite -start-insert line -auto-highlight<CR>
-  noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
-  noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
+  noremap <Leader>/ :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
   noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
   noremap <Leader>/lw yiw:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC>
   noremap <Leader>/lW yiW:Unite -start-insert line -auto-preview -winheight=40 -no-split<CR><C-R>0<ESC> 
