@@ -293,12 +293,11 @@ nnoremap <Leader>\W yiW:%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\0 :%s/<C-R>0/<C-R>0/gc<left><left><left>
 nnoremap <Leader>\s :%s///gc<left><left><left><left>
 
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 
 " Airline, pretty ui plugin
 Plug 'bling/vim-airline'
-let g:airline_theme='luna'
-" let g:airline_theme='jellybeans'
+Plug 'vim-airline/vim-airline-themes'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 0
@@ -362,7 +361,7 @@ if v:version >= 703
   nnoremap <Leader>/j :Unite -start-insert jump<CR>
   nnoremap <Leader>/e :Unite -start-insert change<CR>
   nnoremap <Leader>/r :UniteResume -start-insert<CR>
-  noremap <Leader>/l :Unite -start-insert line -auto-highlight<CR>
+  noremap <Leader>ss :Unite -start-insert line -auto-highlight<CR>
   noremap <Leader>/ll :Unite -start-insert line -auto-highlight<CR>
   noremap <Leader>/la :Unite -start-insert line:args -auto-preview -winheight=40 -no-split<CR>
   noremap <Leader>/b :Unite -start-insert line:buffers -auto-preview -winheight=40 -no-split<CR>
