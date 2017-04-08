@@ -293,6 +293,20 @@ vagrantboxadd(){
     vagrant box add $1 $2
 }
 
+importcertificatetojdktruststore(){
+    HOSTNAME=$1
+    ALIAS=`echo "$HOSTNAME"| sed -e 's/[_-.]//g'`
+    echo "HOSTNAME is $HOSTNAME"
+    echo "ALIAS is $ALIAS"
+    openssl s_client -showcerts -connect "$HOSTNAME:443" < /dev/null | openssl x509 -outform PEM > /tmp/cert_to_import.pem
+    MAVEN_JRE_HOME=`mvn --version|grep Java\ home| cut -d' ' -f3`
+    CACERTS_FILE="$MAVEN_JRE_HOME/lib/security/cacerts"
+    echo "Importing in truststore from $CACERTS_FILE"
+    sudo keytool -import -alias "$ALIAS" -keystore "$CACERTS_FILE" -file /tmp/cert_to_import.pem
+    rm -rf /tmp/cert_to_import.pem
+}
+
+
 vagrantinit(){
     vagrant init $1
 }
