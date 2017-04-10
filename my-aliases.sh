@@ -306,6 +306,9 @@ importcertificatetojdktruststore(){
     rm -rf /tmp/cert_to_import.pem
 }
 
+mvnrepoclean(){
+    find ~/.m2/repository -name "*-SNAPSHOT" -exec rm -rf {} \;
+}
 
 vagrantinit(){
     vagrant init $1
