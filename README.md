@@ -19,6 +19,12 @@ mkdir -p ~/.vim/bundle
 git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 ```
 
+## Install only vim
+
+```sh
+git --version && wget https://raw.githubusercontent.com/andreicristianpetcu/dotfiles/develop/vimrc -O ~/.vimrc && vim
+```
+
 After installing, open a new terminal window to see the effects.
 
 Feel free to customize the .zshrc file to match your preference.

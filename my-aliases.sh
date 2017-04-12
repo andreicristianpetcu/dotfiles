@@ -293,17 +293,18 @@ vagrantboxadd(){
     vagrant box add $1 $2
 }
 
-importcertificatetojdktruststore(){
+importcertificate(){
     HOSTNAME=$1
     ALIAS=`echo "$HOSTNAME"| sed -e 's/[_-.]//g'`
     echo "HOSTNAME is $HOSTNAME"
     echo "ALIAS is $ALIAS"
-    openssl s_client -showcerts -connect "$HOSTNAME:443" < /dev/null | openssl x509 -outform PEM > /tmp/cert_to_import.pem
+    openssl s_client -showcerts -connect "$HOSTNAME:443" < /dev/null | openssl x509 -outform PEM > "/tmp/$ALIAS.pem"
     MAVEN_JRE_HOME=`mvn --version|grep Java\ home| cut -d' ' -f3`
     CACERTS_FILE="$MAVEN_JRE_HOME/lib/security/cacerts"
+    sudo keytool -list -keystore "$CACERTS_FILE" | grep "$ALIAS" && echo "Deleting current alias $ALIAS" && sudo keytool -delete -alias "$ALIAS" -keystore "$CACERTS_FILE"
     echo "Importing in truststore from $CACERTS_FILE"
-    sudo keytool -import -alias "$ALIAS" -keystore "$CACERTS_FILE" -file /tmp/cert_to_import.pem
-    rm -rf /tmp/cert_to_import.pem
+    sudo keytool -import -alias "$ALIAS" -keystore "$CACERTS_FILE" -file "/tmp/$ALIAS.pem"
+    rm -rf "/tmp/$ALIAS.pem"
 }
 
 mvnrepoclean(){
