@@ -629,6 +629,15 @@ generatecertificate(){
   openssl x509 -in "$WEBSITE.crt" -out "$WEBSITE.pem" -outform PEM
 }
 
+convertWebExtensionIcon(){
+    SRC_ICON=$1
+    convert -resize 16x16 "$SRC_ICON" icon-16.png
+    convert -resize 19x19 "$SRC_ICON" icon-19.png
+    convert -resize 38x38 "$SRC_ICON" icon-38.png
+    convert -resize 48x48 "$SRC_ICON" icon-48.png
+    convert -resize 96x96 "$SRC_ICON" icon-96.png
+}
+
 # fzf magic
 # fe [FUZZY PATTERN] - Open the selected file with the default editor
 #   - Bypass fuzzy finder if there's only one match (--select-1)
