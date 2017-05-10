@@ -20,3 +20,7 @@ if [ -f $BASH_IT/bash_it.sh ]; then
 fi
 
 source $HOME/.common_shell.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/andreip/.sdkman"
+[[ -s "/home/andreip/.sdkman/bin/sdkman-init.sh" ]] && source "/home/andreip/.sdkman/bin/sdkman-init.sh"

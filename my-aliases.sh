@@ -254,6 +254,10 @@ hgreview(){
     hg add .
 }
 
+hgdiffaddremove(){
+    hg status|grep -E "^R .*" | grep -v Test.java > /tmp/hgaddremove.txt && hg status|grep -E "^A .*" | grep -v Test.java >> /tmp/hgaddremove.txt && gedit /tmp/hgaddremove.txt
+}
+
 whichtests(){
     ag -a -G .txt "(Errors|Failures): [1-9]" `hg root`
 }
@@ -409,10 +413,18 @@ psaxgrep() {
   ps -ax|grep $1
 }
 
-lssha1sum(){
+lshash(){
     for file in `ls -p | grep -v / `
     do
-        echo "`sha1sum $file`"
+        echo "sha1 `sha1sum $file`"
+    done
+    for file in `ls -p | grep -v / `
+    do
+        echo "sha2 `sha256sum $file`"
+    done
+    for file in `ls -p | grep -v / `
+    do
+        echo "md5 `md5sum $file`"
     done
 }
 
@@ -439,6 +451,11 @@ installrbenv(){
   rm -rf ~/.rbenv && git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 }
+
+installsdkman(){
+    curl -s "https://get.sdkman.io" | bash
+}
+
 installdockerenter(){
   cd /tmp
   git clone git@github.com:Pithikos/docker-enter.git

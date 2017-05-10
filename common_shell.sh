@@ -76,6 +76,11 @@ if [ -f $HOME/.jenv/bin/jenv-init.sh ]; then
   source $HOME/.jenv/bin/jenv-init.sh
 fi
 
+# source sdkman if it is found
+if [ -f $HOME/.sdkman/bin/sdkman-init.sh ]; then
+  source $HOME/.sdkman/bin/sdkman-init.sh
+fi
+
 # add aliases to both shells
 # source $HOME/.my-aliases.sh
 

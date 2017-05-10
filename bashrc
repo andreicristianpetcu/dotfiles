@@ -36,3 +36,7 @@ if [ $USER = "root" ]; then
 fi
 
 if [ -f $HOME/.fzf.bash ]; then source $HOME/.fzf.bash ;fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/andreip/.sdkman"
+[[ -s "/home/andreip/.sdkman/bin/sdkman-init.sh" ]] && source "/home/andreip/.sdkman/bin/sdkman-init.sh"
