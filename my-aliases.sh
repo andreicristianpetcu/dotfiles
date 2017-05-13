@@ -200,6 +200,8 @@ alias gitbrancha='git branch -a'
 alias gitdiffcachedpatch='git diff --cached > ~/patch.txt'
 #get git root directory
 alias gitpwd='git rev-parse --show-toplevel'
+alias yanktimestamp="date +%s | xclip -sel clip"
+alias yankhgbranch="hg branch | xclip -sel clip"
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
 hgdiffpatch(){
     hg update -C && hg purge
