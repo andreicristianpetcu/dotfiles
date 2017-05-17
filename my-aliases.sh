@@ -203,6 +203,8 @@ alias gitpwd='git rev-parse --show-toplevel'
 alias yanktimestamp="date +%s | xclip -sel clip"
 alias yankhgbranch="hg branch | xclip -sel clip"
 alias yankgitbranch="git branch | sed -n '/\* /s///p' | xclip -sel clip"
+alias yankviminstall="echo 'git --version && wget https://raw.githubusercontent.com/andreicristianpetcu/dotfiles/develop/vimrc -O ~/.vimrc && vim' | xclip -sel clip"
+
 hgdiffpatch(){
     hg update -C && hg purge
     hg diff -r default -r `hg branch` > /tmp/patch.txt
@@ -678,7 +680,7 @@ fed() {
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
-bindkey -s '^V' '^qfee\n'
+bindkey -s '^V' '^qfed\n'
 
 # fzf magic
 # fe [FUZZY PATTERN] - Delete selected file or directory
