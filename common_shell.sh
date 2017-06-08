@@ -40,8 +40,10 @@ if [ -f /usr/bin/firefox ]; then export FIREFOX_BIN='/usr/bin/firefox' ;fi
 # lazy add JAVA_HOME
 if [ -d /usr/lib/jvm/java-7-openjdk ]; then export JAVA_HOME='/usr/lib/jvm/java-7-openjdk' ;fi
 if [ -d /usr/lib/jvm/java-7-oracle/jre ]; then export JAVA_HOME='/usr/lib/jvm/java-7-oracle/jre' ;fi
+if [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then export JAVA_HOME='/usr/lib/jvm/java-7-openjdk-amd64' ;fi
+# if [ -d /usr/lib/jvm/oraclejdk8-64 ]; then export JAVA_HOME='/usr/lib/jvm/oraclejdk8-64' ;fi
+if [ -d /usr/lib/jvm/java-1.8.0-openjdk-amd64 ]; then export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-amd64' ;fi
 if [ -d /usr/lib/jvm/java-8-oracle ]; then export JAVA_HOME='/usr/lib/jvm/java-8-oracle' ;fi
-if [ -d /usr/lib/jvm/oraclejdk8-64 ]; then export JAVA_HOME='/usr/lib/jvm/oraclejdk8-64' ;fi
 if [ -n "$JAVA_HOME" ]; then export PATH="$JAVA_HOME/bin:$PATH" ;fi
 
 # lazy add M2_HOME

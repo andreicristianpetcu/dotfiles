@@ -17,11 +17,7 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 
-plugins=(bower command-not-found cp gem git git-extras jira
-      \ gitignore gradle heroku history-substring-search jsontools mvn node
-      \ npm pip pyenv python rails rbenv rsync ruby sudo svn systemadmin
-      \ systemd tmux vagrant zsh_reload zshmarks capistrano zsh-navigation-tools
-      \ common-aliases dircycle dnf fasd gitfast history mercurial lol)
+plugins=(command-not-found cp mvn systemd vagrant common-aliases dnf fasd mercurial)
 
 
 if [ -f $HOME/.common_shell.sh ]
