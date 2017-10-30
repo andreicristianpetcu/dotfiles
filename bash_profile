@@ -19,8 +19,8 @@ if [ -f $BASH_IT/bash_it.sh ]; then
   source $BASH_IT/bash_it.sh
 fi
 
-source $HOME/.common_shell.sh
+source $HOME/.profile.sh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/andreip/.sdkman"
-[[ -s "/home/andreip/.sdkman/bin/sdkman-init.sh" ]] && source "/home/andreip/.sdkman/bin/sdkman-init.sh"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

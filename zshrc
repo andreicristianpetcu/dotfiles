@@ -20,9 +20,9 @@ setopt HIST_SAVE_NO_DUPS
 plugins=(command-not-found cp mvn systemd vagrant common-aliases dnf fasd mercurial)
 
 
-if [ -f $HOME/.common_shell.sh ]
+if [ -f $HOME/.profile.sh ]
 then
-  source $HOME/.common_shell.sh
+  source $HOME/.profile.sh
 fi
 
 if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 

@@ -657,6 +657,7 @@ convertWebExtensionIcon(){
     convert -resize 38x38 "$SRC_ICON" icon-38.png
     convert -resize 48x48 "$SRC_ICON" icon-48.png
     convert -resize 96x96 "$SRC_ICON" icon-96.png
+    convert -resize 128x128 "$SRC_ICON" icon-128.png
 }
 
 # fzf magic
