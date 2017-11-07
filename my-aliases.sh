@@ -279,6 +279,13 @@ gitcommitam() {
     git commit -a -m "$*"
 }
 
+githgcommitam() {
+    git add . --all
+    git commit -a -m "$*"
+    hg add .
+    hg commit -m "$*"
+}
+
 gitremoterm(){
   git remote rm $1
 }
