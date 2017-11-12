@@ -639,7 +639,7 @@ dolist(){
 }
 
 # Licenses
-alias licensegpl="wget https://gitlab.com/andreicristianpetcu/dotfiles/raw/master/LICENSE.txt"
+alias licensegpl="wget https://www.gnu.org/licenses/gpl-3.0.txt -O LICENSE.txt"
 alias licenseagpl="wget https://gitorious.org/tribunal/tribunal/raw/LICENSE.txt"
 alias licenseccbysa40="wget https://creativecommons.org/licenses/by-sa/4.0/legalcode.txt -O LICENSE.txt"
 
