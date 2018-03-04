@@ -359,8 +359,6 @@ alias bundlelistpaths='bundle list --paths'
 alias ctagsrbundlelistpaths='ctags -R . $(bundle list --paths)'
 
 # vim
-which vimx > /dev/null && alias vim='vimx'
-
 alias vimvimrc='vim ~/.vimrc'
 alias vimgitignore='vim .gitignore'
 alias vimirbrc='vim ~/.irbrc'
@@ -688,7 +686,7 @@ fed() {
   file=$(fzf --query="$1" --select-1 --exit-0)
   [ -n "$file" ] && ${EDITOR:-vim} "$file"
 }
-bindkey -s '^V' '^qfed\n'
+# bindkey -s '^V' '^qfed\n'
 
 # fzf magic
 # fe [FUZZY PATTERN] - Delete selected file or directory
@@ -737,7 +735,7 @@ fkill() {
 
 # fbr - checkout git branch
 fgb() {
-    hg pull
+    git pull
     local branches branch
     branches=$(git branch) &&
         branch=$(echo "$branches" | fzf +s +m) &&

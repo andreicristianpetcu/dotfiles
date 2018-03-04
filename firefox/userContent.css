@@ -1,0 +1,24 @@
+/*
+ * Description: Makes the activity stream page look decent with the dark theme.
+ *
+ * Screenshot: https://imgur.com/a/WcxGk
+ *
+ * Contributor(s): Andrei Cristian Petcu
+ */
+
+body {
+  --andrei-old-dark: #474749;
+  --andrei-new-dark: #363A59;
+}
+
+@-moz-document url("about:home"), url("about:newtab") {
+  .activity-stream {
+    background-color: var(--andrei-new-dark, hsla(0,0%,100%,.8)) !important;
+  }
+}
+@-moz-document url("about:blank") {
+  *:empty:not([id]):not([style]) {
+    background-color: var(--andrei-new-dark, hsla(0,0%,100%,.8)) !important;
+  }
+}
+
