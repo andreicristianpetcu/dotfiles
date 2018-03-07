@@ -1,10 +1,16 @@
 #!/bin/bash
-mvn dependency:tree --projects "$1" | tee /tmp/pom_files_1.txt
 
+# Run this command with 2 parameters. The first and the second project you want to find common dependencies.
+# find_common_modules org.apache.camel.example:camel-example-aggregate org.apache.camel.example:camel-example-kafka
+script_prefix="[COMMON MODULES FINDER]"
 cleanup_file(){
-    file_name=$1
+    project_name=$1
+    file_name=$2
+    echo "$script_prefix Processing project $project_name"
+    mvn dependency:tree --projects "$project_name" | tee "$file_name"
     sed -i '/-SNAPSHOT/!d' "$file_name"
     sed -i '/Downloading/d' "$file_name"
+    sed -i '/Downloaded/d' "$file_name"
     sed -i '/Building/d' "$file_name"
     sed -i 's/\[INFO\]\ //g' "$file_name"
     sed -i 's/+- //g' "$file_name"
@@ -14,9 +20,13 @@ cleanup_file(){
     sed -i 's/-SNAPSHOT//g' "$file_name"
     sed -i 's/:provided//g' "$file_name"
     sed -i 's/:compile//g' "$file_name"
-    echo "----------"
-    sort -u "$file_name"
-    echo "----------"
+    echo "$script_prefix Flatten denendency tree of project $project_name is:"
+    sort -u "$file_name" -o "$file_name"
+    cat "$file_name"
 }
 
-cleanup_file /tmp/pom_files_1.txt
+cleanup_file $1 /tmp/pom_files_1.txt
+cleanup_file $2 /tmp/pom_files_2.txt
+
+echo "$script_prefix The common projects between $1 and $2 are:"
+comm -1 -2 /tmp/pom_files_1.txt /tmp/pom_files_2.txt
