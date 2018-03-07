@@ -1,14 +1,22 @@
 #!/bin/bash
-mvn dependency:tree --projects "$1" > /tmp/pom_files_1.txt
-sed -i '/-SNAPSHOT/!d' /tmp/pom_files_1.txt
-sed -i '/Downloading/d' /tmp/pom_files_1.txt
-sed -i '/Building/d' /tmp/pom_files_1.txt
-sed -i 's/\[INFO\]\ //g' /tmp/pom_files_1.txt
-sed -i 's/+- //g' /tmp/pom_files_1.txt
-sed -i 's/\\- //g' /tmp/pom_files_1.txt
-sed -i 's/\  //g' /tmp/pom_files_1.txt
-sed -i 's/|//g' /tmp/pom_files_1.txt
-sed -i 's/-SNAPSHOT//g' /tmp/pom_files_1.txt
-sed -i 's/:provided//g' /tmp/pom_files_1.txt
-sed -i 's/:compiled//g' /tmp/pom_files_1.txt
-sort -u /tmp/pom_files_1.txt
+mvn dependency:tree --projects "$1" | tee /tmp/pom_files_1.txt
+
+cleanup_file(){
+    file_name=$1
+    sed -i '/-SNAPSHOT/!d' "$file_name"
+    sed -i '/Downloading/d' "$file_name"
+    sed -i '/Building/d' "$file_name"
+    sed -i 's/\[INFO\]\ //g' "$file_name"
+    sed -i 's/+- //g' "$file_name"
+    sed -i 's/\\- //g' "$file_name"
+    sed -i 's/\  //g' "$file_name"
+    sed -i 's/|//g' "$file_name"
+    sed -i 's/-SNAPSHOT//g' "$file_name"
+    sed -i 's/:provided//g' "$file_name"
+    sed -i 's/:compile//g' "$file_name"
+    echo "----------"
+    sort -u "$file_name"
+    echo "----------"
+}
+
+cleanup_file /tmp/pom_files_1.txt
