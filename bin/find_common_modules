@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# Run this command with 2 parameters. The first and the second project you want to find common dependencies.
-# find_common_modules org.apache.camel.example:camel-example-aggregate org.apache.camel.example:camel-example-kafka
+if (( $# != 2 )); then
+    echo "Illegal number of parameters. You need 2 parameters. The first and the second project you want to find common dependencies for. Example:
+
+\$find_common_modules org.apache.camel.example:camel-example-aggregate org.apache.camel.example:camel-example-kafka
+"
+    exit 1
+fi
+
 script_prefix="[COMMON MODULES FINDER]"
 cleanup_file(){
     project_name=$1
