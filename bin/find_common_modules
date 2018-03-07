@@ -1,0 +1,13 @@
+#!/bin/bash
+mvn dependency:tree --projects org.apache.camel:components > /tmp/pom_files_1.txt
+sed -i '/-SNAPSHOT/!d' /tmp/pom_files_1.txt
+sed -i '/Building/d' /tmp/pom_files_1.txt
+sed -i 's/\[INFO\]\ //g' /tmp/pom_files_1.txt
+sed -i 's/+- //g' /tmp/pom_files_1.txt
+sed -i 's/\\- //g' /tmp/pom_files_1.txt
+sed -i 's/\  //g' /tmp/pom_files_1.txt
+sed -i 's/|//g' /tmp/pom_files_1.txt
+sed -i 's/-SNAPSHOT//g' /tmp/pom_files_1.txt
+sed -i 's/:provided//g' /tmp/pom_files_1.txt
+sed -i 's/:compiled//g' /tmp/pom_files_1.txt
+sort -u /tmp/pom_files_1.txt
