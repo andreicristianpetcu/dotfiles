@@ -1,6 +1,7 @@
 #!/bin/bash
-mvn dependency:tree --projects org.apache.camel:components > /tmp/pom_files_1.txt
+mvn dependency:tree --projects "$1" > /tmp/pom_files_1.txt
 sed -i '/-SNAPSHOT/!d' /tmp/pom_files_1.txt
+sed -i '/Downloading/d' /tmp/pom_files_1.txt
 sed -i '/Building/d' /tmp/pom_files_1.txt
 sed -i 's/\[INFO\]\ //g' /tmp/pom_files_1.txt
 sed -i 's/+- //g' /tmp/pom_files_1.txt
