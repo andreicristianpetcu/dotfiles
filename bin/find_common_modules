@@ -12,7 +12,7 @@ script_prefix="[COMMON MODULES FINDER]"
 process_project_in_file(){
     project_name=$1
     file_name=$2
-    echo "$script_prefix Processing project $project_name"
+    echo "$script_prefix Processing project $project_name in $file_name"
     mvn dependency:tree --projects "$project_name" | tee "$file_name"
     sed -i '/jar/!d' "$file_name"
     sed -i '/Downloading/d' "$file_name"
@@ -32,8 +32,12 @@ process_project_in_file(){
     cat "$file_name"
 }
 
-process_project_in_file $1 /tmp/pom_files_1.txt
-process_project_in_file $2 /tmp/pom_files_2.txt
+argument_index=1
+for var in "$@"
+do
+    process_project_in_file "$var" "/tmp/pom_files_$argument_index.txt"
+    argument_index=$(($argument_index+1))
+done
 
 echo "$script_prefix The common projects between $1 and $2 are:"
 comm -1 -2 /tmp/pom_files_1.txt /tmp/pom_files_2.txt
