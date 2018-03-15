@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if (( $# < 2 )); then
-    echo "Illegal number of parameters. You need 2 parameters. The first and the second project you want to find common dependencies for. Example:
+    echo "Illegal number of parameters. You need 2 or more parameters. The parameters are gorupId:artifactId of project you want to find common dependencies for. Example:
 
 \$find_common_modules org.apache.camel.example:camel-example-aggregate org.apache.camel.example:camel-example-kafka
 "
@@ -27,6 +27,8 @@ process_project_in_file(){
     sed -i 's/:provided//g' "$file_name"
     sed -i 's/:compile//g' "$file_name"
     sed -i 's/^ *//' "$file_name"
+    sed -i 's/:jar:.*$//g' "$file_name"
+    cat "$project_name" >> "$file_name"
     echo "$script_prefix Flatten denendency tree of project $project_name is:"
     sort -u "$file_name" -o "$file_name"
     cat "$file_name"
@@ -48,5 +50,5 @@ done
 
 sort /tmp/pom_files_united.txt | uniq -c | sort -bg > /tmp/pom_files_sorted.txt
 
-echo "$script_prefix Here is the list of dependencies by occurence:"
+echo "$script_prefix Here is the list of dependencies by occurence:\n/tmp/pom_files_sorted.txt"
 cat /tmp/pom_files_sorted.txt | grep -v '      1 '
