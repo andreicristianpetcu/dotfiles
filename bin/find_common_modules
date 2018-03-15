@@ -34,26 +34,19 @@ process_project_in_file(){
 
 argument_index=1
 all_files=""
+
+rm -rf /tmp/pom_files_united.txt
+
 for var in "$@"
 do
     file_name="/tmp/pom_files_$argument_index.txt"
     all_files="$all_files $file_name"
     process_project_in_file "$var" "$file_name"
+    `cat $file_name >> /tmp/pom_files_united.txt`
     argument_index=$(($argument_index+1))
 done
 
-argument_index=$(($argument_index-2))
-echo "$argument_index"
-for i in $(seq 1 $argument_index); do
-    first_file="/tmp/pom_files_$i.txt"
-    j=$(($i+1))
-    second_file="/tmp/pom_files_$j.txt"
-    output_file="/tmp/pom_files_2$j.txt"
-    echo "comm -1 -2 $first_file $second_file > $output_file"
-    comm -1 -2 "$first_file" "$second_file" > "$output_file"
-    mv $output_file $second_file
-done
+sort /tmp/pom_files_united.txt | uniq -c | sort -bg > /tmp/pom_files_sorted.txt
 
-echo "$script_prefix The common projects between $1 and $2 are: $all_files"
-cat $second_file
-# comm -1 -2 $($all_files)
+echo "$script_prefix Here is the list of dependencies by occurence:"
+cat /tmp/pom_files_sorted.txt | grep -v '      1 '
