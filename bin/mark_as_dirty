@@ -1,0 +1,38 @@
+#!/bin/bash
+
+
+
+script_prefix="[MARK AS DIRTY]"
+process_project_in_file(){
+    project_name=$1
+    file_name=$2
+    echo "$script_prefix Processing project $project_name in $file_name"
+    mvn dependency:tree --projects "$project_name" | grep "SNAPSHOT" | tee "$file_name"
+    sed -i '/jar/!d' "$file_name"
+    sed -i '/Downloading/d' "$file_name"
+    sed -i '/Downloaded/d' "$file_name"
+    sed -i '/Building/d' "$file_name"
+    sed -i 's/\[INFO\]\ //g' "$file_name"
+    sed -i 's/+//g' "$file_name"
+    sed -i 's/\\-//g' "$file_name"
+    sed -i 's/-\ //g' "$file_name"
+    sed -i 's/^ *//g' "$file_name"
+    sed -i 's/|//g' "$file_name"
+    sed -i 's/:provided//g' "$file_name"
+    sed -i 's/:compile//g' "$file_name"
+    sed -i 's/^ *//' "$file_name"
+    sed -i 's/:jar:.*$//g' "$file_name"
+    cat "$project_name" >> "$file_name"
+    echo "$script_prefix Flatten denendency tree of project $project_name is:"
+    sort -u "$file_name" -o "$file_name"
+    cat "$file_name"
+}
+
+process_project_in_file $1 '/tmp/projects_to_mark.txt'
+
+while read project_name; do
+  line_with_target=`mvn clean package -Dmaven.test.skip=true --pl $project_name | grep target | grep "\[INFO] Building "`
+  pom_file=`cat $line_with_target | sed -e "s/.*: \//\//g" | sed -e "s/\/target\/.*/\/pom.xml/g"`
+  echo "$script_prefix Appending empty line to $pom_file"
+  echo "" >> $pom_file
+done </tmp/projects_to_mark.txt
