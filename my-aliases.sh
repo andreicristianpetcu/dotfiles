@@ -437,6 +437,10 @@ lshash(){
     done
 }
 
+sha1cert(){
+    openssl x509 -in public_certificate.pem -noout -fingerprint -sha1SHA1
+}
+
 # Vagrant urls
 export centos6url="https://github.com/2creatives/vagrant-centos/releases/download/v6.5.1/centos65-x86_64-20131205.box"
 
