@@ -22,7 +22,7 @@ process_project_in_file(){
     sed -i 's/:compile//g' "$file_name"
     sed -i 's/^ *//' "$file_name"
     sed -i 's/:jar:.*$//g' "$file_name"
-    cat "$project_name" >> "$file_name"
+    echo "$project_name" >> "$file_name"
     echo "$script_prefix Flatten denendency tree of project $project_name is:"
     sort -u "$file_name" -o "$file_name"
     cat "$file_name"
@@ -30,9 +30,15 @@ process_project_in_file(){
 
 process_project_in_file $1 '/tmp/projects_to_mark.txt'
 
+current_dir=`pwd`
 while read project_name; do
-  line_with_target=`mvn clean package -Dmaven.test.skip=true --pl $project_name | grep target | grep "\[INFO] Building "`
-  pom_file=`cat $line_with_target | sed -e "s/.*: \//\//g" | sed -e "s/\/target\/.*/\/pom.xml/g"`
+  line_with_target=`mvn help:effective-pom --pl org.apache.camel:camel-core|grep "<directory>"| grep "target" | grep "$current_dir" | head -1`
+  echo "$script_prefix Line with target is $line_with_target"
+  target_dir_start=`echo "$line_with_target" | sed -e 's/<[^>]*>//g'`
+  echo "$script_prefix target_dir_start $target_dir_start"
+  project_dir=`echo "$target_dir_start" | sed -e "s/target.*//g"`
+  echo "$script_prefix project_dir is $project_dir"
+  pom_file=`echo "$project_dir"pom.xml"`
   echo "$script_prefix Appending empty line to $pom_file"
-  echo "" >> $pom_file
+  echo " " >> $pom_file
 done </tmp/projects_to_mark.txt
