@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 script_prefix="[MARK AS DIRTY]"
 process_project_in_file(){
     project_name=$1
@@ -38,7 +36,7 @@ while read project_name; do
   echo "$script_prefix target_dir_start $target_dir_start"
   project_dir=`echo "$target_dir_start" | sed -e "s/target.*//g"`
   echo "$script_prefix project_dir is $project_dir"
-  pom_file=`echo "$project_dir"pom.xml"`
+  pom_file=`echo "$project_dir"pom.xml`
   echo "$script_prefix Appending empty line to $pom_file"
   echo " " >> $pom_file
 done </tmp/projects_to_mark.txt
