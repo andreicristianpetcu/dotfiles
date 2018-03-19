@@ -12,15 +12,15 @@ def init_globals():
     all_dependencies = set()
 
 def is_dependency_line(line):
-    if "Downloading" in line: 
+    if "Downloading" in line:
         return False
-    if "Downloaded" in line: 
+    if "Downloaded" in line:
         return False
-    if "Building" in line: 
+    if "Building" in line:
         return False
-    if "Building" in line: 
+    if "Building" in line:
         return False
-    if "-SNAPSHOT" in line: 
+    if "-SNAPSHOT" in line:
         return True
     return False
 
@@ -31,6 +31,7 @@ def extract_dependency(line):
     line = line.split(":tar.gz:")[0]
     line = line.split(":test-jar:")[0]
     line = line.split(":pom:")[0]
+    line = line.split(":maven-plugin:")[0]
     return line
 
 def get_dependencies(group_and_artifact_id):
