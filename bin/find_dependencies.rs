@@ -6,16 +6,22 @@
 // hashbang.
 extern crate time;
 
+pub fn add_two(a: i32) -> i32 {
+    a + 2
+}
+
 fn main() {
-    println!("Hello, World!3");
+    println!("adding {}", add_two(2));
     println!("{}", time::now().rfc822z());
 }
 
 
 #[cfg(test)]
 mod tests {
+    use super::*;
+
     #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
+    fn it_adds_two() {
+        assert_eq!(4, add_two(2));
     }
 }
