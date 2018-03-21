@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 script_prefix="[MARK AS DIRTY]"
 process_project_in_file(){
     project_name=$1

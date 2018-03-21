@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+from pdb import set_trace as bp
+import sys
+import os
+import subprocess
+
+
+def init_globals():
+    global already_processed_artifacts
+    global all_dependencies
+    already_processed_artifacts = set()
+    all_dependencies = set()
+
+def is_dependency_line(line):
+    if "Downloading" in line:
+        return False
+    if "Downloaded" in line:
+        return False
+    if "Building" in line:
+        return False
+    if "Building" in line:
+        return False
+    if "-SNAPSHOT" in line:
+        return True
+    return False
+
+def extract_dependency(line):
+    line = line.replace("[INFO] ", "").replace("+- ", "").replace("|  ", "").replace("\- ", "").strip()
+    line = line.split(":jar:")[0]
+    line = line.split(":war:")[0]
+    line = line.split(":tar.gz:")[0]
+    line = line.split(":test-jar:")[0]
+    line = line.split(":pom:")[0]
+    line = line.split(":maven-plugin:")[0]
+    return line
+
+def get_dependencies(group_and_artifact_id):
+    global already_processed_artifacts
+    global all_dependencies
+
+    already_processed_artifacts.add(group_and_artifact_id)
+    maven_dependency_command = "mvn dependency:tree --projects {0}".format(group_and_artifact_id)
+    print(maven_dependency_command)
+    maven_depepndecies_stdout = subprocess.check_output(maven_dependency_command, stderr=subprocess.STDOUT, shell=True).decode("utf-8").split("\n")
+    dependency_lines = [line for line in maven_depepndecies_stdout
+                  if is_dependency_line(line)]
+    current_project_dependencies = [extract_dependency(dependency_line) for dependency_line in dependency_lines]
+    all_dependencies |= set(current_project_dependencies)
+    print("Total dependencies of {0} is {1}".format(group_and_artifact_id, len(all_dependencies)))
+    for current_project_dependency in current_project_dependencies:
+      if current_project_dependency not in already_processed_artifacts:
+          child_dependencies = get_dependencies(current_project_dependency)
+          all_dependencies |= set(child_dependencies)
+    return all_dependencies
+
+init_globals()
+
+artifact_to_procecss = sys.argv[1]
+print(artifact_to_procecss)
+
+dependencies = get_dependencies(artifact_to_procecss)
+print(*dependencies, sep='\n')
