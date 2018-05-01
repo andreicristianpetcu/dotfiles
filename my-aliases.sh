@@ -734,7 +734,7 @@ bindkey -s '^O' '^qffasd\n'
 
 # fkill - kill process
 fkill() {
-  ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs kill -${1:-9}
+  ps -ef | sed 1d | fzf -m | awk '{print $2}' | xargs sudo kill -${1:-9}
 }
 
 # fbr - checkout git branch

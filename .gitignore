@@ -6,3 +6,5 @@ modules/
 npm-debug.log
 TAGS
 groovy/groovysh.history
+.vscode/
+**/target/*

@@ -1,0 +1,11 @@
+[[bin]]
+name = "find_dependencies"
+path = "find_dependencies.rs"
+
+[dependencies]
+time = "0.1.25"
+
+[package]
+authors = ["Anonymous"]
+name = "find_dependencies"
+version = "0.1.0"
