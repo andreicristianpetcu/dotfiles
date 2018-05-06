@@ -663,8 +663,10 @@ convertWebExtensionIcon(){
     SRC_ICON=$1
     convert -resize 16x16 "$SRC_ICON" icon-16.png
     convert -resize 19x19 "$SRC_ICON" icon-19.png
+    convert -resize 32x32 "$SRC_ICON" icon-32.png
     convert -resize 38x38 "$SRC_ICON" icon-38.png
     convert -resize 48x48 "$SRC_ICON" icon-48.png
+    convert -resize 64x64 "$SRC_ICON" icon-64.png
     convert -resize 96x96 "$SRC_ICON" icon-96.png
     convert -resize 128x128 "$SRC_ICON" icon-128.png
 }
