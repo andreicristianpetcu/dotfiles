@@ -18,6 +18,7 @@ process_project_in_file(){
     sed -i '/Downloading/d' "$file_name"
     sed -i '/Downloaded/d' "$file_name"
     sed -i '/Building/d' "$file_name"
+    sed -i '/:test/d' "$file_name"
     sed -i 's/\[INFO\]\ //g' "$file_name"
     sed -i 's/+//g' "$file_name"
     sed -i 's/\\-//g' "$file_name"
@@ -50,5 +51,6 @@ done
 
 sort /tmp/pom_files_united.txt | uniq -c | sort -bg > /tmp/pom_files_sorted.txt
 
-echo "$script_prefix Here is the list of dependencies by occurence:\n/tmp/pom_files_sorted.txt"
+echo "$script_prefix Here is the list of dependencies by occurence: 
+/tmp/pom_files_sorted.txt"
 cat /tmp/pom_files_sorted.txt | grep -v '      1 '
