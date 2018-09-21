@@ -1,6 +1,12 @@
 <gconfentryfile>
   <entrylist base="/apps/guake">
     <entry>
+      <key>general/abbreviate_tab_names</key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
       <key>general/compat_backspace</key>
       <schema_key>/schemas/apps/guake/general/compat_backspace</schema_key>
       <value>
@@ -15,10 +21,24 @@
       </value>
     </entry>
     <entry>
+      <key>general/custom_command_file</key>
+      <schema_key>/schemas/apps/guake/general/custom_command_file</schema_key>
+      <value>
+        <string>~/.config/guake/custom_command.json</string>
+      </value>
+    </entry>
+    <entry>
+      <key>general/debug_mode</key>
+      <schema_key>/schemas/apps/guake/general/debug_mode</schema_key>
+      <value>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
       <key>general/default_shell</key>
       <schema_key>/schemas/apps/guake/general/default_shell</schema_key>
       <value>
-        <string>/bin/zsh</string>
+        <string>/usr/bin/zsh</string>
       </value>
     </entry>
     <entry>
@@ -43,6 +63,13 @@
       </value>
     </entry>
     <entry>
+      <key>general/max_tab_name_length</key>
+      <schema_key>/schemas/apps/guake/general/max_tab_name_length</schema_key>
+      <value>
+        <int>0</int>
+      </value>
+    </entry>
+    <entry>
       <key>general/mouse_display</key>
       <schema_key>/schemas/apps/guake/general/mouse_display</schema_key>
       <value>
@@ -52,7 +79,20 @@
     <entry>
       <key>general/open_tab_cwd</key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
+      </value>
+    </entry>
+    <entry>
+      <key>general/prompt_on_close_Tab</key>
+      <schema_key>/schemas/apps/guake/general/prompt_on_close_tab</schema_key>
+      <value>
+        <int>0</int>
+      </value>
+    </entry>
+    <entry>
+      <key>general/prompt_on_close_tab</key>
+      <value>
+        <int>0</int>
       </value>
     </entry>
     <entry>
@@ -150,7 +190,7 @@
       <key>general/use_login_shell</key>
       <schema_key>/schemas/apps/guake/general/use_login_shell</schema_key>
       <value>
-        <bool>true</bool>
+        <bool>false</bool>
       </value>
     </entry>
     <entry>
@@ -269,7 +309,7 @@
       <key>keybindings/global/show_hide</key>
       <schema_key>/schemas/apps/guake/keybindings/global/show_hide</schema_key>
       <value>
-        <string>&lt;Shift&gt;&lt;Alt&gt;j</string>
+        <string>disabled</string>
       </value>
     </entry>
     <entry>
@@ -377,6 +417,13 @@
       </value>
     </entry>
     <entry>
+      <key>keybindings/local/reset_terminal</key>
+      <schema_key>/schemas/apps/guake/keybindings/local/reset_terminal</schema_key>
+      <value>
+        <string></string>
+      </value>
+    </entry>
+    <entry>
       <key>keybindings/local/search_on_web</key>
       <schema_key>/schemas/apps/guake/keybindings/local/search_on_web</schema_key>
       <value>
@@ -454,6 +501,13 @@
       </value>
     </entry>
     <entry>
+      <key>keybindings/local/switch_tab_last</key>
+      <schema_key>/schemas/apps/guake/keybindings/local/switch_tab_last</schema_key>
+      <value>
+        <string>&lt;Control&gt;F12</string>
+      </value>
+    </entry>
+    <entry>
       <key>keybindings/local/toggle_fullscreen</key>
       <schema_key>/schemas/apps/guake/keybindings/local/toggle_fullscreen</schema_key>
       <value>
@@ -465,6 +519,13 @@
       <schema_key>/schemas/apps/guake/keybindings/local/toggle_hide_on_lose_focus</schema_key>
       <value>
         <string>&lt;Control&gt;F1</string>
+      </value>
+    </entry>
+    <entry>
+      <key>keybindings/local/toggle_transparency</key>
+      <schema_key>/schemas/apps/guake/keybindings/local/toggle_transparency</schema_key>
+      <value>
+        <string>&lt;Control&gt;Alt&gt;T</string>
       </value>
     </entry>
     <entry>
