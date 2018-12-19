@@ -807,3 +807,7 @@ yan() {
 }
 
 bindkey -s '^F' '^qfc\n'
+
+llp(){
+  lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
+}
