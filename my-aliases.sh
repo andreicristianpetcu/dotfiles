@@ -137,23 +137,12 @@ countsimilar(){
 
 # desktop
 installgnomekeys(){
-  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift><Alt>j', '<Control><Shift><Alt>Down']"
-  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift><Alt>k', '<Control><Shift><Alt>Up']"
-  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Control><Alt>j', '<Control><Alt>Down']"
-  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control><Alt>k', '<Control><Alt>Up']"
-  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Control><Shift><Alt>l', '<Control><Shift><Alt>Right']"
-  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Control><Shift><Alt>h', '<Control><Shift><Alt>Left']"
-  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Control><Alt>l', '<Control><Alt>Right']"
-  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Control><Alt>h', '<Control><Alt>Left']"
-
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'<Primary><Shift><Alt>colon'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/ binding "'<Shift><Alt>j'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/ binding "'<Super>space'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/ binding "'<Super>j'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/ binding "'<Super>k'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/ binding "'<Super>h'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/ binding "'<Super>l'"
-  gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/ binding "'<Super><Alt>space'"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Super><Shift>j', '<Super><Shift>Down']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Super><Shift>k', '<Super><Shift>Up']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>j', '<Super>Down']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k', '<Super>Up']"
+  gsettings set org.gnome.desktop.wm.keybindings begin-resize "['']"
+  gsettings set org.gnome.desktop.wm.keybindings begin-move "['']"
 }
 
 gsettingsetscreencast0(){
