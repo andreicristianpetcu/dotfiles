@@ -9,7 +9,7 @@ I am running on Arch Linux, but it will likely work on other GNU/Linux distros a
 Run the following commands in your terminal. It will prompt you before it does anything destructive. Check out the [Rakefile](https://github.com/andreicristianpetcu/dotfiles/blob/custom-bash-zsh/Rakefile) to see exactly what it does.
 
 ```sh
-install git ruby rake vim zsh exuberant-ctags lua50 tmux
+install git ruby rake vim zsh exuberant-ctags lua50 tmux gconf2 flatpak
 cd ~
 git clone https://github.com/andreicristianpetcu/dotfiles.git
 cd ~/dotfiles
