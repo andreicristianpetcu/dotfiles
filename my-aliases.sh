@@ -143,6 +143,8 @@ installgnomekeys(){
   gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>k', '<Super>Up']"
   gsettings set org.gnome.desktop.wm.keybindings begin-resize "['']"
   gsettings set org.gnome.desktop.wm.keybindings begin-move "['']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['']"
 }
 
 gsettingsetscreencast0(){
