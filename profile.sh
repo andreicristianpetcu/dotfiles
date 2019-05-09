@@ -44,6 +44,7 @@ if [ -d /usr/lib/jvm/java-7-openjdk-amd64 ]; then export JAVA_HOME='/usr/lib/jvm
 # if [ -d /usr/lib/jvm/oraclejdk8-64 ]; then export JAVA_HOME='/usr/lib/jvm/oraclejdk8-64' ;fi
 if [ -d /usr/lib/jvm/java-1.8.0-openjdk-amd64 ]; then export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-amd64' ;fi
 if [ -d /usr/lib/jvm/java-8-oracle ]; then export JAVA_HOME='/usr/lib/jvm/java-8-oracle' ;fi
+if [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then export JAVA_8_HOME='/usr/lib/jvm/java-8-openjdk-amd64' ;fi
 if [ -n "$JAVA_HOME" ]; then export PATH="$JAVA_HOME/bin:$PATH" ;fi
 
 # lazy add M2_HOME
