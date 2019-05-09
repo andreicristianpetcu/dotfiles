@@ -59,6 +59,7 @@ if [ "$ATTACH_TMUX" = "true" ]; then
 fi
 
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 
 if [ $USER = "root" ]; then
   if [ -f /root/.shell_promptline_root.sh ]; then source /root/.shell_promptline_root.sh ;fi
