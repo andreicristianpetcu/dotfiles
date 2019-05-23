@@ -17,8 +17,10 @@ setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
 
-plugins=(command-not-found cp mvn systemd vagrant common-aliases dnf fasd mercurial)
+plugins=(command-not-found cp mvn systemd vagrant common-aliases dnf fasd git gradle cargo colorize docker
+    frontend-search colorize git-auto-fetch helm kube-ps1 kubectl ng)
 
+PROMPT=$PROMPT'$(kube_ps1)'
 
 if [ -f $HOME/.profile.sh ]
 then
