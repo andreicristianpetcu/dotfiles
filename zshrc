@@ -27,7 +27,7 @@ then
   source $HOME/.profile.sh
 fi
 
-if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 
+if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then
   ZSH_THEME="clean"
 fi
 
@@ -52,14 +52,6 @@ then
   . /usr/share/zsh/site-contrib/powerline.zsh
 fi
 
-if [ "$ATTACH_TMUX" = "true" ]; then
-  export ZSH_TMUX_AUTOSTART='true'
-  export ZSH_TMUX_AUTOCONNECT='true'
-  if [ "$TMUX" = "" ] && [ $CONN != "sshd" ] && [ $CONN != "java" ]; then
-    tmux attach || tmux new
-  fi
-fi
-
 if [ -f ~/.shell_promptline.sh ]; then source ~/.shell_promptline.sh ;fi
 if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
 
@@ -67,7 +59,7 @@ if [ $USER = "root" ]; then
   if [ -f /root/.shell_promptline_root.sh ]; then source /root/.shell_promptline_root.sh ;fi
 fi
 
-if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then 
+if [ "$CONN" != "" ] && [ $CONN = "sshd" ]; then
   ZSH_THEME="clean"
   if [ -f ~/.shell_promptline_remote.sh ]; then source ~/.shell_promptline_remote.sh ;fi
 fi
@@ -84,6 +76,9 @@ then
   source $HOME/.zsh/tmux_autocomplete.sh
 fi
 
-bindkey "^X^L" insert-last-command-output 
+bindkey "^X^L" insert-last-command-output
 
-export TERM='screen-256color'
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+    if [ -f /etc/profile.d/vte.sh ]; then source /etc/profile.d/vte.sh ;fi
+    if [ -f /etc/profile.d/vte-2.91.sh ]; then source /etc/profile.d/vte-2.91.sh ;fi
+fi
