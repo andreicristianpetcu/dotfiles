@@ -471,14 +471,20 @@ installdockerenter(){
 }
 
 installhelm(){
-  version=$1
-  version="v2.12.2"
+  if [[ -z "$1" ]]
+  then
+      version="v2.12.2"
+  else
+      version="$1"
+  fi
   echo "Installing helm version $1"
+  set -x
   wget "https://get.helm.sh/helm-$version-linux-amd64.tar.gz" -O /tmp/helm.tar.gz
   tar -zxvf /tmp/helm.tar.gz
   sudo mv linux-amd64/helm /usr/local/bin/helm
   rm -rf /tmp/linux-amd64
   rm -rf /tmp/helm.tar.gz
+  set +x
 }
 
 installjenv(){
