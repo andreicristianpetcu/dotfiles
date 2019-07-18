@@ -109,4 +109,9 @@ eval "$(fasd --init auto)"
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
+if [ -d "/usr/local/go" ]; then
+  export GOROOT=/usr/local/go
+  export PATH=$GOROOT/bin:$PATH
+fi
+
 stty stop undef

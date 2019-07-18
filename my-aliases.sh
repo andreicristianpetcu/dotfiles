@@ -470,6 +470,17 @@ installdockerenter(){
   rm -rf /tmp/docker-enter
 }
 
+installhelm(){
+  version=$1
+  version="v2.12.2"
+  echo "Installing helm version $1"
+  wget "https://get.helm.sh/helm-$version-linux-amd64.tar.gz" -O /tmp/helm.tar.gz
+  tar -zxvf /tmp/helm.tar.gz
+  sudo mv linux-amd64/helm /usr/local/bin/helm
+  rm -rf /tmp/linux-amd64
+  rm -rf /tmp/helm.tar.gz
+}
+
 installjenv(){
   rm -rf "$HOME/.jenv"
   mkdir -p $HOME/.jenv/candidates/java
