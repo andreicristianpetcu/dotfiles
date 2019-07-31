@@ -819,3 +819,30 @@ bindkey -s '^F' '^qfc\n'
 llp(){
   lpass show -c --password $(lpass ls  | fzf | awk '{print $(NF)}' | sed 's/\]//g')
 }
+
+update_all_packages(){
+  flatpak update
+  sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y
+  brew update && brew upgrade && brew cleanup
+  pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+  npm update -g
+}
+timestamp_in_milliseconds() {
+  echo '('`date +"%s.%N"` ' * 1000000)/1' | bc
+}
+alias g='./gradlew --max-workers=8 --parallel'
+alias wrk='wrk --latency'
+alias http='http --verbose --follow --verify=no'
+alias heli='helm list --namespace default --date'
+alias ku='kubectl'
+alias kupo='kubectl get pods --sort-by=.metadata.creationTimestamp -o wide'
+alias kulo='kubectl logs -f --since=6h'
+alias grep='egrep --color --ignore-case'
+alias kupo-all='kubectl get pod --all-namespaces -o wide'
+alias ku-sys='kubectl --namespace kube-system'
+alias ku-licensing='kubectl config use-context License-Admin-dev-westeurope'
+alias ku-activation='kubectl config use-context License-Active-dev-westeurope'
+alias kulo-sys='kubectl --namespace kube-system logs -f'
+alias kude='kubectl describe pod'
+alias ku-use='kubectl config use-context'
+alias watch='watch -n 1 -d'
