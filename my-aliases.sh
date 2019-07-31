@@ -822,7 +822,7 @@ boon-prd-act-we
 boon-prd-adm-ne
 boon-prd-adm-we" | fzf) &&
   set -x
-  az aks get-credentials --resource-group "$resource_group-RG" --name "$resource_group-aks"
+  az aks get-credentials --resource-group "$resource_group-RG" --name "$resource_group-aks" --overwrite-existing
   az aks browse --resource-group "$resource_group-RG" --name "$resource_group-aks"
   set +x
 }
