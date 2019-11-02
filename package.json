@@ -2,7 +2,7 @@
   "name": "DotfilesDevDependencies",
   "version": "0.0.0",
   "devDependencies": {
-    "generator-jhipster": "^1.4.0",
+    "generator-jhipster": "^6.4.1",
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
     "grunt-bower-install": "~1.6.0",
