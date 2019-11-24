@@ -1,0 +1,97 @@
+{
+  "version": "1.3",
+  "date": 1574618802785,
+  "preferences": {
+    "automaticMode": {
+      "active": true,
+      "newTab": "navigation"
+    },
+    "notifications": false,
+    "container": {
+      "namePrefix": "ThrowAwayContainer",
+      "color": "purple",
+      "colorRandom": false,
+      "colorRandomExcluded": [],
+      "icon": "fence",
+      "iconRandom": false,
+      "iconRandomExcluded": [],
+      "numberMode": "keep",
+      "removal": "15minutes"
+    },
+    "iconColor": "default",
+    "isolation": {
+      "active": true,
+      "global": {
+        "navigation": {
+          "action": "never"
+        },
+        "mouseClick": {
+          "middle": {
+            "action": "never",
+            "container": "default"
+          },
+          "ctrlleft": {
+            "action": "never",
+            "container": "default"
+          },
+          "left": {
+            "action": "always",
+            "container": "default"
+          }
+        },
+        "excluded": {},
+        "excludedContainers": []
+      },
+      "domain": [],
+      "mac": {
+        "action": "disabled"
+      }
+    },
+    "browserActionPopup": false,
+    "pageAction": false,
+    "contextMenu": true,
+    "contextMenuBookmarks": false,
+    "keyboardShortcuts": {
+      "AltC": true,
+      "AltP": true,
+      "AltN": false,
+      "AltShiftC": false,
+      "AltX": false,
+      "AltO": false
+    },
+    "replaceTabs": false,
+    "closeRedirectorTabs": {
+      "active": true,
+      "delay": 2000,
+      "domains": [
+        "t.co",
+        "outgoing.prod.mozaws.net",
+        "slack-redir.net"
+      ]
+    },
+    "ignoreRequests": [
+      "addons.mozilla.org",
+      "profiler.firefox.com",
+      "github.com"
+    ],
+    "cookies": {
+      "domain": {}
+    },
+    "deletesHistory": {
+      "active": false,
+      "automaticMode": "never",
+      "contextMenu": false,
+      "contextMenuBookmarks": false,
+      "containerAlwaysPerDomain": "never",
+      "containerIsolation": "never",
+      "containerRemoval": "instant",
+      "containerMouseClicks": "never",
+      "statistics": false
+    },
+    "statistics": false,
+    "ui": {
+      "expandPreferences": true,
+      "popupDefaultTab": "isolation-global"
+    }
+  }
+}
