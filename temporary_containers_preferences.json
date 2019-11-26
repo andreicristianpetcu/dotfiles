@@ -1,6 +1,6 @@
 {
   "version": "1.3",
-  "date": 1574618802785,
+  "date": 1574782944646,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -72,7 +72,10 @@
     "ignoreRequests": [
       "addons.mozilla.org",
       "profiler.firefox.com",
-      "github.com"
+      "github.com",
+      "login.microsoftonline.com",
+      "accounts.firefox.com",
+      "accounts.google.com"
     ],
     "cookies": {
       "domain": {}
