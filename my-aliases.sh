@@ -802,31 +802,6 @@ ftags() {
                                       -c "silent tag $(cut -f2 <<< "$line")"
 }
 
-# az aks browse with fzf
-faks() {
-  local resource_group
-  resource_group=$( echo "boon-nst-act-ne
-boon-nst-act-we
-boon-nst-adm-ne
-boon-nst-adm-we
-boon-stb-act-ne
-boon-stb-act-we
-boon-stb-adm-ne
-boon-stb-adm-we
-boon-stg-act-ne
-boon-stg-act-we
-boon-stg-adm-ne
-boon-stg-adm-we
-boon-prd-act-ne
-boon-prd-act-we
-boon-prd-adm-ne
-boon-prd-adm-we" | fzf) &&
-  set -x
-  az aks get-credentials --resource-group "$resource_group-RG" --name "$resource_group-aks" --overwrite-existing
-  az aks browse --resource-group "$resource_group-RG" --name "$resource_group-aks"
-  set +x
-}
-
 #read man pages with vim
 van() {
   vim -c "SuperMan $*"
