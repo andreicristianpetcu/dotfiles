@@ -1,6 +1,6 @@
 {
   "version": "1.7",
-  "date": 1576188661135,
+  "date": 1576189057243,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -54,11 +54,11 @@
     "keyboardShortcuts": {
       "AltC": true,
       "AltP": true,
-      "AltN": false,
+      "AltN": true,
       "AltShiftC": false,
-      "AltX": false,
+      "AltX": true,
       "AltO": false,
-      "AltI": false
+      "AltI": true
     },
     "replaceTabs": false,
     "closeRedirectorTabs": {
