@@ -1,6 +1,6 @@
 {
-  "version": "1.3",
-  "date": 1574782944646,
+  "version": "1.7",
+  "date": 1576188661135,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -16,7 +16,7 @@
       "iconRandom": false,
       "iconRandomExcluded": [],
       "numberMode": "keep",
-      "removal": "15minutes"
+      "removal": 900000
     },
     "iconColor": "default",
     "isolation": {
@@ -57,7 +57,8 @@
       "AltN": false,
       "AltShiftC": false,
       "AltX": false,
-      "AltO": false
+      "AltO": false,
+      "AltI": false
     },
     "replaceTabs": false,
     "closeRedirectorTabs": {
@@ -75,7 +76,41 @@
       "github.com",
       "login.microsoftonline.com",
       "accounts.firefox.com",
-      "accounts.google.com"
+      "accounts.google.com",
+      "id.atlassian.com",
+      "account.jetbrains.com",
+      "hub.jetbrains.com",
+      "mail.protonmail.com",
+      "issues.jenkins-ci.org",
+      "uipath.atlassian.net",
+      "app.slack.com",
+      "uipath-product.slack.com",
+      "slack.com",
+      "outlook.office.com",
+      "office.com",
+      "www.reddit.com",
+      "uipath.com",
+      "*.uipath.com",
+      "*.auth0.com",
+      "auth0.com",
+      "mastodon.social",
+      "mozilla.org",
+      "*.mozilla.org",
+      "*.mozilla-community.org",
+      "mozilla-community.org",
+      "*.mozilla.community",
+      "mozilla.community",
+      "stackoverflow.com",
+      "duckduckgo.com",
+      "stackexchange.com",
+      "*.stackexchange.com",
+      "superuser.com",
+      "askubuntu.com",
+      "*.homebank.ro",
+      "homebank.ro",
+      "*medicover.ro",
+      "https://www.google.com/a/*",
+      "*jetbrains.com"
     ],
     "cookies": {
       "domain": {}
@@ -87,7 +122,7 @@
       "contextMenuBookmarks": false,
       "containerAlwaysPerDomain": "never",
       "containerIsolation": "never",
-      "containerRemoval": "instant",
+      "containerRemoval": 0,
       "containerMouseClicks": "never",
       "statistics": false
     },
