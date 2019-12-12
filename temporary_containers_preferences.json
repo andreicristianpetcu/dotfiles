@@ -1,6 +1,6 @@
 {
   "version": "1.7",
-  "date": 1576189057243,
+  "date": 1576189525198,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -110,7 +110,11 @@
       "homebank.ro",
       "*medicover.ro",
       "https://www.google.com/a/*",
-      "*jetbrains.com"
+      "*jetbrains.com",
+      "*.office365.com",
+      "office365.com",
+      "*.office.com",
+      "shellprod.msocdn.com"
     ],
     "cookies": {
       "domain": {}
