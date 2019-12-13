@@ -1,6 +1,6 @@
 {
   "version": "1.7",
-  "date": 1576189525198,
+  "date": 1576227017696,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -8,7 +8,7 @@
     },
     "notifications": false,
     "container": {
-      "namePrefix": "ThrowAwayContainer",
+      "namePrefix": "SelfDestructingContainer⏱️💣💥",
       "color": "purple",
       "colorRandom": false,
       "colorRandomExcluded": [],
@@ -62,7 +62,7 @@
     },
     "replaceTabs": false,
     "closeRedirectorTabs": {
-      "active": true,
+      "active": false,
       "delay": 2000,
       "domains": [
         "t.co",
@@ -76,7 +76,6 @@
       "github.com",
       "login.microsoftonline.com",
       "accounts.firefox.com",
-      "accounts.google.com",
       "id.atlassian.com",
       "account.jetbrains.com",
       "hub.jetbrains.com",
@@ -109,12 +108,12 @@
       "*.homebank.ro",
       "homebank.ro",
       "*medicover.ro",
-      "https://www.google.com/a/*",
       "*jetbrains.com",
       "*.office365.com",
       "office365.com",
       "*.office.com",
-      "shellprod.msocdn.com"
+      "shellprod.msocdn.com",
+      "localhost"
     ],
     "cookies": {
       "domain": {}
