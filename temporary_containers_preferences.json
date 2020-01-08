@@ -1,6 +1,6 @@
 {
   "version": "1.7",
-  "date": 1576227017696,
+  "date": 1578490991921,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -8,7 +8,7 @@
     },
     "notifications": false,
     "container": {
-      "namePrefix": "SelfDestructingContainer⏱️💣💥",
+      "namePrefix": "Self destructing container",
       "color": "purple",
       "colorRandom": false,
       "colorRandomExcluded": [],
@@ -113,7 +113,17 @@
       "office365.com",
       "*.office.com",
       "shellprod.msocdn.com",
-      "localhost"
+      "localhost",
+      "*.sharepoint.com",
+      "*.azure.com",
+      "*.microsoftonline.com",
+      "*.visualstudio.com",
+      "*.netflix.com",
+      "*.caserola.ro",
+      "caserola.ro",
+      "*.atlassian.net",
+      "wd5.myworkday.com",
+      "*.getpostman.com"
     ],
     "cookies": {
       "domain": {}
