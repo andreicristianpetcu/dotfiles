@@ -1,6 +1,6 @@
 {
   "version": "1.7",
-  "date": 1578490991921,
+  "date": 1580242512348,
   "preferences": {
     "automaticMode": {
       "active": true,
@@ -31,11 +31,11 @@
             "container": "default"
           },
           "ctrlleft": {
-            "action": "never",
+            "action": "always",
             "container": "default"
           },
           "left": {
-            "action": "always",
+            "action": "never",
             "container": "default"
           }
         },
@@ -123,7 +123,21 @@
       "caserola.ro",
       "*.atlassian.net",
       "wd5.myworkday.com",
-      "*.getpostman.com"
+      "*.getpostman.com",
+      "sonarcloud.io",
+      "*.sonarcloud.io",
+      "*.zoom.us",
+      "*.lever.co",
+      "*.hackerrank.com",
+      "*.firefox.com",
+      "firefox.com",
+      "*.onlyoffice.eu",
+      "*.opsgenie.com",
+      "*.owndrive.com",
+      "*.github.com",
+      "*.orange.ro",
+      "gitlab.com",
+      "onlinexperiences.com"
     ],
     "cookies": {
       "domain": {}
@@ -139,7 +153,7 @@
       "containerMouseClicks": "never",
       "statistics": false
     },
-    "statistics": false,
+    "statistics": true,
     "ui": {
       "expandPreferences": true,
       "popupDefaultTab": "isolation-global"
