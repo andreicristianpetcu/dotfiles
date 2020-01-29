@@ -7,7 +7,7 @@ DISABLE_AUTO_UPDATE="true"
 HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
 
-ZSH_THEME="awesomepanda"
+ZSH_THEME=powerlevel9k/powerlevel9k
 
 # ignore duplicates in history
 setopt HIST_IGNORE_DUPS
