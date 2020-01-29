@@ -48,6 +48,8 @@ if [ -d /usr/lib/jvm/java-8-openjdk-amd64 ]; then export JAVA_8_HOME='/usr/lib/j
 if [ -d /usr/lib/jvm/zulu-12-amd64 ]; then export JAVA_HOME='/usr/lib/jvm/zulu-12-amd64' ;fi
 if [ -n "$JAVA_HOME" ]; then export PATH="$JAVA_HOME/bin:$PATH" ;fi
 
+if [ -d ~/.cargo/bin/ ]; then export PATH="$PATH:$HOME/.cargo/bin/" ;fi
+
 # lazy add M2_HOME
 if [ -d /opt/maven ]; then export M2_HOME='/opt/maven' ;fi
 if [ -d /usr/share/maven ]; then export M2_HOME='/usr/share/maven' ;fi
