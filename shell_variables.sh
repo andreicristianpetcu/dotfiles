@@ -1,1 +1,1 @@
-export ATTACH_TMUX=true
+export ATTACH_TMUX=false

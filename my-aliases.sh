@@ -3,7 +3,7 @@ alias sshalaveteli='ssh alaveteli'
 sshcopyidisshidrsapubuserserver(){
   ssh-copy-id -i ~/.ssh/id_rsa_andrei.pub $1
 }
-alias sshoitmuxmongo='ssh oi -L 37017:donoratainstanta:27017 -t "command; tmux attach || tmux new"'
+# alias sshoitmuxmongo='ssh oi -L 37017:donoratainstanta:27017 -t "command; tmux attach || tmux new"'
 
 # Arch GNU/Linux
 alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
@@ -12,7 +12,7 @@ alias archupdate='sudo aura -Syu --noconfirm && sudo aura -Ayu --noconfirm'
 alias pingdebian='prettyping debian.org'
 alias tigall='tig --all'
 alias tmux2='tmux -2'
-alias tmuxattachtmuxnew='tmux attach || tmux new'
+# alias tmuxattachtmuxnew='tmux attach || tmux new'
 alias installneobundle='rm -rf ~/.vim && mkdir -p ~/.vim/bundle && git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim'
 alias execshelll='exec $SHELL -l'
 alias yankpwd='echo `pwd` | head -c-1 | xclip -sel clip'
