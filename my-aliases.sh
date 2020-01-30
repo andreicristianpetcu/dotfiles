@@ -152,11 +152,11 @@ gsettingsetscreencast0(){
 }
 
 saveguakesettings(){
-  gconftool-2 --dump /apps/guake > $HOME/.gconftool2_guake.xml
+  gconftool-2 --dump /apps/guake > "$HOME/dotfiles/gconftool2_guake.xml"
 }
 
 loadguakesettings(){
-  gconftool-2 --load $HOME/.gconftool2_guake.xml
+  gconftool-2 --load "$HOME/dotfiles/gconftool2_guake.xml"
 }
 
 alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"
@@ -443,6 +443,7 @@ alias installndenv='rm -rf ~/.ndenv && git clone https://github.com/riywo/ndenv 
 alias installrubybuild='git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build'
 alias installruby='installrbenv && installrubybuild && rbenv install 2.1.0'
 alias installfzf='rm -rf ~/.fzf && git clone https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install'
+alias installpowerline='rm -rf ~/powerlevel10k && git clone https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k'
 alias refreshrbenv="cd $HOME/.rbenv/plugins/ruby-build && git pull && cd $HOME/dotfiles && rbenv install && rbenv rehash"
 alias bowerinstalloffline="bower install --offline"
 alias npminstallcachemin999999="npm install --cache-min 999999"
