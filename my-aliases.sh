@@ -159,6 +159,14 @@ loadguakesettings(){
   gconftool-2 --load "$HOME/dotfiles/gconftool2_guake.xml"
 }
 
+savetilix(){
+  dconf dump /com/gexperts/Tilix/ > "$HOME/dotfiles/tilix_settings.txt"
+}
+
+loadtilix(){
+  dconf load /com/gexperts/Tilix/ > "$HOME/dotfiles/tilix_settings.txt"
+}
+
 alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"
 
 # pacman
