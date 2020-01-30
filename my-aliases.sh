@@ -164,7 +164,7 @@ savetilix(){
 }
 
 loadtilix(){
-  dconf load /com/gexperts/Tilix/ > "$HOME/dotfiles/tilix_settings.txt"
+  cat "$HOME/dotfiles/tilix_settings.txt" | dconf load -f /com/gexperts/Tilix/ 
 }
 
 alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"
