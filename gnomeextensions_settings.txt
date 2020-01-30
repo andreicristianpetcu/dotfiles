@@ -1,0 +1,147 @@
+[EasyScreenCast]
+active-custom-gsp=false
+active-shortcut=true
+area-screen=2
+delay-time=4
+file-resolution-height=480
+file-resolution-width=640
+fps=30
+height-rec=1080
+pipeline='vp9enc min_quantizer=0 max_quantizer=5 cpu-used=3 deadline=1000000 threads=%T ! queue max-size-buffers=0 max-size-time=0 max-size-bytes=0 ! webmmux'
+quality-webcam=''
+shortcut-key=['<Shift><Super>e']
+show-area-rec=true
+width-rec=1920
+x-pos=0
+y-pos=0
+
+[arc-menu]
+custom-menu-button-text='Start'
+disable-activities-hotcorner=true
+menu-button-appearance='Icon_Text'
+menu-button-icon='System_Icon'
+menu-button-text='Custom_Text'
+menu-hotkey='Custom'
+menu-keybinding=['<Super>s']
+menu-keybinding-text='<Super>s'
+pinned-app-list=['Nightly', '', 'userapp-Nightly-H8MPOZ.desktop', 'Terminal', 'utilities-terminal', 'org.gnome.Terminal.desktop', 'Arc Menu Settings', 'emblem-system-symbolic', 'gnome-shell-extension-prefs arc-menu@linxgem33.com']
+position-in-panel='Left'
+
+[clipboard-indicator]
+clear-history=@as []
+history-size=50
+next-entry=@as []
+notify-on-copy=false
+prev-entry=@as []
+preview-size=100
+toggle-menu=['<Primary><Alt>g']
+topbar-preview-size=50
+
+[cpupower]
+profiles=[(0, 10, false, 'Energy Saver', '1462793653'), (0, 30, false, 'Quiet', '1326900089'), (20, 80, true, 'Multimedia', '2035647202'), (50, 100, true, 'High Performance', '1436819576')]
+show-freq-in-taskbar=true
+taskbar-freq-unit-ghz=true
+
+[dash-to-panel]
+animate-show-apps=true
+appicon-margin=0
+appicon-padding=4
+dot-position='BOTTOM'
+dot-style-focused='CILIORA'
+group-apps=false
+hot-keys=true
+hotkeys-overlay-combo='TEMPORARILY'
+isolate-workspaces=false
+panel-size=24
+primary-monitor=-1
+show-activities-button=false
+show-appmenu=false
+show-apps-icon-file=''
+show-apps-icon-side-padding=8
+show-favorites=true
+show-show-apps-button=true
+show-showdesktop-button=false
+show-tooltip=false
+show-window-previews=false
+taskbar-position='LEFTPANEL'
+trans-bg-color='#2a2a2e'
+trans-dynamic-anim-target=1.0
+trans-panel-opacity=1.0
+trans-use-custom-bg=true
+trans-use-custom-gradient=false
+trans-use-custom-opacity=true
+trans-use-dynamic-opacity=false
+
+[dynamic-panel-transparency]
+current-user-theme='Arc-Dark-solid'
+enable-opacity=true
+enable-text-color=false
+force-theme-update=false
+hide-corners=true
+icon-shadow=false
+icon-shadow-position=(0, 2, 5)
+maximized-opacity=255
+panel-theme-color=(46, 52, 54)
+remove-panel-styling=false
+text-shadow=false
+text-shadow-position=(0, 3, 5)
+theme-opacity=128
+unmaximized-opacity=193
+
+[gnomenu]
+disable-panel-view-hotcorner=false
+hide-panel-view=false
+startup-view-mode='List'
+
+[gsconnect]
+devices=['b85462e125ff0172']
+
+[gsconnect/device/_a5d72ad8_6173_4531_bc7b_4d000dd7ed3a_]
+id='_a5d72ad8_6173_4531_bc7b_4d000dd7ed3a_'
+incoming-capabilities=['kdeconnect.battery', 'kdeconnect.clipboard', 'kdeconnect.mousepad.echo', 'kdeconnect.mousepad.keyboardstate', 'kdeconnect.mousepad.request', 'kdeconnect.mpris.request', 'kdeconnect.notification', 'kdeconnect.notification.request', 'kdeconnect.ping', 'kdeconnect.runcommand.request', 'kdeconnect.sftp', 'kdeconnect.share.request', 'kdeconnect.telephony']
+last-connection='tcp'
+name='andreip@andreip-ubuntu'
+outgoing-capabilities=['kdeconnect.battery.request', 'kdeconnect.clipboard', 'kdeconnect.findmyphone.request', 'kdeconnect.mousepad.request', 'kdeconnect.mpris', 'kdeconnect.notification', 'kdeconnect.notification.reply', 'kdeconnect.notification.request', 'kdeconnect.ping', 'kdeconnect.runcommand', 'kdeconnect.sftp.request', 'kdeconnect.share.request', 'kdeconnect.sms.request', 'kdeconnect.telephony.request']
+supported-plugins=['battery', 'clipboard', 'findmyphone', 'mousepad', 'notification', 'ping', 'runcommand', 'share']
+tcp-host='192.168.100.5'
+tcp-port=uint32 1716
+type='desktop'
+
+[gsconnect/device/b85462e125ff0172]
+certificate-pem='-----BEGIN CERTIFICATE-----\nMIIC9zCCAd+gAwIBAgIBATANBgkqhkiG9w0BAQsFADA/MRkwFwYDVQQDDBBiODU0\nNjJlMTI1ZmYwMTcyMRQwEgYDVQQLDAtLREUgQ29ubmVjdDEMMAoGA1UECgwDS0RF\nMB4XDTE2MDQyMjE1MTM1MVoXDTI2MDQyMjE1MTM1MVowPzEZMBcGA1UEAwwQYjg1\nNDYyZTEyNWZmMDE3MjEUMBIGA1UECwwLS0RFIENvbm5lY3QxDDAKBgNVBAoMA0tE\nRTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMrhh1h7uQBSXla2Z+8D\neKHd9j5aYlCrdeTEY53G4hbM0vB4Tp4uFSS+bA3SQNuefeaIp+fpJegX2AxfhfWR\nYoURcMoL8AR+DqytbkhABBm5LOWv3vkZ02C2WonufBpAL9NboYel1ghLcSkD17Xk\nSRyZhfrv1cMSaWevI4SJKgD7ZNBar50kjUDyDnNdIRbUntGc81fuJe1oG+nzX2i6\nAD+MjqgkUKm2ohTrn+Enj0ZpjDDzssJyuJKyx18b/X78FwCDGr498xNEGoUOulEK\naV3Jw/lJHLPK/9/xvkx4sZXb/aGaJYfZBfB1xlgY81k3HNEuMklsoDwX3qrR/9b3\n67cCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAg0osLXeQapBmVaM1vbDgBMCMH4GL\nZA3wAnvrMS2epr8TYcQ+V3eB0UX4xiJ/dSWF4OnTeB9hqfIMsZZUig+x0PwzWX+j\n0PJykrBCbIZqflzA+q8WYG5uX4j60WoL2bBQH/eMfsPFd14JDUZO4x3jwxMC1qTH\no5S3PGwkmv32GhZOebXRAT/JOB2DOaoAwRvcdMPVCWcjVAzGn4IPx68V5yT9TGp+\njDhwNPjfbEapI/jF64mBsTB5HeSG3bF9fjKBFexDdgt2b1FPcsgQVOPVTBVM0Qws\nu+Yt21Fd6Y80A576ChS3tuHd8B8RX6E+TR2PwLEr/pWuJ6+o/d/IS6bWtw==\n-----END CERTIFICATE-----\n'
+id='b85462e125ff0172'
+incoming-capabilities=['kdeconnect.battery.request', 'kdeconnect.clipboard', 'kdeconnect.contacts.request_all_uids_timestamps', 'kdeconnect.contacts.request_vcards_by_uid', 'kdeconnect.findmyphone.request', 'kdeconnect.mousepad.request', 'kdeconnect.mpris', 'kdeconnect.notification', 'kdeconnect.notification.reply', 'kdeconnect.notification.request', 'kdeconnect.photo.request', 'kdeconnect.ping', 'kdeconnect.runcommand', 'kdeconnect.sftp.request', 'kdeconnect.share.request', 'kdeconnect.share.request.update', 'kdeconnect.sms.request', 'kdeconnect.sms.request_conversation', 'kdeconnect.sms.request_conversations', 'kdeconnect.systemvolume', 'kdeconnect.telephony.request', 'kdeconnect.telephony.request_mute']
+last-connection='tcp'
+name='OnePlus'
+outgoing-capabilities=['kdeconnect.battery', 'kdeconnect.clipboard', 'kdeconnect.contacts.response_uids_timestamps', 'kdeconnect.contacts.response_vcards', 'kdeconnect.findmyphone.request', 'kdeconnect.mousepad.echo', 'kdeconnect.mousepad.keyboardstate', 'kdeconnect.mousepad.request', 'kdeconnect.mpris.request', 'kdeconnect.notification', 'kdeconnect.notification.request', 'kdeconnect.photo', 'kdeconnect.ping', 'kdeconnect.runcommand.request', 'kdeconnect.sftp', 'kdeconnect.share.request', 'kdeconnect.sms.messages', 'kdeconnect.systemvolume.request', 'kdeconnect.telephony']
+paired=true
+supported-plugins=['battery', 'clipboard', 'contacts', 'findmyphone', 'mousepad', 'mpris', 'notification', 'ping', 'runcommand', 'sftp', 'share', 'sms', 'systemvolume', 'telephony']
+tcp-host='192.168.100.2'
+tcp-port=uint32 1716
+type='phone'
+
+[gsconnect/device/b85462e125ff0172/plugin/notification]
+applications='{"Terminal":{"iconName":"utilities-terminal","enabled":true},"Network":{"iconName":"network-workgroup","enabled":true},"Software":{"iconName":"org.gnome.Software","enabled":true},"qBittorrent":{"iconName":"qbittorrent","enabled":true},"Nextcloud desktop sync client ":{"iconName":"Nextcloud","enabled":true},"Files":{"iconName":"org.gnome.Nautilus","enabled":true},"Thunderbird":{"iconName":"thunderbird","enabled":true},"Google Chrome":{"iconName":"google-chrome","enabled":true},"GNOME Shell integration":{"iconName":"org.gnome.ChromeGnomeShell","enabled":true},"Polari":{"iconName":"org.gnome.Polari","enabled":true},"Signal Private Messenger":{"iconName":"chrome-bikioccmkafdpakkkcpdbppfkghcmihk-Andrei","enabled":true},"Chromium Web Browser":{"iconName":"chromium-browser","enabled":true},"Firefox Stable":{"iconName":"firefox","enabled":true},"Backups":{"iconName":"org.gnome.DejaDup","enabled":true},"Rhythmbox":{"iconName":"rhythmbox","enabled":true},"Fedora Media Writer":{"iconName":"mediawriter","enabled":true},"KeePassXC":{"iconName":"org.keepassxc.KeePassXC","enabled":true},"Evolution":{"iconName":"evolution","enabled":true},"Tor Browser":{"iconName":"/home/andrei/Soft/tor-browser/Browser/browser/chrome/icons/default/default128.png","enabled":true},"Inkscape":{"iconName":"inkscape","enabled":true},"Evolution Alarm Notify":{"iconName":"appointment-soon","enabled":true},"Popcorn-Time":{"iconName":"sh.popcorntime.PopcornTime","enabled":true},"Problem Reporting":{"iconName":"abrt","enabled":true},"Archive Manager":{"iconName":"file-roller","enabled":true},"Fractal":{"iconName":"org.gnome.Fractal","enabled":true},"Clocks":{"iconName":"org.gnome.clocks","enabled":true},"Desktop Sharing":{"iconName":"preferences-desktop-remote-desktop","enabled":true}}'
+
+[gsconnect/messaging]
+window-maximized=false
+window-position=(0, 0)
+window-size=(447, 300)
+
+[gsconnect/preferences]
+window-maximized=false
+window-position=(567, 265)
+window-size=(641, 440)
+
+[hidetopbar]
+enable-active-window=false
+enable-intellihide=true
+mouse-sensitive=false
+shortcut-delay=1.3877787807814457e-16
+shortcut-keybind=@as []
+
+[user-theme]
+name=''
+
+[window-list-mod]
+show-on-all-monitors=false
