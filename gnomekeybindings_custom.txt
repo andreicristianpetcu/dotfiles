@@ -1,7 +1,7 @@
 [custom0]
-binding='<Primary><Alt>space'
-command='kupfer'
-name='kupfer'
+binding='F11'
+command='env GDK_BACKEND=x11 tilix --quake'
+name='tilix quake dev friendly'
 
 [custom1]
 binding='<Shift><Alt>j'
