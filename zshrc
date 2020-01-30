@@ -14,8 +14,6 @@ DISABLE_AUTO_UPDATE="true"
 HISTSIZE=5000 # session history size
 SAVEHIST=1000 # saved history
 
-ZSH_THEME=powerlevel9k/powerlevel9k
-
 # ignore duplicates in history
 setopt HIST_IGNORE_DUPS
 setopt INC_APPEND_HISTORY
@@ -89,6 +87,8 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     if [ -f /etc/profile.d/vte.sh ]; then source /etc/profile.d/vte.sh ;fi
     if [ -f /etc/profile.d/vte-2.91.sh ]; then source /etc/profile.d/vte-2.91.sh ;fi
 fi
+
+source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
