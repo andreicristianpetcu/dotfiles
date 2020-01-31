@@ -13,7 +13,7 @@ terminal-title-show-when-single=false
 theme-variant='dark'
 use-overlay-scrollbar=true
 use-tabs=true
-window-style='normal'
+window-style='borderless'
 
 [keybindings]
 app-new-session='<Primary><Shift>t'
@@ -26,6 +26,8 @@ session-open='disabled'
 session-resize-terminal-down='disabled'
 session-resize-terminal-left='disabled'
 session-resize-terminal-right='disabled'
+win-switch-to-next-session='<Alt>l'
+win-switch-to-previous-session='<Alt>h'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 background-color='#2A2A2A2A2E2E'
@@ -37,6 +39,7 @@ font='MesloLGS NF 11'
 foreground-color='#AAAAAAAAABAB'
 highlight-colors-set=false
 palette=['#272822', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F8F8F2', '#75715E', '#F92672', '#A6E22E', '#F4BF75', '#66D9EF', '#AE81FF', '#A1EFE4', '#F9F8F5']
+terminal-bell='none'
 use-custom-command=true
 use-system-font=false
 use-theme-colors=false
