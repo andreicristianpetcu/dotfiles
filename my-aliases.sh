@@ -163,14 +163,14 @@ savetilix(){
   dconf dump /com/gexperts/Tilix/ > "$HOME/dotfiles/tilix_settings.txt"
 }
 loadtilix(){
-  cat "$HOME/dotfiles/tilix_settings.txt" | dconf load -f /com/gexperts/Tilix/ 
+  cat "$HOME/dotfiles/tilix_settings.txt" | dconf load /com/gexperts/Tilix/ 
 }
 
 savegnomeextensions(){
   dconf dump /org/gnome/shell/extensions/ > "$HOME/dotfiles/gnomeextensions_settings.txt"
 }
 loadgnomeextensions(){
-  cat "$HOME/dotfiles/gnomeextensions_settings.txt" | dconf load -f /org/gnome/shell/extensions/
+  cat "$HOME/dotfiles/gnomeextensions_settings.txt" | dconf load /org/gnome/shell/extensions/
 }
 
 savegnomekeybindings(){
@@ -178,8 +178,8 @@ savegnomekeybindings(){
   dconf dump /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/ > "$HOME/dotfiles/gnomekeybindings_custom.txt"
 }
 loadgnomekeybindings(){
-  cat "$HOME/dotfiles/gnomekeybindings_settings.txt" | dconf load -f /org/gnome/desktop/wm/keybindings/
-  cat "$HOME/dotfiles/gnomekeybindings_custom.txt" | dconf load -f /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
+  cat "$HOME/dotfiles/gnomekeybindings_settings.txt" | dconf load /org/gnome/desktop/wm/keybindings/
+  cat "$HOME/dotfiles/gnomekeybindings_custom.txt" | dconf load /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/
 }
 
 alias listkeysworkspace="gsettings list-recursively org.gnome.desktop.wm.keybindings | grep workspace"

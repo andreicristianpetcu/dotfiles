@@ -1,0 +1,26 @@
+[/]
+new-window-inherit-state=true
+prompt-on-close=true
+quake-height-percent=90
+quake-hide-lose-focus=true
+copy-on-select=true
+terminal-title-style='small'
+theme-variant='dark'
+use-tabs=true
+new-instance-mode='focus-window'
+app-title='Tilix ${title}'
+quake-hide-headerbar=true
+window-style='normal'
+
+[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
+foreground-color='#A1B0B8'
+visible-name='Default'
+login-shell=false
+palette=['#252525', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5', '#708284', '#FF5252', '#C3D82C', '#FFC135', '#42A5F5', '#D81B60', '#00ACC1', '#F5F5F5']
+badge-color-set=false
+cursor-colors-set=false
+highlight-colors-set=false
+use-theme-colors=false
+bold-color-set=false
+terminal-bell='none'
+background-color='#263238'
