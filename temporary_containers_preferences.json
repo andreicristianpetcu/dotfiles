@@ -1,66 +1,12 @@
 {
-  "version": "1.7",
-  "date": 1580242512348,
+  "version": "1.8",
+  "date": 1594401103750,
   "preferences": {
     "automaticMode": {
       "active": true,
       "newTab": "navigation"
     },
-    "notifications": false,
-    "container": {
-      "namePrefix": "Self destructing container",
-      "color": "purple",
-      "colorRandom": false,
-      "colorRandomExcluded": [],
-      "icon": "fence",
-      "iconRandom": false,
-      "iconRandomExcluded": [],
-      "numberMode": "keep",
-      "removal": 900000
-    },
-    "iconColor": "default",
-    "isolation": {
-      "active": true,
-      "global": {
-        "navigation": {
-          "action": "never"
-        },
-        "mouseClick": {
-          "middle": {
-            "action": "never",
-            "container": "default"
-          },
-          "ctrlleft": {
-            "action": "always",
-            "container": "default"
-          },
-          "left": {
-            "action": "never",
-            "container": "default"
-          }
-        },
-        "excluded": {},
-        "excludedContainers": []
-      },
-      "domain": [],
-      "mac": {
-        "action": "disabled"
-      }
-    },
     "browserActionPopup": false,
-    "pageAction": false,
-    "contextMenu": true,
-    "contextMenuBookmarks": false,
-    "keyboardShortcuts": {
-      "AltC": true,
-      "AltP": true,
-      "AltN": true,
-      "AltShiftC": false,
-      "AltX": true,
-      "AltO": false,
-      "AltI": true
-    },
-    "replaceTabs": false,
     "closeRedirectorTabs": {
       "active": false,
       "delay": 2000,
@@ -70,6 +16,34 @@
         "slack-redir.net"
       ]
     },
+    "container": {
+      "color": "turquoise",
+      "colorRandom": false,
+      "colorRandomExcluded": [],
+      "icon": "fence",
+      "iconRandom": false,
+      "iconRandomExcluded": [],
+      "namePrefix": "Self destructing container",
+      "numberMode": "keep",
+      "removal": 900000
+    },
+    "contextMenu": true,
+    "contextMenuBookmarks": false,
+    "cookies": {
+      "domain": {}
+    },
+    "deletesHistory": {
+      "active": false,
+      "automaticMode": "never",
+      "containerAlwaysPerDomain": "never",
+      "containerIsolation": "never",
+      "containerMouseClicks": "never",
+      "containerRemoval": 0,
+      "contextMenu": false,
+      "contextMenuBookmarks": false,
+      "statistics": false
+    },
+    "iconColor": "default",
     "ignoreRequests": [
       "addons.mozilla.org",
       "profiler.firefox.com",
@@ -82,9 +56,6 @@
       "mail.protonmail.com",
       "issues.jenkins-ci.org",
       "uipath.atlassian.net",
-      "app.slack.com",
-      "uipath-product.slack.com",
-      "slack.com",
       "outlook.office.com",
       "office.com",
       "www.reddit.com",
@@ -137,21 +108,70 @@
       "*.github.com",
       "*.orange.ro",
       "gitlab.com",
-      "onlinexperiences.com"
+      "onlinexperiences.com",
+      "twitter.com",
+      "*.twitter.com",
+      "127.0.0.1*",
+      "*.azurewebsites.net",
+      "temp-mail.org",
+      "*.slack.com",
+      "slack.com",
+      "*.azure-api.net",
+      "hbogo.ro",
+      "zoom.us",
+      "*localhost*",
+      "azure.com",
+      "microsoft.com",
+      "*.microsoft.com",
+      "*startpage.com",
+      "*.emag.ro",
+      "getpocket.com",
+      "*.getpocket.com",
+      "*.mozilla.com",
+      "*.hey.com"
     ],
-    "cookies": {
-      "domain": {}
+    "isolation": {
+      "active": true,
+      "domain": [],
+      "global": {
+        "excluded": {},
+        "excludedContainers": [],
+        "mouseClick": {
+          "ctrlleft": {
+            "action": "always",
+            "container": "default"
+          },
+          "left": {
+            "action": "never",
+            "container": "default"
+          },
+          "middle": {
+            "action": "never",
+            "container": "default"
+          }
+        },
+        "navigation": {
+          "action": "never"
+        }
+      },
+      "mac": {
+        "action": "disabled"
+      }
     },
-    "deletesHistory": {
-      "active": false,
-      "automaticMode": "never",
-      "contextMenu": false,
-      "contextMenuBookmarks": false,
-      "containerAlwaysPerDomain": "never",
-      "containerIsolation": "never",
-      "containerRemoval": 0,
-      "containerMouseClicks": "never",
-      "statistics": false
+    "keyboardShortcuts": {
+      "AltC": true,
+      "AltI": true,
+      "AltN": true,
+      "AltO": false,
+      "AltP": true,
+      "AltShiftC": false,
+      "AltX": true
+    },
+    "notifications": false,
+    "pageAction": false,
+    "replaceTabs": false,
+    "scripts": {
+      "domain": {}
     },
     "statistics": true,
     "ui": {
