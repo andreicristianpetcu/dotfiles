@@ -55,6 +55,8 @@ if [ -d /opt/maven ]; then export M2_HOME='/opt/maven' ;fi
 if [ -d /usr/share/maven ]; then export M2_HOME='/usr/share/maven' ;fi
 if [ -n $M2_HOME ]; then export PATH="$M2_HOME/bin:$PATH" ;fi
 
+if [ -d "$HOME/Dev/Android/Sdk/platform-tools/" ]; then export PATH="$PATH:$HOME/Dev/Android/Sdk/platform-tools/" ;fi
+
 # ruby version management with rbenv
 RBENV_ROOT="$HOME/.rbenv"
 if [ -d $RBENV_ROOT ]; then
