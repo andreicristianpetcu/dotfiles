@@ -79,6 +79,15 @@ if [ -d $GOPATH ]; then
   export PATH=$PATH:~/Dev/go/bin
 fi
 
+export DOTNETPATH=~/.dotnet/tools
+if [ -d $DOTNETPATH ]; then
+  export PATH=$PATH:~/.dotnet/tools
+fi
+
+if [ -d '/usr/local/bin' ]; then
+  export PATH=$PATH:/usr/local/bin
+fi
+
 # jenv settings
 if [ -f $HOME/.jenv/bin/jenv-init.sh ]; then
   source $HOME/.jenv/bin/jenv-init.sh
