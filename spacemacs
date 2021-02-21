@@ -448,10 +448,6 @@ It should only modify the values of Spacemacs settings."
    ;; (default "%I@%S")
    dotspacemacs-frame-title-format "%I@%S"
 
-   (add-to-list 'projectile-globally-ignored-directories ".hg")
-   (add-to-list 'projectile-globally-ignored-directories "objdir-frontend")
-   (add-to-list 'projectile-globally-ignored-directories "third_party")
-
    ;; Format specification for setting the icon title format
    ;; (default nil - same as frame-title-format)
    dotspacemacs-icon-title-format nil
@@ -525,7 +521,13 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  )
+  (add-to-list 'projectile-globally-ignored-directories ".hg")
+  (add-to-list 'projectile-globally-ignored-directories "objdir-frontend")
+  (add-to-list 'projectile-globally-ignored-directories "js/")
+  (add-to-list 'projectile-globally-ignored-directories "testing/")
+  (add-to-list 'projectile-globally-ignored-directories "third_party")
+  (add-to-list 'projectile-globally-ignored-directories "dom/")
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
