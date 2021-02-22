@@ -64,7 +64,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(helm-ls-hg)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -521,12 +521,15 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  (add-to-list 'projectile-globally-ignored-directories ".hg")
-  (add-to-list 'projectile-globally-ignored-directories "objdir-frontend")
-  (add-to-list 'projectile-globally-ignored-directories "js/")
-  (add-to-list 'projectile-globally-ignored-directories "testing/")
-  (add-to-list 'projectile-globally-ignored-directories "third_party")
-  (add-to-list 'projectile-globally-ignored-directories "dom/")
+  (setq projectile-enable-caching t)
+  ;; (setq projectile-indexing-method 'native)
+  (setq shell-file-name "/bin/bash")
+  ;; (add-to-list 'projectile-globally-ignored-directories ".hg")
+  ;; (add-to-list 'projectile-globally-ignored-directories "objdir-frontend")
+  ;; (add-to-list 'projectile-globally-ignored-directories "js/")
+  ;; (add-to-list 'projectile-globally-ignored-directories "testing/")
+  ;; (add-to-list 'projectile-globally-ignored-directories "third_party")
+  ;; (add-to-list 'projectile-globally-ignored-directories "dom/")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
