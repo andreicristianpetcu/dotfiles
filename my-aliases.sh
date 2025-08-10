@@ -768,11 +768,27 @@ fda() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-# ffasd - change directory from a list
+# ffasd - change directory from a list (hybrid zoxide + fzf)
+# Ctrl+O binding: Smart directory jumping with preview
+# Priority: 1) zoxide learned directories, 2) common directories + current tree
 ffasd() {
     local directories directory
-    directories=$(fasd -ldrR | awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- ) &&
-        directory=$(echo "$directories" | fzf +s +m) &&
+    
+    # First try zoxide for learned directories (smartest option)
+    if command -v zoxide >/dev/null 2>&1; then
+        directories=$(zoxide query -l | awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- )
+        if [ -n "$directories" ]; then
+            directory=$(echo "$directories" | fzf +s +m --preview 'ls -la {}' --preview-window=right:60%) &&
+            cd $(echo "$directory") && return
+        fi
+    fi
+    
+    # Fallback: search in common directories + current tree
+    directories=$(echo -e "$HOME\n$HOME/.config\n$HOME/Downloads\n$HOME/Documents\n$HOME/Desktop\n$(pwd)" | 
+        xargs -I {} find {} -type d -maxdepth 3 2>/dev/null | 
+        awk '{print length($1), $1}' | sort -n | cut -d ' ' -f 2- | 
+        uniq | head -100) &&
+        directory=$(echo "$directories" | fzf +s +m --preview 'ls -la {}' --preview-window=right:60%) &&
         cd $(echo "$directory")
 }
 bindkey -s '^O' '^qffasd\n'
