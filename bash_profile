@@ -28,3 +28,8 @@ export SDKMAN_DIR="/home/andreip/.sdkman"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/andrei/.lmstudio/bin"
+# End of LM Studio CLI section
+

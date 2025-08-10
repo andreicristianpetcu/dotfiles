@@ -21,6 +21,7 @@ setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
+eval "$(zoxide init zsh)"
 
 plugins=(command-not-found cp mvn systemd common-aliases dnf fasd git docker
     git-auto-fetch helm kube-ps1 kubectl)

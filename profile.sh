@@ -118,8 +118,6 @@ fi
 export FZF_DEFAULT_OPTS="+s -e"
 export FZF_TMUX_HEIGHT=100%
 
-eval "$(fasd --init auto)"
-
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
 
 if [ -d "/usr/local/go" ]; then
@@ -127,4 +125,7 @@ if [ -d "/usr/local/go" ]; then
   export PATH=$GOROOT/bin:$PATH
 fi
 
-stty stop undef
+# Only run stty if we have a terminal
+if [ -t 0 ]; then
+  stty stop undef 2>/dev/null || true
+fi

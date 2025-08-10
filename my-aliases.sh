@@ -538,6 +538,11 @@ installfasdubuntu(){
   sudo apt-get install fasd
 }
 
+installfasdfedora(){
+  echo "Actually we are using zoxide"
+  sudo dnf install zoxide
+}
+
 npminstallglobals(){
  npm install -g grunt grunt-cli bower karma http-server node-inspector pm2 tmp gulp
 }

@@ -44,3 +44,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "$HOME/.jabba/jabba.sh" ] && source "$HOME/.jabba/jabba.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/andrei/.lmstudio/bin"
+# End of LM Studio CLI section
+
